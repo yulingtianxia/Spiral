@@ -14,12 +14,15 @@ class GameScene: SKScene {
     
     init(size:CGSize){
         let center = CGPointMake(size.width/2, size.height/2)
-        player = Player(origin: center, radius: 5)
+        player = Player()
+        player.position = CGPointZero
         map = Map(origin:center, layer: 5)
         
         super.init(size:size)
+        self.physicsWorld.gravity = CGVectorMake(0, 0)
         self.addChild(map)
         self.addChild(player)
+        player.runInMap(map)
     }
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */

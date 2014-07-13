@@ -16,6 +16,8 @@
 		A4787761197113D000F6F611 /* SpiralTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4787760197113D000F6F611 /* SpiralTests.swift */; };
 		A478776B197113DB00F6F611 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = A478776A197113DB00F6F611 /* Map.swift */; };
 		A478777119712E9D00F6F611 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = A478777019712E9D00F6F611 /* Shape.swift */; };
+		A48F921219724362007BDAE4 /* NodeCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48F921119724362007BDAE4 /* NodeCategories.swift */; };
+		A48F921419724822007BDAE4 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48F921319724822007BDAE4 /* Player.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,8 @@
 		A4787760197113D000F6F611 /* SpiralTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiralTests.swift; sourceTree = "<group>"; };
 		A478776A197113DB00F6F611 /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		A478777019712E9D00F6F611 /* Shape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
+		A48F921119724362007BDAE4 /* NodeCategories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeCategories.swift; sourceTree = "<group>"; };
+		A48F921319724822007BDAE4 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +87,9 @@
 		A4787746197113D000F6F611 /* Spiral */ = {
 			isa = PBXGroup;
 			children = (
+				A48F921119724362007BDAE4 /* NodeCategories.swift */,
 				A478777019712E9D00F6F611 /* Shape.swift */,
+				A48F921319724822007BDAE4 /* Player.swift */,
 				A478776A197113DB00F6F611 /* Map.swift */,
 				A4787749197113D000F6F611 /* AppDelegate.swift */,
 				A478774B197113D000F6F611 /* GameScene.sks */,
@@ -225,7 +231,9 @@
 				A478774E197113D000F6F611 /* GameScene.swift in Sources */,
 				A4787750197113D000F6F611 /* GameViewController.swift in Sources */,
 				A478776B197113DB00F6F611 /* Map.swift in Sources */,
+				A48F921419724822007BDAE4 /* Player.swift in Sources */,
 				A478774A197113D000F6F611 /* AppDelegate.swift in Sources */,
+				A48F921219724362007BDAE4 /* NodeCategories.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
