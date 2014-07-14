@@ -9,25 +9,32 @@
 import UIKit
 import SpriteKit
 class Map: SKShapeNode {
+    let spacing:CGFloat = 30
+    var points:[CGPoint] = []
     convenience init(origin:CGPoint,layer:CGFloat){
-        let spacing:CGFloat = 30
+        
         var x:CGFloat = origin.x
         var y:CGFloat = origin.y
         var path = CGPathCreateMutable()
+        self.init()
         CGPathMoveToPoint(path, nil, x, y)
         for index in 1..<layer{
             y-=spacing*(2*index-1)
             CGPathAddLineToPoint(path, nil , x, y)
+            points.append(CGPointMake(x, y))
             x-=spacing*(2*index-1)
             CGPathAddLineToPoint(path, nil , x, y)
+            points.append(CGPointMake(x, y))
             y+=spacing*2*index
             CGPathAddLineToPoint(path, nil , x, y)
+            points.append(CGPointMake(x, y))
             x+=spacing*2*index
             CGPathAddLineToPoint(path, nil , x, y)
+            points.append(CGPointMake(x, y))
         }
-        self.init()
         self.path = path
         self.glowWidth = 1
         self.antialiased = true
+        CGPathGetCurrentPoint(path)
     }
 }

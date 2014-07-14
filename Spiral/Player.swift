@@ -8,18 +8,11 @@
 import SpriteKit
 
 class Player: Shape {
+    
     convenience init() {
         self.init(name:"player",imageName:"player")
         self.physicsBody.categoryBitMask = playerCategory
+        self.moveSpeed = 60
     }
-    func runInMap(map:Map){
-//        self.runAction(SKAction.group([SKAction.followPath(map.path, speed: self.moveSpeed),SKAction.repeatActionForever(SKAction.rotateByAngle(1, duration: 1))]))
-//        let rotate = SKAction.repeatActionForever(SKAction.rotateByAngle(5, duration: 1))
-        let rotate = SKAction.rotateByAngle(5, duration: 1)
-        let move = SKAction.followPath(map.path, speed: self.moveSpeed)
-        let group = SKAction.group([rotate,move])
-        self.runAction(group)
-
-        
-    }
+    
 }

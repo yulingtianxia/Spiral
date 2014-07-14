@@ -16,6 +16,13 @@
 		A4787761197113D000F6F611 /* SpiralTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4787760197113D000F6F611 /* SpiralTests.swift */; };
 		A478776B197113DB00F6F611 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = A478776A197113DB00F6F611 /* Map.swift */; };
 		A478777119712E9D00F6F611 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = A478777019712E9D00F6F611 /* Shape.swift */; };
+		A47D3D0D1973DBE4005AF736 /* ContactVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47D3D0C1973DBE4005AF736 /* ContactVisitor.swift */; };
+		A47D3D14197407C8005AF736 /* VisitablePhysicsBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47D3D13197407C8005AF736 /* VisitablePhysicsBody.swift */; };
+		A47D3D1619740AA3005AF736 /* PlayerContactVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47D3D1519740AA3005AF736 /* PlayerContactVisitor.swift */; };
+		A47D3D18197415C1005AF736 /* KillerContactVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47D3D17197415C1005AF736 /* KillerContactVisitor.swift */; };
+		A47D3D1A19741859005AF736 /* ScoreContactVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47D3D1919741859005AF736 /* ScoreContactVisitor.swift */; };
+		A47D3D1C19741B04005AF736 /* Killer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47D3D1B19741B04005AF736 /* Killer.swift */; };
+		A47D3D1E19741E54005AF736 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47D3D1D19741E54005AF736 /* Score.swift */; };
 		A48F921219724362007BDAE4 /* NodeCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48F921119724362007BDAE4 /* NodeCategories.swift */; };
 		A48F921419724822007BDAE4 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48F921319724822007BDAE4 /* Player.swift */; };
 /* End PBXBuildFile section */
@@ -44,6 +51,14 @@
 		A4787760197113D000F6F611 /* SpiralTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiralTests.swift; sourceTree = "<group>"; };
 		A478776A197113DB00F6F611 /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		A478777019712E9D00F6F611 /* Shape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
+		A47D3D0C1973DBE4005AF736 /* ContactVisitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactVisitor.swift; sourceTree = "<group>"; };
+		A47D3D0E1973F522005AF736 /* Spiral-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Spiral-Bridging-Header.h"; sourceTree = "<group>"; };
+		A47D3D13197407C8005AF736 /* VisitablePhysicsBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitablePhysicsBody.swift; sourceTree = "<group>"; };
+		A47D3D1519740AA3005AF736 /* PlayerContactVisitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerContactVisitor.swift; sourceTree = "<group>"; };
+		A47D3D17197415C1005AF736 /* KillerContactVisitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KillerContactVisitor.swift; sourceTree = "<group>"; };
+		A47D3D1919741859005AF736 /* ScoreContactVisitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreContactVisitor.swift; sourceTree = "<group>"; };
+		A47D3D1B19741B04005AF736 /* Killer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Killer.swift; sourceTree = "<group>"; };
+		A47D3D1D19741E54005AF736 /* Score.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 		A48F921119724362007BDAE4 /* NodeCategories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeCategories.swift; sourceTree = "<group>"; };
 		A48F921319724822007BDAE4 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,15 +102,14 @@
 		A4787746197113D000F6F611 /* Spiral */ = {
 			isa = PBXGroup;
 			children = (
-				A48F921119724362007BDAE4 /* NodeCategories.swift */,
-				A478777019712E9D00F6F611 /* Shape.swift */,
-				A48F921319724822007BDAE4 /* Player.swift */,
-				A478776A197113DB00F6F611 /* Map.swift */,
+				A47D3D1F19741F6D005AF736 /* Scenes */,
+				A47D3D12197407AC005AF736 /* Util */,
+				A47D3D0B1973DBA4005AF736 /* Visitors */,
+				A47D3D0A1973D9F5005AF736 /* Nodes */,
 				A4787749197113D000F6F611 /* AppDelegate.swift */,
-				A478774B197113D000F6F611 /* GameScene.sks */,
-				A478774D197113D000F6F611 /* GameScene.swift */,
 				A478774F197113D000F6F611 /* GameViewController.swift */,
 				A4787751197113D000F6F611 /* Main.storyboard */,
+				A47D3D0E1973F522005AF736 /* Spiral-Bridging-Header.h */,
 				A4787754197113D000F6F611 /* Images.xcassets */,
 				A4787747197113D000F6F611 /* Supporting Files */,
 			);
@@ -125,6 +139,47 @@
 				A478775F197113D000F6F611 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A47D3D0A1973D9F5005AF736 /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				A478777019712E9D00F6F611 /* Shape.swift */,
+				A48F921319724822007BDAE4 /* Player.swift */,
+				A47D3D1B19741B04005AF736 /* Killer.swift */,
+				A47D3D1D19741E54005AF736 /* Score.swift */,
+				A478776A197113DB00F6F611 /* Map.swift */,
+			);
+			name = Nodes;
+			sourceTree = "<group>";
+		};
+		A47D3D0B1973DBA4005AF736 /* Visitors */ = {
+			isa = PBXGroup;
+			children = (
+				A47D3D0C1973DBE4005AF736 /* ContactVisitor.swift */,
+				A47D3D1519740AA3005AF736 /* PlayerContactVisitor.swift */,
+				A47D3D17197415C1005AF736 /* KillerContactVisitor.swift */,
+				A47D3D1919741859005AF736 /* ScoreContactVisitor.swift */,
+			);
+			name = Visitors;
+			sourceTree = "<group>";
+		};
+		A47D3D12197407AC005AF736 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				A48F921119724362007BDAE4 /* NodeCategories.swift */,
+				A47D3D13197407C8005AF736 /* VisitablePhysicsBody.swift */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
+		A47D3D1F19741F6D005AF736 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				A478774B197113D000F6F611 /* GameScene.sks */,
+				A478774D197113D000F6F611 /* GameScene.swift */,
+			);
+			name = Scenes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -227,10 +282,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A47D3D1E19741E54005AF736 /* Score.swift in Sources */,
 				A478777119712E9D00F6F611 /* Shape.swift in Sources */,
+				A47D3D0D1973DBE4005AF736 /* ContactVisitor.swift in Sources */,
+				A47D3D1619740AA3005AF736 /* PlayerContactVisitor.swift in Sources */,
 				A478774E197113D000F6F611 /* GameScene.swift in Sources */,
+				A47D3D18197415C1005AF736 /* KillerContactVisitor.swift in Sources */,
+				A47D3D1C19741B04005AF736 /* Killer.swift in Sources */,
 				A4787750197113D000F6F611 /* GameViewController.swift in Sources */,
 				A478776B197113DB00F6F611 /* Map.swift in Sources */,
+				A47D3D14197407C8005AF736 /* VisitablePhysicsBody.swift in Sources */,
+				A47D3D1A19741859005AF736 /* ScoreContactVisitor.swift in Sources */,
 				A48F921419724822007BDAE4 /* Player.swift in Sources */,
 				A478774A197113D000F6F611 /* AppDelegate.swift in Sources */,
 				A48F921219724362007BDAE4 /* NodeCategories.swift in Sources */,
@@ -349,9 +411,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Spiral/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Spiral/Spiral-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -360,9 +425,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Spiral/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Spiral/Spiral-Bridging-Header.h";
 			};
 			name = Release;
 		};
