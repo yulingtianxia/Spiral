@@ -17,7 +17,6 @@
 		A478776B197113DB00F6F611 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = A478776A197113DB00F6F611 /* Map.swift */; };
 		A478777119712E9D00F6F611 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = A478777019712E9D00F6F611 /* Shape.swift */; };
 		A47D3D0D1973DBE4005AF736 /* ContactVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47D3D0C1973DBE4005AF736 /* ContactVisitor.swift */; };
-		A47D3D14197407C8005AF736 /* VisitablePhysicsBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47D3D13197407C8005AF736 /* VisitablePhysicsBody.swift */; };
 		A47D3D1619740AA3005AF736 /* PlayerContactVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47D3D1519740AA3005AF736 /* PlayerContactVisitor.swift */; };
 		A47D3D18197415C1005AF736 /* KillerContactVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47D3D17197415C1005AF736 /* KillerContactVisitor.swift */; };
 		A47D3D1A19741859005AF736 /* ScoreContactVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47D3D1919741859005AF736 /* ScoreContactVisitor.swift */; };
@@ -25,6 +24,7 @@
 		A47D3D1E19741E54005AF736 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47D3D1D19741E54005AF736 /* Score.swift */; };
 		A48F921219724362007BDAE4 /* NodeCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48F921119724362007BDAE4 /* NodeCategories.swift */; };
 		A48F921419724822007BDAE4 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48F921319724822007BDAE4 /* Player.swift */; };
+		A4FF927019751AA50060CE6D /* VisitablePhysicsBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FF926F19751AA50060CE6D /* VisitablePhysicsBody.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,7 +53,6 @@
 		A478777019712E9D00F6F611 /* Shape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
 		A47D3D0C1973DBE4005AF736 /* ContactVisitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactVisitor.swift; sourceTree = "<group>"; };
 		A47D3D0E1973F522005AF736 /* Spiral-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Spiral-Bridging-Header.h"; sourceTree = "<group>"; };
-		A47D3D13197407C8005AF736 /* VisitablePhysicsBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitablePhysicsBody.swift; sourceTree = "<group>"; };
 		A47D3D1519740AA3005AF736 /* PlayerContactVisitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerContactVisitor.swift; sourceTree = "<group>"; };
 		A47D3D17197415C1005AF736 /* KillerContactVisitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KillerContactVisitor.swift; sourceTree = "<group>"; };
 		A47D3D1919741859005AF736 /* ScoreContactVisitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreContactVisitor.swift; sourceTree = "<group>"; };
@@ -61,6 +60,7 @@
 		A47D3D1D19741E54005AF736 /* Score.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 		A48F921119724362007BDAE4 /* NodeCategories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeCategories.swift; sourceTree = "<group>"; };
 		A48F921319724822007BDAE4 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		A4FF926F19751AA50060CE6D /* VisitablePhysicsBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitablePhysicsBody.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,8 +167,8 @@
 		A47D3D12197407AC005AF736 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				A4FF926F19751AA50060CE6D /* VisitablePhysicsBody.swift */,
 				A48F921119724362007BDAE4 /* NodeCategories.swift */,
-				A47D3D13197407C8005AF736 /* VisitablePhysicsBody.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -289,9 +289,9 @@
 				A478774E197113D000F6F611 /* GameScene.swift in Sources */,
 				A47D3D18197415C1005AF736 /* KillerContactVisitor.swift in Sources */,
 				A47D3D1C19741B04005AF736 /* Killer.swift in Sources */,
+				A4FF927019751AA50060CE6D /* VisitablePhysicsBody.swift in Sources */,
 				A4787750197113D000F6F611 /* GameViewController.swift in Sources */,
 				A478776B197113DB00F6F611 /* Map.swift in Sources */,
-				A47D3D14197407C8005AF736 /* VisitablePhysicsBody.swift in Sources */,
 				A47D3D1A19741859005AF736 /* ScoreContactVisitor.swift in Sources */,
 				A48F921419724822007BDAE4 /* Player.swift in Sources */,
 				A478774A197113D000F6F611 /* AppDelegate.swift in Sources */,

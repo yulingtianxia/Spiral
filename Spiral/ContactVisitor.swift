@@ -34,18 +34,14 @@ class ContactVisitor:NSObject{
     }
     func visitBody(body:SKPhysicsBody){
         //第二次dispatch，通过构造方法名来执行对应方法
-        // 生成node的名字，比如"Player"
-        if let bodyClassName = String.stringWithUTF8String(class_getName(body.node.classForCoder)){
-            // 生成方法名，比如"visitPlayer"
-            var contactSelectorString = "visit" + bodyClassName + "()"
-            let selector = NSSelectorFromString(contactSelectorString)
-            if self.respondsToSelector(selector){
-                var control:UIControl = UIControl()
-                control.sendAction(selector, to: self, forEvent: nil)
-            }
+        // 生成方法名，比如"visitPlayer"
+        var contactSelectorString = "visit" + body.node.name + ":"
+        let selector = NSSelectorFromString(contactSelectorString)
+        if self.respondsToSelector(selector){
+            dispatch_after(0, dispatch_get_main_queue(), {
+                NSThread.detachNewThreadSelector(selector, toTarget:self, withObject: body)
+                })
         }
-        
-        
         
     }
 }

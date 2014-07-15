@@ -10,7 +10,7 @@ import SpriteKit
 class Player: Shape {
     
     convenience init() {
-        self.init(name:"player",imageName:"player")
+        self.init(name:"Player",imageName:"player")
         self.physicsBody.categoryBitMask = playerCategory
         self.moveSpeed = 60
     }

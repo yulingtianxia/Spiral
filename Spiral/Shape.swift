@@ -10,7 +10,6 @@ import UIKit
 import SpriteKit
 
 
-
 class Shape: SKSpriteNode {
     let radius:CGFloat = 15
     var moveSpeed:CGFloat = 50
@@ -52,6 +51,7 @@ class Shape: SKSpriteNode {
             }
             })
     }
+    
     func calDistanceInMap(map:Map)->CGFloat{
         if self.lineNum==map.points.count {
             return 0
@@ -65,4 +65,6 @@ class Shape: SKSpriteNode {
         }
         return 0
     }
+    
+
 }

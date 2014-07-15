@@ -15,6 +15,6 @@ class VisitablePhysicsBody{
         self.body = body
     }
     func acceptVisitor(visitor:ContactVisitor){
-        visitor.visitBody(self.body)
+        visitor.visitBody(body)
     }
 }

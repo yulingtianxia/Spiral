@@ -93,11 +93,11 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
     //    #pragma mark SKPhysicsContactDelegate
     func didBeginContact(contact:SKPhysicsContact){
         //A->B
-        let visitorA = ContactVisitor(body: contact.bodyA, forContact: contact)
+        let visitorA = ContactVisitor.contactVisitorWithBody(contact.bodyA, forContact: contact)
         let visitableBodyB = VisitablePhysicsBody(body: contact.bodyB)
         visitableBodyB.acceptVisitor(visitorA)
         //B->A
-        let visitorB = ContactVisitor(body: contact.bodyB, forContact: contact)
+        let visitorB = ContactVisitor.contactVisitorWithBody(contact.bodyB, forContact: contact)
         let visitableBodyA = VisitablePhysicsBody(body: contact.bodyA)
         visitableBodyA.acceptVisitor(visitorB)
     }
