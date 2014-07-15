@@ -8,7 +8,7 @@
 import SpriteKit
 
 class Player: Shape {
-    
+    var jump = false
     convenience init() {
         self.init(name:"Player",imageName:"player")
         self.physicsBody.categoryBitMask = playerCategory

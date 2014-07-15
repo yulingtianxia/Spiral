@@ -28,15 +28,13 @@ class Shape: SKSpriteNode {
         let distance = calDistanceInMap(map)
         let duration = distance/moveSpeed
         let rotate = SKAction.rotateByAngle(distance/10, duration: duration)
-        let move = SKAction.moveTo(map.points[lineNum], duration: duration)
+        let move = SKAction.moveTo(map.points[lineNum+1], duration: duration)
         let group = SKAction.group([rotate,move])
         self.runAction(group, completion: {
-            self.lineNum+=1
-            if self.lineNum==map.points.count {
+            self.lineNum++
+            if self.lineNum==map.points.count-1 {
                 if self is Player{
-                    //TODO:gameover
-                    println("gameover")
-                    (self.parent as GameScene).gameOver = true
+                    Data.gameOver = true
                 }
                 if self is Killer{
                     self.removeFromParent()
@@ -44,7 +42,6 @@ class Shape: SKSpriteNode {
                 if self is Score{
                     self.removeFromParent()
                 }
-                
             }
             else {
                 self.runInMap(map)
@@ -56,14 +53,18 @@ class Shape: SKSpriteNode {
         if self.lineNum==map.points.count {
             return 0
         }
-        let point = map.points[lineNum]
-        if point.x==position.x{
-            return abs(point.y-position.y)
+        switch lineNum%4{
+        case 0:
+            return position.y-map.points[lineNum+1].y
+        case 1:
+            return position.x-map.points[lineNum+1].x
+        case 2:
+            return map.points[lineNum+1].y-position.y
+        case 3:
+            return map.points[lineNum+1].x-position.x
+        default:
+            return 0
         }
-        else if point.y==position.y{
-            return abs(point.x-position.x)
-        }
-        return 0
     }
     
 
