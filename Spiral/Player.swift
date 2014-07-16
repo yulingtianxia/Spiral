@@ -12,7 +12,16 @@ class Player: Shape {
     convenience init() {
         self.init(name:"Player",imageName:"player")
         self.physicsBody.categoryBitMask = playerCategory
-        self.moveSpeed = 60
+        self.moveSpeed = 70
+        self.lineNum = 3
     }
-    
+    func restart(map:Map) {
+        self.alpha = 1
+        self.removeAllActions()
+        self.lineNum = 3
+        self.moveSpeed = 70
+        self.jump = false
+        self.position = map.points[self.lineNum]
+        self.runInMap(map)
+    }
 }

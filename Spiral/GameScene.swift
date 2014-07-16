@@ -9,14 +9,13 @@
 import SpriteKit
 
 class GameScene: SKScene ,SKPhysicsContactDelegate{
-    let player:Player
+    var player:Player
     let map:Map
     let display:Display
     init(size:CGSize){
         let center = CGPointMake(size.width/2, size.height/2)
         player = Player()
         map = Map(origin:center, layer: 5)
-        player.lineNum = 3
         player.position = map.points[player.lineNum]
         display = Display()
         Data.display = display
@@ -31,6 +30,7 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
         player.runInMap(map)
         nodeFactory()
     }
+    
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         
@@ -53,6 +53,26 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
         }
     }
     
+    func speedUp(){
+        for node in self.children{
+            if let shape = node as? Shape {
+                shape.removeAllActions()
+                shape.moveSpeed += CGFloat(Data.speedScale) * shape.moveSpeed
+                shape.runInMap(map)
+            }
+        }
+    }
+    
+    func overGame(){
+        map.alpha = 0.1
+        for node in self.children{
+            if let shape = node as? Shape {
+                shape.alpha = 0.1
+            }
+        }
+
+    }
+    
     func restartGame(){
         for node in self.children{
             if let shape = node as? Shape {
@@ -62,12 +82,11 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
             }
             
         }
-        Data.gameOver = false
-        player.lineNum = 3
-        player.position = map.points[player.lineNum]
-        player.runInMap(map)
-        nodeFactory()
+        map.alpha = 1
+        Data.restart()
+        player.restart(map)
     }
+    
     func calNewLocation(){
         let spacing = map.spacing
         let scale = CGFloat((player.lineNum/4-1)*2+1)/CGFloat(player.lineNum/4*2+1)
@@ -104,7 +123,8 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
                     println(type)
                 }
                 var shape = object as Shape
-                shape.lineNum = Int(arc4random()%UInt32(4)+1)
+//                shape.lineNum = Int(arc4random()%UInt32(3))
+                shape.lineNum = 0
                 shape.position = self.map.points[shape.lineNum]
                 shape.runInMap(self.map)
                 self.addChild(shape)
@@ -126,6 +146,7 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
             }
         }
     }
+    
     //    #pragma mark SKPhysicsContactDelegate
     func didBeginContact(contact:SKPhysicsContact){
         //A->B

@@ -9,9 +9,8 @@
 import UIKit
 import SpriteKit
 
-
 class Shape: SKSpriteNode {
-    let radius:CGFloat = 15
+    let radius:CGFloat = 10
     var moveSpeed:CGFloat = 50
     var lineNum = 0
     init(name:String,imageName:String){
@@ -20,6 +19,7 @@ class Shape: SKSpriteNode {
         self.physicsBody.usesPreciseCollisionDetection = true
         self.physicsBody.collisionBitMask = 0
         self.physicsBody.contactTestBitMask = playerCategory|killerCategory|scoreCategory
+        moveSpeed += CGFloat(Data.speedScale) * self.moveSpeed
         self.name = name
         self.physicsBody.angularDamping = 0
         
