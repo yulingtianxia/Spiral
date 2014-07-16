@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A434A14B1976955000F4C94B /* ShareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A434A14A1976955000F4C94B /* ShareButton.swift */; };
+		A434A14D197696BC00F4C94B /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A434A14C197696BC00F4C94B /* Social.framework */; };
+		A434A14F19769F4600F4C94B /* ReplayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A434A14E19769F4600F4C94B /* ReplayButton.swift */; };
 		A478774A197113D000F6F611 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4787749197113D000F6F611 /* AppDelegate.swift */; };
 		A478774C197113D000F6F611 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A478774B197113D000F6F611 /* GameScene.sks */; };
 		A478774E197113D000F6F611 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A478774D197113D000F6F611 /* GameScene.swift */; };
@@ -40,6 +43,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A434A14A1976955000F4C94B /* ShareButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareButton.swift; sourceTree = "<group>"; };
+		A434A14C197696BC00F4C94B /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		A434A14E19769F4600F4C94B /* ReplayButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplayButton.swift; sourceTree = "<group>"; };
 		A4787744197113D000F6F611 /* Spiral.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spiral.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4787748197113D000F6F611 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A4787749197113D000F6F611 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A434A14D197696BC00F4C94B /* Social.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,9 +92,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A434A1491976952800F4C94B /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				A434A14A1976955000F4C94B /* ShareButton.swift */,
+				A434A14E19769F4600F4C94B /* ReplayButton.swift */,
+			);
+			name = Buttons;
+			sourceTree = "<group>";
+		};
 		A478773B197113D000F6F611 = {
 			isa = PBXGroup;
 			children = (
+				A434A14C197696BC00F4C94B /* Social.framework */,
 				A4787746197113D000F6F611 /* Spiral */,
 				A478775D197113D000F6F611 /* SpiralTests */,
 				A4787745197113D000F6F611 /* Products */,
@@ -106,6 +123,7 @@
 		A4787746197113D000F6F611 /* Spiral */ = {
 			isa = PBXGroup;
 			children = (
+				A434A1491976952800F4C94B /* Buttons */,
 				A47D3D1F19741F6D005AF736 /* Scenes */,
 				A47D3D12197407AC005AF736 /* Util */,
 				A47D3D0B1973DBA4005AF736 /* Visitors */,
@@ -173,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				A4FF9275197529B50060CE6D /* Data.swift */,
+				A478774B197113D000F6F611 /* GameScene.sks */,
 				A4FF926F19751AA50060CE6D /* VisitablePhysicsBody.swift */,
 				A48F921119724362007BDAE4 /* NodeCategories.swift */,
 			);
@@ -182,7 +201,6 @@
 		A47D3D1F19741F6D005AF736 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				A478774B197113D000F6F611 /* GameScene.sks */,
 				A478774D197113D000F6F611 /* GameScene.swift */,
 			);
 			name = Scenes;
@@ -237,6 +255,11 @@
 				TargetAttributes = {
 					A4787743197113D000F6F611 = {
 						CreatedOnToolsVersion = 6.0;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+						};
 					};
 					A4787759197113D000F6F611 = {
 						CreatedOnToolsVersion = 6.0;
@@ -288,6 +311,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A434A14F19769F4600F4C94B /* ReplayButton.swift in Sources */,
 				A47D3D1E19741E54005AF736 /* Score.swift in Sources */,
 				A478777119712E9D00F6F611 /* Shape.swift in Sources */,
 				A47D3D0D1973DBE4005AF736 /* ContactVisitor.swift in Sources */,
@@ -299,6 +323,7 @@
 				A4787750197113D000F6F611 /* GameViewController.swift in Sources */,
 				A478776B197113DB00F6F611 /* Map.swift in Sources */,
 				A4FF9274197526830060CE6D /* Display.swift in Sources */,
+				A434A14B1976955000F4C94B /* ShareButton.swift in Sources */,
 				A47D3D1A19741859005AF736 /* ScoreContactVisitor.swift in Sources */,
 				A48F921419724822007BDAE4 /* Player.swift in Sources */,
 				A478774A197113D000F6F611 /* AppDelegate.swift in Sources */,

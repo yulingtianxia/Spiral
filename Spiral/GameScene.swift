@@ -42,7 +42,7 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
         for touch:AnyObject in touches{
             let location = touch.locationInNode(self)
             if Data.gameOver {
-                restartGame()
+//                restartGame()
             }
             else if player.lineNum>3 {
                 calNewLocation()
@@ -64,13 +64,13 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
     }
     
     func overGame(){
-        map.alpha = 0.1
+        map.alpha = 0.5
         for node in self.children{
             if let shape = node as? Shape {
-                shape.alpha = 0.1
+                shape.alpha = 0.5
             }
         }
-
+        
     }
     
     func restartGame(){
@@ -123,7 +123,7 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
                     println(type)
                 }
                 var shape = object as Shape
-//                shape.lineNum = Int(arc4random()%UInt32(3))
+                //                shape.lineNum = Int(arc4random()%UInt32(3))
                 shape.lineNum = 0
                 shape.position = self.map.points[shape.lineNum]
                 shape.runInMap(self.map)
@@ -132,6 +132,26 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
             }),SKAction.waitForDuration(5, withRange: 1)])))
         
         
+    }
+    
+    func imageWithView(view:UIView)->UIImage{
+        UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.opaque, 0.0);
+        view.drawViewHierarchyInRect(view.bounds,afterScreenUpdates:true)
+        let img = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        return img;
+    }
+    
+    
+    func imageFromNode(node:SKNode)->UIImage{
+        let tex = self.scene.view.textureFromNode(node)
+        let view  = SKView(frame: CGRectMake(0, 0, tex.size().width, tex.size().height))
+        let scene = SKScene(size: tex.size())
+        let sprite  = SKSpriteNode(texture: tex)
+        sprite.position = CGPointMake( CGRectGetMidX(view.frame), CGRectGetMidY(view.frame) );
+        scene.addChild(sprite)
+        view.presentScene(scene)
+        return self.imageWithView(view)
     }
     
     override func update(currentTime: CFTimeInterval) {

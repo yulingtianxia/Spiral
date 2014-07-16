@@ -21,10 +21,15 @@ struct Data{
     }
     static var gameOver:Bool = false {
     willSet{
-            
+        if newValue {
+            display?.gameOver()
+        }
+        else {
+            display?.restart()
+        }
     }
     didSet{
-        display?.updateData()
+        
     }
     }
     static var level:Int = 1{
@@ -49,7 +54,6 @@ struct Data{
     }
     
     static func restart(){
-        Data.gameOver = false
         Data.updateScore = 5
         Data.score = 0
         Data.level = 1
