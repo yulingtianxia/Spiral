@@ -42,6 +42,9 @@ class Shape: SKSpriteNode {
                 if self is Score{
                     self.removeFromParent()
                 }
+                if self is Shield{
+                    self.removeFromParent()
+                }
             }
             else {
                 self.runInMap(map)

@@ -11,3 +11,4 @@ import Foundation
 let playerCategory:UInt32      =  0x1 << 0;
 let killerCategory:UInt32      =  0x1 << 1;
 let scoreCategory:UInt32       =  0x1 << 2;
+let shieldCategory:UInt32      =  0x1 << 3;

@@ -9,6 +9,16 @@ import SpriteKit
 
 class Player: Shape {
     var jump = false
+    var shield:Bool = false {
+    willSet{
+        if newValue{
+            self.texture = SKTexture(imageNamed: "player0")
+        }
+        else{
+            self.texture = SKTexture(imageNamed: "player")
+        }
+    }
+    }
     convenience init() {
         self.init(name:"Player",imageName:"player")
         self.physicsBody.categoryBitMask = playerCategory
@@ -21,6 +31,7 @@ class Player: Shape {
         self.lineNum = 3
         self.moveSpeed = 70
         self.jump = false
+        self.shield = false
         self.position = map.points[self.lineNum]
         self.runInMap(map)
     }

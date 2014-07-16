@@ -25,7 +25,6 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
         self.addChild(map)
         self.addChild(player)
         self.addChild(display)
-        
         display.setPosition()
         player.runInMap(map)
         nodeFactory()
@@ -76,7 +75,7 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
     func restartGame(){
         for node in self.children{
             if let shape = node as? Shape {
-                if shape.name!=="Killer"||shape.name!=="Score" {
+                if shape.name!=="Killer"||shape.name!=="Score"||shape.name!=="Shield" {
                     shape.removeFromParent()
                 }
             }
@@ -112,18 +111,19 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
     func nodeFactory(){
         self.runAction(SKAction.repeatActionForever(SKAction.sequence([SKAction.runBlock({
             if !Data.gameOver {
-                let type = arc4random()%UInt32(2)
+                let type = arc4random()%UInt32(3)
                 var object:AnyObject!
                 switch type {
                 case 0:
                     object = Killer()
                 case 1:
                     object = Score()
+                case 2:
+                    object = Shield()
                 default:
                     println(type)
                 }
                 var shape = object as Shape
-                //                shape.lineNum = Int(arc4random()%UInt32(3))
                 shape.lineNum = 0
                 shape.position = self.map.points[shape.lineNum]
                 shape.runInMap(self.map)

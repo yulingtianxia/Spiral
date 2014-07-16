@@ -24,4 +24,9 @@ class ScoreContactVisitor:ContactVisitor{
         let otherNode = body.node
 //        println(thisNode.name+"->"+otherNode.name)
     }
+    func visitShield(body:SKPhysicsBody){
+        let thisNode = self.body.node
+        let otherNode = body.node
+        //        println(thisNode.name+"->"+otherNode.name)
+    }
 }

@@ -23,6 +23,9 @@ class ContactVisitor:NSObject{
         if 0 != body.categoryBitMask&scoreCategory {
             return ScoreContactVisitor(body: body, forContact: contact)
         }
+        if 0 != body.categoryBitMask&shieldCategory {
+            return ShieldContactVisitor(body: body, forContact: contact)
+        }
         return nil
         
     }
