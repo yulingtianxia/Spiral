@@ -22,7 +22,7 @@ class Shape: SKSpriteNode {
         moveSpeed += CGFloat(Data.speedScale) * self.moveSpeed
         self.name = name
         self.physicsBody.angularDamping = 0
-        
+
     }
     func runInMap(map:Map){
         let distance = calDistanceInMap(map)
