@@ -63,10 +63,10 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
     }
     
     func overGame(){
-        map.alpha = 0.5
+        map.alpha = 0.2
         for node in self.children{
             if let shape = node as? Shape {
-                shape.alpha = 0.5
+                shape.alpha = 0.2
             }
         }
         

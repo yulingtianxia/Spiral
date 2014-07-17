@@ -16,18 +16,21 @@ protocol DisplayData{
 class Display: SKNode ,DisplayData{
     let scoreLabel = SKLabelNode(text: "SCORE \(Data.score)")
     let levelLabel = SKLabelNode(text: "LEVEL \(Data.level)")
-    let gameOverLabel = SKLabelNode()
+    let highScoreLabel = SKLabelNode(text: "HIGHSCORE \(Data.highScore)")
+    let gameOverLabel = SKLabelNode(text: "GAME OVER")
     let share = ShareButton()
     let replay = ReplayButton()
+    
     init(){
         super.init()
         gameOverLabel.fontSize = 60
         self.addChild(scoreLabel)
         self.addChild(levelLabel)
-        self.addChild(gameOverLabel)
     }
+    
     func setPosition() {
         scoreLabel.position = CGPointMake(CGRectGetMidX(self.scene.frame), CGRectGetMaxY(self.scene.frame)/8)
+        highScoreLabel.position = CGPointMake(CGRectGetMidX(self.scene.frame), CGRectGetMinY(self.scene.frame))
         levelLabel.position = CGPointMake(CGRectGetMidX(self.scene.frame), 4*CGRectGetMaxY(self.scene.frame)/5)
         gameOverLabel.position = CGPointMake(CGRectGetMidX(self.scene.frame), CGRectGetMidY(self.scene.frame))
         share.position = CGPointMake(CGRectGetMaxX(self.scene.frame)*3/4, CGRectGetMaxY(self.scene.frame)/4)
@@ -42,15 +45,18 @@ class Display: SKNode ,DisplayData{
         (self.scene as GameScene).speedUp()
     }
     func gameOver() {
-        gameOverLabel.text = "GAME OVER"
+        self.addChild(gameOverLabel)
         self.addChild(share)
         self.addChild(replay)
+        highScoreLabel.text = "HIGHSCORE \(Data.highScore)"
+        self.addChild(highScoreLabel)
         (self.scene as GameScene).overGame()
     }
     func restart() {
-        gameOverLabel.text = ""
+        gameOverLabel.removeFromParent()
         share.removeFromParent()
         replay.removeFromParent()
+        highScoreLabel.removeFromParent()
         (self.scene as GameScene).restartGame()
     }
 }
