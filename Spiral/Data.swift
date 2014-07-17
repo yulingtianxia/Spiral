@@ -11,7 +11,7 @@ struct Data{
     static var updateScore:Int = 5
     static var score:Int = 0{
     willSet{
-        if newValue==updateScore{
+        if newValue>=updateScore{
             updateScore+=5 * ++level
         }
     }
@@ -24,10 +24,7 @@ struct Data{
     willSet{
         if newValue {
             let standardDefaults = NSUserDefaults.standardUserDefaults()
-            println(Data.score)
-            println(Data.highScore)
             Data.highScore = standardDefaults.integerForKey("highscore")
-            println(Data.highScore)
             if Data.highScore < Data.score {
                 Data.highScore = Data.score
                 standardDefaults.setInteger(Data.score, forKey: "highscore")

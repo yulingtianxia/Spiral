@@ -39,7 +39,6 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
     
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
         for touch:AnyObject in touches{
-            let location = touch.locationInNode(self)
             if Data.gameOver {
 //                restartGame()
             }

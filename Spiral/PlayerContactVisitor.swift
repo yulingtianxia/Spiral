@@ -31,13 +31,14 @@ class PlayerContactVisitor:ContactVisitor{
         let otherNode = body.node
 //        println(thisNode.name+"->"+otherNode.name)
         otherNode.removeFromParent()
-        Data.score++
+        Data.score += 2
     }
     func visitShield(body:SKPhysicsBody){
         let thisNode = self.body.node as Player
         let otherNode = body.node
         otherNode.removeFromParent()
         thisNode.shield = true
+        Data.score++
         //        println(thisNode.name+"->"+otherNode.name)
     }
 }
