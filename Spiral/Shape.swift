@@ -27,8 +27,8 @@ class Shape: SKSpriteNode {
     func runInMap(map:Map){
         let distance = calDistanceInMap(map)
         let duration = distance/moveSpeed
-        let rotate = SKAction.rotateByAngle(distance/10, duration: duration)
-        let move = SKAction.moveTo(map.points[lineNum+1], duration: duration)
+        let rotate = SKAction.rotateByAngle(distance/10, duration: Double(duration))
+        let move = SKAction.moveTo(map.points[lineNum+1], duration: Double(duration))
         let group = SKAction.group([rotate,move])
         self.runAction(group, completion: {
             self.lineNum++
