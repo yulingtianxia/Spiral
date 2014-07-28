@@ -12,3 +12,7 @@ A Game Developed with Swift and SpriteKit
 如果遇到了类型转换编译报错，可以手动加代码强制转换或者用64位模拟器（如iPhone5s）运行
 
 建议在Xcode6beta3下运行，beta4会出现问题，正在修复中
+
+在Xcode6beta4中，SKShapeNode的path无法被绘制出来（Objective-C工作正常），目前没有找到好的解决方法，建议关注stackoverflow：http://stackoverflow.com/questions/24951185/in-xcode-6-beta-4-drawing-a-simple-circle-doesnt-work-anymore
+
+苹果官方论坛也有人提出了同样的问题：https://devforums.apple.com/message/1011007#1011007
