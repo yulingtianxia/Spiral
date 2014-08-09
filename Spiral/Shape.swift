@@ -13,6 +13,9 @@ class Shape: SKSpriteNode {
     let radius:CGFloat = 10
     var moveSpeed:CGFloat = 50
     var lineNum = 0
+    required init(coder: NSCoder) {
+        fatalError("NSCoding not supported")
+    }
     init(name:String,imageName:String){
         super.init(texture: SKTexture(imageNamed: imageName),color:SKColor.clearColor(), size: CGSizeMake(radius*2, radius*2))
         self.physicsBody = SKPhysicsBody(circleOfRadius: radius)

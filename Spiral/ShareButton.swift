@@ -9,7 +9,10 @@
 import SpriteKit
 
 class ShareButton: SKLabelNode {
-    init() {
+    required init(coder: NSCoder) {
+        fatalError("NSCoding not supported")
+    }
+    override init() {
         super.init()
         self.userInteractionEnabled = true
         self.text = "SHARE"

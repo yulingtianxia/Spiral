@@ -12,7 +12,10 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
     var player:Player
     let map:Map
     let display:Display
-    init(size:CGSize){
+    required init(coder: NSCoder) {
+        fatalError("NSCoding not supported")
+    }
+    override init(size:CGSize){
         let center = CGPointMake(size.width/2, size.height/2)
         player = Player()
         map = Map(origin:center, layer: 5)

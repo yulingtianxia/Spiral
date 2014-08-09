@@ -10,6 +10,8 @@
 		A434A14B1976955000F4C94B /* ShareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A434A14A1976955000F4C94B /* ShareButton.swift */; };
 		A434A14D197696BC00F4C94B /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A434A14C197696BC00F4C94B /* Social.framework */; };
 		A434A14F19769F4600F4C94B /* ReplayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A434A14E19769F4600F4C94B /* ReplayButton.swift */; };
+		A45A65E01986073B00EA40D7 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45A65DF1986073B00EA40D7 /* SoundManager.swift */; };
+		A45A65E419860AD000EA40D7 /* pew-pew-lei.caf in Resources */ = {isa = PBXBuildFile; fileRef = A45A65E319860AD000EA40D7 /* pew-pew-lei.caf */; };
 		A46D8C011976BF9400A32924 /* Shield.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D8C001976BF9400A32924 /* Shield.swift */; };
 		A46D8C031976C3B800A32924 /* ShieldContactVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D8C021976C3B800A32924 /* ShieldContactVisitor.swift */; };
 		A478774A197113D000F6F611 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4787749197113D000F6F611 /* AppDelegate.swift */; };
@@ -48,6 +50,9 @@
 		A434A14A1976955000F4C94B /* ShareButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareButton.swift; sourceTree = "<group>"; };
 		A434A14C197696BC00F4C94B /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		A434A14E19769F4600F4C94B /* ReplayButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplayButton.swift; sourceTree = "<group>"; };
+		A45A65DF1986073B00EA40D7 /* SoundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		A45A65E1198607EB00EA40D7 /* bg.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = bg.caf; sourceTree = "<group>"; };
+		A45A65E319860AD000EA40D7 /* pew-pew-lei.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pew-pew-lei.caf"; sourceTree = "<group>"; };
 		A46D8C001976BF9400A32924 /* Shield.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shield.swift; sourceTree = "<group>"; };
 		A46D8C021976C3B800A32924 /* ShieldContactVisitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShieldContactVisitor.swift; sourceTree = "<group>"; };
 		A4787744197113D000F6F611 /* Spiral.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spiral.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,6 +110,15 @@
 			name = Buttons;
 			sourceTree = "<group>";
 		};
+		A45A65E2198607F400EA40D7 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				A45A65E319860AD000EA40D7 /* pew-pew-lei.caf */,
+				A45A65E1198607EB00EA40D7 /* bg.caf */,
+			);
+			name = Sounds;
+			sourceTree = "<group>";
+		};
 		A478773B197113D000F6F611 = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +141,7 @@
 		A4787746197113D000F6F611 /* Spiral */ = {
 			isa = PBXGroup;
 			children = (
+				A45A65E2198607F400EA40D7 /* Sounds */,
 				A434A1491976952800F4C94B /* Buttons */,
 				A47D3D1F19741F6D005AF736 /* Scenes */,
 				A47D3D12197407AC005AF736 /* Util */,
@@ -199,6 +214,7 @@
 				A4FF9275197529B50060CE6D /* Data.swift */,
 				A4FF926F19751AA50060CE6D /* VisitablePhysicsBody.swift */,
 				A48F921119724362007BDAE4 /* NodeCategories.swift */,
+				A45A65DF1986073B00EA40D7 /* SoundManager.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -300,6 +316,7 @@
 				A4787755197113D000F6F611 /* Images.xcassets in Resources */,
 				A478774C197113D000F6F611 /* GameScene.sks in Resources */,
 				A4787753197113D000F6F611 /* Main.storyboard in Resources */,
+				A45A65E419860AD000EA40D7 /* pew-pew-lei.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,6 +339,7 @@
 				A47D3D1E19741E54005AF736 /* Score.swift in Sources */,
 				A478777119712E9D00F6F611 /* Shape.swift in Sources */,
 				A47D3D0D1973DBE4005AF736 /* ContactVisitor.swift in Sources */,
+				A45A65E01986073B00EA40D7 /* SoundManager.swift in Sources */,
 				A47D3D1619740AA3005AF736 /* PlayerContactVisitor.swift in Sources */,
 				A46D8C031976C3B800A32924 /* ShieldContactVisitor.swift in Sources */,
 				A478774E197113D000F6F611 /* GameScene.swift in Sources */,

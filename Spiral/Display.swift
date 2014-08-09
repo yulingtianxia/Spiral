@@ -20,8 +20,10 @@ class Display: SKNode ,DisplayData{
     let gameOverLabel = SKLabelNode(text: "GAME OVER")
     let share = ShareButton()
     let replay = ReplayButton()
-    
-    init(){
+    required init(coder: NSCoder) {
+        fatalError("NSCoding not supported")
+    }
+    override init(){
         super.init()
         gameOverLabel.fontSize = 60
         self.addChild(scoreLabel)
