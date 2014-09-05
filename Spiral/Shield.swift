@@ -11,6 +11,6 @@ import SpriteKit
 class Shield: Shape {
     convenience init() {
         self.init(name:"Shield",imageName:"shield")
-        self.physicsBody.categoryBitMask = shieldCategory
+        self.physicsBody!.categoryBitMask = shieldCategory
     }
 }

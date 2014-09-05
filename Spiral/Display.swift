@@ -31,12 +31,12 @@ class Display: SKNode ,DisplayData{
     }
     
     func setPosition() {
-        scoreLabel.position = CGPointMake(CGRectGetMidX(self.scene.frame), CGRectGetMaxY(self.scene.frame)/8)
-        highScoreLabel.position = CGPointMake(CGRectGetMidX(self.scene.frame), CGRectGetMinY(self.scene.frame))
-        levelLabel.position = CGPointMake(CGRectGetMidX(self.scene.frame), 4*CGRectGetMaxY(self.scene.frame)/5)
-        gameOverLabel.position = CGPointMake(CGRectGetMidX(self.scene.frame), CGRectGetMidY(self.scene.frame))
-        share.position = CGPointMake(CGRectGetMaxX(self.scene.frame)*3/4, CGRectGetMaxY(self.scene.frame)/4)
-        replay.position = CGPointMake(CGRectGetMaxX(self.scene.frame)/4, CGRectGetMaxY(self.scene.frame)/4)
+        scoreLabel.position = CGPointMake(CGRectGetMidX(self.scene!.frame), CGRectGetMaxY(self.scene!.frame)/8)
+        highScoreLabel.position = CGPointMake(CGRectGetMidX(self.scene!.frame), CGRectGetMinY(self.scene!.frame))
+        levelLabel.position = CGPointMake(CGRectGetMidX(self.scene!.frame), 4*CGRectGetMaxY(self.scene!.frame)/5)
+        gameOverLabel.position = CGPointMake(CGRectGetMidX(self.scene!.frame), CGRectGetMidY(self.scene!.frame))
+        share.position = CGPointMake(CGRectGetMaxX(self.scene!.frame)*3/4, CGRectGetMaxY(self.scene!.frame)/4)
+        replay.position = CGPointMake(CGRectGetMaxX(self.scene!.frame)/4, CGRectGetMaxY(self.scene!.frame)/4)
     }
     func updateData() {
         scoreLabel.text = "SCORE \(Data.score)"

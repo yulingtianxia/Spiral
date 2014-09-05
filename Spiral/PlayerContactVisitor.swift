@@ -16,7 +16,7 @@ class PlayerContactVisitor:ContactVisitor{
     }
     func visitKiller(body:SKPhysicsBody){
         let thisNode = self.body.node as Player
-        let otherNode = body.node
+        let otherNode = body.node!
 //        println(thisNode.name+"->"+otherNode.name)
         if thisNode.shield {
             otherNode.removeFromParent()
@@ -30,13 +30,13 @@ class PlayerContactVisitor:ContactVisitor{
         let thisNode = self.body.node
         let otherNode = body.node
 //        println(thisNode.name+"->"+otherNode.name)
-        otherNode.removeFromParent()
+        otherNode!.removeFromParent()
         Data.score += 2
     }
     func visitShield(body:SKPhysicsBody){
         let thisNode = self.body.node as Player
         let otherNode = body.node
-        otherNode.removeFromParent()
+        otherNode!.removeFromParent()
         thisNode.shield = true
         Data.score++
         //        println(thisNode.name+"->"+otherNode.name)

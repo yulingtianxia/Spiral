@@ -18,3 +18,5 @@ A Game Developed with Swift and SpriteKit
 已经修复了Xcode6beta5中因Swift更新产生的语法问题，但依然不能绘制SKShapeNode :(  
 
 苹果官方论坛也有人提出了同样的问题：https://devforums.apple.com/message/1011007#1011007
+
+语法更新至beta7（2014.9.5），出现连接错误时可以clean build folder（点product->clean之前按住option）试试。

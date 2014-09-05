@@ -19,12 +19,12 @@ class Shape: SKSpriteNode {
     init(name:String,imageName:String){
         super.init(texture: SKTexture(imageNamed: imageName),color:SKColor.clearColor(), size: CGSizeMake(radius*2, radius*2))
         self.physicsBody = SKPhysicsBody(circleOfRadius: radius)
-        self.physicsBody.usesPreciseCollisionDetection = true
-        self.physicsBody.collisionBitMask = 0
-        self.physicsBody.contactTestBitMask = playerCategory|killerCategory|scoreCategory
+        self.physicsBody!.usesPreciseCollisionDetection = true
+        self.physicsBody!.collisionBitMask = 0
+        self.physicsBody!.contactTestBitMask = playerCategory|killerCategory|scoreCategory
         moveSpeed += CGFloat(Data.speedScale) * self.moveSpeed
         self.name = name
-        self.physicsBody.angularDamping = 0
+        self.physicsBody!.angularDamping = 0
 
     }
     func runInMap(map:Map){

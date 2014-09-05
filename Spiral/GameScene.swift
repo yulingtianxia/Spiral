@@ -146,7 +146,7 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
     
     
     func imageFromNode(node:SKNode)->UIImage{
-        let tex = self.scene.view.textureFromNode(node)
+        let tex = self.scene!.view!.textureFromNode(node)
         let view  = SKView(frame: CGRectMake(0, 0, tex.size().width, tex.size().height))
         let scene = SKScene(size: tex.size())
         let sprite  = SKSpriteNode(texture: tex)

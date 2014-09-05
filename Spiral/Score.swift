@@ -11,6 +11,6 @@ import SpriteKit
 class Score: Shape {
     convenience init() {
         self.init(name:"Score",imageName:"score")
-        self.physicsBody.categoryBitMask = scoreCategory
+        self.physicsBody!.categoryBitMask = scoreCategory
     }
 }

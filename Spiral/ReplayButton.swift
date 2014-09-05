@@ -17,7 +17,7 @@ class ReplayButton: SKLabelNode {
         self.userInteractionEnabled = true
         self.text = "REPLAY"
     }
-    override func touchesEnded(touches: NSSet!, withEvent event: UIEvent!) {
+    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
         Data.gameOver = false
     }
 }
