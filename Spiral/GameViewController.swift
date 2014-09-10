@@ -25,7 +25,6 @@ extension SKNode {
 }
 
 class GameViewController: UIViewController {
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Configure the view.
@@ -36,7 +35,6 @@ class GameViewController: UIViewController {
         /* Set the scale mode to scale to fit the window */
         scene.scaleMode = .AspectFill
         skView.presentScene(scene)
-        
     }
 
     override func shouldAutorotate() -> Bool {

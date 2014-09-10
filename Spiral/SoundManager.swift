@@ -13,7 +13,7 @@ class SoundManager: SKNode {
     var bgMusicPlayer = AVAudioPlayer()
     func playBackGround(){
         
-        if var bgMusicURL =  NSBundle.mainBundle().URLForResource("pew-pew-lei", withExtension: "caf"){
+        if var bgMusicURL =  NSBundle.mainBundle().URLForResource("bg", withExtension: "caf"){
             bgMusicPlayer=AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
             bgMusicPlayer.numberOfLoops = -1
             bgMusicPlayer.prepareToPlay()

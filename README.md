@@ -13,7 +13,7 @@ A Game Developed with Swift and SpriteKit
 
 建议在Xcode6beta3下运行，beta4会出现问题，正在修复中:(
 
-在Xcode6beta4中，SKShapeNode的path无法被绘制出来（Objective-C工作正常），目前没有找到好的解决方法，建议关注stackoverflow：http://stackoverflow.com/questions/24951185/in-xcode-6-beta-4-drawing-a-simple-circle-doesnt-work-anymore
+在Xcode6beta4中，使用**模拟器**运行时，SKShapeNode的path无法被绘制出来（Objective-C工作正常），目前没有找到好的解决方法，建议关注stackoverflow：http://stackoverflow.com/questions/24951185/in-xcode-6-beta-4-drawing-a-simple-circle-doesnt-work-anymore
 
 已经修复了Xcode6beta5中因Swift更新产生的语法问题，但依然不能绘制SKShapeNode :(  
 
