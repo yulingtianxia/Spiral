@@ -22,7 +22,7 @@ class Player: Shape {
     convenience init() {
         self.init(name:"Player",imageName:"player")
         self.physicsBody!.categoryBitMask = playerCategory
-        self.moveSpeed = 70
+        self.moveSpeed = 60
         self.lineNum = 3
     }
     func restart(map:Map) {
