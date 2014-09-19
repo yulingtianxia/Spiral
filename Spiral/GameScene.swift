@@ -16,6 +16,7 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
         fatalError("NSCoding not supported")
     }
     override init(size:CGSize){
+        GameKitHelper.sharedGameKitHelper().authenticateLocalPlayer()
         let center = CGPointMake(size.width/2, size.height/2)
         player = Player()
         map = Map(origin:center, layer: 5)
