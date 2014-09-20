@@ -31,10 +31,12 @@ class GameViewController: UIViewController {
         let skView = self.view as SKView
         /* Sprite Kit applies additional optimizations to improve rendering performance */
         skView.ignoresSiblingOrder = true
+        skView.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: Selector("handleLongPressFrom:")))
         let scene = GameScene(size: skView.bounds.size)
         /* Set the scale mode to scale to fit the window */
         scene.scaleMode = .AspectFill
         skView.presentScene(scene)
+        
     }
 
     override func shouldAutorotate() -> Bool {
@@ -57,4 +59,11 @@ class GameViewController: UIViewController {
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
+    
+    func handleLongPressFrom(recognizer:UILongPressGestureRecognizer) {
+        if recognizer.state == UIGestureRecognizerState.Began {
+            ((self.view as SKView).scene as GameScene).pause()
+        }
+    }
+    
 }

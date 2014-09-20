@@ -148,8 +148,8 @@
 				A4787746197113D000F6F611 /* Spiral */,
 				A478775D197113D000F6F611 /* SpiralTests */,
 				A4787745197113D000F6F611 /* Products */,
-				8BCC118355E4463D84D833AC /* Pods.xcconfig */,
 				F7CB57B3A321435B8FBA1FD7 /* Frameworks */,
+				8BCC118355E4463D84D833AC /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};

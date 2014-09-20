@@ -18,6 +18,7 @@ class Display: SKNode ,DisplayData{
     let levelLabel = SKLabelNode(text: "LEVEL \(Data.level)")
     let highScoreLabel = SKLabelNode(text: "HIGHSCORE \(Data.highScore)")
     let gameOverLabel = SKLabelNode(text: "GAME OVER")
+    let pauseLabel = SKLabelNode(text: "PAUSE")
     let share = ShareButton()
     let replay = ReplayButton()
     required init(coder: NSCoder) {
@@ -26,8 +27,10 @@ class Display: SKNode ,DisplayData{
     override init(){
         super.init()
         gameOverLabel.fontSize = 60
+        pauseLabel.fontSize = 60
         self.addChild(scoreLabel)
         self.addChild(levelLabel)
+        self.addChild(pauseLabel)
     }
     
     func setPosition() {
@@ -37,6 +40,7 @@ class Display: SKNode ,DisplayData{
         gameOverLabel.position = CGPointMake(CGRectGetMidX(self.scene!.frame), CGRectGetMidY(self.scene!.frame))
         share.position = CGPointMake(CGRectGetMaxX(self.scene!.frame)*3/4, CGRectGetMaxY(self.scene!.frame)/4)
         replay.position = CGPointMake(CGRectGetMaxX(self.scene!.frame)/4, CGRectGetMaxY(self.scene!.frame)/4)
+        pauseLabel.position = CGPointMake(CGRectGetMidX(self.scene!.frame), CGRectGetMidY(self.scene!.frame))
     }
     func updateData() {
         scoreLabel.text = "SCORE \(Data.score)"
@@ -52,7 +56,7 @@ class Display: SKNode ,DisplayData{
         self.addChild(replay)
         highScoreLabel.text = "HIGHSCORE \(Data.highScore)"
         self.addChild(highScoreLabel)
-        (self.scene as GameScene).overGame()
+        (self.scene as GameScene).hideGame()
     }
     func restart() {
         gameOverLabel.removeFromParent()
@@ -60,5 +64,19 @@ class Display: SKNode ,DisplayData{
         replay.removeFromParent()
         highScoreLabel.removeFromParent()
         (self.scene as GameScene).restartGame()
+    }
+    
+    func pause(){
+        pauseLabel.runAction(SKAction.runBlock({ () -> Void in
+            self.pauseLabel.alpha = 1
+        }))
+        (self.scene as GameScene).hideGame()
+    }
+    
+    func resume(){
+        pauseLabel.runAction(SKAction.runBlock({ () -> Void in
+            self.pauseLabel.alpha = 0
+        }))
+        (self.scene as GameScene).showGame()
     }
 }

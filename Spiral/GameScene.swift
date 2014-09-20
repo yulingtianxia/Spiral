@@ -32,6 +32,11 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
         display.setPosition()
         player.runInMap(map)
         nodeFactory()
+        //Observe Notification
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pause"), name: UIApplicationWillResignActiveNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pause"), name: UIApplicationDidEnterBackgroundNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("resume"), name: UIApplicationWillEnterForegroundNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("resume"), name: UIApplicationDidBecomeActiveNotification, object: nil)
     }
     
     override func didMoveToView(view: SKView) {
@@ -46,12 +51,17 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
             if Data.gameOver {
 //                restartGame()
             }
+            else if view?.paused == true{
+                resume()
+            }
             else if player.lineNum>3 {
                 calNewLocation()
                 player.removeAllActions()
                 player.jump = true
                 player.runInMap(map)
             }
+            
+            
         }
     }
     
@@ -65,7 +75,7 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
         }
     }
     
-    func overGame(){
+    func hideGame(){
         map.alpha = 0.2
         for node in self.children{
             if let shape = node as? Shape {
@@ -73,6 +83,15 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
             }
         }
         
+    }
+    
+    func showGame(){
+        map.alpha = 1
+        for node in self.children{
+            if let shape = node as? Shape {
+                shape.alpha = 1
+            }
+        }
     }
     
     func restartGame(){
@@ -170,7 +189,7 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
         }
     }
     
-    //    #pragma mark SKPhysicsContactDelegate
+    //pragma mark SKPhysicsContactDelegate
     func didBeginContact(contact:SKPhysicsContact){
         //A->B
         let visitorA = ContactVisitor.contactVisitorWithBody(contact.bodyA, forContact: contact)
@@ -180,6 +199,17 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
         let visitorB = ContactVisitor.contactVisitorWithBody(contact.bodyB, forContact: contact)
         let visitableBodyA = VisitablePhysicsBody(body: contact.bodyA)
         visitableBodyA.acceptVisitor(visitorB)
+    }
+    
+    //pause&resume game
+    func pause() {
+        display.pause()
+        view?.paused = true
+    }
+    
+    func resume() {
+        display.resume()
+        view?.paused = false
     }
     
 }
