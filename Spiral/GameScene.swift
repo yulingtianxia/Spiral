@@ -203,8 +203,11 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
     
     //pause&resume game
     func pause() {
-        display.pause()
-        view?.paused = true
+        self.runAction(SKAction.runBlock({ [unowned self]() -> Void in
+            self.display.pause()
+        }), completion: { [unowned self]() -> Void in
+            self.view!.paused = true
+        })
     }
     
     func resume() {

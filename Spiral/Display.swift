@@ -28,6 +28,7 @@ class Display: SKNode ,DisplayData{
         super.init()
         gameOverLabel.fontSize = 60
         pauseLabel.fontSize = 60
+        pauseLabel.alpha = 0
         self.addChild(scoreLabel)
         self.addChild(levelLabel)
         self.addChild(pauseLabel)
@@ -67,16 +68,13 @@ class Display: SKNode ,DisplayData{
     }
     
     func pause(){
-        pauseLabel.runAction(SKAction.runBlock({ () -> Void in
-            self.pauseLabel.alpha = 1
-        }))
+        pauseLabel.text = "PAUSE"
+        pauseLabel.alpha = 1
         (self.scene as GameScene).hideGame()
     }
     
     func resume(){
-        pauseLabel.runAction(SKAction.runBlock({ () -> Void in
-            self.pauseLabel.alpha = 0
-        }))
+        pauseLabel.alpha = 0
         (self.scene as GameScene).showGame()
     }
 }
