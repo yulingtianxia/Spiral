@@ -49,7 +49,9 @@ class Display: SKNode ,DisplayData{
     }
     func levelUp() {
         levelLabel.runAction(SKAction.sequence([SKAction.scaleTo(1.5, duration: 0.5),SKAction.scaleTo(1, duration: 0.5)]))
-        (self.scene as GameScene).speedUp()
+        var scene = self.scene as GameScene
+        scene.speedUp()
+        scene.soundManager.playLevelUp()
     }
     func gameOver() {
         self.addChild(gameOverLabel)

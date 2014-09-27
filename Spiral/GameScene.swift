@@ -12,11 +12,13 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
     var player:Player
     let map:Map
     let display:Display
+    let soundManager = SoundManager()
     required init(coder: NSCoder) {
         fatalError("NSCoding not supported")
     }
     override init(size:CGSize){
         GameKitHelper.sharedGameKitHelper().authenticateLocalPlayer()
+        soundManager.playBackGround()
         let center = CGPointMake(size.width/2, size.height/2)
         player = Player()
         map = Map(origin:center, layer: 5)
@@ -59,6 +61,7 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
                 player.removeAllActions()
                 player.jump = true
                 player.runInMap(map)
+                soundManager.playJump()
             }
             
             
@@ -205,12 +208,14 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
     func pause() {
         self.runAction(SKAction.runBlock({ [unowned self]() -> Void in
             self.display.pause()
+            self.soundManager.stopBackGround()
         }), completion: { [unowned self]() -> Void in
             self.view!.paused = true
         })
     }
     
     func resume() {
+        soundManager.playBackGround()
         display.resume()
         view?.paused = false
     }

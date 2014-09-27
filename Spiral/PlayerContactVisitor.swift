@@ -24,14 +24,16 @@ class PlayerContactVisitor:ContactVisitor{
         }
         else {
             Data.gameOver = true
+            (thisNode.parent as GameScene).soundManager.playGameOver()
         }
     }
     func visitScore(body:SKPhysicsBody){
-        let thisNode = self.body.node
+        let thisNode = self.body.node as Player
         let otherNode = body.node
 //        println(thisNode.name+"->"+otherNode.name)
         otherNode!.removeFromParent()
         Data.score += 2
+        (thisNode.parent as GameScene).soundManager.playScore()
     }
     func visitShield(body:SKPhysicsBody){
         let thisNode = self.body.node as Player
@@ -39,6 +41,6 @@ class PlayerContactVisitor:ContactVisitor{
         otherNode!.removeFromParent()
         thisNode.shield = true
         Data.score++
-        //        println(thisNode.name+"->"+otherNode.name)
+        (thisNode.parent as GameScene).soundManager.playShield()
     }
 }

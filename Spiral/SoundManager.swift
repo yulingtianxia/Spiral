@@ -10,10 +10,14 @@ import UIKit
 import SpriteKit
 import AVFoundation
 class SoundManager: SKNode {
-    var bgMusicPlayer = AVAudioPlayer()
+    private var bgMusicPlayer:AVAudioPlayer!
+    private var jumpPlayer:AVAudioPlayer!
+    private var gameoverPlayer:AVAudioPlayer!
+    private var levelupPlayer:AVAudioPlayer!
+    private var scorePlayer:AVAudioPlayer!
+    private var shieldPlayer:AVAudioPlayer!
     func playBackGround(){
-        
-        if var bgMusicURL =  NSBundle.mainBundle().URLForResource("bg", withExtension: "caf"){
+        if let bgMusicURL =  NSBundle.mainBundle().URLForResource("bg", withExtension: "mp3"){
             bgMusicPlayer=AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
             bgMusicPlayer.numberOfLoops = -1
             bgMusicPlayer.prepareToPlay()
@@ -22,5 +26,40 @@ class SoundManager: SKNode {
     }
     func stopBackGround(){
         bgMusicPlayer.stop()
+    }
+    func playJump(){
+        if let bgMusicURL =  NSBundle.mainBundle().URLForResource("jump", withExtension: "mp3"){
+            jumpPlayer=AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
+            jumpPlayer.prepareToPlay()
+            jumpPlayer.play()
+        }
+    }
+    func playGameOver(){
+        if let bgMusicURL =  NSBundle.mainBundle().URLForResource("gameover", withExtension: "mp3"){
+            gameoverPlayer=AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
+            gameoverPlayer.prepareToPlay()
+            gameoverPlayer.play()
+        }
+    }
+    func playLevelUp(){
+        if let bgMusicURL =  NSBundle.mainBundle().URLForResource("levelup", withExtension: "mp3"){
+            levelupPlayer=AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
+            levelupPlayer.prepareToPlay()
+            levelupPlayer.play()
+        }
+    }
+    func playScore(){
+        if let bgMusicURL =  NSBundle.mainBundle().URLForResource("score", withExtension: "mp3"){
+            scorePlayer=AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
+            scorePlayer.prepareToPlay()
+            scorePlayer.play()
+        }
+    }
+    func playShield(){
+        if let bgMusicURL =  NSBundle.mainBundle().URLForResource("shield", withExtension: "wav"){
+            shieldPlayer=AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
+            shieldPlayer.prepareToPlay()
+            shieldPlayer.play()
+        }
     }
 }
