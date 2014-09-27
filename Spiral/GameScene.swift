@@ -85,7 +85,7 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
                 shape.alpha = 0.2
             }
         }
-        
+        soundManager.stopBackGround()
     }
     
     func showGame(){
@@ -95,6 +95,7 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
                 shape.alpha = 1
             }
         }
+        soundManager.playBackGround()
     }
     
     func restartGame(){
@@ -109,6 +110,7 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
         map.alpha = 1
         Data.restart()
         player.restart(map)
+        soundManager.playBackGround()
     }
     
     func calNewLocation(){
@@ -206,16 +208,18 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
     
     //pause&resume game
     func pause() {
-        self.runAction(SKAction.runBlock({ [unowned self]() -> Void in
-            self.display.pause()
-            self.soundManager.stopBackGround()
-        }), completion: { [unowned self]() -> Void in
-            self.view!.paused = true
-        })
+        if !Data.gameOver{
+            self.runAction(SKAction.runBlock({ [unowned self]() -> Void in
+                self.display.pause()
+                self.soundManager.pauseBackGround()
+            }), completion: { [unowned self]() -> Void in
+                self.view!.paused = true
+            })
+        }
     }
     
     func resume() {
-        soundManager.playBackGround()
+        soundManager.resumeBackGround()
         display.resume()
         view?.paused = false
     }

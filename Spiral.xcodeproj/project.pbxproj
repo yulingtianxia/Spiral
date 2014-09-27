@@ -38,6 +38,7 @@
 		A4B104B819D6F166008BD1BA /* levelup.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A4B104B719D6F166008BD1BA /* levelup.mp3 */; };
 		A4B104BA19D6F2C0008BD1BA /* score.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A4B104B919D6F2C0008BD1BA /* score.mp3 */; };
 		A4B104BC19D6F3A0008BD1BA /* shield.wav in Resources */ = {isa = PBXBuildFile; fileRef = A4B104BB19D6F3A0008BD1BA /* shield.wav */; };
+		A4B104BE19D6F5EA008BD1BA /* killer.wav in Resources */ = {isa = PBXBuildFile; fileRef = A4B104BD19D6F5EA008BD1BA /* killer.wav */; };
 		A4FF927019751AA50060CE6D /* VisitablePhysicsBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FF926F19751AA50060CE6D /* VisitablePhysicsBody.swift */; };
 		A4FF9274197526830060CE6D /* Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FF9273197526830060CE6D /* Display.swift */; };
 		A4FF9276197529B50060CE6D /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FF9275197529B50060CE6D /* Data.swift */; };
@@ -97,6 +98,7 @@
 		A4B104B719D6F166008BD1BA /* levelup.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = levelup.mp3; sourceTree = "<group>"; };
 		A4B104B919D6F2C0008BD1BA /* score.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = score.mp3; sourceTree = "<group>"; };
 		A4B104BB19D6F3A0008BD1BA /* shield.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shield.wav; sourceTree = "<group>"; };
+		A4B104BD19D6F5EA008BD1BA /* killer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = killer.wav; sourceTree = "<group>"; };
 		A4FF926F19751AA50060CE6D /* VisitablePhysicsBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitablePhysicsBody.swift; sourceTree = "<group>"; };
 		A4FF9273197526830060CE6D /* Display.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Display.swift; sourceTree = "<group>"; };
 		A4FF9275197529B50060CE6D /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 		A45A65E2198607F400EA40D7 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				A4B104BD19D6F5EA008BD1BA /* killer.wav */,
 				A4B104BB19D6F3A0008BD1BA /* shield.wav */,
 				A4B104B919D6F2C0008BD1BA /* score.mp3 */,
 				A4B104B719D6F166008BD1BA /* levelup.mp3 */,
@@ -371,6 +374,7 @@
 				A478774C197113D000F6F611 /* GameScene.sks in Resources */,
 				A4B104BC19D6F3A0008BD1BA /* shield.wav in Resources */,
 				A4787753197113D000F6F611 /* Main.storyboard in Resources */,
+				A4B104BE19D6F5EA008BD1BA /* killer.wav in Resources */,
 				A45A65E419860AD000EA40D7 /* pew-pew-lei.caf in Resources */,
 				A4B104B819D6F166008BD1BA /* levelup.mp3 in Resources */,
 				A4B104B219D6DF01008BD1BA /* bg.mp3 in Resources */,

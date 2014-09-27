@@ -60,6 +60,7 @@ class Display: SKNode ,DisplayData{
         highScoreLabel.text = "HIGHSCORE \(Data.highScore)"
         self.addChild(highScoreLabel)
         (self.scene as GameScene).hideGame()
+        (self.scene as GameScene).soundManager.playGameOver()
     }
     func restart() {
         gameOverLabel.removeFromParent()
@@ -76,6 +77,7 @@ class Display: SKNode ,DisplayData{
     }
     
     func resume(){
+        pauseLabel.text = ""
         pauseLabel.alpha = 0
         (self.scene as GameScene).showGame()
     }

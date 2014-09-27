@@ -21,10 +21,10 @@ class PlayerContactVisitor:ContactVisitor{
         if thisNode.shield {
             otherNode.removeFromParent()
             thisNode.shield = false
+            (thisNode.parent as GameScene).soundManager.playKiller()
         }
         else {
             Data.gameOver = true
-            (thisNode.parent as GameScene).soundManager.playGameOver()
         }
     }
     func visitScore(body:SKPhysicsBody){

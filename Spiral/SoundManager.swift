@@ -16,6 +16,7 @@ class SoundManager: SKNode {
     private var levelupPlayer:AVAudioPlayer!
     private var scorePlayer:AVAudioPlayer!
     private var shieldPlayer:AVAudioPlayer!
+    private var killerPlayer:AVAudioPlayer!
     func playBackGround(){
         if let bgMusicURL =  NSBundle.mainBundle().URLForResource("bg", withExtension: "mp3"){
             bgMusicPlayer=AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
@@ -26,6 +27,13 @@ class SoundManager: SKNode {
     }
     func stopBackGround(){
         bgMusicPlayer.stop()
+    }
+    func pauseBackGround(){
+        bgMusicPlayer.pause()
+    }
+    func resumeBackGround(){
+        bgMusicPlayer.prepareToPlay()
+//        bgMusicPlayer.play()
     }
     func playJump(){
         if let bgMusicURL =  NSBundle.mainBundle().URLForResource("jump", withExtension: "mp3"){
@@ -60,6 +68,13 @@ class SoundManager: SKNode {
             shieldPlayer=AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
             shieldPlayer.prepareToPlay()
             shieldPlayer.play()
+        }
+    }
+    func playKiller(){
+        if let bgMusicURL =  NSBundle.mainBundle().URLForResource("killer", withExtension: "wav"){
+            killerPlayer=AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
+            killerPlayer.prepareToPlay()
+            killerPlayer.play()
         }
     }
 }
