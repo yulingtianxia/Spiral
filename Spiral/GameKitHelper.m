@@ -8,7 +8,7 @@
 
 #import "GameKitHelper.h"
 #import <EXTScope.h>
-
+#import "Spiral-swift.h"
 
 @interface GameKitHelper () <GKGameCenterControllerDelegate> {
     BOOL _gameCenterFeaturesEnabled;
@@ -44,6 +44,7 @@
             _gameCenterFeaturesEnabled = YES;
         } else if(viewController) {
             //TODO:palse
+            [self pause];
             [self presentViewController:viewController];
         } else {
             _gameCenterFeaturesEnabled = NO;
@@ -104,5 +105,9 @@
              [_delegate onScoresSubmitted:success];
          }
      }];
+}
+-(void)pause{
+    GameViewController* gvc = (GameViewController*)[self getRootViewController];
+    [((GameScene*)(((SKView*)gvc.view).scene)) pause];
 }
 @end
