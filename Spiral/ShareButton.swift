@@ -21,7 +21,7 @@ class ShareButton: SKLabelNode {
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
         let scene = self.scene as GameScene
         let image = scene.imageFromNode(scene)
-        let text = "我在Spiral游戏中得了\(Data.score)分，快来追逐我的步伐吧！"
+        let text = "我在Spiral游戏中得了\(Data.score)分，快来追逐我的步伐吧！ https://itunes.apple.com/us/app/square-spiral/id920811081"
         let activityItems = [image,text]
         let activityController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
         (scene.view!.nextResponder() as UIViewController).presentViewController(activityController, animated: true, completion: nil)
