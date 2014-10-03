@@ -14,11 +14,11 @@ protocol DisplayData{
     func restart()
 }
 class Display: SKNode ,DisplayData{
-    let scoreLabel = SKLabelNode(text: "SCORE \(Data.score)")
-    let levelLabel = SKLabelNode(text: "LEVEL \(Data.level)")
-    let highScoreLabel = SKLabelNode(text: "HIGHSCORE \(Data.highScore)")
-    let gameOverLabel = SKLabelNode(text: "GAME OVER")
-    let pauseLabel = SKLabelNode(text: "PAUSE")
+    let scoreLabel = SKLabelNode(text: NSLocalizedString("SCORE ", comment: "")+"\(Data.score)")
+    let levelLabel = SKLabelNode(text:NSLocalizedString("LEVEL ", comment: "")+"\(Data.level)")
+    let highScoreLabel = SKLabelNode(text: NSLocalizedString("HIGHSCORE ", comment: "")+"\(Data.highScore)")
+    let gameOverLabel = SKLabelNode(text: NSLocalizedString("GAME OVER", comment: ""))
+    let pauseLabel = SKLabelNode(text: NSLocalizedString("PAUSE", comment: ""))
     let share = ShareButton()
     let replay = ReplayButton()
     required init(coder: NSCoder) {
@@ -44,8 +44,8 @@ class Display: SKNode ,DisplayData{
         pauseLabel.position = CGPointMake(CGRectGetMidX(self.scene!.frame), CGRectGetMidY(self.scene!.frame))
     }
     func updateData() {
-        scoreLabel.text = "SCORE \(Data.score)"
-        levelLabel.text = "LEVEL \(Data.level)"
+        scoreLabel.text = NSLocalizedString("SCORE ", comment: "")+"\(Data.score)"
+        levelLabel.text = NSLocalizedString("LEVEL ", comment: "")+"\(Data.level)"
     }
     func levelUp() {
         levelLabel.runAction(SKAction.sequence([SKAction.scaleTo(1.5, duration: 0.5),SKAction.scaleTo(1, duration: 0.5)]))
@@ -57,7 +57,7 @@ class Display: SKNode ,DisplayData{
         self.addChild(gameOverLabel)
         self.addChild(share)
         self.addChild(replay)
-        highScoreLabel.text = "HIGHSCORE \(Data.highScore)"
+        highScoreLabel.text = NSLocalizedString("HIGHSCORE ", comment: "")+"\(Data.highScore)"
         self.addChild(highScoreLabel)
         (self.scene as GameScene).hideGame()
         (self.scene as GameScene).soundManager.playGameOver()
@@ -71,7 +71,7 @@ class Display: SKNode ,DisplayData{
     }
     
     func pause(){
-        pauseLabel.text = "PAUSE"
+        pauseLabel.text = NSLocalizedString("PAUSE", comment: "")
         pauseLabel.alpha = 1
         (self.scene as GameScene).hideGame()
     }
@@ -79,6 +79,9 @@ class Display: SKNode ,DisplayData{
     func resume(){
         pauseLabel.text = ""
         pauseLabel.alpha = 0
-        (self.scene as GameScene).showGame()
+        if !Data.gameOver{
+            (self.scene as GameScene).showGame()
+        }
+        
     }
 }
