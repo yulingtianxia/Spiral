@@ -35,7 +35,7 @@ class Map: SKShapeNode {
         }
         self.path = path
         self.glowWidth = 1
-
+        
         self.antialiased = true
     }
 }

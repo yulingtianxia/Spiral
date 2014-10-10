@@ -13,6 +13,7 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
     let map:Map
     let display:Display
     let soundManager = SoundManager()
+    let background:Background
     required init(coder: NSCoder) {
         fatalError("NSCoding not supported")
     }
@@ -25,12 +26,17 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
         player.position = map.points[player.lineNum]
         display = Display()
         Data.display = display
+        background = Background(size: size)
+        background.position = center
+        
         super.init(size:size)
         self.physicsWorld.gravity = CGVectorMake(0, 0)
         self.physicsWorld.contactDelegate = self
+        self.addChild(background)
         self.addChild(map)
         self.addChild(player)
         self.addChild(display)
+        
         display.setPosition()
         player.runInMap(map)
         nodeFactory()
@@ -80,6 +86,7 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
     
     func hideGame(){
         map.alpha = 0.2
+        background.alpha = 0.2
         for node in self.children{
             if let shape = node as? Shape {
                 shape.alpha = 0.2
@@ -90,6 +97,7 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
     
     func showGame(){
         map.alpha = 1
+        background.alpha = 0.5
         for node in self.children{
             if let shape = node as? Shape {
                 shape.alpha = 1
@@ -108,6 +116,7 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
             
         }
         map.alpha = 1
+        background.alpha = 0.5
         Data.restart()
         player.restart(map)
         soundManager.playBackGround()

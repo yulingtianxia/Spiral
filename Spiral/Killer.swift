@@ -12,5 +12,8 @@ class Killer: Shape {
     convenience init() {
         self.init(name:"Killer",imageName:"killer")
         self.physicsBody!.categoryBitMask = killerCategory
+        light.lightColor = SKColor.redColor()
+        light.categoryBitMask = killerLightCategory
+        light.enabled = true
     }
 }

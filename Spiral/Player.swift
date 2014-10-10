@@ -13,9 +13,11 @@ class Player: Shape {
     willSet{
         if newValue{
             self.texture = SKTexture(imageNamed: "player0")
+            light.enabled = true
         }
         else{
             self.texture = SKTexture(imageNamed: "player")
+            light.enabled = false
         }
     }
     }
@@ -24,6 +26,8 @@ class Player: Shape {
         self.physicsBody!.categoryBitMask = playerCategory
         self.moveSpeed = 60
         self.lineNum = 3
+        light.lightColor = SKColor(red: 80.0/255, green: 227.0/255, blue: 194.0/255, alpha: 1)
+        light.categoryBitMask = playerLightCategory
     }
     func restart(map:Map) {
         self.alpha = 1

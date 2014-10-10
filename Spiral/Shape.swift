@@ -13,6 +13,7 @@ class Shape: SKSpriteNode {
     let radius:CGFloat = 10
     var moveSpeed:CGFloat = 50
     var lineNum = 0
+    var light = SKLightNode()
     required init(coder: NSCoder) {
         fatalError("NSCoding not supported")
     }
@@ -25,7 +26,9 @@ class Shape: SKSpriteNode {
         moveSpeed += CGFloat(Data.speedScale) * self.moveSpeed
         self.name = name
         self.physicsBody!.angularDamping = 0
-
+        self.normalTexture = self.texture?.textureByGeneratingNormalMap()
+        light.enabled = false
+        self.addChild(light)
     }
     func runInMap(map:Map){
         let distance = calDistanceInMap(map)
