@@ -11,8 +11,9 @@ import SpriteKit
 
 class Shape: SKSpriteNode {
     let radius:CGFloat = 10
-    var moveSpeed:CGFloat = 50
+    var moveSpeed:CGFloat = 60
     var lineNum = 0
+    let speedUpBase:CGFloat = 40
     var light = SKLightNode()
     required init(coder: NSCoder) {
         fatalError("NSCoding not supported")
@@ -22,8 +23,8 @@ class Shape: SKSpriteNode {
         self.physicsBody = SKPhysicsBody(circleOfRadius: radius)
         self.physicsBody!.usesPreciseCollisionDetection = true
         self.physicsBody!.collisionBitMask = 0
-        self.physicsBody!.contactTestBitMask = playerCategory|killerCategory|scoreCategory
-        moveSpeed += CGFloat(Data.speedScale) * self.moveSpeed
+        self.physicsBody!.contactTestBitMask = playerCategory|killerCategory|scoreCategory|shieldCategory|reaperCategory
+        moveSpeed += Data.speedScale * speedUpBase
         self.name = name
         self.physicsBody!.angularDamping = 0
         self.normalTexture = self.texture?.textureByGeneratingNormalMap()
@@ -42,13 +43,7 @@ class Shape: SKSpriteNode {
                 if self is Player{
                     Data.gameOver = true
                 }
-                if self is Killer{
-                    self.removeFromParent()
-                }
-                if self is Score{
-                    self.removeFromParent()
-                }
-                if self is Shield{
+                else{
                     self.removeFromParent()
                 }
             }

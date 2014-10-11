@@ -54,22 +54,52 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
         
     }
     
-    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
-        for touch:AnyObject in touches{
-            if Data.gameOver {
-//                restartGame()
+//    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+//        for touch:AnyObject in touches{
+//            if Data.gameOver {
+////                restartGame()
+//            }
+//            else if view?.paused == true{
+//                resume()
+//            }
+//            else if player.lineNum>3 {
+//                calNewLocation()
+//                player.removeAllActions()
+//                player.jump = true
+//                player.runInMap(map)
+//                soundManager.playJump()
+//            }
+//            
+//            
+//        }
+//    }
+    
+    func tap(){
+        if Data.gameOver {
+            //                restartGame()
+        }
+        else if view?.paused == true{
+            resume()
+        }
+        else if player.lineNum>3 {
+            calNewLocation()
+            player.removeAllActions()
+            player.jump = true
+            player.runInMap(map)
+            soundManager.playJump()
+        }
+    }
+    
+    func createReaper(){
+        if !Data.gameOver {
+            var shape = Reaper()
+            if Data.reaperNum>0 {
+                Data.reaperNum--
             }
-            else if view?.paused == true{
-                resume()
-            }
-            else if player.lineNum>3 {
-                calNewLocation()
-                player.removeAllActions()
-                player.jump = true
-                player.runInMap(map)
-                soundManager.playJump()
-            }
-            
+            shape.lineNum = 0
+            shape.position = self.map.points[shape.lineNum]
+            shape.runInMap(self.map)
+            self.addChild(shape)
             
         }
     }
@@ -78,7 +108,8 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
         for node in self.children{
             if let shape = node as? Shape {
                 shape.removeAllActions()
-                shape.moveSpeed += CGFloat(Data.speedScale) * shape.moveSpeed
+//                shape.moveSpeed += CGFloat(Data.speedScale) * shape.moveSpeed
+                shape.moveSpeed += Data.speedScale * shape.speedUpBase
                 shape.runInMap(map)
             }
         }
@@ -109,7 +140,7 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
     func restartGame(){
         for node in self.children{
             if let shape = node as? Shape {
-                if shape.name!=="Killer"||shape.name!=="Score"||shape.name!=="Shield" {
+                if shape.name=="Killer"||shape.name=="Score"||shape.name=="Shield"||shape.name=="Reaper" {
                     shape.removeFromParent()
                 }
             }

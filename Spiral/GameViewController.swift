@@ -25,13 +25,25 @@ extension SKNode {
 }
 
 class GameViewController: UIViewController {
+
+    var longPress:UILongPressGestureRecognizer!
+    var tapWithOneFinger:UITapGestureRecognizer!
+    var tapWithTwoFinger:UITapGestureRecognizer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Configure the view.
         let skView = self.view as SKView
         /* Sprite Kit applies additional optimizations to improve rendering performance */
         skView.ignoresSiblingOrder = true
-        skView.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: Selector("handleLongPressFrom:")))
+        
+        longPress = UILongPressGestureRecognizer(target: self, action: Selector("handleLongPressFrom:"))
+        tapWithOneFinger = UITapGestureRecognizer(target: self, action: Selector("handleTapWithOneFingerFrom:"))
+        tapWithTwoFinger = UITapGestureRecognizer(target: self, action: Selector("handleTapWithTwoFingerFrom:"))
+        tapWithTwoFinger.numberOfTouchesRequired = 2
+
+        addGestureRecognizers()
+
         let scene = GameScene(size: skView.bounds.size)
         /* Set the scale mode to scale to fit the window */
         scene.scaleMode = .AspectFill
@@ -61,9 +73,35 @@ class GameViewController: UIViewController {
     }
     
     func handleLongPressFrom(recognizer:UILongPressGestureRecognizer) {
-        if recognizer.state == UIGestureRecognizerState.Began {
+        if recognizer.state == .Began {
             ((self.view as SKView).scene as GameScene).pause()
         }
+    }
+    
+    func handleTapWithOneFingerFrom(recognizer:UILongPressGestureRecognizer) {
+        if recognizer.state == .Ended {
+            ((self.view as SKView).scene as GameScene).tap()
+        }
+    }
+    
+    func handleTapWithTwoFingerFrom(recognizer:UILongPressGestureRecognizer) {
+        if recognizer.state == .Ended {
+            ((self.view as SKView).scene as GameScene).createReaper()
+        }
+    }
+    
+    func addGestureRecognizers(){
+        let skView = self.view as SKView
+        skView.addGestureRecognizer(longPress)
+        skView.addGestureRecognizer(tapWithOneFinger)
+        skView.addGestureRecognizer(tapWithTwoFinger)
+    }
+    
+    func removeGestureRecognizers(){
+        let skView = self.view as SKView
+        skView.removeGestureRecognizer(longPress)
+        skView.removeGestureRecognizer(tapWithOneFinger)
+        skView.removeGestureRecognizer(tapWithTwoFinger)
     }
     
 }

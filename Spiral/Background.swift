@@ -18,7 +18,7 @@ class Background: SKSpriteNode {
         light.lightColor = SKColor.blackColor()
         light.ambientColor = SKColor.blackColor()
         light.categoryBitMask = bgLightCategory
-        self.lightingBitMask = playerLightCategory|killerLightCategory|scoreLightCategory|shieldLightCategory|bgLightCategory
+        self.lightingBitMask = playerLightCategory|killerLightCategory|scoreLightCategory|shieldLightCategory|bgLightCategory|reaperLightCategory
         self.addChild(light)
     }
 

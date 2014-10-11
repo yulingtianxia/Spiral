@@ -24,7 +24,7 @@ class Player: Shape {
     convenience init() {
         self.init(name:"Player",imageName:"player")
         self.physicsBody!.categoryBitMask = playerCategory
-        self.moveSpeed = 60
+        self.moveSpeed = 90
         self.lineNum = 3
         light.lightColor = SKColor(red: 80.0/255, green: 227.0/255, blue: 194.0/255, alpha: 1)
         light.categoryBitMask = playerLightCategory
