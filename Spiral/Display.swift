@@ -41,7 +41,6 @@ class Display: SKNode ,DisplayData{
         self.addChild(pauseLabel)
         self.addChild(reaperIcon)
         self.addChild(reaperNumLabel)
-        self.addChild(gameCenter)
     }
     
     func setPosition() {
@@ -75,6 +74,7 @@ class Display: SKNode ,DisplayData{
         self.addChild(gameOverLabel)
         self.addChild(share)
         self.addChild(replay)
+        self.addChild(gameCenter)
         highScoreLabel.text = NSLocalizedString("HIGHSCORE ", comment: "")+"\(Data.highScore)"
         self.addChild(highScoreLabel)
         let scene = (self.scene as GameScene)
@@ -87,6 +87,7 @@ class Display: SKNode ,DisplayData{
         gameOverLabel.removeFromParent()
         share.removeFromParent()
         replay.removeFromParent()
+        gameCenter.removeFromParent()
         highScoreLabel.removeFromParent()
         (self.scene as GameScene).restartGame()
         (UIApplication.sharedApplication().keyWindow.rootViewController as GameViewController).addGestureRecognizers()
