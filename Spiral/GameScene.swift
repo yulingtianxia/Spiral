@@ -95,11 +95,12 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
             var shape = Reaper()
             if Data.reaperNum>0 {
                 Data.reaperNum--
+                shape.lineNum = 0
+                shape.position = self.map.points[shape.lineNum]
+                shape.runInMap(self.map)
+                self.addChild(shape)
             }
-            shape.lineNum = 0
-            shape.position = self.map.points[shape.lineNum]
-            shape.runInMap(self.map)
-            self.addChild(shape)
+            
             
         }
     }
@@ -178,14 +179,14 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
     func nodeFactory(){
         self.runAction(SKAction.repeatActionForever(SKAction.sequence([SKAction.runBlock({
             if !Data.gameOver {
-                let type = arc4random()%UInt32(3)
+                let type = arc4random()%UInt32(4)
                 var object:AnyObject!
                 switch type {
-                case 0:
+                case 0,1:
                     object = Killer()
-                case 1:
-                    object = Score()
                 case 2:
+                    object = Score()
+                case 3:
                     object = Shield()
                 default:
                     println(type)

@@ -16,6 +16,7 @@
 @end
 
 @implementation GameKitHelper
+@synthesize achievementsDictionary;
 
 #pragma mark Singleton stuff
 +(id) sharedGameKitHelper {
@@ -28,6 +29,12 @@
     return sharedGameKitHelper;
 }
 
+-(instancetype) init{
+    if (self = [super init]) {
+        achievementsDictionary = [[NSMutableDictionary alloc] init];
+    }
+    return self;
+}
 #pragma mark Player Authentication
 
 -(void) authenticateLocalPlayer {
@@ -42,6 +49,7 @@
         [self setLastError:error];
         if (localPlayer.authenticated) {
             _gameCenterFeaturesEnabled = YES;
+            [self loadAchievements];
         } else if(viewController) {
             //TODO:palse
             [self pause];
@@ -106,8 +114,72 @@
          }
      }];
 }
+
 -(void)pause{
     GameViewController* gvc = (GameViewController*)[self getRootViewController];
     [((GameScene*)(((SKView*)gvc.view).scene)) pause];
 }
+
+#pragma mark Achievements Methods
+- (void) loadAchievements
+{
+    [GKAchievement loadAchievementsWithCompletionHandler:^(NSArray *achievements, NSError *error)
+     {
+         if (error == nil)
+         {
+             for (GKAchievement* achievement in achievements)
+                 [achievementsDictionary setObject: achievement forKey: achievement.identifier];
+         }
+     }];
+}
+
+- (GKAchievement*) getAchievementForIdentifier: (NSString*) identifier
+{
+    GKAchievement *achievement = [achievementsDictionary objectForKey:identifier];
+    if (achievement == nil)
+    {
+        achievement = [[GKAchievement alloc] initWithIdentifier:identifier];
+        [achievementsDictionary setObject:achievement forKey:achievement.identifier];
+    }
+    return achievement;
+}
+
+- (void) updateAchievement:(GKAchievement*) achievement Identifier: (NSString*) identifier
+{
+    if (achievement)
+    {
+        [self.achievementsDictionary setObject:achievement forKey:identifier];
+    }
+}
+
+- (void) reportMultipleAchievements
+{
+    
+    [GKAchievement reportAchievements:[self.achievementsDictionary allValues]  withCompletionHandler:^(NSError *error)
+     {
+         if (error != nil)
+         {
+             NSLog(@"Error in reporting achievements: %@", error);
+         }
+     }];
+}
+
+- (void) showLeaderboard
+{
+    GKGameCenterViewController *gameCenterController = [[GKGameCenterViewController alloc] init];
+    if (gameCenterController != nil)
+    {
+        [self pause];
+        gameCenterController.gameCenterDelegate = self;
+        gameCenterController.viewState = GKGameCenterViewControllerStateAchievements;
+        [self presentViewController: gameCenterController];
+    }
+}
+
+#pragma mark GKGameCenterControllerDelegate
+- (void)gameCenterViewControllerDidFinish:(GKGameCenterViewController *)gameCenterViewController
+{
+    [[self getRootViewController] dismissViewControllerAnimated:YES completion:nil];
+}
+
 @end

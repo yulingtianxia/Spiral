@@ -30,6 +30,8 @@ struct Data{
                 standardDefaults.setInteger(Data.score, forKey: "highscore")
                 standardDefaults.synchronize()
                 GameKitHelper.sharedGameKitHelper().submitScore(Int64(Data.score), identifier: kHighScoreLeaderboardIdentifier)
+                GameKitHelper.sharedGameKitHelper().reportMultipleAchievements()
+        
                 }
                 display?.gameOver()
             }

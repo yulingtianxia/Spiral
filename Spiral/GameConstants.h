@@ -9,5 +9,7 @@
 #ifndef ColorAtom_GameConstants_h
 #define ColorAtom_GameConstants_h
 #define kHighScoreLeaderboardIdentifier @"com.yulingtianxia.Spiral.HighScores"
-
+#define kClean100KillerAchievementID @"com.yulingtianxia.Spiral.clean100Killer"
+#define kCatch500ScoreAchievementID @"com.yulingtianxia.Spiral.catch500Score"
+#define kCatch500ShieldAchievementID @"com.yulingtianxia.Spiral.catch500Shield"
 #endif

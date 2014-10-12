@@ -13,7 +13,7 @@ class Shape: SKSpriteNode {
     let radius:CGFloat = 10
     var moveSpeed:CGFloat = 60
     var lineNum = 0
-    let speedUpBase:CGFloat = 40
+    let speedUpBase:CGFloat = 50
     var light = SKLightNode()
     required init(coder: NSCoder) {
         fatalError("NSCoding not supported")

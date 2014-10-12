@@ -41,6 +41,7 @@
 		A4B104BA19D6F2C0008BD1BA /* score.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A4B104B919D6F2C0008BD1BA /* score.mp3 */; };
 		A4B104BC19D6F3A0008BD1BA /* shield.wav in Resources */ = {isa = PBXBuildFile; fileRef = A4B104BB19D6F3A0008BD1BA /* shield.wav */; };
 		A4B104BE19D6F5EA008BD1BA /* killer.wav in Resources */ = {isa = PBXBuildFile; fileRef = A4B104BD19D6F5EA008BD1BA /* killer.wav */; };
+		A4B2788519EA781C00A2D065 /* GameCenterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B2788419EA781C00A2D065 /* GameCenterButton.swift */; };
 		A4F3C60A19E8E990000514AC /* Reaper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F3C60919E8E990000514AC /* Reaper.swift */; };
 		A4F3C60C19E8EAF7000514AC /* ReaperContactVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F3C60B19E8EAF7000514AC /* ReaperContactVisitor.swift */; };
 		A4F3C61019E90FFF000514AC /* Rope.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F3C60F19E90FFF000514AC /* Rope.swift */; };
@@ -107,6 +108,7 @@
 		A4B104B919D6F2C0008BD1BA /* score.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = score.mp3; sourceTree = "<group>"; };
 		A4B104BB19D6F3A0008BD1BA /* shield.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shield.wav; sourceTree = "<group>"; };
 		A4B104BD19D6F5EA008BD1BA /* killer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = killer.wav; sourceTree = "<group>"; };
+		A4B2788419EA781C00A2D065 /* GameCenterButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCenterButton.swift; sourceTree = "<group>"; };
 		A4F3C60919E8E990000514AC /* Reaper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reaper.swift; sourceTree = "<group>"; };
 		A4F3C60B19E8EAF7000514AC /* ReaperContactVisitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReaperContactVisitor.swift; sourceTree = "<group>"; };
 		A4F3C60F19E90FFF000514AC /* Rope.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rope.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			children = (
 				A434A14A1976955000F4C94B /* ShareButton.swift */,
 				A434A14E19769F4600F4C94B /* ReplayButton.swift */,
+				A4B2788419EA781C00A2D065 /* GameCenterButton.swift */,
 			);
 			name = Buttons;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				TargetAttributes = {
 					A4787743197113D000F6F611 = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = D3RCVUP6VH;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
@@ -481,6 +485,7 @@
 				A4FF927019751AA50060CE6D /* VisitablePhysicsBody.swift in Sources */,
 				A4787750197113D000F6F611 /* GameViewController.swift in Sources */,
 				A478776B197113DB00F6F611 /* Map.swift in Sources */,
+				A4B2788519EA781C00A2D065 /* GameCenterButton.swift in Sources */,
 				A4F3C60A19E8E990000514AC /* Reaper.swift in Sources */,
 				A424E2F119E78176007FE1C1 /* Background.swift in Sources */,
 				A4FF9274197526830060CE6D /* Display.swift in Sources */,
@@ -619,6 +624,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Spiral/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -634,6 +640,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Spiral/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -17,8 +17,13 @@
 
 @property (nonatomic,assign) id<GameKitHelperProtocol> delegate;
 @property (nonatomic, readonly) NSError* lastError;
+@property(nonatomic, retain) NSMutableDictionary *achievementsDictionary;
 
-+ (id) sharedGameKitHelper;
++ (instancetype) sharedGameKitHelper;
 -(void) authenticateLocalPlayer;
 -(void) submitScore:(int64_t)score identifier:(NSString*)category;
+- (GKAchievement*) getAchievementForIdentifier: (NSString*) identifier;
+- (void) updateAchievement:(GKAchievement*) achievement Identifier: (NSString*) identifier;
+- (void) reportMultipleAchievements;
+- (void) showLeaderboard;
 @end

@@ -23,9 +23,12 @@ class Display: SKNode ,DisplayData{
     let reaperNumLabel = SKLabelNode(text: String.localizedStringWithFormat("%d", Data.reaperNum))
     let share = ShareButton()
     let replay = ReplayButton()
+    let gameCenter = GameCenterButton()
+    
     required init(coder: NSCoder) {
         fatalError("NSCoding not supported")
     }
+    
     override init(){
         super.init()
         gameOverLabel.fontSize = 60
@@ -38,6 +41,7 @@ class Display: SKNode ,DisplayData{
         self.addChild(pauseLabel)
         self.addChild(reaperIcon)
         self.addChild(reaperNumLabel)
+        self.addChild(gameCenter)
     }
     
     func setPosition() {
@@ -47,22 +51,26 @@ class Display: SKNode ,DisplayData{
         gameOverLabel.position = CGPointMake(CGRectGetMidX(self.scene!.frame), CGRectGetMidY(self.scene!.frame))
         share.position = CGPointMake(CGRectGetMaxX(self.scene!.frame)*3/4, CGRectGetMaxY(self.scene!.frame)/4)
         replay.position = CGPointMake(CGRectGetMaxX(self.scene!.frame)/4, CGRectGetMaxY(self.scene!.frame)/4)
+        gameCenter.position = CGPoint(x: self.scene!.frame.width-gameCenter.size.width/2, y: gameCenter.size.height/2)
         pauseLabel.position = CGPointMake(CGRectGetMidX(self.scene!.frame), CGRectGetMidY(self.scene!.frame))
         reaperIcon.position = CGPoint(x: reaperIcon.size.width/2, y: reaperIcon.frame.height/2)
         reaperNumLabel.position = CGPoint(x: CGRectGetMaxX(reaperIcon.frame) + 5 + reaperNumLabel.frame.width/2, y: reaperNumLabel.frame.height/4)
         
     }
+    
     func updateData() {
         scoreLabel.text = NSLocalizedString("SCORE ", comment: "")+"\(Data.score)"
         levelLabel.text = NSLocalizedString("LEVEL ", comment: "")+"\(Data.level)"
         reaperNumLabel.text = String.localizedStringWithFormat("%d", Data.reaperNum)
     }
+    
     func levelUp() {
         levelLabel.runAction(SKAction.sequence([SKAction.scaleTo(1.5, duration: 0.5),SKAction.scaleTo(1, duration: 0.5)]))
         var scene = self.scene as GameScene
         scene.speedUp()
         scene.soundManager.playLevelUp()
     }
+    
     func gameOver() {
         self.addChild(gameOverLabel)
         self.addChild(share)
@@ -74,6 +82,7 @@ class Display: SKNode ,DisplayData{
         scene.soundManager.playGameOver()
         (UIApplication.sharedApplication().keyWindow.rootViewController as GameViewController).removeGestureRecognizers()
     }
+    
     func restart() {
         gameOverLabel.removeFromParent()
         share.removeFromParent()
@@ -95,6 +104,5 @@ class Display: SKNode ,DisplayData{
         if !Data.gameOver{
             (self.scene as GameScene).showGame()
         }
-        
     }
 }
