@@ -75,6 +75,8 @@ class Display: SKNode ,DisplayData{
         self.addChild(share)
         self.addChild(replay)
         self.addChild(gameCenter)
+        reaperIcon.removeFromParent()
+        reaperNumLabel.removeFromParent()
         highScoreLabel.text = NSLocalizedString("HIGHSCORE ", comment: "")+"\(Data.highScore)"
         self.addChild(highScoreLabel)
         let scene = (self.scene as GameScene)
@@ -89,6 +91,8 @@ class Display: SKNode ,DisplayData{
         replay.removeFromParent()
         gameCenter.removeFromParent()
         highScoreLabel.removeFromParent()
+        self.addChild(reaperNumLabel)
+        self.addChild(reaperIcon)
         (self.scene as GameScene).restartGame()
         (UIApplication.sharedApplication().keyWindow.rootViewController as GameViewController).addGestureRecognizers()
     }
