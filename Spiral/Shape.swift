@@ -10,7 +10,7 @@ import UIKit
 import SpriteKit
 
 class Shape: SKSpriteNode {
-    let radius:CGFloat = 10
+    var radius:CGFloat = 10
     var moveSpeed:CGFloat = 60
     var lineNum = 0
     let speedUpBase:CGFloat = 50
@@ -19,6 +19,7 @@ class Shape: SKSpriteNode {
         fatalError("NSCoding not supported")
     }
     init(name:String,imageName:String){
+        
         super.init(texture: SKTexture(imageNamed: imageName),color:SKColor.clearColor(), size: CGSizeMake(radius*2, radius*2))
         self.physicsBody = SKPhysicsBody(circleOfRadius: radius)
         self.physicsBody!.usesPreciseCollisionDetection = true

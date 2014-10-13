@@ -22,7 +22,7 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
         soundManager.playBackGround()
         let center = CGPointMake(size.width/2, size.height/2)
         player = Player()
-        map = Map(origin:center, layer: 5)
+        map = Map(origin:center, layer: 5, size:size)
         player.position = map.points[player.lineNum]
         display = Display()
         Data.display = display

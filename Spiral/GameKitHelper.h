@@ -20,6 +20,7 @@
 @property(nonatomic, retain) NSMutableDictionary *achievementsDictionary;
 
 + (instancetype) sharedGameKitHelper;
+-(UIViewController*) getRootViewController;
 -(void) authenticateLocalPlayer;
 -(void) submitScore:(int64_t)score identifier:(NSString*)category;
 - (GKAchievement*) getAchievementForIdentifier: (NSString*) identifier;
