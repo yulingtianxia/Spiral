@@ -11,9 +11,11 @@ class Player: Shape {
     var jump = false
     var shield:Bool = false {
     willSet{
-        if newValue{
-            self.texture = SKTexture(imageNamed: "player0")
-            light.enabled = true
+        if newValue {
+            if !shield {
+                self.texture = SKTexture(imageNamed: "player0")
+                light.enabled = true
+            }
         }
         else{
             self.texture = SKTexture(imageNamed: "player")

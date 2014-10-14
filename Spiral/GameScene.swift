@@ -43,8 +43,8 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
         //Observe Notification
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pause"), name: UIApplicationWillResignActiveNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pause"), name: UIApplicationDidEnterBackgroundNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("resume"), name: UIApplicationWillEnterForegroundNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("resume"), name: UIApplicationDidBecomeActiveNotification, object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("resume"), name: UIApplicationWillEnterForegroundNotification, object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("resume"), name: UIApplicationDidBecomeActiveNotification, object: nil)
     }
     
     override func didMoveToView(view: SKView) {

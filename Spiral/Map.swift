@@ -17,7 +17,7 @@ class Map: SKShapeNode {
         var y:CGFloat = origin.y
         var path = CGPathCreateMutable()
         self.init()
-        spacing = size.width / CGFloat(layer * 2)
+        spacing = size.width / CGFloat(layer * 2-1)
         CGPathMoveToPoint(path, nil, x, y)
         points.append(CGPointMake(x, y))
         for index in 1..<layer {
@@ -36,7 +36,6 @@ class Map: SKShapeNode {
         }
         self.path = path
         self.glowWidth = 1
-        self.alpha = 0
         self.antialiased = true
         addRope(layer)
     }

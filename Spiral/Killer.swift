@@ -14,6 +14,6 @@ class Killer: Shape {
         self.physicsBody!.categoryBitMask = killerCategory
         light.lightColor = SKColor.redColor()
         light.categoryBitMask = killerLightCategory
-        light.enabled = true
+//        light.enabled = true
     }
 }
