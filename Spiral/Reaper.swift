@@ -12,7 +12,7 @@ class Reaper: Shape {
     convenience init() {
         self.init(name:"Reaper",imageName:"reaper")
         self.physicsBody!.categoryBitMask = reaperCategory
-        self.moveSpeed = 200
+        self.moveSpeed = 250
         light.lightColor = SKColor.blueColor()
         light.categoryBitMask = reaperLightCategory
         light.enabled = true
