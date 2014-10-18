@@ -82,7 +82,7 @@ class Display: SKNode ,DisplayData{
         let scene = (self.scene as GameScene)
         scene.hideGame()
         scene.soundManager.playGameOver()
-        (UIApplication.sharedApplication().keyWindow.rootViewController as GameViewController).removeGestureRecognizers()
+        (UIApplication.sharedApplication().keyWindow?.rootViewController as GameViewController).removeGestureRecognizers()
     }
     
     func restart() {
@@ -94,7 +94,7 @@ class Display: SKNode ,DisplayData{
         self.addChild(reaperNumLabel)
         self.addChild(reaperIcon)
         (self.scene as GameScene).restartGame()
-        (UIApplication.sharedApplication().keyWindow.rootViewController as GameViewController).addGestureRecognizers()
+        (UIApplication.sharedApplication().keyWindow?.rootViewController as GameViewController).addGestureRecognizers()
     }
     
     func pause(){

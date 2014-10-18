@@ -11,9 +11,24 @@ struct Data{
     static var updateScore:Int = 5
     static var score:Int = 0{
         willSet{
-            if newValue>=updateScore{
-                updateScore+=5 * ++level
-            }
+        if newValue>=updateScore{
+        updateScore+=5 * ++level
+        }
+        if newValue >= 50{
+        var achievement = GameKitHelper.sharedGameKitHelper().getAchievementForIdentifier(kget50PointsAchievementID)
+        achievement.percentComplete = 100
+        GameKitHelper.sharedGameKitHelper().updateAchievement(achievement, identifier: kget50PointsAchievementID)
+    }
+        else if newValue >= 100{
+        var achievement = GameKitHelper.sharedGameKitHelper().getAchievementForIdentifier(kget100PointsAchievementID)
+        achievement.percentComplete = 100
+        GameKitHelper.sharedGameKitHelper().updateAchievement(achievement, identifier: kget100PointsAchievementID)
+        }
+        else if newValue >= 200{
+        var achievement = GameKitHelper.sharedGameKitHelper().getAchievementForIdentifier(kget200PointsAchievementID)
+        achievement.percentComplete = 100
+        GameKitHelper.sharedGameKitHelper().updateAchievement(achievement, identifier: kget200PointsAchievementID)
+        }
         }
         didSet{
             display?.updateData()
@@ -22,22 +37,20 @@ struct Data{
     static var highScore:Int = 0
     static var gameOver:Bool = false {
         willSet{
-            if newValue {
-                let standardDefaults = NSUserDefaults.standardUserDefaults()
-                Data.highScore = standardDefaults.integerForKey("highscore")
-                if Data.highScore < Data.score {
-                Data.highScore = Data.score
-                standardDefaults.setInteger(Data.score, forKey: "highscore")
-                standardDefaults.synchronize()
-                GameKitHelper.sharedGameKitHelper().submitScore(Int64(Data.score), identifier: kHighScoreLeaderboardIdentifier)
-                GameKitHelper.sharedGameKitHelper().reportMultipleAchievements()
-        
-                }
-                display?.gameOver()
-            }
-            else {
-                display?.restart()
-            }
+        if newValue {
+        let standardDefaults = NSUserDefaults.standardUserDefaults()
+        Data.highScore = standardDefaults.integerForKey("highscore")
+        if Data.highScore < Data.score {
+        Data.highScore = Data.score
+        standardDefaults.setInteger(Data.score, forKey: "highscore")
+        standardDefaults.synchronize()
+        sendDataToGameCenter()
+        }
+        display?.gameOver()
+    }
+        else {
+        display?.restart()
+        }
         }
         didSet{
             
@@ -45,11 +58,11 @@ struct Data{
     }
     static var level:Int = 1{
         willSet{
-            speedScale = 1/CGFloat(newValue)
-            if newValue != 1{
-                display?.levelUp()
-            }
-            reaperNum++
+        speedScale = 1/CGFloat(newValue)
+        if newValue != 1{
+        display?.levelUp()
+        }
+        reaperNum++
         }
         didSet{
             display?.updateData()
@@ -68,5 +81,10 @@ struct Data{
         Data.level = 1
         Data.speedScale = 0
         Data.reaperNum = 1
+    }
+    
+    private static func sendDataToGameCenter(){
+        GameKitHelper.sharedGameKitHelper().submitScore(Int64(Data.score), identifier: kHighScoreLeaderboardIdentifier)
+        GameKitHelper.sharedGameKitHelper().reportMultipleAchievements()
     }
 }

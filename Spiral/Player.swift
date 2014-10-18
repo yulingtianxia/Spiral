@@ -35,7 +35,7 @@ class Player: Shape {
         self.alpha = 1
         self.removeAllActions()
         self.lineNum = 3
-        self.moveSpeed = 70
+        self.moveSpeed = 90
         self.jump = false
         self.shield = false
         self.position = map.points[self.lineNum]

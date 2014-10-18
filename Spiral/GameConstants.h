@@ -12,4 +12,7 @@
 #define kClean100KillerAchievementID @"com.yulingtianxia.Spiral.clean100Killer"
 #define kCatch500ScoreAchievementID @"com.yulingtianxia.Spiral.catch500Score"
 #define kCatch500ShieldAchievementID @"com.yulingtianxia.Spiral.catch500Shield"
+#define kget50PointsAchievementID @"com.yulingtianxia.Spiral.get50"
+#define kget100PointsAchievementID @"com.yulingtianxia.Spiral.get100"
+#define kget200PointsAchievementID @"com.yulingtianxia.Spiral.get200"
 #endif
