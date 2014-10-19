@@ -9,19 +9,21 @@
 import UIKit
 import SpriteKit
 
-extension SKNode {
-//    class func unarchiveFromFile(file : NSString) -> SKNode? {
-//        
-//        let path = NSBundle.mainBundle().pathForResource(file, ofType: "sks")
-//        
-//        var sceneData = NSData.dataWithContentsOfFile(path!, options: .DataReadingMappedIfSafe, error: nil)
-//        var archiver = NSKeyedUnarchiver(forReadingWithData: sceneData)
-//        
-//        archiver.setClass(self.classForKeyedUnarchiver(), forClassName: "SKScene")
-//        let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as GameScene
-//        archiver.finishDecoding()
-//        return scene
-//    }
+extension SKScene {
+    class func unarchiveFromFile(file : NSString) -> SKNode? {
+        if let path = NSBundle.mainBundle().pathForResource(file, ofType: "sks") {
+            var sceneData = NSData(contentsOfFile: path, options: .DataReadingMappedIfSafe, error: nil)!
+            var archiver = NSKeyedUnarchiver(forReadingWithData: sceneData)
+            
+            archiver.setClass(self.classForKeyedUnarchiver(), forClassName: "SKScene")
+            let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as SKScene
+            scene.size = GameKitHelper.sharedGameKitHelper().getRootViewController().view.frame.size
+            archiver.finishDecoding()
+            return scene
+        } else {
+            return nil
+        }
+    }
 }
 
 class GameViewController: UIViewController {
@@ -29,6 +31,7 @@ class GameViewController: UIViewController {
     var longPress:UILongPressGestureRecognizer!
     var tapWithOneFinger:UITapGestureRecognizer!
     var tapWithTwoFinger:UITapGestureRecognizer!
+    var pan:UIPanGestureRecognizer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +44,8 @@ class GameViewController: UIViewController {
         tapWithOneFinger = UITapGestureRecognizer(target: self, action: Selector("handleTapWithOneFingerFrom:"))
         tapWithTwoFinger = UITapGestureRecognizer(target: self, action: Selector("handleTapWithTwoFingerFrom:"))
         tapWithTwoFinger.numberOfTouchesRequired = 2
-
+        pan = UIPanGestureRecognizer(target: self, action: Selector("handlePanFrom:"))
+        
         addGestureRecognizers()
 
         let scene = GameScene(size: skView.bounds.size)
@@ -74,27 +78,36 @@ class GameViewController: UIViewController {
     
     func handleLongPressFrom(recognizer:UILongPressGestureRecognizer) {
         if recognizer.state == .Began {
-            ((self.view as SKView).scene as GameScene).pause()
+            ((self.view as SKView).scene as? GameScene)?.pause()
         }
     }
     
     func handleTapWithOneFingerFrom(recognizer:UILongPressGestureRecognizer) {
         if recognizer.state == .Ended {
-            ((self.view as SKView).scene as GameScene).tap()
+            ((self.view as SKView).scene as? GameScene)?.tap()
         }
     }
     
     func handleTapWithTwoFingerFrom(recognizer:UILongPressGestureRecognizer) {
         if recognizer.state == .Ended {
-            ((self.view as SKView).scene as GameScene).createReaper()
+            ((self.view as SKView).scene as? GameScene)?.createReaper()
         }
     }
     
+    func handlePanFrom(recognizer:UIPanGestureRecognizer) {
+        if recognizer.state == .Changed {
+            ((self.view as SKView).scene as? HelpScene)?.lightWithFinger(recognizer.locationInView(self.view))
+        }
+        else if recognizer.state == .Ended {
+            ((self.view as SKView).scene as? HelpScene)?.turnOffLight()
+        }
+    }
     func addGestureRecognizers(){
         let skView = self.view as SKView
         skView.addGestureRecognizer(longPress)
         skView.addGestureRecognizer(tapWithOneFinger)
         skView.addGestureRecognizer(tapWithTwoFinger)
+        skView.addGestureRecognizer(pan)
     }
     
     func removeGestureRecognizers(){

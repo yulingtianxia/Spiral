@@ -19,12 +19,12 @@ struct Data{
         achievement.percentComplete = 100
         GameKitHelper.sharedGameKitHelper().updateAchievement(achievement, identifier: kget50PointsAchievementID)
     }
-        else if newValue >= 100{
+        if newValue >= 100{
         var achievement = GameKitHelper.sharedGameKitHelper().getAchievementForIdentifier(kget100PointsAchievementID)
         achievement.percentComplete = 100
         GameKitHelper.sharedGameKitHelper().updateAchievement(achievement, identifier: kget100PointsAchievementID)
         }
-        else if newValue >= 200{
+        if newValue >= 200{
         var achievement = GameKitHelper.sharedGameKitHelper().getAchievementForIdentifier(kget200PointsAchievementID)
         achievement.percentComplete = 100
         GameKitHelper.sharedGameKitHelper().updateAchievement(achievement, identifier: kget200PointsAchievementID)

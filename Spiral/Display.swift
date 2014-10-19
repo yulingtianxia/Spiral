@@ -24,6 +24,7 @@ class Display: SKNode ,DisplayData{
     let share = ShareButton()
     let replay = ReplayButton()
     let gameCenter = GameCenterButton()
+    let help = HelpButton()
     
     required init(coder: NSCoder) {
         fatalError("NSCoding not supported")
@@ -41,6 +42,7 @@ class Display: SKNode ,DisplayData{
         self.addChild(pauseLabel)
         self.addChild(reaperIcon)
         self.addChild(reaperNumLabel)
+        self.addChild(help)
     }
     
     func setPosition() {
@@ -54,7 +56,7 @@ class Display: SKNode ,DisplayData{
         pauseLabel.position = CGPointMake(CGRectGetMidX(self.scene!.frame), CGRectGetMidY(self.scene!.frame))
         reaperIcon.position = CGPoint(x: reaperIcon.size.width/2, y: reaperIcon.frame.height/2)
         reaperNumLabel.position = CGPoint(x: CGRectGetMaxX(reaperIcon.frame) + 5 + reaperNumLabel.frame.width/2, y: reaperNumLabel.frame.height/4)
-        
+        help.position = CGPoint(x: self.scene!.size.width-help.size.width/2, y: self.scene!.size.height-help.size.height/2)
     }
     
     func updateData() {

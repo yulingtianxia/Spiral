@@ -11,7 +11,7 @@ import SpriteKit
 class Background: SKSpriteNode {
     init(size:CGSize){
         super.init(texture: SKTexture(imageNamed: "bg"),color:SKColor.clearColor(), size: size)
-        self.normalTexture = self.texture?.textureByGeneratingNormalMapWithSmoothness(0, contrast: 0.8)
+        self.normalTexture = self.texture?.textureByGeneratingNormalMapWithSmoothness(0.2, contrast: 2.5)
         self.zPosition = -100
         self.alpha = 0.5
         var light = SKLightNode()

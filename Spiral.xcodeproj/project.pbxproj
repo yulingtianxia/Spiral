@@ -13,6 +13,9 @@
 		A434A14F19769F4600F4C94B /* ReplayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A434A14E19769F4600F4C94B /* ReplayButton.swift */; };
 		A45A65E01986073B00EA40D7 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45A65DF1986073B00EA40D7 /* SoundManager.swift */; };
 		A45A65E419860AD000EA40D7 /* pew-pew-lei.caf in Resources */ = {isa = PBXBuildFile; fileRef = A45A65E319860AD000EA40D7 /* pew-pew-lei.caf */; };
+		A45A9F6D19F3DE730087C192 /* HelpScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A45A9F6C19F3DE730087C192 /* HelpScene.sks */; };
+		A45A9FA319F3E7250087C192 /* HelpScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45A9FA219F3E7250087C192 /* HelpScene.swift */; };
+		A45A9FA519F3F1640087C192 /* HelpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45A9FA419F3F1640087C192 /* HelpButton.swift */; };
 		A46D8C011976BF9400A32924 /* Shield.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D8C001976BF9400A32924 /* Shield.swift */; };
 		A46D8C031976C3B800A32924 /* ShieldContactVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D8C021976C3B800A32924 /* ShieldContactVisitor.swift */; };
 		A478774A197113D000F6F611 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4787749197113D000F6F611 /* AppDelegate.swift */; };
@@ -30,6 +33,7 @@
 		A47D3D1A19741859005AF736 /* ScoreContactVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47D3D1919741859005AF736 /* ScoreContactVisitor.swift */; };
 		A47D3D1C19741B04005AF736 /* Killer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47D3D1B19741B04005AF736 /* Killer.swift */; };
 		A47D3D1E19741E54005AF736 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47D3D1D19741E54005AF736 /* Score.swift */; };
+		A47E78E619F39C4E003D5143 /* vortexShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = A47E78E519F39C4E003D5143 /* vortexShader.fsh */; };
 		A48F921219724362007BDAE4 /* NodeCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48F921119724362007BDAE4 /* NodeCategories.swift */; };
 		A48F921419724822007BDAE4 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48F921319724822007BDAE4 /* Player.swift */; };
 		A490225E19B9D8EE009114ED /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A434A14C197696BC00F4C94B /* Social.framework */; };
@@ -74,6 +78,9 @@
 		A434A14E19769F4600F4C94B /* ReplayButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplayButton.swift; sourceTree = "<group>"; };
 		A45A65DF1986073B00EA40D7 /* SoundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		A45A65E319860AD000EA40D7 /* pew-pew-lei.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pew-pew-lei.caf"; sourceTree = "<group>"; };
+		A45A9F6C19F3DE730087C192 /* HelpScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HelpScene.sks; sourceTree = "<group>"; };
+		A45A9FA219F3E7250087C192 /* HelpScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpScene.swift; sourceTree = "<group>"; };
+		A45A9FA419F3F1640087C192 /* HelpButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpButton.swift; sourceTree = "<group>"; };
 		A46D8C001976BF9400A32924 /* Shield.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shield.swift; sourceTree = "<group>"; };
 		A46D8C021976C3B800A32924 /* ShieldContactVisitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShieldContactVisitor.swift; sourceTree = "<group>"; };
 		A4787744197113D000F6F611 /* Spiral.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spiral.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,6 +103,7 @@
 		A47D3D1919741859005AF736 /* ScoreContactVisitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreContactVisitor.swift; sourceTree = "<group>"; };
 		A47D3D1B19741B04005AF736 /* Killer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Killer.swift; sourceTree = "<group>"; };
 		A47D3D1D19741E54005AF736 /* Score.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
+		A47E78E519F39C4E003D5143 /* vortexShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = vortexShader.fsh; sourceTree = "<group>"; };
 		A48F921119724362007BDAE4 /* NodeCategories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeCategories.swift; sourceTree = "<group>"; };
 		A48F921319724822007BDAE4 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		A490225A19B9D89F009114ED /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -155,6 +163,7 @@
 				A434A14A1976955000F4C94B /* ShareButton.swift */,
 				A434A14E19769F4600F4C94B /* ReplayButton.swift */,
 				A4B2788419EA781C00A2D065 /* GameCenterButton.swift */,
+				A45A9FA419F3F1640087C192 /* HelpButton.swift */,
 			);
 			name = Buttons;
 			sourceTree = "<group>";
@@ -162,6 +171,7 @@
 		A45A65E2198607F400EA40D7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A47E78E519F39C4E003D5143 /* vortexShader.fsh */,
 				A4B05A3919E9642900B303C0 /* spiral.sketch */,
 				A4B104BD19D6F5EA008BD1BA /* killer.wav */,
 				A4B104BB19D6F3A0008BD1BA /* shield.wav */,
@@ -282,6 +292,8 @@
 			children = (
 				A478774D197113D000F6F611 /* GameScene.swift */,
 				A478774B197113D000F6F611 /* GameScene.sks */,
+				A45A9FA219F3E7250087C192 /* HelpScene.swift */,
+				A45A9F6C19F3DE730087C192 /* HelpScene.sks */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -408,10 +420,12 @@
 			files = (
 				A4B104B619D6ECEF008BD1BA /* gameover.mp3 in Resources */,
 				A4F92B8719DCF69600C87D0E /* Localizable.strings in Resources */,
+				A45A9F6D19F3DE730087C192 /* HelpScene.sks in Resources */,
 				A4B104BA19D6F2C0008BD1BA /* score.mp3 in Resources */,
 				A4B104AD19D6DB30008BD1BA /* jump.mp3 in Resources */,
 				A4787755197113D000F6F611 /* Images.xcassets in Resources */,
 				A478774C197113D000F6F611 /* GameScene.sks in Resources */,
+				A47E78E619F39C4E003D5143 /* vortexShader.fsh in Resources */,
 				A4B104BC19D6F3A0008BD1BA /* shield.wav in Resources */,
 				A4787753197113D000F6F611 /* Main.storyboard in Resources */,
 				A4B104BE19D6F5EA008BD1BA /* killer.wav in Resources */,
@@ -471,6 +485,7 @@
 			files = (
 				A434A14F19769F4600F4C94B /* ReplayButton.swift in Sources */,
 				A4F3C61019E90FFF000514AC /* Rope.swift in Sources */,
+				A45A9FA519F3F1640087C192 /* HelpButton.swift in Sources */,
 				A46D8C011976BF9400A32924 /* Shield.swift in Sources */,
 				A47D3D1E19741E54005AF736 /* Score.swift in Sources */,
 				A478777119712E9D00F6F611 /* Shape.swift in Sources */,
@@ -490,6 +505,7 @@
 				A424E2F119E78176007FE1C1 /* Background.swift in Sources */,
 				A4FF9274197526830060CE6D /* Display.swift in Sources */,
 				A434A14B1976955000F4C94B /* ShareButton.swift in Sources */,
+				A45A9FA319F3E7250087C192 /* HelpScene.swift in Sources */,
 				A47D3D1A19741859005AF736 /* ScoreContactVisitor.swift in Sources */,
 				A48F921419724822007BDAE4 /* Player.swift in Sources */,
 				A41591E719CC71C500C3420B /* GameKitHelper.m in Sources */,
