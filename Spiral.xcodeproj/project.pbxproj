@@ -15,6 +15,7 @@
 		A45A65E419860AD000EA40D7 /* pew-pew-lei.caf in Resources */ = {isa = PBXBuildFile; fileRef = A45A65E319860AD000EA40D7 /* pew-pew-lei.caf */; };
 		A45A9FA319F3E7250087C192 /* HelpScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45A9FA219F3E7250087C192 /* HelpScene.swift */; };
 		A45A9FA519F3F1640087C192 /* HelpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45A9FA419F3F1640087C192 /* HelpButton.swift */; };
+		A4605B6C19F5235500F8DD96 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4605B6E19F5235500F8DD96 /* Launch Screen.xib */; };
 		A46D8C011976BF9400A32924 /* Shield.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D8C001976BF9400A32924 /* Shield.swift */; };
 		A46D8C031976C3B800A32924 /* ShieldContactVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D8C021976C3B800A32924 /* ShieldContactVisitor.swift */; };
 		A478774A197113D000F6F611 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4787749197113D000F6F611 /* AppDelegate.swift */; };
@@ -80,6 +81,8 @@
 		A45A65E319860AD000EA40D7 /* pew-pew-lei.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pew-pew-lei.caf"; sourceTree = "<group>"; };
 		A45A9FA219F3E7250087C192 /* HelpScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpScene.swift; sourceTree = "<group>"; };
 		A45A9FA419F3F1640087C192 /* HelpButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpButton.swift; sourceTree = "<group>"; };
+		A4605B6D19F5235500F8DD96 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/Launch Screen.xib"; sourceTree = "<group>"; };
+		A4605B6F19F5235700F8DD96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "Base.lproj/Launch Screen.xib"; sourceTree = "<group>"; };
 		A46D8C001976BF9400A32924 /* Shield.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shield.swift; sourceTree = "<group>"; };
 		A46D8C021976C3B800A32924 /* ShieldContactVisitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShieldContactVisitor.swift; sourceTree = "<group>"; };
 		A4787744197113D000F6F611 /* Spiral.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spiral.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -226,6 +229,7 @@
 				A4787754197113D000F6F611 /* Images.xcassets */,
 				A4787747197113D000F6F611 /* Supporting Files */,
 				A4F92B8919DCF69600C87D0E /* Localizable.strings */,
+				A4605B6E19F5235500F8DD96 /* Launch Screen.xib */,
 			);
 			path = Spiral;
 			sourceTree = "<group>";
@@ -432,6 +436,7 @@
 				A4B104BE19D6F5EA008BD1BA /* killer.wav in Resources */,
 				A45A65E419860AD000EA40D7 /* pew-pew-lei.caf in Resources */,
 				A4B104B819D6F166008BD1BA /* levelup.mp3 in Resources */,
+				A4605B6C19F5235500F8DD96 /* Launch Screen.xib in Resources */,
 				A4B104B219D6DF01008BD1BA /* bg.mp3 in Resources */,
 				A4B05A3A19E9642900B303C0 /* spiral.sketch in Resources */,
 			);
@@ -535,6 +540,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		A4605B6E19F5235500F8DD96 /* Launch Screen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4605B6D19F5235500F8DD96 /* zh-Hans */,
+				A4605B6F19F5235700F8DD96 /* Base */,
+			);
+			name = "Launch Screen.xib";
+			sourceTree = "<group>";
+		};
 		A4787751197113D000F6F611 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

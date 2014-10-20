@@ -15,9 +15,11 @@ class Shape: SKSpriteNode {
     var lineNum = 0
     let speedUpBase:CGFloat = 50
     var light = SKLightNode()
+    
     required init(coder: NSCoder) {
         fatalError("NSCoding not supported")
     }
+    
     init(name:String,imageName:String){
         
         super.init(texture: SKTexture(imageNamed: imageName),color:SKColor.clearColor(), size: CGSizeMake(radius*2, radius*2))
@@ -32,6 +34,7 @@ class Shape: SKSpriteNode {
         light.enabled = false
         self.addChild(light)
     }
+    
     func runInMap(map:Map){
         let distance = calDistanceInMap(map)
         let duration = distance/moveSpeed

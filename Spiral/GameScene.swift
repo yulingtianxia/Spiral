@@ -14,6 +14,8 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
     let display:Display
     let soundManager = SoundManager()
     let background:Background
+    var nextShapeName = "Killer"
+    let nextShape = SKSpriteNode(imageNamed: "killer")
     required init(coder: NSCoder) {
         fatalError("NSCoding not supported")
     }
@@ -28,7 +30,10 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
         Data.display = display
         background = Background(size: size)
         background.position = center
-        
+        nextShape.size = CGSize(width: 50, height: 50)
+        nextShape.position = self.map.points[0]
+        nextShape.physicsBody = nil
+        nextShape.alpha = 0.4
         super.init(size:size)
         self.physicsWorld.gravity = CGVectorMake(0, 0)
         self.physicsWorld.contactDelegate = self
@@ -36,15 +41,15 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
         self.addChild(map)
         self.addChild(player)
         self.addChild(display)
-        
+        self.addChild(nextShape)
         display.setPosition()
         player.runInMap(map)
         nodeFactory()
         //Observe Notification
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pause"), name: UIApplicationWillResignActiveNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pause"), name: UIApplicationDidEnterBackgroundNotification, object: nil)
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("resume"), name: UIApplicationWillEnterForegroundNotification, object: nil)
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("resume"), name: UIApplicationDidBecomeActiveNotification, object: nil)
+        //        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("resume"), name: UIApplicationWillEnterForegroundNotification, object: nil)
+        //        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("resume"), name: UIApplicationDidBecomeActiveNotification, object: nil)
     }
     
     override func didMoveToView(view: SKView) {
@@ -54,25 +59,25 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
         
     }
     
-//    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
-//        for touch:AnyObject in touches{
-//            if Data.gameOver {
-////                restartGame()
-//            }
-//            else if view?.paused == true{
-//                resume()
-//            }
-//            else if player.lineNum>3 {
-//                calNewLocation()
-//                player.removeAllActions()
-//                player.jump = true
-//                player.runInMap(map)
-//                soundManager.playJump()
-//            }
-//            
-//            
-//        }
-//    }
+    //    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+    //        for touch:AnyObject in touches{
+    //            if Data.gameOver {
+    ////                restartGame()
+    //            }
+    //            else if view?.paused == true{
+    //                resume()
+    //            }
+    //            else if player.lineNum>3 {
+    //                calNewLocation()
+    //                player.removeAllActions()
+    //                player.jump = true
+    //                player.runInMap(map)
+    //                soundManager.playJump()
+    //            }
+    //
+    //
+    //        }
+    //    }
     
     func tap(){
         if Data.gameOver {
@@ -109,7 +114,7 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
         for node in self.children{
             if let shape = node as? Shape {
                 shape.removeAllActions()
-//                shape.moveSpeed += CGFloat(Data.speedScale) * shape.moveSpeed
+                //                shape.moveSpeed += CGFloat(Data.speedScale) * shape.moveSpeed
                 shape.moveSpeed += Data.speedScale * shape.speedUpBase
                 shape.runInMap(map)
             }
@@ -179,25 +184,49 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
     func nodeFactory(){
         self.runAction(SKAction.repeatActionForever(SKAction.sequence([SKAction.runBlock({
             if !Data.gameOver {
+                
                 let type = arc4random()%UInt32(4)
-                var object:AnyObject!
                 switch type {
                 case 0,1:
-                    object = Killer()
+                    self.nextShapeName = "Killer"
+                    self.nextShape.texture = SKTexture(imageNamed: "killer")
                 case 2:
-                    object = Score()
+                    self.nextShapeName = "Score"
+                    self.nextShape.texture = SKTexture(imageNamed: "score")
                 case 3:
-                    object = Shield()
+                    self.nextShapeName = "Shield"
+                    self.nextShape.texture = SKTexture(imageNamed: "shield")
                 default:
+                    self.nextShapeName = "Killer"
+                    self.nextShape.texture = SKTexture(imageNamed: "killer")
                     println(type)
                 }
-                var shape = object as Shape
+                
+            }
+        }),SKAction.group([SKAction.waitForDuration(5, withRange: 0),SKAction.runBlock({ () -> Void in
+            self.nextShape.runAction(SKAction.scaleTo(0.4, duration: 5), completion: { () -> Void in
+                self.nextShape.setScale(1)
+            })
+        })]),SKAction.runBlock({ () -> Void in
+            if !Data.gameOver {
+                var shape:Shape
+                switch self.nextShapeName {
+                case "Killer":
+                    shape = Killer()
+                case "Score":
+                    shape = Score()
+                case "Shield":
+                    shape = Shield()
+                default:
+                    println(self.nextShapeName)
+                    shape = Killer()
+                }
                 shape.lineNum = 0
                 shape.position = self.map.points[shape.lineNum]
                 shape.runInMap(self.map)
                 self.addChild(shape)
             }
-            }),SKAction.waitForDuration(5, withRange: 1)])))
+        })])))
         
         
     }

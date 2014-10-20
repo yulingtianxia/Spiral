@@ -23,6 +23,7 @@ class Player: Shape {
         }
     }
     }
+    
     convenience init() {
         self.init(name:"Player",imageName:"player")
         self.physicsBody!.categoryBitMask = playerCategory
@@ -31,6 +32,7 @@ class Player: Shape {
         light.lightColor = SKColor(red: 80.0/255, green: 227.0/255, blue: 194.0/255, alpha: 1)
         light.categoryBitMask = playerLightCategory
     }
+    
     func restart(map:Map) {
         self.alpha = 1
         self.removeAllActions()
