@@ -10,7 +10,7 @@ import SpriteKit
 
 class HelpButton: SKSpriteNode {
     override init(){
-        super.init(texture: SKTexture(imageNamed: "help"), color: SKColor.clearColor(), size: CGSize(width: 25, height: 25))
+        super.init(texture: SKTexture(imageNamed: "help"), color: SKColor.clearColor(), size: CGSize(width: 30, height: 30))
         self.userInteractionEnabled = true
     }
     
@@ -20,11 +20,9 @@ class HelpButton: SKSpriteNode {
     
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
         if let scene = HelpScene.unarchiveFromFile("HelpScene") as? HelpScene{
-            for child in scene.children{
-                println((child as SKNode).name)
-            }
             let reveal = SKTransition.flipHorizontalWithDuration(0.5)
             self.scene?.view?.presentScene(scene, transition: reveal)
+            (UIApplication.sharedApplication().keyWindow?.rootViewController as GameViewController).addGestureRecognizers()
         }
     }
 }

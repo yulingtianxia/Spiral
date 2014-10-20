@@ -32,7 +32,7 @@ class GameViewController: UIViewController {
     var tapWithOneFinger:UITapGestureRecognizer!
     var tapWithTwoFinger:UITapGestureRecognizer!
     var pan:UIPanGestureRecognizer!
-    
+    var swipeRight:UISwipeGestureRecognizer!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Configure the view.
@@ -45,7 +45,10 @@ class GameViewController: UIViewController {
         tapWithTwoFinger = UITapGestureRecognizer(target: self, action: Selector("handleTapWithTwoFingerFrom:"))
         tapWithTwoFinger.numberOfTouchesRequired = 2
         pan = UIPanGestureRecognizer(target: self, action: Selector("handlePanFrom:"))
-        
+        pan.maximumNumberOfTouches = 1
+        swipeRight = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipeFrom:"))
+        swipeRight.direction = UISwipeGestureRecognizerDirection.Right
+        swipeRight.numberOfTouchesRequired = 2
         addGestureRecognizers()
 
         let scene = GameScene(size: skView.bounds.size)
@@ -102,12 +105,20 @@ class GameViewController: UIViewController {
             ((self.view as SKView).scene as? HelpScene)?.turnOffLight()
         }
     }
+    
+    func handleSwipeFrom(recognizer:UISwipeGestureRecognizer) {
+        if recognizer.direction == .Right {
+            ((self.view as SKView).scene as? HelpScene)?.back()
+        }
+    }
+    
     func addGestureRecognizers(){
         let skView = self.view as SKView
         skView.addGestureRecognizer(longPress)
         skView.addGestureRecognizer(tapWithOneFinger)
         skView.addGestureRecognizer(tapWithTwoFinger)
         skView.addGestureRecognizer(pan)
+        skView.addGestureRecognizer(swipeRight)
     }
     
     func removeGestureRecognizers(){
@@ -115,6 +126,8 @@ class GameViewController: UIViewController {
         skView.removeGestureRecognizer(longPress)
         skView.removeGestureRecognizer(tapWithOneFinger)
         skView.removeGestureRecognizer(tapWithTwoFinger)
+        skView.removeGestureRecognizer(pan)
+        skView.removeGestureRecognizer(swipeRight)
     }
     
 }

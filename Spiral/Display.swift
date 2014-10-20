@@ -42,7 +42,6 @@ class Display: SKNode ,DisplayData{
         self.addChild(pauseLabel)
         self.addChild(reaperIcon)
         self.addChild(reaperNumLabel)
-        self.addChild(help)
     }
     
     func setPosition() {
@@ -52,7 +51,7 @@ class Display: SKNode ,DisplayData{
         gameOverLabel.position = CGPointMake(CGRectGetMidX(self.scene!.frame), CGRectGetMidY(self.scene!.frame))
         share.position = CGPointMake(CGRectGetMaxX(self.scene!.frame)*3/4, CGRectGetMaxY(self.scene!.frame)/4)
         replay.position = CGPointMake(CGRectGetMaxX(self.scene!.frame)/4, CGRectGetMaxY(self.scene!.frame)/4)
-        gameCenter.position = CGPoint(x: self.scene!.frame.width-gameCenter.size.width/2, y: gameCenter.size.height/2)
+        gameCenter.position = CGPoint(x: gameCenter.size.width/2, y: self.scene!.size.height-gameCenter.size.height/2)
         pauseLabel.position = CGPointMake(CGRectGetMidX(self.scene!.frame), CGRectGetMidY(self.scene!.frame))
         reaperIcon.position = CGPoint(x: reaperIcon.size.width/2, y: reaperIcon.frame.height/2)
         reaperNumLabel.position = CGPoint(x: CGRectGetMaxX(reaperIcon.frame) + 5 + reaperNumLabel.frame.width/2, y: reaperNumLabel.frame.height/4)
@@ -77,6 +76,7 @@ class Display: SKNode ,DisplayData{
         self.addChild(share)
         self.addChild(replay)
         self.addChild(gameCenter)
+        self.addChild(help)
         reaperIcon.removeFromParent()
         reaperNumLabel.removeFromParent()
         highScoreLabel.text = NSLocalizedString("HIGHSCORE ", comment: "")+"\(Data.highScore)"
@@ -92,9 +92,12 @@ class Display: SKNode ,DisplayData{
         share.removeFromParent()
         replay.removeFromParent()
         gameCenter.removeFromParent()
+        help.removeFromParent()
         highScoreLabel.removeFromParent()
-        self.addChild(reaperNumLabel)
-        self.addChild(reaperIcon)
+        if reaperNumLabel.parent == nil && reaperIcon.parent == nil {
+            self.addChild(reaperNumLabel)
+            self.addChild(reaperIcon)
+        }
         (self.scene as GameScene).restartGame()
         (UIApplication.sharedApplication().keyWindow?.rootViewController as GameViewController).addGestureRecognizers()
     }
