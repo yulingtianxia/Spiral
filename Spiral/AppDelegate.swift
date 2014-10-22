@@ -9,13 +9,14 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
                             
     var window: UIWindow?
 
 
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
         // Override point for customization after application launch.
+        WXApi.registerApp("wxeeaeb81c5f737329")
         return true
     }
 
@@ -41,6 +42,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
+        return WXApi.handleOpenURL(url, delegate: self)
+    }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+        return WXApi.handleOpenURL(url, delegate: self)
+    }
+    
+    func onReq(req: BaseReq!) {
+        
+    }
+    
+    func onResp(resp: BaseResp!) {
+        if let response = resp as? SendMessageToWXResp {
+            if response.errCode == -2{
+                let alert = UIAlertController(title: "错误", message: "分享失败", preferredStyle: .Alert)
+                let action = UIAlertAction(title: "哦", style: .Default, handler: { (action) -> Void in
+                    
+                })
+                alert.addAction(action)
+                self.window?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+            }
+        }
+    }
 }
 

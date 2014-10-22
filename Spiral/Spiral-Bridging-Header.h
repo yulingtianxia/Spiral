@@ -4,3 +4,5 @@
 
 #import "GameKitHelper.h"
 #import "GameConstants.h"
+#import "WXApi.h"
+#import "SendWX.h"

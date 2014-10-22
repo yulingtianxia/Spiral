@@ -47,6 +47,8 @@
 		A4B104BC19D6F3A0008BD1BA /* shield.wav in Resources */ = {isa = PBXBuildFile; fileRef = A4B104BB19D6F3A0008BD1BA /* shield.wav */; };
 		A4B104BE19D6F5EA008BD1BA /* killer.wav in Resources */ = {isa = PBXBuildFile; fileRef = A4B104BD19D6F5EA008BD1BA /* killer.wav */; };
 		A4B2788519EA781C00A2D065 /* GameCenterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B2788419EA781C00A2D065 /* GameCenterButton.swift */; };
+		A4EEE3B619F6917900A43108 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4EEE3B519F6917900A43108 /* libWeChatSDK.a */; };
+		A4EEE3B919F6A45200A43108 /* SendWX.m in Sources */ = {isa = PBXBuildFile; fileRef = A4EEE3B819F6A45200A43108 /* SendWX.m */; };
 		A4F3C60A19E8E990000514AC /* Reaper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F3C60919E8E990000514AC /* Reaper.swift */; };
 		A4F3C60C19E8EAF7000514AC /* ReaperContactVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F3C60B19E8EAF7000514AC /* ReaperContactVisitor.swift */; };
 		A4F3C61019E90FFF000514AC /* Rope.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F3C60F19E90FFF000514AC /* Rope.swift */; };
@@ -121,6 +123,11 @@
 		A4B104BB19D6F3A0008BD1BA /* shield.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shield.wav; sourceTree = "<group>"; };
 		A4B104BD19D6F5EA008BD1BA /* killer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = killer.wav; sourceTree = "<group>"; };
 		A4B2788419EA781C00A2D065 /* GameCenterButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCenterButton.swift; sourceTree = "<group>"; };
+		A4EEE3B319F6917900A43108 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		A4EEE3B419F6917900A43108 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		A4EEE3B519F6917900A43108 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		A4EEE3B719F6A45200A43108 /* SendWX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendWX.h; sourceTree = "<group>"; };
+		A4EEE3B819F6A45200A43108 /* SendWX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendWX.m; sourceTree = "<group>"; };
 		A4F3C60919E8E990000514AC /* Reaper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reaper.swift; sourceTree = "<group>"; };
 		A4F3C60B19E8EAF7000514AC /* ReaperContactVisitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReaperContactVisitor.swift; sourceTree = "<group>"; };
 		A4F3C60F19E90FFF000514AC /* Rope.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rope.swift; sourceTree = "<group>"; };
@@ -138,6 +145,7 @@
 			files = (
 				A490225E19B9D8EE009114ED /* Social.framework in Frameworks */,
 				D43F5311657C4A8E9E4CECD3 /* libPods.a in Frameworks */,
+				A4EEE3B619F6917900A43108 /* libWeChatSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +292,7 @@
 		A47D3D12197407AC005AF736 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				A4EEE3B219F6916600A43108 /* Weixin */,
 				A4FF9275197529B50060CE6D /* Data.swift */,
 				A4FF926F19751AA50060CE6D /* VisitablePhysicsBody.swift */,
 				A48F921119724362007BDAE4 /* NodeCategories.swift */,
@@ -301,6 +310,18 @@
 				A479DFA319F4DC9F000DF2AF /* HelpScene.sks */,
 			);
 			name = Scenes;
+			sourceTree = "<group>";
+		};
+		A4EEE3B219F6916600A43108 /* Weixin */ = {
+			isa = PBXGroup;
+			children = (
+				A4EEE3B319F6917900A43108 /* WXApi.h */,
+				A4EEE3B419F6917900A43108 /* WXApiObject.h */,
+				A4EEE3B519F6917900A43108 /* libWeChatSDK.a */,
+				A4EEE3B719F6A45200A43108 /* SendWX.h */,
+				A4EEE3B819F6A45200A43108 /* SendWX.m */,
+			);
+			name = Weixin;
 			sourceTree = "<group>";
 		};
 		A4F3C60D19E8FCEB000514AC /* Shapes */ = {
@@ -511,6 +532,7 @@
 				A424E2F119E78176007FE1C1 /* Background.swift in Sources */,
 				A4FF9274197526830060CE6D /* Display.swift in Sources */,
 				A434A14B1976955000F4C94B /* ShareButton.swift in Sources */,
+				A4EEE3B919F6A45200A43108 /* SendWX.m in Sources */,
 				A45A9FA319F3E7250087C192 /* HelpScene.swift in Sources */,
 				A47D3D1A19741859005AF736 /* ScoreContactVisitor.swift in Sources */,
 				A48F921419724822007BDAE4 /* Player.swift in Sources */,
@@ -614,6 +636,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				"LIBRARY_SEARCH_PATHS[arch=*]" = /Users/yangxiaoyu/Documents/Code/Spiral/Spiral;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -651,6 +674,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				"LIBRARY_SEARCH_PATHS[arch=*]" = /Users/yangxiaoyu/Documents/Code/Spiral/Spiral;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -667,6 +691,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Spiral/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Spiral",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Spiral/Spiral-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -684,6 +712,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Spiral/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Spiral",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Spiral/Spiral-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
