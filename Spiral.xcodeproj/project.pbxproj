@@ -101,7 +101,6 @@
 		A478776A197113DB00F6F611 /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		A478777019712E9D00F6F611 /* Shape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
 		A479DFA219F4DC9F000DF2AF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = "zh-Hans"; path = "zh-Hans.lproj/HelpScene.sks"; sourceTree = "<group>"; };
-		A479DFA419F4DCA2000DF2AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Base; path = Base.lproj/HelpScene.sks; sourceTree = "<group>"; };
 		A47D3D0C1973DBE4005AF736 /* ContactVisitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactVisitor.swift; sourceTree = "<group>"; };
 		A47D3D0E1973F522005AF736 /* Spiral-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Spiral-Bridging-Header.h"; sourceTree = "<group>"; };
 		A47D3D1519740AA3005AF736 /* PlayerContactVisitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerContactVisitor.swift; sourceTree = "<group>"; };
@@ -123,6 +122,8 @@
 		A4B104BB19D6F3A0008BD1BA /* shield.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shield.wav; sourceTree = "<group>"; };
 		A4B104BD19D6F5EA008BD1BA /* killer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = killer.wav; sourceTree = "<group>"; };
 		A4B2788419EA781C00A2D065 /* GameCenterButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCenterButton.swift; sourceTree = "<group>"; };
+		A4D28BB619F7723F00E1A46B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = en; path = en.lproj/HelpScene.sks; sourceTree = "<group>"; };
+		A4D28BB719F7724100E1A46B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Base; path = Base.lproj/HelpScene.sks; sourceTree = "<group>"; };
 		A4EEE3B319F6917900A43108 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		A4EEE3B419F6917900A43108 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		A4EEE3B519F6917900A43108 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
@@ -584,7 +585,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				A479DFA219F4DC9F000DF2AF /* zh-Hans */,
-				A479DFA419F4DCA2000DF2AF /* Base */,
+				A4D28BB619F7723F00E1A46B /* en */,
+				A4D28BB719F7724100E1A46B /* Base */,
 			);
 			name = HelpScene.sks;
 			sourceTree = "<group>";
