@@ -74,6 +74,8 @@
 /* Begin PBXFileReference section */
 		5840075B84044E92A52535DA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BCC118355E4463D84D833AC /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		A4099D2819F90C0400A348EE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = en; path = en.lproj/HelpScene.sks; sourceTree = "<group>"; };
+		A4099D2919F90C3300A348EE /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = "zh-Hans"; path = "zh-Hans.lproj/HelpScene.sks"; sourceTree = "<group>"; };
 		A41591E419CC71C500C3420B /* GameKitHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameKitHelper.h; sourceTree = "<group>"; };
 		A41591E519CC71C500C3420B /* GameKitHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameKitHelper.m; sourceTree = "<group>"; };
 		A41591E619CC71C500C3420B /* GameConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameConstants.h; sourceTree = "<group>"; };
@@ -124,8 +126,6 @@
 		A4B104BD19D6F5EA008BD1BA /* killer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = killer.wav; sourceTree = "<group>"; };
 		A4B2788419EA781C00A2D065 /* GameCenterButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCenterButton.swift; sourceTree = "<group>"; };
 		A4D3462E19F9003F00C99B28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Base; path = Base.lproj/HelpScene.sks; sourceTree = "<group>"; };
-		A4D3463019F9004200C99B28 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = en; path = en.lproj/HelpScene.sks; sourceTree = "<group>"; };
-		A4D3463119F9004500C99B28 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = "zh-Hans"; path = "zh-Hans.lproj/HelpScene.sks"; sourceTree = "<group>"; };
 		A4E7594E19F7B8E600C08783 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		A4E7595919F7BAD600C08783 /* spark.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = spark.sks; sourceTree = "<group>"; };
 		A4EEE3B319F6917900A43108 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
@@ -602,8 +602,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				A4D3462E19F9003F00C99B28 /* Base */,
-				A4D3463019F9004200C99B28 /* en */,
-				A4D3463119F9004500C99B28 /* zh-Hans */,
+				A4099D2819F90C0400A348EE /* en */,
+				A4099D2919F90C3300A348EE /* zh-Hans */,
 			);
 			name = HelpScene.sks;
 			sourceTree = "<group>";
