@@ -33,6 +33,8 @@ class GameViewController: UIViewController {
     var tapWithTwoFinger:UITapGestureRecognizer!
     var pan:UIPanGestureRecognizer!
     var swipeRight:UISwipeGestureRecognizer!
+    var pinch:UIPinchGestureRecognizer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Configure the view.
@@ -49,6 +51,9 @@ class GameViewController: UIViewController {
         swipeRight = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipeFrom:"))
         swipeRight.direction = UISwipeGestureRecognizerDirection.Right
         swipeRight.numberOfTouchesRequired = 2
+        
+        pinch = UIPinchGestureRecognizer(target: self, action: Selector("handlePinchFrom:"))
+        
         addGestureRecognizers()
 
         let scene = GameScene(size: skView.bounds.size)
@@ -93,7 +98,7 @@ class GameViewController: UIViewController {
     
     func handleTapWithTwoFingerFrom(recognizer:UILongPressGestureRecognizer) {
         if recognizer.state == .Ended {
-            ((self.view as SKView).scene as? GameScene)?.createReaper()
+//            ((self.view as SKView).scene as? GameScene)?.createReaper()
         }
     }
     
@@ -112,6 +117,17 @@ class GameViewController: UIViewController {
         }
     }
     
+    func handlePinchFrom(recognizer:UIPinchGestureRecognizer) {
+        if recognizer.state == .Began {
+            if recognizer.scale > 1 {
+                ((self.view as SKView).scene as? GameScene)?.createReaper()
+            }
+            else {
+                ((self.view as SKView).scene as? GameScene)?.allShapesJumpIn()
+            }
+        }
+    }
+    
     func addGestureRecognizers(){
         let skView = self.view as SKView
         skView.addGestureRecognizer(longPress)
@@ -119,6 +135,7 @@ class GameViewController: UIViewController {
         skView.addGestureRecognizer(tapWithTwoFinger)
         skView.addGestureRecognizer(pan)
         skView.addGestureRecognizer(swipeRight)
+        skView.addGestureRecognizer(pinch)
     }
     
     func removeGestureRecognizers(){
@@ -128,6 +145,7 @@ class GameViewController: UIViewController {
         skView.removeGestureRecognizer(tapWithTwoFinger)
         skView.removeGestureRecognizer(pan)
         skView.removeGestureRecognizer(swipeRight)
+        skView.removeGestureRecognizer(pinch)
     }
     
 }

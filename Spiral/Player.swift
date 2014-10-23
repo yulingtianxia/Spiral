@@ -8,7 +8,6 @@
 import SpriteKit
 
 class Player: Shape {
-    var jump = false
     var shield:Bool = false {
     willSet{
         if newValue {
@@ -38,7 +37,6 @@ class Player: Shape {
         self.removeAllActions()
         self.lineNum = 3
         self.moveSpeed = 90
-        self.jump = false
         self.shield = false
         self.position = map.points[self.lineNum]
         self.runInMap(map)

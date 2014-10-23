@@ -48,8 +48,7 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
         //Observe Notification
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pause"), name: UIApplicationWillResignActiveNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pause"), name: UIApplicationDidEnterBackgroundNotification, object: nil)
-        //        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("resume"), name: UIApplicationWillEnterForegroundNotification, object: nil)
-        //        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("resume"), name: UIApplicationDidBecomeActiveNotification, object: nil)
+
     }
     
     override func didMoveToView(view: SKView) {
@@ -59,25 +58,6 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
         
     }
     
-    //    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
-    //        for touch:AnyObject in touches{
-    //            if Data.gameOver {
-    ////                restartGame()
-    //            }
-    //            else if view?.paused == true{
-    //                resume()
-    //            }
-    //            else if player.lineNum>3 {
-    //                calNewLocation()
-    //                player.removeAllActions()
-    //                player.jump = true
-    //                player.runInMap(map)
-    //                soundManager.playJump()
-    //            }
-    //
-    //
-    //        }
-    //    }
     
     func tap(){
         if Data.gameOver {
@@ -86,17 +66,29 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
         else if view?.paused == true{
             resume()
         }
-        else if player.lineNum>3 {
-            calNewLocation()
-            player.removeAllActions()
-            player.jump = true
+        else if player.lineNum>3{
+            calNewLocationOfShape(player)
             player.runInMap(map)
             soundManager.playJump()
         }
     }
     
+    func allShapesJumpIn(){
+        if !Data.gameOver && view?.paused == false {
+            for node in self.children {
+                if let shape = node as? Shape {
+                    if shape.lineNum>3 {
+                        calNewLocationOfShape(shape)
+                        shape.runInMap(map)
+                    }
+                }
+            }
+            soundManager.playJump()
+        }
+    }
+    
     func createReaper(){
-        if !Data.gameOver {
+        if !Data.gameOver && view?.paused == false {
             var shape = Reaper()
             if Data.reaperNum>0 {
                 Data.reaperNum--
@@ -114,7 +106,6 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
         for node in self.children{
             if let shape = node as? Shape {
                 shape.removeAllActions()
-                //                shape.moveSpeed += CGFloat(Data.speedScale) * shape.moveSpeed
                 shape.moveSpeed += Data.speedScale * shape.speedUpBase
                 shape.runInMap(map)
             }
@@ -159,22 +150,25 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
         soundManager.playBackGround()
     }
     
-    func calNewLocation(){
+    func calNewLocationOfShape(shape:Shape){
+        if shape.lineNum <= 3 {
+            return
+        }
         let spacing = map.spacing
-        let scale = CGFloat((player.lineNum/4-1)*2+1)/CGFloat(player.lineNum/4*2+1)
-        let newDistance = player.calDistanceInMap(map)*scale
-        player.lineNum-=4
-        player.removeAllActions()
-        let nextPoint = map.points[player.lineNum+1]
-        switch player.lineNum%4{
+        let scale = CGFloat((shape.lineNum/4-1)*2+1)/CGFloat(shape.lineNum/4*2+1)
+        let newDistance = shape.calDistanceInMap(map)*scale
+        shape.lineNum-=4
+        shape.removeAllActions()
+        let nextPoint = map.points[shape.lineNum+1]
+        switch shape.lineNum%4{
         case 0:
-            player.position = CGPointMake(nextPoint.x, nextPoint.y+newDistance)
+            shape.position = CGPointMake(nextPoint.x, nextPoint.y+newDistance)
         case 1:
-            player.position = CGPointMake(nextPoint.x+newDistance, nextPoint.y)
+            shape.position = CGPointMake(nextPoint.x+newDistance, nextPoint.y)
         case 2:
-            player.position = CGPointMake(nextPoint.x, nextPoint.y-newDistance)
+            shape.position = CGPointMake(nextPoint.x, nextPoint.y-newDistance)
         case 3:
-            player.position = CGPointMake(nextPoint.x-newDistance, nextPoint.y)
+            shape.position = CGPointMake(nextPoint.x-newDistance, nextPoint.y)
         default:
             println("Why?")
         }

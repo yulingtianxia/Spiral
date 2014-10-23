@@ -17,9 +17,8 @@ class PlayerContactVisitor:ContactVisitor{
     func visitKiller(body:SKPhysicsBody){
         let thisNode = self.body.node as Player
         let otherNode = body.node!
-//        println(thisNode.name+"->"+otherNode.name)
+
         if thisNode.shield {
-            otherNode.removeFromParent()
             thisNode.shield = false
             var achievement = GameKitHelper.sharedGameKitHelper().getAchievementForIdentifier(kClean100KillerAchievementID)
             if achievement.percentComplete <= 99.0{
@@ -35,8 +34,7 @@ class PlayerContactVisitor:ContactVisitor{
     func visitScore(body:SKPhysicsBody){
         let thisNode = self.body.node as Player
         let otherNode = body.node
-//        println(thisNode.name+"->"+otherNode.name)
-        otherNode!.removeFromParent()
+
         Data.score += 2
         var achievement = GameKitHelper.sharedGameKitHelper().getAchievementForIdentifier(kCatch500ScoreAchievementID)
         if achievement.percentComplete <= 99.8{
