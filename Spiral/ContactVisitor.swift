@@ -29,6 +29,9 @@ class ContactVisitor:NSObject{
         if 0 != body.categoryBitMask&reaperCategory {
             return ReaperContactVisitor(body: body, forContact: contact)
         }
+        if 0 != body.categoryBitMask&eyeCategory {
+            return EyeContactVisitor(body: body, forContact: contact)
+        }
         return nil
         
     }

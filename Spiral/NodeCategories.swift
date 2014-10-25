@@ -14,7 +14,7 @@ let killerCategory:UInt32      =  0x1 << 1;
 let scoreCategory:UInt32       =  0x1 << 2;
 let shieldCategory:UInt32      =  0x1 << 3;
 let reaperCategory:UInt32      =  0x1 << 4;
-
+let eyeCategory:UInt32         =  0x1 << 5;
 //SKLightNode
 let killerLightCategory:UInt32 =  0x1 << 0;
 let playerLightCategory:UInt32 =  0x1 << 1;

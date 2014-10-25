@@ -51,6 +51,8 @@
 		A4E7595A19F7BAD600C08783 /* spark.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4E7595919F7BAD600C08783 /* spark.sks */; };
 		A4EEE3B619F6917900A43108 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4EEE3B519F6917900A43108 /* libWeChatSDK.a */; };
 		A4EEE3B919F6A45200A43108 /* SendWX.m in Sources */ = {isa = PBXBuildFile; fileRef = A4EEE3B819F6A45200A43108 /* SendWX.m */; };
+		A4F3505019FBA41B00F6B8DF /* Eye.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F3504F19FBA41B00F6B8DF /* Eye.swift */; };
+		A4F3505219FBAD2200F6B8DF /* EyeContactVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F3505119FBAD2200F6B8DF /* EyeContactVisitor.swift */; };
 		A4F3C60A19E8E990000514AC /* Reaper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F3C60919E8E990000514AC /* Reaper.swift */; };
 		A4F3C60C19E8EAF7000514AC /* ReaperContactVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F3C60B19E8EAF7000514AC /* ReaperContactVisitor.swift */; };
 		A4F3C61019E90FFF000514AC /* Rope.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F3C60F19E90FFF000514AC /* Rope.swift */; };
@@ -133,6 +135,8 @@
 		A4EEE3B519F6917900A43108 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		A4EEE3B719F6A45200A43108 /* SendWX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendWX.h; sourceTree = "<group>"; };
 		A4EEE3B819F6A45200A43108 /* SendWX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendWX.m; sourceTree = "<group>"; };
+		A4F3504F19FBA41B00F6B8DF /* Eye.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Eye.swift; sourceTree = "<group>"; };
+		A4F3505119FBAD2200F6B8DF /* EyeContactVisitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EyeContactVisitor.swift; sourceTree = "<group>"; };
 		A4F3C60919E8E990000514AC /* Reaper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reaper.swift; sourceTree = "<group>"; };
 		A4F3C60B19E8EAF7000514AC /* ReaperContactVisitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReaperContactVisitor.swift; sourceTree = "<group>"; };
 		A4F3C60F19E90FFF000514AC /* Rope.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rope.swift; sourceTree = "<group>"; };
@@ -291,6 +295,7 @@
 				A47D3D17197415C1005AF736 /* KillerContactVisitor.swift */,
 				A47D3D1919741859005AF736 /* ScoreContactVisitor.swift */,
 				A4F3C60B19E8EAF7000514AC /* ReaperContactVisitor.swift */,
+				A4F3505119FBAD2200F6B8DF /* EyeContactVisitor.swift */,
 			);
 			name = Visitors;
 			sourceTree = "<group>";
@@ -359,6 +364,7 @@
 				A4FF9273197526830060CE6D /* Display.swift */,
 				A424E2F019E78176007FE1C1 /* Background.swift */,
 				A4F3C60F19E90FFF000514AC /* Rope.swift */,
+				A4F3504F19FBA41B00F6B8DF /* Eye.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -539,11 +545,13 @@
 				A47D3D1619740AA3005AF736 /* PlayerContactVisitor.swift in Sources */,
 				A4F3C60C19E8EAF7000514AC /* ReaperContactVisitor.swift in Sources */,
 				A46D8C031976C3B800A32924 /* ShieldContactVisitor.swift in Sources */,
+				A4F3505019FBA41B00F6B8DF /* Eye.swift in Sources */,
 				A478774E197113D000F6F611 /* GameScene.swift in Sources */,
 				A47D3D18197415C1005AF736 /* KillerContactVisitor.swift in Sources */,
 				A47D3D1C19741B04005AF736 /* Killer.swift in Sources */,
 				A4FF927019751AA50060CE6D /* VisitablePhysicsBody.swift in Sources */,
 				A4787750197113D000F6F611 /* GameViewController.swift in Sources */,
+				A4F3505219FBAD2200F6B8DF /* EyeContactVisitor.swift in Sources */,
 				A478776B197113DB00F6F611 /* Map.swift in Sources */,
 				A4B2788519EA781C00A2D065 /* GameCenterButton.swift in Sources */,
 				A4F3C60A19E8E990000514AC /* Reaper.swift in Sources */,

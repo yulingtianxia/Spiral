@@ -16,6 +16,7 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
     let background:Background
     var nextShapeName = "Killer"
     let nextShape = SKSpriteNode(imageNamed: "killer")
+    let eye = Eye()
     required init(coder: NSCoder) {
         fatalError("NSCoding not supported")
     }
@@ -34,6 +35,7 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
         nextShape.position = self.map.points[0]
         nextShape.physicsBody = nil
         nextShape.alpha = 0.4
+        eye.position = map.points.last! as CGPoint
         super.init(size:size)
         self.physicsWorld.gravity = CGVectorMake(0, 0)
         self.physicsWorld.contactDelegate = self
@@ -42,6 +44,8 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
         self.addChild(player)
         self.addChild(display)
         self.addChild(nextShape)
+        self.addChild(eye)
+        eye.lookAtNode(player)
         display.setPosition()
         player.runInMap(map)
         nodeFactory()
@@ -114,6 +118,7 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
     
     func hideGame(){
         map.alpha = 0.2
+        eye.alpha = 0.2
         background.alpha = 0.2
         for node in self.children{
             if let shape = node as? Shape {
@@ -125,6 +130,7 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
     
     func showGame(){
         map.alpha = 1
+        eye.alpha = 1
         background.alpha = 0.5
         for node in self.children{
             if let shape = node as? Shape {
@@ -144,6 +150,10 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
             
         }
         map.alpha = 1
+        eye.alpha = 1
+        if eye.parent == nil {
+            addChild(eye)
+        }
         background.alpha = 0.5
         Data.restart()
         player.restart(map)

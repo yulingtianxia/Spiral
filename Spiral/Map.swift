@@ -79,8 +79,9 @@ class Map: SKShapeNode {
                 distance -= rope.size.height
                 center = CGPoint(x: points[(1+index)*4].x-distance-rope.size.height/2, y: points[index*4+3].y)
                 rope.position = center
-                self.addChild(rope)
+                addChild(rope)
             }
         }
     }
+    
 }
