@@ -27,4 +27,14 @@ class HelpScene: SKScene {
         self.scene?.view?.presentScene(scene, transition: reveal)
         Data.gameOver = false
     }
+    
+    override func didMoveToView(view: SKView) {
+        let bg = childNodeWithName("background") as SKSpriteNode
+        let w = bg.size.width
+        let h = bg.size.height
+        let scale = max(view.frame.width/w, view.frame.height/h)
+        bg.xScale = scale
+        bg.yScale = scale
+        
+    }
 }
