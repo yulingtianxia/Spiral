@@ -37,51 +37,32 @@ class Map: SKShapeNode {
         self.path = path
         self.glowWidth = 1
         self.antialiased = true
-        addRope(layer)
+        addRopes()
     }
-    
-    func addRope(layer:Int){
+    //将地图节点数组用绳子串起来
+    func addRopes(){
         var center:CGPoint
         var distance:CGFloat = 0
         var rope:Rope
-        for index in 0..<layer-1 {
-            distance = points[index*4].y - points[index*4+1].y
-            while distance > 0 {
-                rope = Rope(length: distance)
-                rope.zRotation = 0
-                distance -= rope.size.height
-                center = CGPoint(x: points[index*4].x, y: points[index*4+1].y+distance+rope.size.height/2)
-                rope.position = center
-                self.addChild(rope)
-            }
-            distance = points[index*4+1].x - points[index*4+2].x
-            while distance > 0 {
-                rope = Rope(length: distance)
-                rope.zRotation = CGFloat(M_PI_2)
-                distance -= rope.size.height
-                center = CGPoint(x: points[index*4+2].x+distance+rope.size.height/2, y: points[index*4+1].y)
-                rope.position = center
-                self.addChild(rope)
-            }
-            distance = points[index*4+3].y - points[index*4+2].y
-            while distance > 0 {
-                rope = Rope(length: distance)
-                rope.zRotation = CGFloat(M_PI)
-                distance -= rope.size.height
-                center = CGPoint(x: points[index*4+2].x, y: points[index*4+3].y-distance-rope.size.height/2)
-                rope.position = center
-                self.addChild(rope)
-            }
-            distance = points[(1+index)*4].x - points[index*4+3].x
-            while distance > 0 {
-                rope = Rope(length: distance)
-                rope.zRotation = CGFloat(3*M_PI_2)
-                distance -= rope.size.height
-                center = CGPoint(x: points[(1+index)*4].x-distance-rope.size.height/2, y: points[index*4+3].y)
-                rope.position = center
-                addChild(rope)
-            }
+        for index in 0..<points.count-1 {
+            addRopesToLine(points[index], b: points[index + 1])
         }
+    }
+    //递归填充比图片长的直线
+    func addRopesToLine(a:CGPoint,b:CGPoint){
+        let xDistance = b.x-a.x
+        let yDistance = b.y-a.y
+        var distance = sqrt(xDistance * xDistance + yDistance * yDistance)
+        let rope = Rope(length: distance)
+        rope.zRotation = atan(xDistance / yDistance)
+        let scale = rope.size.height / distance
+        let realB = CGPoint(x: a.x + scale * xDistance, y: a.y + scale * yDistance)
+        if scale < 1 {
+            addRopesToLine(realB, b: b)
+        }
+        let center = CGPoint(x: (a.x + realB.x)/2, y: (a.y + realB.y)/2)
+        rope.position = center
+        addChild(rope)
     }
     
 }
