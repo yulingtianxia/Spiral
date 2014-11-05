@@ -16,6 +16,8 @@
 		A45A9FA319F3E7250087C192 /* HelpScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45A9FA219F3E7250087C192 /* HelpScene.swift */; };
 		A45A9FA519F3F1640087C192 /* HelpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45A9FA419F3F1640087C192 /* HelpButton.swift */; };
 		A4605B6C19F5235500F8DD96 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4605B6E19F5235500F8DD96 /* Launch Screen.xib */; };
+		A46323F01A0263AA00902D3A /* Starcraft Normal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A46323EE1A02639E00902D3A /* Starcraft Normal.ttf */; };
+		A46323F11A0263AA00902D3A /* 颜体.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A46323EF1A02639E00902D3A /* 颜体.ttf */; };
 		A46D8C011976BF9400A32924 /* Shield.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D8C001976BF9400A32924 /* Shield.swift */; };
 		A46D8C031976C3B800A32924 /* ShieldContactVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D8C021976C3B800A32924 /* ShieldContactVisitor.swift */; };
 		A478774A197113D000F6F611 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4787749197113D000F6F611 /* AppDelegate.swift */; };
@@ -91,6 +93,8 @@
 		A45A9FA419F3F1640087C192 /* HelpButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpButton.swift; sourceTree = "<group>"; };
 		A4605B6D19F5235500F8DD96 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/Launch Screen.xib"; sourceTree = "<group>"; };
 		A4605B6F19F5235700F8DD96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "Base.lproj/Launch Screen.xib"; sourceTree = "<group>"; };
+		A46323EE1A02639E00902D3A /* Starcraft Normal.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Starcraft Normal.ttf"; sourceTree = "<group>"; };
+		A46323EF1A02639E00902D3A /* 颜体.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "颜体.ttf"; sourceTree = "<group>"; };
 		A46D8C001976BF9400A32924 /* Shield.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shield.swift; sourceTree = "<group>"; };
 		A46D8C021976C3B800A32924 /* ShieldContactVisitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShieldContactVisitor.swift; sourceTree = "<group>"; };
 		A4787744197113D000F6F611 /* Spiral.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spiral.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -192,6 +196,8 @@
 		A45A65E2198607F400EA40D7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A46323EE1A02639E00902D3A /* Starcraft Normal.ttf */,
+				A46323EF1A02639E00902D3A /* 颜体.ttf */,
 				A47E78E519F39C4E003D5143 /* vortexShader.fsh */,
 				A4B05A3919E9642900B303C0 /* spiral.sketch */,
 				A4B104BD19D6F5EA008BD1BA /* killer.wav */,
@@ -466,6 +472,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A46323F01A0263AA00902D3A /* Starcraft Normal.ttf in Resources */,
+				A46323F11A0263AA00902D3A /* 颜体.ttf in Resources */,
 				A4B104B619D6ECEF008BD1BA /* gameover.mp3 in Resources */,
 				A4E7595019F7B8E600C08783 /* spark.png in Resources */,
 				A4F92B8719DCF69600C87D0E /* Localizable.strings in Resources */,

@@ -15,6 +15,7 @@ class ShareButton: SKLabelNode {
     override init() {
         super.init()
         self.userInteractionEnabled = true
+        setDefaultFont()
         self.text = NSLocalizedString("SHARE", comment: "")
         
     }

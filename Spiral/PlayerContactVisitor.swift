@@ -46,7 +46,7 @@ class PlayerContactVisitor:ContactVisitor{
     func visitShield(body:SKPhysicsBody){
         let thisNode = self.body.node as Player
         let otherNode = body.node
-        otherNode!.removeFromParent()
+
         thisNode.shield = true
         Data.score++
         var achievement = GameKitHelper.sharedGameKitHelper().getAchievementForIdentifier(kCatch500ShieldAchievementID)

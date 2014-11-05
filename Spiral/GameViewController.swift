@@ -26,6 +26,12 @@ extension SKScene {
     }
 }
 
+extension SKLabelNode {
+    func setDefaultFont(){
+        self.fontName = NSLocalizedString("HelveticaNeue-UltraLight", comment: "")
+    }
+}
+
 class GameViewController: UIViewController {
 
     var longPress:UILongPressGestureRecognizer!

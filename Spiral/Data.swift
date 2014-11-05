@@ -12,26 +12,26 @@ struct Data{
     static var score:Int = 0{
         willSet{
         if newValue>=updateScore{
-        updateScore+=5 * ++level
-        }
-        if newValue >= 50{
-        var achievement = GameKitHelper.sharedGameKitHelper().getAchievementForIdentifier(kget50PointsAchievementID)
-        achievement.percentComplete = 100
-        GameKitHelper.sharedGameKitHelper().updateAchievement(achievement, identifier: kget50PointsAchievementID)
-    }
-        if newValue >= 100{
-        var achievement = GameKitHelper.sharedGameKitHelper().getAchievementForIdentifier(kget100PointsAchievementID)
-        achievement.percentComplete = 100
-        GameKitHelper.sharedGameKitHelper().updateAchievement(achievement, identifier: kget100PointsAchievementID)
-        }
-        if newValue >= 200{
-        var achievement = GameKitHelper.sharedGameKitHelper().getAchievementForIdentifier(kget200PointsAchievementID)
-        achievement.percentComplete = 100
-        GameKitHelper.sharedGameKitHelper().updateAchievement(achievement, identifier: kget200PointsAchievementID)
+            updateScore+=5 * ++level
         }
         }
         didSet{
             display?.updateData()
+            if score >= 50{
+                var achievement = GameKitHelper.sharedGameKitHelper().getAchievementForIdentifier(kget50PointsAchievementID)
+                achievement.percentComplete = 100
+                GameKitHelper.sharedGameKitHelper().updateAchievement(achievement, identifier: kget50PointsAchievementID)
+            }
+            if score >= 100{
+                var achievement = GameKitHelper.sharedGameKitHelper().getAchievementForIdentifier(kget100PointsAchievementID)
+                achievement.percentComplete = 100
+                GameKitHelper.sharedGameKitHelper().updateAchievement(achievement, identifier: kget100PointsAchievementID)
+            }
+            if score >= 200{
+                var achievement = GameKitHelper.sharedGameKitHelper().getAchievementForIdentifier(kget200PointsAchievementID)
+                achievement.percentComplete = 100
+                GameKitHelper.sharedGameKitHelper().updateAchievement(achievement, identifier: kget200PointsAchievementID)
+            }
         }
     }
     static var highScore:Int = 0
@@ -44,7 +44,7 @@ struct Data{
         Data.highScore = Data.score
         standardDefaults.setInteger(Data.score, forKey: "highscore")
         standardDefaults.synchronize()
-        sendDataToGameCenter()
+        
         }
         display?.gameOver()
     }
@@ -53,7 +53,7 @@ struct Data{
         }
         }
         didSet{
-            
+            sendDataToGameCenter()
         }
     }
     static var level:Int = 1{

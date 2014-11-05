@@ -37,6 +37,12 @@ class Display: SKNode ,DisplayData{
         pauseLabel.alpha = 0
         reaperIcon.size = CGSize(width: 20, height: 20)
         reaperNumLabel.fontSize = 20
+        scoreLabel.setDefaultFont()
+        highScoreLabel.setDefaultFont()
+        levelLabel.setDefaultFont()
+        gameOverLabel.setDefaultFont()
+        pauseLabel.setDefaultFont()
+        reaperNumLabel.setDefaultFont()
         self.addChild(scoreLabel)
         self.addChild(levelLabel)
         self.addChild(pauseLabel)

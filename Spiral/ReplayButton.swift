@@ -15,6 +15,7 @@ class ReplayButton: SKLabelNode {
     override init() {
         super.init()
         self.userInteractionEnabled = true
+        setDefaultFont()
         self.text = NSLocalizedString("REPLAY", comment: "")
     }
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
