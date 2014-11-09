@@ -18,6 +18,7 @@
 @property (nonatomic,assign) id<GameKitHelperProtocol> delegate;
 @property (nonatomic, readonly) NSError* lastError;
 @property(nonatomic, retain) NSMutableDictionary *achievementsDictionary;
+@property (nonatomic, copy) void (^submitScoreWithCompletionHandler)(BOOL success);
 
 + (instancetype) sharedGameKitHelper;
 -(UIViewController*) getRootViewController;

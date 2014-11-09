@@ -32,7 +32,7 @@ extension SKLabelNode {
     }
 }
 
-class GameViewController: UIViewController {
+public class GameViewController: UIViewController {
 
     var longPress:UILongPressGestureRecognizer!
     var tapWithOneFinger:UITapGestureRecognizer!
@@ -41,12 +41,14 @@ class GameViewController: UIViewController {
     var swipeRight:UISwipeGestureRecognizer!
     var pinch:UIPinchGestureRecognizer!
     
-    override func viewDidLoad() {
+    
+    override public func viewDidLoad() {
         super.viewDidLoad()
         // Configure the view.
         let skView = self.view as SKView
         /* Sprite Kit applies additional optimizations to improve rendering performance */
         skView.ignoresSiblingOrder = true
+        
         
         longPress = UILongPressGestureRecognizer(target: self, action: Selector("handleLongPressFrom:"))
         tapWithOneFinger = UITapGestureRecognizer(target: self, action: Selector("handleTapWithOneFingerFrom:"))
@@ -69,11 +71,11 @@ class GameViewController: UIViewController {
         
     }
 
-    override func shouldAutorotate() -> Bool {
+    override public func shouldAutorotate() -> Bool {
         return true
     }
 
-    override func supportedInterfaceOrientations() -> Int {
+    override public func supportedInterfaceOrientations() -> Int {
         if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
             return Int(UIInterfaceOrientationMask.AllButUpsideDown.rawValue)
         } else {
@@ -81,12 +83,12 @@ class GameViewController: UIViewController {
         }
     }
 
-    override func didReceiveMemoryWarning() {
+    override public func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Release any cached data, images, etc that aren't in use.
     }
 
-    override func prefersStatusBarHidden() -> Bool {
+    override public func prefersStatusBarHidden() -> Bool {
         return true
     }
     
@@ -155,3 +157,5 @@ class GameViewController: UIViewController {
     }
     
 }
+
+

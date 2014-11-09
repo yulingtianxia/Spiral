@@ -8,10 +8,10 @@
 
 import UIKit
 import SpriteKit
-class Map: SKShapeNode {
+public class Map: SKShapeNode {
     var spacing:CGFloat = 0.0
     var points:[CGPoint] = []
-    convenience init(origin:CGPoint,layer:Int, size:CGSize){
+    public convenience init(origin:CGPoint,layer:Int, size:CGSize){
         
         var x:CGFloat = origin.x
         var y:CGFloat = origin.y

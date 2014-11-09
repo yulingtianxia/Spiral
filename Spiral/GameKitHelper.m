@@ -49,6 +49,9 @@
         [self setLastError:error];
         if (localPlayer.authenticated) {
             _gameCenterFeaturesEnabled = YES;
+            if (_submitScoreWithCompletionHandler) {
+                _submitScoreWithCompletionHandler(YES);
+            }
             [self loadAchievements];
         } else if(viewController) {
             //TODO:palse
@@ -56,6 +59,9 @@
             [self presentViewController:viewController];
         } else {
             _gameCenterFeaturesEnabled = NO;
+            if (_submitScoreWithCompletionHandler) {
+                _submitScoreWithCompletionHandler(NO);
+            }
         }
     };
 }
@@ -90,6 +96,9 @@
     //   features are enabled
     if (!_gameCenterFeaturesEnabled) {
         //@"Player not authenticated"
+        if (_submitScoreWithCompletionHandler) {
+            _submitScoreWithCompletionHandler(NO);
+        }
         return;
     }
     
@@ -105,7 +114,9 @@
          [self setLastError:error];
          
          BOOL success = (error == nil);
-         
+         if (_submitScoreWithCompletionHandler) {
+             _submitScoreWithCompletionHandler(success);
+         }
          if ([_delegate
               respondsToSelector:
               @selector(onScoresSubmitted:)]) {
