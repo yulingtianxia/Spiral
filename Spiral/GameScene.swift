@@ -189,7 +189,7 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
         self.runAction(SKAction.repeatActionForever(SKAction.sequence([SKAction.runBlock({
             if !Data.gameOver {
                 
-                let type = arc4random()%UInt32(4)
+                let type = arc4random_uniform(4)
                 switch type {
                 case 0,1:
                     self.nextShapeName = "Killer"
