@@ -7,7 +7,7 @@
 //
 import Foundation
 public struct Data{
-    static var display:DisplayData?
+    weak static var display:DisplayData?
     static var updateScore:Int = 5
     public static var score:Int = 0{
         willSet{

@@ -7,7 +7,7 @@
 //
 
 import SpriteKit
-protocol DisplayData{
+protocol DisplayData: class{
     func updateData()
     func levelUp()
     func gameOver()
