@@ -39,6 +39,7 @@
 		A48F921219724362007BDAE4 /* NodeCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48F921119724362007BDAE4 /* NodeCategories.swift */; };
 		A48F921419724822007BDAE4 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48F921319724822007BDAE4 /* Player.swift */; };
 		A490225E19B9D8EE009114ED /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A434A14C197696BC00F4C94B /* Social.framework */; };
+		A49B03F81A772AA9009D8F40 /* Tips.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B03F71A772AA9009D8F40 /* Tips.swift */; };
 		A4B05A3A19E9642900B303C0 /* spiral.sketch in Resources */ = {isa = PBXBuildFile; fileRef = A4B05A3919E9642900B303C0 /* spiral.sketch */; };
 		A4B104AD19D6DB30008BD1BA /* jump.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A4B104AC19D6DB30008BD1BA /* jump.mp3 */; };
 		A4B104B219D6DF01008BD1BA /* bg.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A4B104B119D6DF01008BD1BA /* bg.mp3 */; };
@@ -122,6 +123,7 @@
 		A48F921319724822007BDAE4 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		A490225A19B9D89F009114ED /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A490225C19B9D8A8009114ED /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		A49B03F71A772AA9009D8F40 /* Tips.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tips.swift; sourceTree = "<group>"; };
 		A4B05A3919E9642900B303C0 /* spiral.sketch */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = spiral.sketch; sourceTree = "<group>"; };
 		A4B104AC19D6DB30008BD1BA /* jump.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jump.mp3; sourceTree = "<group>"; };
 		A4B104B119D6DF01008BD1BA /* bg.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bg.mp3; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 				A4FF926F19751AA50060CE6D /* VisitablePhysicsBody.swift */,
 				A48F921119724362007BDAE4 /* NodeCategories.swift */,
 				A45A65DF1986073B00EA40D7 /* SoundManager.swift */,
+				A49B03F71A772AA9009D8F40 /* Tips.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -565,6 +568,7 @@
 				A4F3C60A19E8E990000514AC /* Reaper.swift in Sources */,
 				A424E2F119E78176007FE1C1 /* Background.swift in Sources */,
 				A4FF9274197526830060CE6D /* Display.swift in Sources */,
+				A49B03F81A772AA9009D8F40 /* Tips.swift in Sources */,
 				A434A14B1976955000F4C94B /* ShareButton.swift in Sources */,
 				A4EEE3B919F6A45200A43108 /* SendWX.m in Sources */,
 				A45A9FA319F3E7250087C192 /* HelpScene.swift in Sources */,

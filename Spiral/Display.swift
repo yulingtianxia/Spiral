@@ -7,6 +7,7 @@
 //
 
 import SpriteKit
+
 protocol DisplayData: class{
     func updateData()
     func levelUp()
@@ -21,6 +22,7 @@ class Display: SKNode ,DisplayData{
     let pauseLabel = SKLabelNode(text: NSLocalizedString("PAUSE", comment: ""))
     let reaperIcon = SKSpriteNode(imageNamed: "reaper")
     let reaperNumLabel = SKLabelNode(text: String.localizedStringWithFormat("%d", Data.reaperNum))
+    let tipsLabel = SKLabelNode(text: NSLocalizedString("TIPS", comment: ""))
     let share = ShareButton()
     let replay = ReplayButton()
     let gameCenter = GameCenterButton()
@@ -37,12 +39,14 @@ class Display: SKNode ,DisplayData{
         pauseLabel.alpha = 0
         reaperIcon.size = CGSize(width: 20, height: 20)
         reaperNumLabel.fontSize = 20
+        tipsLabel.fontSize = 12
         scoreLabel.setDefaultFont()
         highScoreLabel.setDefaultFont()
         levelLabel.setDefaultFont()
         gameOverLabel.setDefaultFont()
         pauseLabel.setDefaultFont()
         reaperNumLabel.setDefaultFont()
+        tipsLabel.setDefaultFont()
         self.addChild(scoreLabel)
         self.addChild(levelLabel)
         self.addChild(pauseLabel)
@@ -62,6 +66,8 @@ class Display: SKNode ,DisplayData{
         reaperIcon.position = CGPoint(x: reaperIcon.size.width/2, y: reaperIcon.frame.height/2)
         reaperNumLabel.position = CGPoint(x: CGRectGetMaxX(reaperIcon.frame) + 5 + reaperNumLabel.frame.width/2, y: reaperNumLabel.frame.height/4)
         help.position = CGPoint(x: self.scene!.size.width-help.size.width/2, y: self.scene!.size.height-help.size.height/2)
+        tipsLabel.position = CGPoint(x: gameOverLabel.position.x, y: (gameOverLabel.position.y + share.position.y)/2)
+        
     }
     
     func updateData() {
@@ -78,15 +84,18 @@ class Display: SKNode ,DisplayData{
     }
     
     func gameOver() {
-        self.addChild(gameOverLabel)
-        self.addChild(share)
-        self.addChild(replay)
-        self.addChild(gameCenter)
-        self.addChild(help)
+        addChild(gameOverLabel)
+        addChild(share)
+        addChild(replay)
+        addChild(gameCenter)
+        addChild(help)
+        let tipNum = Int(arc4random_uniform(9))
+        tipsLabel.text = NSLocalizedString(tips[tipNum], comment: "tips")
+        addChild(tipsLabel)
         reaperIcon.removeFromParent()
         reaperNumLabel.removeFromParent()
         highScoreLabel.text = NSLocalizedString("HIGHSCORE ", comment: "")+"\(Data.highScore)"
-        self.addChild(highScoreLabel)
+        addChild(highScoreLabel)
         let scene = (self.scene as GameScene)
         scene.hideGame()
         scene.soundManager.playGameOver()
@@ -100,6 +109,7 @@ class Display: SKNode ,DisplayData{
         gameCenter.removeFromParent()
         help.removeFromParent()
         highScoreLabel.removeFromParent()
+        tipsLabel.removeFromParent()
         if reaperNumLabel.parent == nil && reaperIcon.parent == nil {
             self.addChild(reaperNumLabel)
             self.addChild(reaperIcon)
