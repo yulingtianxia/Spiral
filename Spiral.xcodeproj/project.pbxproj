@@ -50,6 +50,8 @@
 		A4B104BE19D6F5EA008BD1BA /* killer.wav in Resources */ = {isa = PBXBuildFile; fileRef = A4B104BD19D6F5EA008BD1BA /* killer.wav */; };
 		A4B2788519EA781C00A2D065 /* GameCenterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B2788419EA781C00A2D065 /* GameCenterButton.swift */; };
 		A4D3462D19F9003F00C99B28 /* HelpScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4D3462F19F9003F00C99B28 /* HelpScene.sks */; };
+		A4DCE0201A8397A600EA39B1 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DCE01E1A8397A600EA39B1 /* Crashlytics.framework */; };
+		A4DCE0211A8397A600EA39B1 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DCE01F1A8397A600EA39B1 /* Fabric.framework */; };
 		A4E7595019F7B8E600C08783 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = A4E7594E19F7B8E600C08783 /* spark.png */; };
 		A4E7595A19F7BAD600C08783 /* spark.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4E7595919F7BAD600C08783 /* spark.sks */; };
 		A4EEE3B619F6917900A43108 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4EEE3B519F6917900A43108 /* libWeChatSDK.a */; };
@@ -134,6 +136,8 @@
 		A4B104BD19D6F5EA008BD1BA /* killer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = killer.wav; sourceTree = "<group>"; };
 		A4B2788419EA781C00A2D065 /* GameCenterButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCenterButton.swift; sourceTree = "<group>"; };
 		A4D3462E19F9003F00C99B28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Base; path = Base.lproj/HelpScene.sks; sourceTree = "<group>"; };
+		A4DCE01E1A8397A600EA39B1 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		A4DCE01F1A8397A600EA39B1 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		A4E7594E19F7B8E600C08783 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		A4E7595919F7BAD600C08783 /* spark.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = spark.sks; sourceTree = "<group>"; };
 		A4EEE3B319F6917900A43108 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
@@ -159,7 +163,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A490225E19B9D8EE009114ED /* Social.framework in Frameworks */,
+				A4DCE0211A8397A600EA39B1 /* Fabric.framework in Frameworks */,
 				D43F5311657C4A8E9E4CECD3 /* libPods.a in Frameworks */,
+				A4DCE0201A8397A600EA39B1 /* Crashlytics.framework in Frameworks */,
 				A4EEE3B619F6917900A43108 /* libWeChatSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -381,6 +387,8 @@
 		F7CB57B3A321435B8FBA1FD7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A4DCE01E1A8397A600EA39B1 /* Crashlytics.framework */,
+				A4DCE01F1A8397A600EA39B1 /* Fabric.framework */,
 				5840075B84044E92A52535DA /* libPods.a */,
 			);
 			name = Frameworks;
@@ -398,6 +406,7 @@
 				A4787741197113D000F6F611 /* Frameworks */,
 				A4787742197113D000F6F611 /* Resources */,
 				686B2C005EF443E7AB1D2530 /* Copy Pods Resources */,
+				A4DCE01D1A83973200EA39B1 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -537,6 +546,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		A4DCE01D1A83973200EA39B1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 9f390390e312b5a6d8108a6d977e5b5425ef2da3 c3f24c2e2f19128e225aacae23e2fa2659ec714e7f411c46a14eca2577b9c550";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -728,6 +750,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Spiral/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -749,6 +775,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Spiral/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -764,7 +794,7 @@
 		A4787768197113D000F6F611 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Spiral.app/Spiral";
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -776,14 +806,14 @@
 				INFOPLIST_FILE = SpiralTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Spiral.app/Spiral";
 			};
 			name = Debug;
 		};
 		A4787769197113D000F6F611 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Spiral.app/Spiral";
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -791,7 +821,7 @@
 				INFOPLIST_FILE = SpiralTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Spiral.app/Spiral";
 			};
 			name = Release;
 		};
