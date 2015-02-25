@@ -11,12 +11,12 @@ import SpriteKit
 
 extension SKScene {
     class func unarchiveFromFile(file : NSString) -> SKNode? {
-        if let path = NSBundle.mainBundle().pathForResource(file, ofType: "sks") {
+        if let path = NSBundle.mainBundle().pathForResource(file as? String, ofType: "sks") {
             var sceneData = NSData(contentsOfFile: path, options: .DataReadingMappedIfSafe, error: nil)!
             var archiver = NSKeyedUnarchiver(forReadingWithData: sceneData)
             
             archiver.setClass(self.classForKeyedUnarchiver(), forClassName: "SKScene")
-            let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as SKScene
+            let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as! SKScene
             scene.size = GameKitHelper.sharedGameKitHelper().getRootViewController().view.frame.size
             archiver.finishDecoding()
             return scene
@@ -45,7 +45,7 @@ public class GameViewController: UIViewController {
     override public func viewDidLoad() {
         super.viewDidLoad()
         // Configure the view.
-        let skView = self.view as SKView
+        let skView = self.view as! SKView
         /* Sprite Kit applies additional optimizations to improve rendering performance */
         skView.ignoresSiblingOrder = true
         
@@ -94,13 +94,13 @@ public class GameViewController: UIViewController {
     
     func handleLongPressFrom(recognizer:UILongPressGestureRecognizer) {
         if recognizer.state == .Began {
-            ((self.view as SKView).scene as? GameScene)?.pause()
+            ((self.view as! SKView).scene as? GameScene)?.pause()
         }
     }
     
     func handleTapWithOneFingerFrom(recognizer:UILongPressGestureRecognizer) {
         if recognizer.state == .Ended {
-            ((self.view as SKView).scene as? GameScene)?.tap()
+            ((self.view as! SKView).scene as? GameScene)?.tap()
         }
     }
     
@@ -112,32 +112,32 @@ public class GameViewController: UIViewController {
     
     func handlePanFrom(recognizer:UIPanGestureRecognizer) {
         if recognizer.state == .Changed {
-            ((self.view as SKView).scene as? HelpScene)?.lightWithFinger(recognizer.locationInView(self.view))
+            ((self.view as! SKView).scene as? HelpScene)?.lightWithFinger(recognizer.locationInView(self.view))
         }
         else if recognizer.state == .Ended {
-            ((self.view as SKView).scene as? HelpScene)?.turnOffLight()
+            ((self.view as! SKView).scene as? HelpScene)?.turnOffLight()
         }
     }
     
     func handleSwipeFrom(recognizer:UISwipeGestureRecognizer) {
         if recognizer.direction == .Right {
-            ((self.view as SKView).scene as? HelpScene)?.back()
+            ((self.view as! SKView).scene as? HelpScene)?.back()
         }
     }
     
     func handlePinchFrom(recognizer:UIPinchGestureRecognizer) {
         if recognizer.state == .Began {
             if recognizer.scale > 1 {
-                ((self.view as SKView).scene as? GameScene)?.createReaper()
+                ((self.view as! SKView).scene as? GameScene)?.createReaper()
             }
             else {
-                ((self.view as SKView).scene as? GameScene)?.allShapesJumpIn()
+                ((self.view as! SKView).scene as? GameScene)?.allShapesJumpIn()
             }
         }
     }
     
     func addGestureRecognizers(){
-        let skView = self.view as SKView
+        let skView = self.view as! SKView
         skView.addGestureRecognizer(longPress)
         skView.addGestureRecognizer(tapWithOneFinger)
         skView.addGestureRecognizer(tapWithTwoFinger)
@@ -147,7 +147,7 @@ public class GameViewController: UIViewController {
     }
     
     func removeGestureRecognizers(){
-        let skView = self.view as SKView
+        let skView = self.view as! SKView
         skView.removeGestureRecognizer(longPress)
         skView.removeGestureRecognizer(tapWithOneFinger)
         skView.removeGestureRecognizer(tapWithTwoFinger)

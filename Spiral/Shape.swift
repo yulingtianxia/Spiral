@@ -21,7 +21,6 @@ class Shape: SKSpriteNode {
     }
     
     init(name:String,imageName:String){
-        
         super.init(texture: SKTexture(imageNamed: imageName),color:SKColor.clearColor(), size: CGSizeMake(radius*2, radius*2))
         self.physicsBody = SKPhysicsBody(circleOfRadius: radius)
         self.physicsBody!.usesPreciseCollisionDetection = true

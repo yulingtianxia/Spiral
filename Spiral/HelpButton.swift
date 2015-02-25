@@ -18,11 +18,11 @@ class HelpButton: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
         if let scene = HelpScene.unarchiveFromFile("HelpScene") as? HelpScene{
             let reveal = SKTransition.flipHorizontalWithDuration(0.5)
             self.scene?.view?.presentScene(scene, transition: reveal)
-            (UIApplication.sharedApplication().keyWindow?.rootViewController as GameViewController).addGestureRecognizers()
+            (UIApplication.sharedApplication().keyWindow?.rootViewController as! GameViewController).addGestureRecognizers()
         }
     }
 }

@@ -263,7 +263,7 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
     override func didSimulatePhysics() {
         if Data.gameOver {
             for child in self.children{
-                (child as SKNode).removeAllActions()
+                (child as! SKNode).removeAllActions()
             }
         }
     }

@@ -15,7 +15,7 @@ class PlayerContactVisitor:ContactVisitor{
 //        println(thisNode.name+"->"+otherNode.name)
     }
     func visitKiller(body:SKPhysicsBody){
-        let thisNode = self.body.node as Player
+        let thisNode = self.body.node as! Player
         let otherNode = body.node!
 
         if thisNode.shield {
@@ -25,14 +25,14 @@ class PlayerContactVisitor:ContactVisitor{
                 achievement.percentComplete += 1
             }
             GameKitHelper.sharedGameKitHelper().updateAchievement(achievement, identifier: kClean100KillerAchievementID)
-            (thisNode.parent as GameScene).soundManager.playKiller()
+            (thisNode.parent as! GameScene).soundManager.playKiller()
         }
         else {
             Data.gameOver = true
         }
     }
     func visitScore(body:SKPhysicsBody){
-        let thisNode = self.body.node as Player
+        let thisNode = self.body.node as! Player
         let otherNode = body.node
 
         Data.score += 2
@@ -41,10 +41,10 @@ class PlayerContactVisitor:ContactVisitor{
             achievement.percentComplete += 0.2
         }
         GameKitHelper.sharedGameKitHelper().updateAchievement(achievement, identifier: kCatch500ScoreAchievementID)
-        (thisNode.parent as GameScene).soundManager.playScore()
+        (thisNode.parent as! GameScene).soundManager.playScore()
     }
     func visitShield(body:SKPhysicsBody){
-        let thisNode = self.body.node as Player
+        let thisNode = self.body.node as! Player
         let otherNode = body.node
 
         thisNode.shield = true
@@ -54,6 +54,6 @@ class PlayerContactVisitor:ContactVisitor{
             achievement.percentComplete += 0.2
         }
         GameKitHelper.sharedGameKitHelper().updateAchievement(achievement, identifier: kCatch500ShieldAchievementID)
-        (thisNode.parent as GameScene).soundManager.playShield()
+        (thisNode.parent as! GameScene).soundManager.playShield()
     }
 }

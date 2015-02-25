@@ -29,7 +29,7 @@ class HelpScene: SKScene {
     }
     
     override func didMoveToView(view: SKView) {
-        let bg = childNodeWithName("background") as SKSpriteNode
+        let bg = childNodeWithName("background") as! SKSpriteNode
         let w = bg.size.width
         let h = bg.size.height
         let scale = max(view.frame.width/w, view.frame.height/h)

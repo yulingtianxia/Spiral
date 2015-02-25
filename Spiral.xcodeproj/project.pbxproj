@@ -50,8 +50,8 @@
 		A4B104BE19D6F5EA008BD1BA /* killer.wav in Resources */ = {isa = PBXBuildFile; fileRef = A4B104BD19D6F5EA008BD1BA /* killer.wav */; };
 		A4B2788519EA781C00A2D065 /* GameCenterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B2788419EA781C00A2D065 /* GameCenterButton.swift */; };
 		A4D3462D19F9003F00C99B28 /* HelpScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4D3462F19F9003F00C99B28 /* HelpScene.sks */; };
-		A4DCE0201A8397A600EA39B1 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DCE01E1A8397A600EA39B1 /* Crashlytics.framework */; };
-		A4DCE0211A8397A600EA39B1 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DCE01F1A8397A600EA39B1 /* Fabric.framework */; };
+		A4DCE0281A839E0E00EA39B1 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DCE0261A839E0E00EA39B1 /* Crashlytics.framework */; };
+		A4DCE0291A839E0E00EA39B1 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DCE0271A839E0E00EA39B1 /* Fabric.framework */; };
 		A4E7595019F7B8E600C08783 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = A4E7594E19F7B8E600C08783 /* spark.png */; };
 		A4E7595A19F7BAD600C08783 /* spark.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4E7595919F7BAD600C08783 /* spark.sks */; };
 		A4EEE3B619F6917900A43108 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4EEE3B519F6917900A43108 /* libWeChatSDK.a */; };
@@ -136,8 +136,8 @@
 		A4B104BD19D6F5EA008BD1BA /* killer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = killer.wav; sourceTree = "<group>"; };
 		A4B2788419EA781C00A2D065 /* GameCenterButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCenterButton.swift; sourceTree = "<group>"; };
 		A4D3462E19F9003F00C99B28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Base; path = Base.lproj/HelpScene.sks; sourceTree = "<group>"; };
-		A4DCE01E1A8397A600EA39B1 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
-		A4DCE01F1A8397A600EA39B1 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		A4DCE0261A839E0E00EA39B1 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		A4DCE0271A839E0E00EA39B1 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		A4E7594E19F7B8E600C08783 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		A4E7595919F7BAD600C08783 /* spark.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = spark.sks; sourceTree = "<group>"; };
 		A4EEE3B319F6917900A43108 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
@@ -163,9 +163,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A490225E19B9D8EE009114ED /* Social.framework in Frameworks */,
-				A4DCE0211A8397A600EA39B1 /* Fabric.framework in Frameworks */,
+				A4DCE0291A839E0E00EA39B1 /* Fabric.framework in Frameworks */,
 				D43F5311657C4A8E9E4CECD3 /* libPods.a in Frameworks */,
-				A4DCE0201A8397A600EA39B1 /* Crashlytics.framework in Frameworks */,
+				A4DCE0281A839E0E00EA39B1 /* Crashlytics.framework in Frameworks */,
 				A4EEE3B619F6917900A43108 /* libWeChatSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -387,8 +387,8 @@
 		F7CB57B3A321435B8FBA1FD7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A4DCE01E1A8397A600EA39B1 /* Crashlytics.framework */,
-				A4DCE01F1A8397A600EA39B1 /* Fabric.framework */,
+				A4DCE0261A839E0E00EA39B1 /* Crashlytics.framework */,
+				A4DCE0271A839E0E00EA39B1 /* Fabric.framework */,
 				5840075B84044E92A52535DA /* libPods.a */,
 			);
 			name = Frameworks;
@@ -661,6 +661,82 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		A4220DBC1A8DF66000C8E12E /* DailyBuild */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				"LIBRARY_SEARCH_PATHS[arch=*]" = /Users/yangxiaoyu/Documents/Code/Spiral/Spiral;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = DailyBuild;
+		};
+		A4220DBD1A8DF66000C8E12E /* DailyBuild */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BCC118355E4463D84D833AC /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = Spiral/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Spiral",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Spiral/Spiral-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = DailyBuild;
+		};
+		A4220DBE1A8DF66000C8E12E /* DailyBuild */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SpiralTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Spiral.app/Spiral";
+			};
+			name = DailyBuild;
+		};
 		A4787762197113D000F6F611 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -833,27 +909,30 @@
 			buildConfigurations = (
 				A4787762197113D000F6F611 /* Debug */,
 				A4787763197113D000F6F611 /* Release */,
+				A4220DBC1A8DF66000C8E12E /* DailyBuild */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = DailyBuild;
 		};
 		A4787764197113D000F6F611 /* Build configuration list for PBXNativeTarget "Spiral" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A4787765197113D000F6F611 /* Debug */,
 				A4787766197113D000F6F611 /* Release */,
+				A4220DBD1A8DF66000C8E12E /* DailyBuild */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = DailyBuild;
 		};
 		A4787767197113D000F6F611 /* Build configuration list for PBXNativeTarget "SpiralTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A4787768197113D000F6F611 /* Debug */,
 				A4787769197113D000F6F611 /* Release */,
+				A4220DBE1A8DF66000C8E12E /* DailyBuild */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = DailyBuild;
 		};
 /* End XCConfigurationList section */
 	};

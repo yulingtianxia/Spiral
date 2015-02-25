@@ -16,22 +16,22 @@ class ReaperContactVisitor: ContactVisitor {
     }
     
     func visitKiller(body:SKPhysicsBody){
-        let thisNode = self.body.node as Reaper
+        let thisNode = self.body.node as! Reaper
         let otherNode = body.node!
 
-        (thisNode.parent as GameScene).soundManager.playKiller()
+        (thisNode.parent as! GameScene).soundManager.playKiller()
     }
     
     func visitScore(body:SKPhysicsBody){
-        let thisNode = self.body.node as Reaper
+        let thisNode = self.body.node as! Reaper
         let otherNode = body.node
 
         Data.score += 2
-        (thisNode.parent as GameScene).soundManager.playScore()
+        (thisNode.parent as! GameScene).soundManager.playScore()
     }
     
     func visitShield(body:SKPhysicsBody){
-        let scene = self.body.node?.scene as GameScene
+        let scene = self.body.node?.scene as! GameScene
         let otherNode = body.node
 
         scene.player.shield = true
