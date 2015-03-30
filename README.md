@@ -1,6 +1,8 @@
 Spiral
 ======
 
+[![Join the chat at https://gitter.im/yulingtianxia/Spiral](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/yulingtianxia/Spiral?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 A Game Developed with Swift and SpriteKit  
 
 ![](http://byetz.img41.wal8.com/img41/425047_20140623222918/140557437844.gif)  
