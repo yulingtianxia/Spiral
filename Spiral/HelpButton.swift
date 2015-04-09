@@ -10,7 +10,7 @@ import SpriteKit
 
 class HelpButton: SKSpriteNode {
     
-    override init(){
+    init(){
         super.init(texture: SKTexture(imageNamed: "help"), color: SKColor.clearColor(), size: CGSize(width: 30, height: 30))
         self.userInteractionEnabled = true
     }

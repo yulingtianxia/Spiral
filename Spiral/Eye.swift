@@ -9,7 +9,7 @@
 import SpriteKit
 
 class Eye: SKSpriteNode {
-    override init() {
+    init() {
         super.init(texture: SKTexture(imageNamed: "eye"), color: UIColor.clearColor(), size: CGSize(width: 20, height: 20))
         physicsBody = SKPhysicsBody(circleOfRadius: 10)
         physicsBody?.categoryBitMask = eyeCategory
