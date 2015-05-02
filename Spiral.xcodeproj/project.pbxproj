@@ -39,6 +39,9 @@
 		A48F921219724362007BDAE4 /* NodeCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48F921119724362007BDAE4 /* NodeCategories.swift */; };
 		A48F921419724822007BDAE4 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48F921319724822007BDAE4 /* Player.swift */; };
 		A490225E19B9D8EE009114ED /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A434A14C197696BC00F4C94B /* Social.framework */; };
+		A492F6771AF346B2004B040B /* ZenMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A492F6761AF346B2004B040B /* ZenMap.swift */; };
+		A492F6791AF3B0D8004B040B /* Bamboo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A492F6781AF3B0D8004B040B /* Bamboo.swift */; };
+		A492F67B1AF3C67C004B040B /* ZenModeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A492F67A1AF3C67C004B040B /* ZenModeScene.swift */; };
 		A49B03F81A772AA9009D8F40 /* Tips.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B03F71A772AA9009D8F40 /* Tips.swift */; };
 		A4B05A3A19E9642900B303C0 /* spiral.sketch in Resources */ = {isa = PBXBuildFile; fileRef = A4B05A3919E9642900B303C0 /* spiral.sketch */; };
 		A4B104AD19D6DB30008BD1BA /* jump.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A4B104AC19D6DB30008BD1BA /* jump.mp3 */; };
@@ -52,6 +55,7 @@
 		A4D3462D19F9003F00C99B28 /* HelpScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4D3462F19F9003F00C99B28 /* HelpScene.sks */; };
 		A4DCE0281A839E0E00EA39B1 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DCE0261A839E0E00EA39B1 /* Crashlytics.framework */; };
 		A4DCE0291A839E0E00EA39B1 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DCE0271A839E0E00EA39B1 /* Fabric.framework */; };
+		A4DF90DD1AF0C92200CD8CEE /* Bamboo.pcvd in Resources */ = {isa = PBXBuildFile; fileRef = A4DF90DC1AF0C92200CD8CEE /* Bamboo.pcvd */; };
 		A4E7595019F7B8E600C08783 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = A4E7594E19F7B8E600C08783 /* spark.png */; };
 		A4E7595A19F7BAD600C08783 /* spark.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4E7595919F7BAD600C08783 /* spark.sks */; };
 		A4EEE3B619F6917900A43108 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4EEE3B519F6917900A43108 /* libWeChatSDK.a */; };
@@ -125,6 +129,9 @@
 		A48F921319724822007BDAE4 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		A490225A19B9D89F009114ED /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A490225C19B9D8A8009114ED /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		A492F6761AF346B2004B040B /* ZenMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZenMap.swift; sourceTree = "<group>"; };
+		A492F6781AF3B0D8004B040B /* Bamboo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bamboo.swift; sourceTree = "<group>"; };
+		A492F67A1AF3C67C004B040B /* ZenModeScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZenModeScene.swift; sourceTree = "<group>"; };
 		A49B03F71A772AA9009D8F40 /* Tips.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tips.swift; sourceTree = "<group>"; };
 		A4B05A3919E9642900B303C0 /* spiral.sketch */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = spiral.sketch; sourceTree = "<group>"; };
 		A4B104AC19D6DB30008BD1BA /* jump.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jump.mp3; sourceTree = "<group>"; };
@@ -138,6 +145,7 @@
 		A4D3462E19F9003F00C99B28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Base; path = Base.lproj/HelpScene.sks; sourceTree = "<group>"; };
 		A4DCE0261A839E0E00EA39B1 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		A4DCE0271A839E0E00EA39B1 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		A4DF90DC1AF0C92200CD8CEE /* Bamboo.pcvd */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Bamboo.pcvd; sourceTree = "<group>"; };
 		A4E7594E19F7B8E600C08783 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		A4E7595919F7BAD600C08783 /* spark.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = spark.sks; sourceTree = "<group>"; };
 		A4EEE3B319F6917900A43108 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
@@ -208,6 +216,7 @@
 				A46323EF1A02639E00902D3A /* 颜体.ttf */,
 				A47E78E519F39C4E003D5143 /* vortexShader.fsh */,
 				A4B05A3919E9642900B303C0 /* spiral.sketch */,
+				A4DF90DC1AF0C92200CD8CEE /* Bamboo.pcvd */,
 				A4B104BD19D6F5EA008BD1BA /* killer.wav */,
 				A4B104BB19D6F3A0008BD1BA /* shield.wav */,
 				A4B104B919D6F2C0008BD1BA /* score.mp3 */,
@@ -331,6 +340,7 @@
 			isa = PBXGroup;
 			children = (
 				A478774D197113D000F6F611 /* GameScene.swift */,
+				A492F67A1AF3C67C004B040B /* ZenModeScene.swift */,
 				A478774B197113D000F6F611 /* GameScene.sks */,
 				A45A9FA219F3E7250087C192 /* HelpScene.swift */,
 				A4D3462F19F9003F00C99B28 /* HelpScene.sks */,
@@ -376,8 +386,10 @@
 			isa = PBXGroup;
 			children = (
 				A478776A197113DB00F6F611 /* Map.swift */,
+				A492F6761AF346B2004B040B /* ZenMap.swift */,
 				A4FF9273197526830060CE6D /* Display.swift */,
 				A424E2F019E78176007FE1C1 /* Background.swift */,
+				A492F6781AF3B0D8004B040B /* Bamboo.swift */,
 				A4F3C60F19E90FFF000514AC /* Rope.swift */,
 				A4F3504F19FBA41B00F6B8DF /* Eye.swift */,
 			);
@@ -488,6 +500,7 @@
 				A46323F11A0263AA00902D3A /* 颜体.ttf in Resources */,
 				A4B104B619D6ECEF008BD1BA /* gameover.mp3 in Resources */,
 				A4E7595019F7B8E600C08783 /* spark.png in Resources */,
+				A4DF90DD1AF0C92200CD8CEE /* Bamboo.pcvd in Resources */,
 				A4F92B8719DCF69600C87D0E /* Localizable.strings in Resources */,
 				A4B104BA19D6F2C0008BD1BA /* score.mp3 in Resources */,
 				A4E7595A19F7BAD600C08783 /* spark.sks in Resources */,
@@ -573,6 +586,7 @@
 				A46D8C011976BF9400A32924 /* Shield.swift in Sources */,
 				A47D3D1E19741E54005AF736 /* Score.swift in Sources */,
 				A478777119712E9D00F6F611 /* Shape.swift in Sources */,
+				A492F6771AF346B2004B040B /* ZenMap.swift in Sources */,
 				A47D3D0D1973DBE4005AF736 /* ContactVisitor.swift in Sources */,
 				A45A65E01986073B00EA40D7 /* SoundManager.swift in Sources */,
 				A47D3D1619740AA3005AF736 /* PlayerContactVisitor.swift in Sources */,
@@ -593,11 +607,13 @@
 				A49B03F81A772AA9009D8F40 /* Tips.swift in Sources */,
 				A434A14B1976955000F4C94B /* ShareButton.swift in Sources */,
 				A4EEE3B919F6A45200A43108 /* SendWX.m in Sources */,
+				A492F6791AF3B0D8004B040B /* Bamboo.swift in Sources */,
 				A45A9FA319F3E7250087C192 /* HelpScene.swift in Sources */,
 				A47D3D1A19741859005AF736 /* ScoreContactVisitor.swift in Sources */,
 				A48F921419724822007BDAE4 /* Player.swift in Sources */,
 				A41591E719CC71C500C3420B /* GameKitHelper.m in Sources */,
 				A478774A197113D000F6F611 /* AppDelegate.swift in Sources */,
+				A492F67B1AF3C67C004B040B /* ZenModeScene.swift in Sources */,
 				A48F921219724362007BDAE4 /* NodeCategories.swift in Sources */,
 				A4FF9276197529B50060CE6D /* Data.swift in Sources */,
 			);

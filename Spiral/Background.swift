@@ -7,7 +7,9 @@
 //
 
 import SpriteKit
-
+/**
+*  游戏背景绘制
+*/
 class Background: SKSpriteNode {
     init(size:CGSize){
         super.init(texture: SKTexture(imageNamed: "bg"),color:SKColor.clearColor(), size: size)

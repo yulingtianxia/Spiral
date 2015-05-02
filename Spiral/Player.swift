@@ -32,13 +32,11 @@ class Player: Shape {
         light.categoryBitMask = playerLightCategory
     }
     
-    func restart(map:Map) {
-        self.alpha = 1
-        self.removeAllActions()
-        self.lineNum = 3
-        self.moveSpeed = 90
-        self.shield = false
-        self.position = map.points[self.lineNum]
-        self.runInMap(map)
+    func restart() {
+        alpha = 1
+        removeAllActions()
+        lineNum = 3
+        moveSpeed = 90
+        shield = false
     }
 }

@@ -1,24 +1,24 @@
 //
-//  Rope.swift
+//  Bamboo.swift
 //  Spiral
 //
-//  Created by 杨萧玉 on 14-10-11.
-//  Copyright (c) 2014年 杨萧玉. All rights reserved.
+//  Created by 杨萧玉 on 15/5/1.
+//  Copyright (c) 2015年 杨萧玉. All rights reserved.
 //
 
 import SpriteKit
 
-class Rope: SKSpriteNode {
+class Bamboo: SKSpriteNode {
     let maxLength:CGFloat
-    let fixWidth:CGFloat = 5
+    let fixWidth:CGFloat = 8
     init(length:CGFloat){
         
-        let texture = SKTexture(imageNamed: "rope")
+        let texture = SKTexture(imageNamed: "bamboo2")
         maxLength = texture.size().height / (texture.size().width / fixWidth)
         let size = CGSize(width: fixWidth, height: min(length,maxLength))
         super.init(texture: SKTexture(rect: CGRect(origin: CGPointZero, size: CGSize(width: 1, height: min(length / maxLength, 1))), inTexture: texture),color:SKColor.clearColor(), size: size)
-//        self.normalTexture = self.texture?.textureByGeneratingNormalMapWithSmoothness(0.5, contrast: 0.5)
-//        self.lightingBitMask = playerLightCategory|killerLightCategory|scoreLightCategory|shieldLightCategory|bgLightCategory|reaperLightCategory
+        //        self.normalTexture = self.texture?.textureByGeneratingNormalMapWithSmoothness(0.5, contrast: 0.5)
+        //        self.lightingBitMask = playerLightCategory|killerLightCategory|scoreLightCategory|shieldLightCategory|bgLightCategory|reaperLightCategory
     }
     
     required init(coder aDecoder: NSCoder) {

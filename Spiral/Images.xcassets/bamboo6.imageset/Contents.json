@@ -2,8 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "ropeH.png"
+      "filename" : "bamboo6.pdf"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",

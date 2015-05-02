@@ -1,22 +1,22 @@
 //
-//  GameScene.swift
+//  ZenModeScene.swift
 //  Spiral
 //
-//  Created by 杨萧玉 on 14-7-12.
-//  Copyright (c) 2014年 杨萧玉. All rights reserved.
+//  Created by 杨萧玉 on 15/5/1.
+//  Copyright (c) 2015年 杨萧玉. All rights reserved.
 //
 
 import SpriteKit
 
-class GameScene: SKScene ,SKPhysicsContactDelegate{
+class ZenModeScene: SKScene, SKPhysicsContactDelegate {
+    let map:ZenMap
     var player:Player
-    let map:Map
     let display:Display
     let soundManager = SoundManager()
     let background:Background
     var nextShapeName = "Killer"
     let nextShape = SKSpriteNode(imageNamed: "killer")
-    let eye = Eye()
+//    let eye = Eye()
     required init(coder: NSCoder) {
         fatalError("NSCoding not supported")
     }
@@ -25,17 +25,17 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
         soundManager.playBackGround()
         let center = CGPointMake(size.width/2, size.height/2)
         player = Player()
-        map = Map(origin:center, layer: 5, size:size)
-        player.position = map.points[player.lineNum]
+        map = ZenMap(origin:center, layer: 5, size:size)
+        player.position = map.points[player.pathOrientation]![player.lineNum]
         display = Display()
         Data.display = display
         background = Background(size: size)
         background.position = center
         nextShape.size = CGSize(width: 50, height: 50)
-        nextShape.position = self.map.points[0]
+        nextShape.position = self.map.points[.right]![0]
         nextShape.physicsBody = nil
         nextShape.alpha = 0.4
-        eye.position = map.points.last! as CGPoint
+//        eye.position = map.points.last! as CGPoint
         super.init(size:size)
         physicsWorld.gravity = CGVectorMake(0, 0)
         physicsWorld.contactDelegate = self
@@ -44,15 +44,15 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
         addChild(player)
         addChild(display)
         addChild(nextShape)
-        addChild(eye)
-        eye.lookAtNode(player)
+//        addChild(eye)
+//        eye.lookAtNode(player)
         display.setPosition()
-        player.runInMap(map)
+        player.runInZenMap(map)
         nodeFactory()
         //Observe Notification
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pause"), name: UIApplicationWillResignActiveNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pause"), name: UIApplicationDidEnterBackgroundNotification, object: nil)
-
+        
     }
     
     override func didMoveToView(view: SKView) {
@@ -72,7 +72,7 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
         }
         else if player.lineNum>3{
             calNewLocationOfShape(player)
-            player.runInMap(map)
+            player.runInZenMap(map)
             soundManager.playJump()
         }
     }
@@ -83,7 +83,7 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
                 if let shape = node as? Shape {
                     if shape.lineNum>3 {
                         calNewLocationOfShape(shape)
-                        shape.runInMap(map)
+                        shape.runInZenMap(map)
                     }
                 }
             }
@@ -97,8 +97,8 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
             if Data.reaperNum>0 {
                 Data.reaperNum--
                 shape.lineNum = 0
-                shape.position = self.map.points[shape.lineNum]
-                shape.runInMap(self.map)
+                shape.position = self.map.points[shape.pathOrientation]![shape.lineNum]
+                shape.runInZenMap(self.map)
                 self.addChild(shape)
             }
             
@@ -111,14 +111,14 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
             if let shape = node as? Shape {
                 shape.removeAllActions()
                 shape.moveSpeed += Data.speedScale * shape.speedUpBase
-                shape.runInMap(map)
+                shape.runInZenMap(map)
             }
         }
     }
     
     func hideGame(){
         map.alpha = 0.2
-        eye.alpha = 0.2
+//        eye.alpha = 0.2
         background.alpha = 0.2
         for node in self.children{
             if let shape = node as? Shape {
@@ -130,7 +130,7 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
     
     func showGame(){
         map.alpha = 1
-        eye.alpha = 1
+//        eye.alpha = 1
         background.alpha = 0.5
         for node in self.children{
             if let shape = node as? Shape {
@@ -150,15 +150,15 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
             
         }
         map.alpha = 1
-        eye.alpha = 1
-        if eye.parent == nil {
-            addChild(eye)
-        }
+//        eye.alpha = 1
+//        if eye.parent == nil {
+//            addChild(eye)
+//        }
         background.alpha = 0.5
         Data.restart()
         player.restart()
-        player.position = map.points[player.lineNum]
-        player.runInMap(map)
+        player.position = map.points[player.pathOrientation]![player.lineNum]
+        player.runInZenMap(map)
         soundManager.playBackGround()
     }
     
@@ -168,10 +168,10 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
         }
         let spacing = map.spacing
         let scale = CGFloat((shape.lineNum/4-1)*2+1)/CGFloat(shape.lineNum/4*2+1)
-        let newDistance = shape.calDistanceInMap(map)*scale
+        let newDistance = shape.calDistanceInZenMap(map)*scale
         shape.lineNum-=4
         shape.removeAllActions()
-        let nextPoint = map.points[shape.lineNum+1]
+        let nextPoint = map.points[shape.pathOrientation]![shape.lineNum+1]
         switch shape.lineNum%4{
         case 0:
             shape.position = CGPointMake(nextPoint.x, nextPoint.y+newDistance)
@@ -228,8 +228,8 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
                     shape = Killer()
                 }
                 shape.lineNum = 0
-                shape.position = self.map.points[shape.lineNum]
-                shape.runInMap(self.map)
+                shape.position = self.map.points[shape.pathOrientation]![shape.lineNum]
+                shape.runInZenMap(self.map)
                 self.addChild(shape)
             }
         })])))
@@ -288,9 +288,9 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
             self.runAction(SKAction.runBlock({ [unowned self]() -> Void in
                 self.display.pause()
                 self.soundManager.pauseBackGround()
-            }), completion: { [unowned self]() -> Void in
-                self.view!.paused = true
-            })
+                }), completion: { [unowned self]() -> Void in
+                    self.view!.paused = true
+                })
         }
     }
     
@@ -299,5 +299,4 @@ class GameScene: SKScene ,SKPhysicsContactDelegate{
         display.resume()
         view?.paused = false
     }
-    
 }
