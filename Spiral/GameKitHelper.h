@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#define WantGamePauseNotification @"gamepause"
 @import GameKit;
 
 @protocol GameKitHelperProtocol<NSObject>

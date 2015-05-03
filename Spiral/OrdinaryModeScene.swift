@@ -1,41 +1,39 @@
 //
-//  ZenModeScene.swift
+//  OrdinaryModeScene.swift
 //  Spiral
 //
-//  Created by 杨萧玉 on 15/5/1.
+//  Created by 杨萧玉 on 15/5/3.
 //  Copyright (c) 2015年 杨萧玉. All rights reserved.
 //
 
 import SpriteKit
 
-class ZenModeScene: GameScene {
-    let map:ZenMap
-    let display:ZenDisplay
+class OrdinaryModeScene: GameScene {
+    
+    let map:OrdinaryMap
+    let display:OrdinaryDisplay
+    
     let background:Background
     var nextShapeName = "Killer"
     let nextShape = SKSpriteNode(imageNamed: "killer")
-//    let eye = Eye()
-    
-    required init(coder: NSCoder) {
-        fatalError("NSCoding not supported")
-    }
+    let eye = Eye()
     
     override init(size:CGSize){
         GameKitHelper.sharedGameKitHelper().authenticateLocalPlayer()
-        let center = CGPointMake(size.width/2, size.height/2)
-        map = ZenMap(origin:center, layer: 5, size:size)
         
-        display = ZenDisplay()
+        let center = CGPointMake(size.width/2, size.height/2)
+        map = OrdinaryMap(origin:center, layer: 5, size:size)
+        display = OrdinaryDisplay()
         Data.display = display
         background = Background(size: size)
         background.position = center
         nextShape.size = CGSize(width: 50, height: 50)
-        nextShape.position = self.map.points[.right]![0]
+        nextShape.position = self.map.points[0]
         nextShape.physicsBody = nil
         nextShape.alpha = 0.4
-//        eye.position = map.points.last! as CGPoint
+        eye.position = map.points.last! as CGPoint
         super.init(size:size)
-        player.position = map.points[player.pathOrientation]![player.lineNum]
+        player.position = map.points[player.lineNum]
         physicsWorld.gravity = CGVectorMake(0, 0)
         physicsWorld.contactDelegate = self
         addChild(background)
@@ -43,25 +41,28 @@ class ZenModeScene: GameScene {
         addChild(player)
         addChild(display)
         addChild(nextShape)
-//        addChild(eye)
-//        eye.lookAtNode(player)
+        addChild(eye)
+        eye.lookAtNode(player)
         display.setPosition()
-        player.runInZenMap(map)
+        player.runInOrdinaryMap(map)
         nodeFactory()
         //Observe Notification
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pause"), name: UIApplicationWillResignActiveNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pause"), name: UIApplicationDidEnterBackgroundNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pause"), name: WantGamePauseNotification, object: nil)
+        
     }
     
     deinit{
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
-        
-        
         
     }
     
@@ -75,7 +76,7 @@ class ZenModeScene: GameScene {
         }
         else if player.lineNum>3{
             calNewLocationOfShape(player)
-            player.runInZenMap(map)
+            player.runInOrdinaryMap(map)
             soundManager.playJump()
         }
     }
@@ -86,11 +87,26 @@ class ZenModeScene: GameScene {
                 if let shape = node as? Shape {
                     if shape.lineNum>3 {
                         calNewLocationOfShape(shape)
-                        shape.runInZenMap(map)
+                        shape.runInOrdinaryMap(map)
                     }
                 }
             }
             soundManager.playJump()
+        }
+    }
+    
+    func createReaper(){
+        if !Data.gameOver && view?.paused == false {
+            var shape = Reaper()
+            if Data.reaperNum>0 {
+                Data.reaperNum--
+                shape.lineNum = 0
+                shape.position = self.map.points[shape.lineNum]
+                shape.runInOrdinaryMap(self.map)
+                self.addChild(shape)
+            }
+            
+            
         }
     }
     
@@ -99,14 +115,14 @@ class ZenModeScene: GameScene {
             if let shape = node as? Shape {
                 shape.removeAllActions()
                 shape.moveSpeed += Data.speedScale * shape.speedUpBase
-                shape.runInZenMap(map)
+                shape.runInOrdinaryMap(map)
             }
         }
     }
     
     func hideGame(){
         map.alpha = 0.2
-//        eye.alpha = 0.2
+        eye.alpha = 0.2
         background.alpha = 0.2
         for node in self.children{
             if let shape = node as? Shape {
@@ -118,7 +134,7 @@ class ZenModeScene: GameScene {
     
     func showGame(){
         map.alpha = 1
-//        eye.alpha = 1
+        eye.alpha = 1
         background.alpha = 0.5
         for node in self.children{
             if let shape = node as? Shape {
@@ -138,15 +154,15 @@ class ZenModeScene: GameScene {
             
         }
         map.alpha = 1
-//        eye.alpha = 1
-//        if eye.parent == nil {
-//            addChild(eye)
-//        }
+        eye.alpha = 1
+        if eye.parent == nil {
+            addChild(eye)
+        }
         background.alpha = 0.5
         Data.restart()
         player.restart()
-        player.position = map.points[player.pathOrientation]![player.lineNum]
-        player.runInZenMap(map)
+        player.position = map.points[player.lineNum]
+        player.runInOrdinaryMap(map)
         soundManager.playBackGround()
     }
     
@@ -156,10 +172,10 @@ class ZenModeScene: GameScene {
         }
         let spacing = map.spacing
         let scale = CGFloat((shape.lineNum/4-1)*2+1)/CGFloat(shape.lineNum/4*2+1)
-        let newDistance = shape.calDistanceInZenMap(map)*scale
+        let newDistance = shape.calDistanceInOrdinaryMap(map)*scale
         shape.lineNum-=4
         shape.removeAllActions()
-        let nextPoint = map.points[shape.pathOrientation]![shape.lineNum+1]
+        let nextPoint = map.points[shape.lineNum+1]
         switch shape.lineNum%4{
         case 0:
             shape.position = CGPointMake(nextPoint.x, nextPoint.y+newDistance)
@@ -216,8 +232,8 @@ class ZenModeScene: GameScene {
                     shape = Killer()
                 }
                 shape.lineNum = 0
-                shape.position = self.map.points[shape.pathOrientation]![shape.lineNum]
-                shape.runInZenMap(self.map)
+                shape.position = self.map.points[shape.lineNum]
+                shape.runInOrdinaryMap(self.map)
                 self.addChild(shape)
             }
         })])))
@@ -225,25 +241,7 @@ class ZenModeScene: GameScene {
         
     }
     
-    func imageWithView(view:UIView)->UIImage{
-        UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.opaque, 0.0);
-        view.drawViewHierarchyInRect(view.bounds,afterScreenUpdates:true)
-        let img = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        return img;
-    }
     
-    
-    func imageFromNode(node:SKNode)->UIImage{
-        let tex = self.scene!.view!.textureFromNode(node)
-        let view  = SKView(frame: CGRectMake(0, 0, tex.size().width, tex.size().height))
-        let scene = SKScene(size: tex.size())
-        let sprite  = SKSpriteNode(texture: tex)
-        sprite.position = CGPointMake( CGRectGetMidX(view.frame), CGRectGetMidY(view.frame) );
-        scene.addChild(sprite)
-        view.presentScene(scene)
-        return self.imageWithView(view)
-    }
     
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
@@ -270,7 +268,7 @@ class ZenModeScene: GameScene {
         visitableBodyA.acceptVisitor(visitorB)
     }
     
-    //pause&resume game
+    //pause&resume override game
     override func pause() {
         if !Data.gameOver{
             self.runAction(SKAction.runBlock({ [unowned self]() -> Void in

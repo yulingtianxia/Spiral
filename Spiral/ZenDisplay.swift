@@ -1,20 +1,14 @@
 //
-//  Display.swift
+//  ZenDisplay.swift
 //  Spiral
 //
-//  Created by 杨萧玉 on 14-7-15.
-//  Copyright (c) 2014年 杨萧玉. All rights reserved.
+//  Created by 杨萧玉 on 15/5/3.
+//  Copyright (c) 2015年 杨萧玉. All rights reserved.
 //
 
 import SpriteKit
 
-protocol DisplayData: class{
-    func updateData()
-    func levelUp()
-    func gameOver()
-    func restart()
-}
-class Display: SKNode ,DisplayData{
+class ZenDisplay: SKNode, DisplayData {
     let scoreLabel = SKLabelNode(text: NSLocalizedString("SCORE ", comment: "")+"\(Data.score)")
     let levelLabel = SKLabelNode(text:NSLocalizedString("LEVEL ", comment: "")+"\(Data.level)")
     let highScoreLabel = SKLabelNode(text: NSLocalizedString("HIGHSCORE ", comment: "")+"\(Data.highScore)")
@@ -26,7 +20,7 @@ class Display: SKNode ,DisplayData{
     let share = ShareButton()
     let replay = ReplayButton()
     let gameCenter = GameCenterButton()
-    let help = HelpButton()
+    let help = HelpButton(mode: .Zen)
     
     required init(coder: NSCoder) {
         fatalError("NSCoding not supported")
@@ -78,7 +72,7 @@ class Display: SKNode ,DisplayData{
     
     func levelUp() {
         levelLabel.runAction(SKAction.sequence([SKAction.scaleTo(1.5, duration: 0.5),SKAction.scaleTo(1, duration: 0.5)]))
-        var scene = self.scene as! GameScene
+        let scene = self.scene as! ZenModeScene
         scene.speedUp()
         scene.soundManager.playLevelUp()
     }
@@ -96,7 +90,7 @@ class Display: SKNode ,DisplayData{
         reaperNumLabel.removeFromParent()
         highScoreLabel.text = NSLocalizedString("HIGHSCORE ", comment: "")+"\(Data.highScore)"
         addChild(highScoreLabel)
-        let scene = (self.scene as! GameScene)
+        let scene = self.scene as! ZenModeScene
         scene.hideGame()
         scene.soundManager.playGameOver()
         (UIApplication.sharedApplication().keyWindow?.rootViewController as! GameViewController).removeGestureRecognizers()
@@ -114,21 +108,21 @@ class Display: SKNode ,DisplayData{
             self.addChild(reaperNumLabel)
             self.addChild(reaperIcon)
         }
-        (self.scene as! GameScene).restartGame()
+        (self.scene as! ZenModeScene).restartGame()
         (UIApplication.sharedApplication().keyWindow?.rootViewController as! GameViewController).addGestureRecognizers()
     }
     
     func pause(){
         pauseLabel.text = NSLocalizedString("PAUSE", comment: "")
         pauseLabel.alpha = 1
-        (self.scene as! GameScene).hideGame()
+        (self.scene as! ZenModeScene).hideGame()
     }
     
     func resume(){
         pauseLabel.text = ""
         pauseLabel.alpha = 0
         if !Data.gameOver{
-            (self.scene as! GameScene).showGame()
+            (self.scene as! ZenModeScene).showGame()
         }
     }
 }

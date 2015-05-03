@@ -6,6 +6,19 @@
 //  Copyright (c) 2014年 杨萧玉. All rights reserved.
 //
 import Foundation
+
+enum GameMode {
+    case Ordinary
+    case Zen
+}
+
+protocol DisplayData: class{
+    func updateData()
+    func levelUp()
+    func gameOver()
+    func restart()
+}
+
 public struct Data{
     weak static var display:DisplayData?
     static var updateScore:Int = 5

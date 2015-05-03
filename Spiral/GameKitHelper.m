@@ -10,6 +10,7 @@
 #import <EXTScope.h>
 #import "Spiral-swift.h"
 
+
 @interface GameKitHelper () <GKGameCenterControllerDelegate> {
     BOOL _gameCenterFeaturesEnabled;
 }
@@ -127,8 +128,9 @@
 }
 
 -(void)pause{
-    GameViewController* gvc = (GameViewController*)[self getRootViewController];
-    [((GameScene*)(((SKView*)gvc.view).scene)) pause];
+    [[NSNotificationCenter defaultCenter] postNotificationName:WantGamePauseNotification object:nil];
+//    GameViewController* gvc = (GameViewController*)[self getRootViewController];
+//    [((GameScene*)(((SKView*)gvc.view).scene)) pause];
 }
 
 #pragma mark Achievements Methods

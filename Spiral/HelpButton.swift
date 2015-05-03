@@ -9,10 +9,11 @@
 import SpriteKit
 
 class HelpButton: SKSpriteNode {
-    
-    init(){
+    let mode:GameMode
+    init(mode:GameMode){
+        self.mode = mode
         super.init(texture: SKTexture(imageNamed: "help"), color: SKColor.clearColor(), size: CGSize(width: 30, height: 30))
-        self.userInteractionEnabled = true
+        userInteractionEnabled = true
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -24,12 +25,23 @@ class HelpButton: SKSpriteNode {
         loading.position = CGPoint(x: CGRectGetMidX(self.scene!.frame), y: CGRectGetMidY(self.scene!.frame));
         self.scene?.addChild(loading)
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), { () -> Void in
-            if let scene = HelpScene.unarchiveFromFile("HelpScene") as? HelpScene {
-                loading.removeFromParent()
-                let crossFade = SKTransition.crossFadeWithDuration(2)
-                crossFade.pausesIncomingScene = false
-                self.scene?.view?.presentScene(scene, transition: crossFade)
-                (UIApplication.sharedApplication().keyWindow?.rootViewController as! GameViewController).addGestureRecognizers()
+            switch self.mode {
+            case .Ordinary:
+                if let scene = SKScene.unarchiveFromFile("OrdinaryHelpScene") as? OrdinaryHelpScene {
+                    loading.removeFromParent()
+                    let crossFade = SKTransition.crossFadeWithDuration(2)
+                    crossFade.pausesIncomingScene = false
+                    self.scene?.view?.presentScene(scene, transition: crossFade)
+                    (UIApplication.sharedApplication().keyWindow?.rootViewController as! GameViewController).addGestureRecognizers()
+                }
+            case .Zen:
+                if let scene = SKScene.unarchiveFromFile("ZenHelpScene") as? ZenHelpScene {
+                    loading.removeFromParent()
+                    let crossFade = SKTransition.crossFadeWithDuration(2)
+                    crossFade.pausesIncomingScene = false
+                    self.scene?.view?.presentScene(scene, transition: crossFade)
+                    (UIApplication.sharedApplication().keyWindow?.rootViewController as! GameViewController).addGestureRecognizers()
+                }
             }
         })
     }

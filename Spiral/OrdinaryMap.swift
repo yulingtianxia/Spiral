@@ -8,7 +8,7 @@
 
 import UIKit
 import SpriteKit
-public class Map: SKNode {
+public class OrdinaryMap: SKNode {
     var spacing:CGFloat = 0.0
     var points:[CGPoint] = []
     public convenience init(origin:CGPoint,layer:Int, size:CGSize){

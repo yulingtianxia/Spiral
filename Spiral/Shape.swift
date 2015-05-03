@@ -41,8 +41,8 @@ class Shape: SKSpriteNode {
         self.addChild(light)
     }
     
-    func runInMap(map:Map){
-        let distance = calDistanceInMap(map)
+    func runInOrdinaryMap(map:OrdinaryMap){
+        let distance = calDistanceInOrdinaryMap(map)
         let duration = distance/moveSpeed
         let rotate = SKAction.rotateByAngle(distance/10, duration: Double(duration))
         let move = SKAction.moveTo(map.points[lineNum+1], duration: Double(duration))
@@ -58,12 +58,12 @@ class Shape: SKSpriteNode {
                 }
             }
             else {
-                self.runInMap(map)
+                self.runInOrdinaryMap(map)
             }
             })
     }
     
-    func calDistanceInMap(map:Map)->CGFloat{
+    func calDistanceInOrdinaryMap(map:OrdinaryMap)->CGFloat{
         if self.lineNum==map.points.count {
             return 0
         }

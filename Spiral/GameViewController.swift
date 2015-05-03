@@ -10,8 +10,8 @@ import UIKit
 import SpriteKit
 
 extension SKScene {
-    class func unarchiveFromFile(file : NSString) -> SKNode? {
-        if let path = NSBundle.mainBundle().pathForResource(file as? String, ofType: "sks") {
+    class func unarchiveFromFile(file:String) -> SKNode? {
+        if let path = NSBundle.mainBundle().pathForResource(file, ofType: "sks") {
             var sceneData = NSData(contentsOfFile: path, options: .DataReadingMappedIfSafe, error: nil)!
             var archiver = NSKeyedUnarchiver(forReadingWithData: sceneData)
             
@@ -64,8 +64,8 @@ public class GameViewController: UIViewController {
         
         addGestureRecognizers()
 
-//        let scene = GameScene(size: skView.bounds.size)
-        let scene = ZenModeScene(size: skView.bounds.size)
+        let scene = OrdinaryModeScene(size: skView.bounds.size)
+//        let scene = ZenModeScene(size: skView.bounds.size)
         /* Set the scale mode to scale to fit the window */
         scene.scaleMode = .AspectFill
         skView.presentScene(scene)
@@ -107,29 +107,29 @@ public class GameViewController: UIViewController {
     
     func handleTapWithTwoFingerFrom(recognizer:UILongPressGestureRecognizer) {
         if recognizer.state == .Ended {
-//            ((self.view as SKView).scene as? GameScene)?.createReaper()
+//            ((self.view as! SKView).scene as? OrdinaryModeScene)?.createReaper()
         }
     }
     
     func handlePanFrom(recognizer:UIPanGestureRecognizer) {
         if recognizer.state == .Changed {
-            ((self.view as! SKView).scene as? HelpScene)?.lightWithFinger(recognizer.locationInView(self.view))
+            ((self.view as! SKView).scene as? OrdinaryHelpScene)?.lightWithFinger(recognizer.locationInView(self.view))
         }
         else if recognizer.state == .Ended {
-            ((self.view as! SKView).scene as? HelpScene)?.turnOffLight()
+            ((self.view as! SKView).scene as? OrdinaryHelpScene)?.turnOffLight()
         }
     }
     
     func handleSwipeFrom(recognizer:UISwipeGestureRecognizer) {
         if recognizer.direction == .Right {
-            ((self.view as! SKView).scene as? HelpScene)?.back()
+            ((self.view as! SKView).scene as? OrdinaryHelpScene)?.back()
         }
     }
     
     func handlePinchFrom(recognizer:UIPinchGestureRecognizer) {
         if recognizer.state == .Began {
             if recognizer.scale > 1 {
-                ((self.view as! SKView).scene as? GameScene)?.createReaper()
+                ((self.view as! SKView).scene as? OrdinaryModeScene)?.createReaper()
             }
             else {
                 ((self.view as! SKView).scene as? GameScene)?.allShapesJumpIn()

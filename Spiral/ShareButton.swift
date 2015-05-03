@@ -22,7 +22,7 @@ class ShareButton: SKLabelNode {
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
         let lang = NSUserDefaults.standardUserDefaults().objectForKey("AppleLanguages")?.objectAtIndex(0) as! String
         let scene = self.scene as! GameScene
-        let image = scene.imageFromNode(scene)
+        let image = imageFromNode(scene)
         if lang == "zh-Hans" {
 //            SendWX.sendImageContent(image, withScore: "\(Data.score)")
             SendWX.sendLinkContentWithImage(image, score: "\(Data.score)")
