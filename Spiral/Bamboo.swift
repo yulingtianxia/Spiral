@@ -10,7 +10,7 @@ import SpriteKit
 
 class Bamboo: SKSpriteNode {
     let maxLength:CGFloat
-    let fixWidth:CGFloat = 8
+    let fixWidth:CGFloat = 5
     init(length:CGFloat){
         
         let texture = SKTexture(imageNamed: "bamboo2")

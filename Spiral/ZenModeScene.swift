@@ -73,7 +73,7 @@ class ZenModeScene: GameScene {
         else if view?.paused == true{
             resume()
         }
-        else if player.lineNum>3{
+        else if player.lineNum>0{
             calNewLocationOfShape(player)
             player.runInZenMap(map)
             soundManager.playJump()
@@ -151,28 +151,35 @@ class ZenModeScene: GameScene {
     }
     
     func calNewLocationOfShape(shape:Shape){
-        if shape.lineNum <= 3 {
+        if shape.lineNum == 0 {
             return
         }
         let spacing = map.spacing
-        let scale = CGFloat((shape.lineNum/4-1)*2+1)/CGFloat(shape.lineNum/4*2+1)
+        let scale = CGFloat(shape.lineNum-1)/CGFloat(shape.lineNum)
         let newDistance = shape.calDistanceInZenMap(map)*scale
-        shape.lineNum-=4
+        shape.lineNum--
+        shape.pathOrientation = PathOrientation(rawValue: (shape.pathOrientation.rawValue + 1)%4)!
         shape.removeAllActions()
         let nextPoint = map.points[shape.pathOrientation]![shape.lineNum+1]
-        switch shape.lineNum%4{
+        switch (shape.lineNum + shape.pathOrientation.rawValue)%4{
         case 0:
-            shape.position = CGPointMake(nextPoint.x, nextPoint.y+newDistance)
-        case 1:
-            shape.position = CGPointMake(nextPoint.x+newDistance, nextPoint.y)
-        case 2:
-            shape.position = CGPointMake(nextPoint.x, nextPoint.y-newDistance)
-        case 3:
+            //go right
             shape.position = CGPointMake(nextPoint.x-newDistance, nextPoint.y)
+        case 1:
+            //go down
+            shape.position = CGPointMake(nextPoint.x, nextPoint.y+newDistance)
+        case 2:
+            //go left
+            shape.position = CGPointMake(nextPoint.x+newDistance, nextPoint.y)
+        case 3:
+            //go up
+            shape.position = CGPointMake(nextPoint.x, nextPoint.y-newDistance)
         default:
             println("Why?")
         }
-        
+        if shape.lineNum == 0 {
+            shape.lineNum++
+        }
     }
     
     func nodeFactory(){

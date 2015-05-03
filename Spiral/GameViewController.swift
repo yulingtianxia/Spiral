@@ -64,8 +64,8 @@ public class GameViewController: UIViewController {
         
         addGestureRecognizers()
 
-        let scene = OrdinaryModeScene(size: skView.bounds.size)
-//        let scene = ZenModeScene(size: skView.bounds.size)
+//        let scene = OrdinaryModeScene(size: skView.bounds.size)
+        let scene = ZenModeScene(size: skView.bounds.size)
         /* Set the scale mode to scale to fit the window */
         scene.scaleMode = .AspectFill
         skView.presentScene(scene)

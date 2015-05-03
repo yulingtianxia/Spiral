@@ -9,8 +9,8 @@
 import UIKit
 import SpriteKit
 
-enum PathOrientation {
-    case right
+enum PathOrientation:Int {
+    case right = 0
     case down
     case left
     case up
