@@ -27,7 +27,6 @@ class Player: Shape {
         self.init(name:"Player",imageName:"player")
         self.physicsBody!.categoryBitMask = playerCategory
         self.moveSpeed = 90
-        self.lineNum = 3
         light.lightColor = SKColor(red: 80.0/255, green: 227.0/255, blue: 194.0/255, alpha: 1)
         light.categoryBitMask = playerLightCategory
     }
@@ -35,7 +34,7 @@ class Player: Shape {
     func restart() {
         alpha = 1
         removeAllActions()
-        lineNum = 3
+        lineNum = 0
         moveSpeed = 90
         shield = false
     }

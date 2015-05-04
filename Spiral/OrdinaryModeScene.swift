@@ -66,6 +66,7 @@ class OrdinaryModeScene: GameScene {
         
     }
     
+    //MARK: UI control methods
     
     override func tap(){
         if Data.gameOver {
@@ -95,18 +96,16 @@ class OrdinaryModeScene: GameScene {
         }
     }
     
-    func createReaper(){
+    override func createReaper(){
         if !Data.gameOver && view?.paused == false {
-            var shape = Reaper()
             if Data.reaperNum>0 {
+                var shape = Reaper()
                 Data.reaperNum--
                 shape.lineNum = 0
                 shape.position = self.map.points[shape.lineNum]
-                shape.runInOrdinaryMap(self.map)
+                shape.runInOrdinaryMap(map)
                 self.addChild(shape)
             }
-            
-            
         }
     }
     
@@ -165,6 +164,8 @@ class OrdinaryModeScene: GameScene {
         player.runInOrdinaryMap(map)
         soundManager.playBackGround()
     }
+    
+    //MARK: help methods
     
     func calNewLocationOfShape(shape:Shape){
         if shape.lineNum <= 3 {
@@ -241,7 +242,7 @@ class OrdinaryModeScene: GameScene {
         
     }
     
-    
+    //MARK: SKPhysicsContactDelegate
     
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
@@ -256,7 +257,8 @@ class OrdinaryModeScene: GameScene {
         }
     }
     
-    //pragma mark SKPhysicsContactDelegate
+    //MARK: SKPhysicsContactDelegate
+    
     func didBeginContact(contact:SKPhysicsContact){
         //A->B
         let visitorA = ContactVisitor.contactVisitorWithBody(contact.bodyA, forContact: contact)
@@ -268,7 +270,8 @@ class OrdinaryModeScene: GameScene {
         visitableBodyA.acceptVisitor(visitorB)
     }
     
-    //pause&resume override game
+    //MARK: pause&resume game
+    
     override func pause() {
         if !Data.gameOver{
             self.runAction(SKAction.runBlock({ [unowned self]() -> Void in

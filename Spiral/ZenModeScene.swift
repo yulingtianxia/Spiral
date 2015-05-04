@@ -65,6 +65,7 @@ class ZenModeScene: GameScene {
         
     }
     
+    //MARK: UI control methods
     
     override func tap(){
         if Data.gameOver {
@@ -94,8 +95,24 @@ class ZenModeScene: GameScene {
         }
     }
     
+    override func createReaper(){
+        if !Data.gameOver && view?.paused == false {
+            if Data.reaperNum>0 {
+                Data.reaperNum--
+                for pathNum in 0...3 {
+                    var shape = Reaper()
+                    shape.lineNum = 0
+                    shape.pathOrientation = PathOrientation(rawValue: pathNum)!
+                    shape.position = self.map.points[shape.pathOrientation]![shape.lineNum]
+                    shape.runInZenMap(map)
+                    self.addChild(shape)
+                }
+            }
+        }
+    }
+    
     func speedUp(){
-        for node in self.children{
+        for node in children{
             if let shape = node as? Shape {
                 shape.removeAllActions()
                 shape.moveSpeed += Data.speedScale * shape.speedUpBase
@@ -108,7 +125,7 @@ class ZenModeScene: GameScene {
         map.alpha = 0.2
 //        eye.alpha = 0.2
         background.alpha = 0.2
-        for node in self.children{
+        for node in children{
             if let shape = node as? Shape {
                 shape.alpha = 0.2
             }
@@ -120,7 +137,7 @@ class ZenModeScene: GameScene {
         map.alpha = 1
 //        eye.alpha = 1
         background.alpha = 0.5
-        for node in self.children{
+        for node in children{
             if let shape = node as? Shape {
                 shape.alpha = 1
             }
@@ -149,6 +166,8 @@ class ZenModeScene: GameScene {
         player.runInZenMap(map)
         soundManager.playBackGround()
     }
+    
+    //MARK: help methods
     
     func calNewLocationOfShape(shape:Shape){
         if shape.lineNum == 0 {
@@ -232,26 +251,7 @@ class ZenModeScene: GameScene {
         
     }
     
-    func imageWithView(view:UIView)->UIImage{
-        UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.opaque, 0.0);
-        view.drawViewHierarchyInRect(view.bounds,afterScreenUpdates:true)
-        let img = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        return img;
-    }
-    
-    
-    func imageFromNode(node:SKNode)->UIImage{
-        let tex = self.scene!.view!.textureFromNode(node)
-        let view  = SKView(frame: CGRectMake(0, 0, tex.size().width, tex.size().height))
-        let scene = SKScene(size: tex.size())
-        let sprite  = SKSpriteNode(texture: tex)
-        sprite.position = CGPointMake( CGRectGetMidX(view.frame), CGRectGetMidY(view.frame) );
-        scene.addChild(sprite)
-        view.presentScene(scene)
-        return self.imageWithView(view)
-    }
-    
+    //MARK: lifecycle callback
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
         
@@ -265,7 +265,8 @@ class ZenModeScene: GameScene {
         }
     }
     
-    //pragma mark SKPhysicsContactDelegate
+    //MARK: SKPhysicsContactDelegate
+    
     func didBeginContact(contact:SKPhysicsContact){
         //A->B
         let visitorA = ContactVisitor.contactVisitorWithBody(contact.bodyA, forContact: contact)
@@ -277,7 +278,8 @@ class ZenModeScene: GameScene {
         visitableBodyA.acceptVisitor(visitorB)
     }
     
-    //pause&resume game
+    //MARK: pause&resume game
+    
     override func pause() {
         if !Data.gameOver{
             self.runAction(SKAction.runBlock({ [unowned self]() -> Void in

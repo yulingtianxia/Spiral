@@ -27,7 +27,7 @@ class HelpButton: SKSpriteNode {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), { () -> Void in
             switch self.mode {
             case .Ordinary:
-                if let scene = SKScene.unarchiveFromFile("OrdinaryHelpScene") as? OrdinaryHelpScene {
+                if let scene = OrdinaryHelpScene.unarchiveFromFile("OrdinaryHelpScene") as? OrdinaryHelpScene {
                     loading.removeFromParent()
                     let crossFade = SKTransition.crossFadeWithDuration(2)
                     crossFade.pausesIncomingScene = false
@@ -35,7 +35,7 @@ class HelpButton: SKSpriteNode {
                     (UIApplication.sharedApplication().keyWindow?.rootViewController as! GameViewController).addGestureRecognizers()
                 }
             case .Zen:
-                if let scene = SKScene.unarchiveFromFile("ZenHelpScene") as? ZenHelpScene {
+                if let scene = ZenHelpScene.unarchiveFromFile("ZenHelpScene") as? ZenHelpScene {
                     loading.removeFromParent()
                     let crossFade = SKTransition.crossFadeWithDuration(2)
                     crossFade.pausesIncomingScene = false

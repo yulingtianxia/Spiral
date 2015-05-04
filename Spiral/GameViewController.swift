@@ -64,8 +64,8 @@ public class GameViewController: UIViewController {
         
         addGestureRecognizers()
 
-//        let scene = OrdinaryModeScene(size: skView.bounds.size)
-        let scene = ZenModeScene(size: skView.bounds.size)
+        let scene = OrdinaryModeScene(size: skView.bounds.size)
+//        let scene = ZenModeScene(size: skView.bounds.size)
         /* Set the scale mode to scale to fit the window */
         scene.scaleMode = .AspectFill
         skView.presentScene(scene)
@@ -129,7 +129,7 @@ public class GameViewController: UIViewController {
     func handlePinchFrom(recognizer:UIPinchGestureRecognizer) {
         if recognizer.state == .Began {
             if recognizer.scale > 1 {
-                ((self.view as! SKView).scene as? OrdinaryModeScene)?.createReaper()
+                ((self.view as! SKView).scene as? GameScene)?.createReaper()
             }
             else {
                 ((self.view as! SKView).scene as? GameScene)?.allShapesJumpIn()

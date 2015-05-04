@@ -11,7 +11,7 @@ import SpriteKit
 @objc protocol GameControlProtocol{
     func pause()
     func tap()
-    optional func createReaper()
+    func createReaper()
     func allShapesJumpIn()
     
 }
@@ -34,6 +34,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameControlProtocol{
     }
     
     func tap() {
+        
+    }
+    
+    func createReaper() {
         
     }
     

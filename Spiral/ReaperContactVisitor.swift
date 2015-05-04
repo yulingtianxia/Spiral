@@ -39,9 +39,9 @@ class ReaperContactVisitor: ContactVisitor {
         scene.soundManager.playShield()
     }
     
-    func visitReaper(body:SKPhysicsBody){
-        let thisNode = self.body.node
-        let otherNode = body.node
-        thisNode?.removeFromParent()
-    }
+//    func visitReaper(body:SKPhysicsBody){
+//        let thisNode = self.body.node
+//        let otherNode = body.node
+//        thisNode?.removeFromParent()
+//    }
 }

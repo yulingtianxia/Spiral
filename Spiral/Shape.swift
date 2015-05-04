@@ -15,10 +15,16 @@ enum PathOrientation:Int {
     case left
     case up
 }
+
+func randomPath() -> PathOrientation{
+    let pathNum = Int(arc4random_uniform(4))
+    return PathOrientation(rawValue: pathNum)!
+}
+
 class Shape: SKSpriteNode {
     var radius:CGFloat = 10
     var moveSpeed:CGFloat = 60
-    var pathOrientation:PathOrientation = .right
+    var pathOrientation:PathOrientation = randomPath()
     var lineNum = 0
     let speedUpBase:CGFloat = 50
     var light = SKLightNode()
