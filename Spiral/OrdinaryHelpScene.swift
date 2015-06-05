@@ -12,7 +12,7 @@ class OrdinaryHelpScene: SKScene {
     
     func lightWithFinger(point:CGPoint){
         if let light = self.childNodeWithName("light") as? SKLightNode {
-            light.lightColor = SKColor.brownColor()
+            light.lightColor = SKColor.whiteColor()
             light.position = self.convertPointFromView(point)
         }
     }
