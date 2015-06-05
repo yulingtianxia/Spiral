@@ -9,29 +9,6 @@
 import UIKit
 import SpriteKit
 
-extension SKScene {
-    class func unarchiveFromFile(file:String) -> SKNode? {
-        if let path = NSBundle.mainBundle().pathForResource(file, ofType: "sks") {
-            var sceneData = NSData(contentsOfFile: path, options: .DataReadingMappedIfSafe, error: nil)!
-            var archiver = NSKeyedUnarchiver(forReadingWithData: sceneData)
-            
-            archiver.setClass(self.classForKeyedUnarchiver(), forClassName: "SKScene")
-            let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as! SKScene
-            scene.size = GameKitHelper.sharedGameKitHelper().getRootViewController().view.frame.size
-            archiver.finishDecoding()
-            return scene
-        } else {
-            return nil
-        }
-    }
-}
-
-extension SKLabelNode {
-    func setDefaultFont(){
-        self.fontName = NSLocalizedString("HelveticaNeue-UltraLight", comment: "")
-    }
-}
-
 public class GameViewController: UIViewController {
 
     var longPress:UILongPressGestureRecognizer!
@@ -40,7 +17,6 @@ public class GameViewController: UIViewController {
     var pan:UIPanGestureRecognizer!
     var swipeRight:UISwipeGestureRecognizer!
     var pinch:UIPinchGestureRecognizer!
-    
     
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -62,10 +38,9 @@ public class GameViewController: UIViewController {
         
         pinch = UIPinchGestureRecognizer(target: self, action: Selector("handlePinchFrom:"))
         
-        addGestureRecognizers()
-
-        let scene = OrdinaryModeScene(size: skView.bounds.size)
-//        let scene = ZenModeScene(size: skView.bounds.size)
+//        addGestureRecognizers()
+//        let scene = OrdinaryModeScene(size: skView.bounds.size)
+        let scene = MainScene(size: skView.bounds.size)
         /* Set the scale mode to scale to fit the window */
         scene.scaleMode = .AspectFill
         skView.presentScene(scene)
@@ -114,15 +89,18 @@ public class GameViewController: UIViewController {
     func handlePanFrom(recognizer:UIPanGestureRecognizer) {
         if recognizer.state == .Changed {
             ((self.view as! SKView).scene as? OrdinaryHelpScene)?.lightWithFinger(recognizer.locationInView(self.view))
+            ((self.view as! SKView).scene as? ZenHelpScene)?.lightWithFinger(recognizer.locationInView(self.view))
         }
         else if recognizer.state == .Ended {
             ((self.view as! SKView).scene as? OrdinaryHelpScene)?.turnOffLight()
+            ((self.view as! SKView).scene as? ZenHelpScene)?.turnOffLight()
         }
     }
     
     func handleSwipeFrom(recognizer:UISwipeGestureRecognizer) {
         if recognizer.direction == .Right {
             ((self.view as! SKView).scene as? OrdinaryHelpScene)?.back()
+            ((self.view as! SKView).scene as? ZenHelpScene)?.back()
         }
     }
     

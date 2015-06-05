@@ -22,6 +22,7 @@ class ZenModeScene: GameScene {
     
     override init(size:CGSize){
         GameKitHelper.sharedGameKitHelper().authenticateLocalPlayer()
+        Data.currentMode = .Zen
         let center = CGPointMake(size.width/2, size.height/2)
         map = ZenMap(origin:center, layer: 5, size:size)
         
@@ -33,6 +34,7 @@ class ZenModeScene: GameScene {
         nextShape.position = self.map.points[.right]![0]
         nextShape.physicsBody = nil
         nextShape.alpha = 0.4
+        nextShape.zPosition = 100
 //        eye.position = map.points.last! as CGPoint
         super.init(size:size)
         player.position = map.points[player.pathOrientation]![player.lineNum]
@@ -263,19 +265,6 @@ class ZenModeScene: GameScene {
                 (child as! SKNode).removeAllActions()
             }
         }
-    }
-    
-    //MARK: SKPhysicsContactDelegate
-    
-    func didBeginContact(contact:SKPhysicsContact){
-        //A->B
-        let visitorA = ContactVisitor.contactVisitorWithBody(contact.bodyA, forContact: contact)
-        let visitableBodyB = VisitablePhysicsBody(body: contact.bodyB)
-        visitableBodyB.acceptVisitor(visitorA)
-        //B->A
-        let visitorB = ContactVisitor.contactVisitorWithBody(contact.bodyB, forContact: contact)
-        let visitableBodyA = VisitablePhysicsBody(body: contact.bodyA)
-        visitableBodyA.acceptVisitor(visitorB)
     }
     
     //MARK: pause&resume game

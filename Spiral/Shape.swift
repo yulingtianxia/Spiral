@@ -33,18 +33,23 @@ class Shape: SKSpriteNode {
         fatalError("NSCoding not supported")
     }
     
-    init(name:String,imageName:String){
+    init(name aName:String,imageName:String){
         super.init(texture: SKTexture(imageNamed: imageName),color:SKColor.clearColor(), size: CGSizeMake(radius*2, radius*2))
-        self.physicsBody = SKPhysicsBody(circleOfRadius: radius)
-        self.physicsBody!.usesPreciseCollisionDetection = true
-        self.physicsBody!.collisionBitMask = 0
-        self.physicsBody!.contactTestBitMask = playerCategory|killerCategory|scoreCategory|shieldCategory|reaperCategory
+        physicsBody = SKPhysicsBody(texture: texture, size: size)
+        physicsBody!.usesPreciseCollisionDetection = true
+        physicsBody!.collisionBitMask = mainSceneCategory
+        physicsBody!.contactTestBitMask = playerCategory|killerCategory|scoreCategory|shieldCategory|reaperCategory
         moveSpeed += Data.speedScale * speedUpBase
-        self.name = name
-        self.physicsBody!.angularDamping = 0
-        self.normalTexture = self.texture?.textureByGeneratingNormalMap()
+        name = aName
+        zPosition = 100
+        physicsBody?.angularDamping = 0
+        physicsBody?.linearDamping = 0
+        physicsBody?.restitution = 1
+//        physicsBody?.restitution = 1
+        physicsBody?.friction = 1
+        normalTexture = texture?.textureByGeneratingNormalMap()
         light.enabled = false
-        self.addChild(light)
+        addChild(light)
     }
     
     func runInOrdinaryMap(map:OrdinaryMap){

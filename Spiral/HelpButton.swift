@@ -9,10 +9,15 @@
 import SpriteKit
 
 class HelpButton: SKSpriteNode {
-    let mode:GameMode
-    init(mode:GameMode){
-        self.mode = mode
-        super.init(texture: SKTexture(imageNamed: "help"), color: SKColor.clearColor(), size: CGSize(width: 30, height: 30))
+    init() {
+        let imageString:String
+        switch Data.currentMode {
+        case .Ordinary:
+            imageString = "help_ordinary"
+        case .Zen:
+            imageString = "help_zen"
+        }
+        super.init(texture: SKTexture(imageNamed: imageString), color: SKColor.clearColor(), size: CGSize(width: 30, height: 30))
         userInteractionEnabled = true
     }
     
@@ -22,10 +27,11 @@ class HelpButton: SKSpriteNode {
     
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
         let loading = SKSpriteNode(imageNamed: "loading")
-        loading.position = CGPoint(x: CGRectGetMidX(self.scene!.frame), y: CGRectGetMidY(self.scene!.frame));
+        loading.position = CGPoint(x: CGRectGetMidX(self.scene!.frame), y: CGRectGetMidY(self.scene!.frame))
+        loading.zPosition = 150
         self.scene?.addChild(loading)
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), { () -> Void in
-            switch self.mode {
+            switch Data.currentMode {
             case .Ordinary:
                 if let scene = OrdinaryHelpScene.unarchiveFromFile("OrdinaryHelpScene") as? OrdinaryHelpScene {
                     loading.removeFromParent()

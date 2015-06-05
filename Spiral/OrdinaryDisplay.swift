@@ -12,7 +12,7 @@ class OrdinaryDisplay: SKNode ,DisplayData{
     let scoreLabel = SKLabelNode(text: NSLocalizedString("SCORE ", comment: "")+"\(Data.score)")
     let levelLabel = SKLabelNode(text:NSLocalizedString("LEVEL ", comment: "")+"\(Data.level)")
     let highScoreLabel = SKLabelNode(text: NSLocalizedString("HIGHSCORE ", comment: "")+"\(Data.highScore)")
-    let gameOverLabel = SKLabelNode(text: NSLocalizedString("GAME OVER", comment: ""))
+    let gameOverLabel = GameOverIcon(size: CGSize(width: 200, height: 120))
     let pauseLabel = SKLabelNode(text: NSLocalizedString("PAUSE", comment: ""))
     let reaperIcon = SKSpriteNode(imageNamed: "reaper")
     let reaperNumLabel = SKLabelNode(text: String.localizedStringWithFormat("%d", Data.reaperNum))
@@ -20,7 +20,7 @@ class OrdinaryDisplay: SKNode ,DisplayData{
     let share = ShareButton()
     let replay = ReplayButton()
     let gameCenter = GameCenterButton()
-    let help = HelpButton(mode: .Ordinary)
+    let help = HelpButton()
     
     required init(coder: NSCoder) {
         fatalError("NSCoding not supported")
@@ -28,7 +28,7 @@ class OrdinaryDisplay: SKNode ,DisplayData{
     
     override init(){
         super.init()
-        gameOverLabel.fontSize = 60
+        zPosition = 120
         pauseLabel.fontSize = 60
         pauseLabel.alpha = 0
         reaperIcon.size = CGSize(width: 20, height: 20)
@@ -37,15 +37,14 @@ class OrdinaryDisplay: SKNode ,DisplayData{
         scoreLabel.setDefaultFont()
         highScoreLabel.setDefaultFont()
         levelLabel.setDefaultFont()
-        gameOverLabel.setDefaultFont()
         pauseLabel.setDefaultFont()
         reaperNumLabel.setDefaultFont()
         tipsLabel.setDefaultFont()
-        self.addChild(scoreLabel)
-        self.addChild(levelLabel)
-        self.addChild(pauseLabel)
-        self.addChild(reaperIcon)
-        self.addChild(reaperNumLabel)
+        addChild(scoreLabel)
+        addChild(levelLabel)
+        addChild(pauseLabel)
+        addChild(reaperIcon)
+        addChild(reaperNumLabel)
     }
     
     func setPosition() {
@@ -104,18 +103,16 @@ class OrdinaryDisplay: SKNode ,DisplayData{
         help.removeFromParent()
         highScoreLabel.removeFromParent()
         tipsLabel.removeFromParent()
-        if reaperNumLabel.parent == nil && reaperIcon.parent == nil {
-            self.addChild(reaperNumLabel)
-            self.addChild(reaperIcon)
-        }
-        (self.scene as! OrdinaryModeScene).restartGame()
+        addChild(reaperNumLabel)
+        addChild(reaperIcon)
+        (scene as! OrdinaryModeScene).restartGame()
         (UIApplication.sharedApplication().keyWindow?.rootViewController as! GameViewController).addGestureRecognizers()
     }
     
     func pause(){
         pauseLabel.text = NSLocalizedString("PAUSE", comment: "")
         pauseLabel.alpha = 1
-        (self.scene as! OrdinaryModeScene).hideGame()
+        (scene as! OrdinaryModeScene).hideGame()
     }
     
     func resume(){

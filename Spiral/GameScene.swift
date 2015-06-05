@@ -44,4 +44,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameControlProtocol{
     func allShapesJumpIn() {
         
     }
+    
+    //MARK: SKPhysicsContactDelegate
+    
+    func didBeginContact(contact:SKPhysicsContact){
+        //A->B
+        let visitorA = ContactVisitor.contactVisitorWithBody(contact.bodyA, forContact: contact)
+        let visitableBodyB = VisitablePhysicsBody(body: contact.bodyB)
+        visitableBodyB.acceptVisitor(visitorA)
+        //B->A
+        let visitorB = ContactVisitor.contactVisitorWithBody(contact.bodyB, forContact: contact)
+        let visitableBodyA = VisitablePhysicsBody(body: contact.bodyA)
+        visitableBodyA.acceptVisitor(visitorB)
+    }
 }

@@ -9,15 +9,10 @@
 import SpriteKit
 
 class OrdinaryHelpScene: SKScene {
-//    private static let sharedInstance = HelpScene.unarchiveFromFile("HelpScene") as? HelpScene
-//    
-//    class var sharedHelpScene : HelpScene? {
-//        return sharedInstance
-//    }
     
     func lightWithFinger(point:CGPoint){
         if let light = self.childNodeWithName("light") as? SKLightNode {
-            light.lightColor = SKColor.whiteColor()
+            light.lightColor = SKColor.brownColor()
             light.position = self.convertPointFromView(point)
         }
     }

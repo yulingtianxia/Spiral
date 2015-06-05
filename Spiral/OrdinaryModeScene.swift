@@ -20,9 +20,10 @@ class OrdinaryModeScene: GameScene {
     
     override init(size:CGSize){
         GameKitHelper.sharedGameKitHelper().authenticateLocalPlayer()
-        
+        Data.currentMode = .Ordinary
         let center = CGPointMake(size.width/2, size.height/2)
         map = OrdinaryMap(origin:center, layer: 5, size:size)
+        
         display = OrdinaryDisplay()
         Data.display = display
         background = Background(size: size)
@@ -31,6 +32,7 @@ class OrdinaryModeScene: GameScene {
         nextShape.position = self.map.points[0]
         nextShape.physicsBody = nil
         nextShape.alpha = 0.4
+        nextShape.zPosition = 100
         eye.position = map.points.last! as CGPoint
         super.init(size:size)
         player.position = map.points[player.lineNum]
@@ -257,18 +259,7 @@ class OrdinaryModeScene: GameScene {
         }
     }
     
-    //MARK: SKPhysicsContactDelegate
     
-    func didBeginContact(contact:SKPhysicsContact){
-        //A->B
-        let visitorA = ContactVisitor.contactVisitorWithBody(contact.bodyA, forContact: contact)
-        let visitableBodyB = VisitablePhysicsBody(body: contact.bodyB)
-        visitableBodyB.acceptVisitor(visitorA)
-        //B->A
-        let visitorB = ContactVisitor.contactVisitorWithBody(contact.bodyB, forContact: contact)
-        let visitableBodyA = VisitablePhysicsBody(body: contact.bodyA)
-        visitableBodyA.acceptVisitor(visitorB)
-    }
     
     //MARK: pause&resume game
     

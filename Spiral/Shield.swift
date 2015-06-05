@@ -12,7 +12,7 @@ class Shield: Shape {
     convenience init() {
         self.init(name:"Shield",imageName:"shield")
         self.physicsBody!.categoryBitMask = shieldCategory
-        light.lightColor = SKColor.purpleColor()
+        light.lightColor = SKColor(red: 144.0/255, green: 19.0/255, blue: 254.0/255, alpha: 1)
         light.categoryBitMask = shieldLightCategory
     }
 }

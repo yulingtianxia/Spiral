@@ -12,7 +12,7 @@ class Score: Shape {
     convenience init() {
         self.init(name:"Score",imageName:"score")
         self.physicsBody!.categoryBitMask = scoreCategory
-        light.lightColor = SKColor.greenColor()
+        light.lightColor = SKColor(red: 162.0/255, green: 240.0/255, blue: 77.0/255, alpha: 1)
         light.categoryBitMask = scoreLightCategory
     }
 }

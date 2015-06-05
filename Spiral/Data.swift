@@ -22,6 +22,7 @@ protocol DisplayData: class{
 public struct Data{
     weak static var display:DisplayData?
     static var updateScore:Int = 5
+    static var currentMode: GameMode = .Ordinary
     public static var score:Int = 0{
         willSet{
         if newValue>=updateScore{

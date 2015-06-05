@@ -18,11 +18,20 @@ class SoundManager: SKNode {
     private var shieldPlayer:AVAudioPlayer!
     private var killerPlayer:AVAudioPlayer!
     func playBackGround(){
-        if let bgMusicURL =  NSBundle.mainBundle().URLForResource("bg", withExtension: "mp3"){
+        let backgroundFileName:String
+        switch Data.currentMode {
+        case .Ordinary:
+            backgroundFileName = "bg_ordinary"
+        case .Zen:
+            backgroundFileName = "bg_zen"
+        }
+        if let bgMusicURL =  NSBundle.mainBundle().URLForResource(backgroundFileName, withExtension: "mp3") {
             bgMusicPlayer=AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
             bgMusicPlayer.numberOfLoops = -1
-            bgMusicPlayer.prepareToPlay()
-            bgMusicPlayer.play()
+            if !bgMusicPlayer.playing {
+                bgMusicPlayer.prepareToPlay()
+                bgMusicPlayer.play()
+            }
         }
     }
     func stopBackGround(){
