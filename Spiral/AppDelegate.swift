@@ -64,9 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
         if let response = resp as? SendMessageToWXResp {
             if response.errCode == -2{
                 let alert = UIAlertController(title: "错误", message: "分享失败", preferredStyle: .Alert)
-                let action = UIAlertAction(title: "哦", style: .Default, handler: { (action) -> Void in
-                    
-                })
+                let action = UIAlertAction(title: "哦", style: .Default, handler: nil)
                 alert.addAction(action)
                 self.window?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
             }

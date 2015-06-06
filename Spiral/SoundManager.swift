@@ -10,14 +10,8 @@ import UIKit
 import SpriteKit
 import AVFoundation
 class SoundManager: SKNode {
-    private var bgMusicPlayer:AVAudioPlayer!
-    private var jumpPlayer:AVAudioPlayer!
-    private var gameoverPlayer:AVAudioPlayer!
-    private var levelupPlayer:AVAudioPlayer!
-    private var scorePlayer:AVAudioPlayer!
-    private var shieldPlayer:AVAudioPlayer!
-    private var killerPlayer:AVAudioPlayer!
-    func playBackGround(){
+    
+    private lazy var bgMusicPlayer:AVAudioPlayer = {
         let backgroundFileName:String
         switch Data.currentMode {
         case .Ordinary:
@@ -26,64 +20,140 @@ class SoundManager: SKNode {
             backgroundFileName = "bg_zen"
         }
         if let bgMusicURL =  NSBundle.mainBundle().URLForResource(backgroundFileName, withExtension: "mp3") {
-            bgMusicPlayer=AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
-            bgMusicPlayer.numberOfLoops = -1
-            if !bgMusicPlayer.playing {
-                bgMusicPlayer.prepareToPlay()
-                bgMusicPlayer.play()
+            return AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
+        }
+        return AVAudioPlayer()
+    }()
+    
+    private lazy var jumpPlayer:AVAudioPlayer = {
+        switch Data.currentMode {
+        case .Ordinary:
+            if let bgMusicURL =  NSBundle.mainBundle().URLForResource("jump_ordinary", withExtension: "mp3"){
+                return AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
+            }
+        case .Zen:
+            if let bgMusicURL =  NSBundle.mainBundle().URLForResource("jump_zen", withExtension: "wav"){
+                return AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
             }
         }
+        return AVAudioPlayer()
+    }()
+    
+    private lazy var gameoverPlayer:AVAudioPlayer = {
+        switch Data.currentMode {
+        case .Ordinary:
+            if let bgMusicURL =  NSBundle.mainBundle().URLForResource("gameover_ordinary", withExtension: "mp3"){
+                return AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
+            }
+        case .Zen:
+            if let bgMusicURL =  NSBundle.mainBundle().URLForResource("gameover_zen", withExtension: "wav"){
+                return AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
+            }
+        }
+        return AVAudioPlayer()
+    }()
+    
+    private lazy var levelupPlayer:AVAudioPlayer = {
+        switch Data.currentMode {
+        case .Ordinary:
+            if let bgMusicURL =  NSBundle.mainBundle().URLForResource("levelup_ordinary", withExtension: "mp3"){
+                return AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
+            }
+        case .Zen:
+            if let bgMusicURL =  NSBundle.mainBundle().URLForResource("levelup_zen", withExtension: "wav"){
+                return AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
+            }
+        }
+        return AVAudioPlayer()
+    }()
+    
+    private lazy var scorePlayer:AVAudioPlayer = {
+        switch Data.currentMode {
+        case .Ordinary:
+            if let bgMusicURL =  NSBundle.mainBundle().URLForResource("score_ordinary", withExtension: "mp3"){
+                return AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
+            }
+        case .Zen:
+            if let bgMusicURL =  NSBundle.mainBundle().URLForResource("score_zen", withExtension: "wav"){
+                return AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
+            }
+        }
+        return AVAudioPlayer()
+    }()
+    
+    private lazy var shieldPlayer:AVAudioPlayer = {
+        switch Data.currentMode {
+        case .Ordinary:
+            if let bgMusicURL =  NSBundle.mainBundle().URLForResource("shield_ordinary", withExtension: "wav"){
+                return AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
+            }
+        case .Zen:
+            if let bgMusicURL =  NSBundle.mainBundle().URLForResource("shield_zen", withExtension: "mp3"){
+                return AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
+            }
+        }
+        return AVAudioPlayer()
+    }()
+    
+    private lazy var killerPlayer:AVAudioPlayer = {
+        switch Data.currentMode {
+        case .Ordinary:
+            if let bgMusicURL =  NSBundle.mainBundle().URLForResource("killer_ordinary", withExtension: "wav"){
+                return AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
+            }
+        case .Zen:
+            if let bgMusicURL =  NSBundle.mainBundle().URLForResource("killer_zen", withExtension: "wav"){
+                return AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
+            }
+        }
+        return AVAudioPlayer()
+    }()
+    
+    func playBackGround(){
+        bgMusicPlayer.numberOfLoops = -1
+        bgMusicPlayer.prepareToPlay()
+        bgMusicPlayer.play()
     }
+    
     func stopBackGround(){
         bgMusicPlayer.stop()
     }
+    
     func pauseBackGround(){
         bgMusicPlayer.pause()
     }
+    
     func resumeBackGround(){
         bgMusicPlayer.prepareToPlay()
-//        bgMusicPlayer.play()
     }
+    
     func playJump(){
-        if let bgMusicURL =  NSBundle.mainBundle().URLForResource("jump", withExtension: "mp3"){
-            jumpPlayer=AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
-            jumpPlayer.prepareToPlay()
-            jumpPlayer.play()
-        }
+//        jumpPlayer.prepareToPlay()
+        jumpPlayer.play()
     }
+    
     func playGameOver(){
-        if let bgMusicURL =  NSBundle.mainBundle().URLForResource("gameover", withExtension: "mp3"){
-            gameoverPlayer=AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
-            gameoverPlayer.prepareToPlay()
-            gameoverPlayer.play()
-        }
+//        gameoverPlayer.prepareToPlay()
+        gameoverPlayer.play()
     }
+    
     func playLevelUp(){
-        if let bgMusicURL =  NSBundle.mainBundle().URLForResource("levelup", withExtension: "mp3"){
-            levelupPlayer=AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
-            levelupPlayer.prepareToPlay()
-            levelupPlayer.play()
-        }
+//        levelupPlayer.prepareToPlay()
+        levelupPlayer.play()
     }
+    
     func playScore(){
-        if let bgMusicURL =  NSBundle.mainBundle().URLForResource("score", withExtension: "mp3"){
-            scorePlayer=AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
-            scorePlayer.prepareToPlay()
-            scorePlayer.play()
-        }
+//        scorePlayer.prepareToPlay()
+        scorePlayer.play()
     }
+    
     func playShield(){
-        if let bgMusicURL =  NSBundle.mainBundle().URLForResource("shield", withExtension: "wav"){
-            shieldPlayer=AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
-            shieldPlayer.prepareToPlay()
-            shieldPlayer.play()
-        }
+//        shieldPlayer.prepareToPlay()
+        shieldPlayer.play()
     }
+    
     func playKiller(){
-        if let bgMusicURL =  NSBundle.mainBundle().URLForResource("killer", withExtension: "wav"){
-            killerPlayer=AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
-            killerPlayer.prepareToPlay()
-            killerPlayer.play()
-        }
+//        killerPlayer.prepareToPlay()
+        killerPlayer.play()
     }
 }

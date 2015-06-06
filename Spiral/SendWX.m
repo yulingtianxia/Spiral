@@ -31,7 +31,7 @@
     [WXApi sendReq:req];
 }
 
-+ (void) sendLinkContentWithImage:(UIImage *) image score:(NSString *)score
++ (BOOL) sendLinkContentWithImage:(UIImage *) image score:(NSString *)score
 {
     WXMediaMessage *message = [WXMediaMessage message];
     message.title = [NSString stringWithFormat:@"我在Spiral游戏中得了%@分，快来超越我吧！",score];
@@ -48,7 +48,7 @@
     req.message = message;
     req.scene = WXSceneTimeline;
     
-    [WXApi sendReq:req];
+    return [WXApi sendReq:req];
 }
 
 @end

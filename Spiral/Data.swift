@@ -51,20 +51,19 @@ public struct Data{
     static var highScore:Int = 0
     static var gameOver:Bool = false {
         willSet{
-        if newValue {
-        let standardDefaults = NSUserDefaults.standardUserDefaults()
-        Data.highScore = standardDefaults.integerForKey("highscore")
-        if Data.highScore < Data.score {
-        Data.highScore = Data.score
-        standardDefaults.setInteger(Data.score, forKey: "highscore")
-        standardDefaults.synchronize()
-        
-        }
-        display?.gameOver()
-    }
-        else {
-        display?.restart()
-        }
+            if newValue {
+                let standardDefaults = NSUserDefaults.standardUserDefaults()
+                Data.highScore = standardDefaults.integerForKey("highscore")
+                if Data.highScore < Data.score {
+                    Data.highScore = Data.score
+                    standardDefaults.setInteger(Data.score, forKey: "highscore")
+                    standardDefaults.synchronize()
+                }
+                display?.gameOver()
+            }
+            else {
+                display?.restart()
+            }
         }
         didSet{
             sendDataToGameCenter()

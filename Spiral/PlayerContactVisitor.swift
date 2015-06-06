@@ -9,14 +9,16 @@
 import Foundation
 import SpriteKit
 class PlayerContactVisitor:ContactVisitor{
+    
     func visitPlayer(body:SKPhysicsBody){
         let thisNode = self.body.node
         let otherNode = body.node
 //        println(thisNode.name+"->"+otherNode.name)
     }
+    
     func visitKiller(body:SKPhysicsBody){
         let thisNode = self.body.node as! Player
-        let otherNode = body.node!
+        let otherNode = body.node
 
         if thisNode.shield {
             thisNode.shield = false
@@ -31,6 +33,7 @@ class PlayerContactVisitor:ContactVisitor{
             Data.gameOver = true
         }
     }
+    
     func visitScore(body:SKPhysicsBody){
         let thisNode = self.body.node as! Player
         let otherNode = body.node
@@ -43,6 +46,7 @@ class PlayerContactVisitor:ContactVisitor{
         GameKitHelper.sharedGameKitHelper().updateAchievement(achievement, identifier: kCatch500ScoreAchievementID)
         (thisNode.parent as! GameScene).soundManager.playScore()
     }
+    
     func visitShield(body:SKPhysicsBody){
         let thisNode = self.body.node as! Player
         let otherNode = body.node

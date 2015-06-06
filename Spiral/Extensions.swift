@@ -56,7 +56,7 @@ extension SKNode {
             yxy_addChild(node)
         }
         else {
-            println("This node has already a parent!: \(node.description)")
+            println("This node has already a parent!\(node.name)")
         }
     }
     
@@ -65,7 +65,7 @@ extension SKNode {
             yxy_removeFromParent()
         }
         else {
-            println("This node has no parent!: \(description)")
+            println("This node has no parent!\(name)")
         }
     }
     

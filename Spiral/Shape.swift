@@ -35,7 +35,8 @@ class Shape: SKSpriteNode {
     
     init(name aName:String,imageName:String){
         super.init(texture: SKTexture(imageNamed: imageName),color:SKColor.clearColor(), size: CGSizeMake(radius*2, radius*2))
-        physicsBody = SKPhysicsBody(texture: texture, size: size)
+//        physicsBody = SKPhysicsBody(texture: texture, size: size)
+        physicsBody = SKPhysicsBody(circleOfRadius: radius)
         physicsBody!.usesPreciseCollisionDetection = true
         physicsBody!.collisionBitMask = mainSceneCategory
         physicsBody!.contactTestBitMask = playerCategory|killerCategory|scoreCategory|shieldCategory|reaperCategory

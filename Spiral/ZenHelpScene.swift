@@ -21,11 +21,12 @@ class ZenHelpScene: SKScene {
     }
     
     func back() {
+        Data.gameOver = false
         let scene = ZenModeScene(size: self.size)
         let flip = SKTransition.flipHorizontalWithDuration(1)
         flip.pausesIncomingScene = false
         self.scene?.view?.presentScene(scene, transition: flip)
-        Data.gameOver = false
+        
     }
     
     override func didMoveToView(view: SKView) {

@@ -39,7 +39,6 @@ public class GameViewController: UIViewController {
         pinch = UIPinchGestureRecognizer(target: self, action: Selector("handlePinchFrom:"))
         
 //        addGestureRecognizers()
-//        let scene = OrdinaryModeScene(size: skView.bounds.size)
         let scene = MainScene(size: skView.bounds.size)
         /* Set the scale mode to scale to fit the window */
         scene.scaleMode = .AspectFill

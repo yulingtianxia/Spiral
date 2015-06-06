@@ -56,17 +56,23 @@
 		A492F67B1AF3C67C004B040B /* ZenModeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A492F67A1AF3C67C004B040B /* ZenModeScene.swift */; };
 		A49B03F81A772AA9009D8F40 /* Tips.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B03F71A772AA9009D8F40 /* Tips.swift */; };
 		A4B05A3A19E9642900B303C0 /* spiral.sketch in Resources */ = {isa = PBXBuildFile; fileRef = A4B05A3919E9642900B303C0 /* spiral.sketch */; };
-		A4B104AD19D6DB30008BD1BA /* jump.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A4B104AC19D6DB30008BD1BA /* jump.mp3 */; };
+		A4B104AD19D6DB30008BD1BA /* jump_ordinary.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A4B104AC19D6DB30008BD1BA /* jump_ordinary.mp3 */; };
 		A4B104B219D6DF01008BD1BA /* bg_zen.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A4B104B119D6DF01008BD1BA /* bg_zen.mp3 */; };
-		A4B104B619D6ECEF008BD1BA /* gameover.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A4B104B519D6ECEF008BD1BA /* gameover.mp3 */; };
-		A4B104B819D6F166008BD1BA /* levelup.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A4B104B719D6F166008BD1BA /* levelup.mp3 */; };
-		A4B104BA19D6F2C0008BD1BA /* score.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A4B104B919D6F2C0008BD1BA /* score.mp3 */; };
-		A4B104BC19D6F3A0008BD1BA /* shield.wav in Resources */ = {isa = PBXBuildFile; fileRef = A4B104BB19D6F3A0008BD1BA /* shield.wav */; };
-		A4B104BE19D6F5EA008BD1BA /* killer.wav in Resources */ = {isa = PBXBuildFile; fileRef = A4B104BD19D6F5EA008BD1BA /* killer.wav */; };
+		A4B104B619D6ECEF008BD1BA /* gameover_ordinary.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A4B104B519D6ECEF008BD1BA /* gameover_ordinary.mp3 */; };
+		A4B104B819D6F166008BD1BA /* levelup_ordinary.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A4B104B719D6F166008BD1BA /* levelup_ordinary.mp3 */; };
+		A4B104BA19D6F2C0008BD1BA /* score_ordinary.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A4B104B919D6F2C0008BD1BA /* score_ordinary.mp3 */; };
+		A4B104BC19D6F3A0008BD1BA /* shield_ordinary.wav in Resources */ = {isa = PBXBuildFile; fileRef = A4B104BB19D6F3A0008BD1BA /* shield_ordinary.wav */; };
+		A4B104BE19D6F5EA008BD1BA /* killer_ordinary.wav in Resources */ = {isa = PBXBuildFile; fileRef = A4B104BD19D6F5EA008BD1BA /* killer_ordinary.wav */; };
 		A4B2788519EA781C00A2D065 /* GameCenterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B2788419EA781C00A2D065 /* GameCenterButton.swift */; };
 		A4DCE0281A839E0E00EA39B1 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DCE0261A839E0E00EA39B1 /* Crashlytics.framework */; };
 		A4DCE0291A839E0E00EA39B1 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DCE0271A839E0E00EA39B1 /* Fabric.framework */; };
 		A4DF90DD1AF0C92200CD8CEE /* Bamboo.pcvd in Resources */ = {isa = PBXBuildFile; fileRef = A4DF90DC1AF0C92200CD8CEE /* Bamboo.pcvd */; };
+		A4E243451B22E94800356FCA /* shield_zen.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A4E243441B22E94800356FCA /* shield_zen.mp3 */; };
+		A4E243471B22EC4A00356FCA /* jump_zen.wav in Resources */ = {isa = PBXBuildFile; fileRef = A4E243461B22EC4A00356FCA /* jump_zen.wav */; };
+		A4E243491B22EF5900356FCA /* killer_zen.wav in Resources */ = {isa = PBXBuildFile; fileRef = A4E243481B22EF5900356FCA /* killer_zen.wav */; };
+		A4E2434B1B22EFC200356FCA /* score_zen.wav in Resources */ = {isa = PBXBuildFile; fileRef = A4E2434A1B22EFC200356FCA /* score_zen.wav */; };
+		A4E2434D1B22F04200356FCA /* gameover_zen.wav in Resources */ = {isa = PBXBuildFile; fileRef = A4E2434C1B22F04200356FCA /* gameover_zen.wav */; };
+		A4E2434F1B22F2B900356FCA /* levelup_zen.wav in Resources */ = {isa = PBXBuildFile; fileRef = A4E2434E1B22F2B900356FCA /* levelup_zen.wav */; };
 		A4E7595019F7B8E600C08783 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = A4E7594E19F7B8E600C08783 /* spark.png */; };
 		A4E7595A19F7BAD600C08783 /* spark.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4E7595919F7BAD600C08783 /* spark.sks */; };
 		A4EEE3B619F6917900A43108 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4EEE3B519F6917900A43108 /* libWeChatSDK.a */; };
@@ -157,17 +163,23 @@
 		A492F67A1AF3C67C004B040B /* ZenModeScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZenModeScene.swift; sourceTree = "<group>"; };
 		A49B03F71A772AA9009D8F40 /* Tips.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tips.swift; sourceTree = "<group>"; };
 		A4B05A3919E9642900B303C0 /* spiral.sketch */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = spiral.sketch; sourceTree = "<group>"; };
-		A4B104AC19D6DB30008BD1BA /* jump.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jump.mp3; sourceTree = "<group>"; };
+		A4B104AC19D6DB30008BD1BA /* jump_ordinary.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jump_ordinary.mp3; sourceTree = "<group>"; };
 		A4B104B119D6DF01008BD1BA /* bg_zen.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bg_zen.mp3; sourceTree = "<group>"; };
-		A4B104B519D6ECEF008BD1BA /* gameover.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameover.mp3; sourceTree = "<group>"; };
-		A4B104B719D6F166008BD1BA /* levelup.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = levelup.mp3; sourceTree = "<group>"; };
-		A4B104B919D6F2C0008BD1BA /* score.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = score.mp3; sourceTree = "<group>"; };
-		A4B104BB19D6F3A0008BD1BA /* shield.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shield.wav; sourceTree = "<group>"; };
-		A4B104BD19D6F5EA008BD1BA /* killer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = killer.wav; sourceTree = "<group>"; };
+		A4B104B519D6ECEF008BD1BA /* gameover_ordinary.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameover_ordinary.mp3; sourceTree = "<group>"; };
+		A4B104B719D6F166008BD1BA /* levelup_ordinary.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = levelup_ordinary.mp3; sourceTree = "<group>"; };
+		A4B104B919D6F2C0008BD1BA /* score_ordinary.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = score_ordinary.mp3; sourceTree = "<group>"; };
+		A4B104BB19D6F3A0008BD1BA /* shield_ordinary.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shield_ordinary.wav; sourceTree = "<group>"; };
+		A4B104BD19D6F5EA008BD1BA /* killer_ordinary.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = killer_ordinary.wav; sourceTree = "<group>"; };
 		A4B2788419EA781C00A2D065 /* GameCenterButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCenterButton.swift; sourceTree = "<group>"; };
 		A4DCE0261A839E0E00EA39B1 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		A4DCE0271A839E0E00EA39B1 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		A4DF90DC1AF0C92200CD8CEE /* Bamboo.pcvd */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Bamboo.pcvd; sourceTree = "<group>"; };
+		A4E243441B22E94800356FCA /* shield_zen.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = shield_zen.mp3; sourceTree = "<group>"; };
+		A4E243461B22EC4A00356FCA /* jump_zen.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jump_zen.wav; sourceTree = "<group>"; };
+		A4E243481B22EF5900356FCA /* killer_zen.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = killer_zen.wav; sourceTree = "<group>"; };
+		A4E2434A1B22EFC200356FCA /* score_zen.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = score_zen.wav; sourceTree = "<group>"; };
+		A4E2434C1B22F04200356FCA /* gameover_zen.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gameover_zen.wav; sourceTree = "<group>"; };
+		A4E2434E1B22F2B900356FCA /* levelup_zen.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = levelup_zen.wav; sourceTree = "<group>"; };
 		A4E28CA21B20A2F70053770A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = en; path = en.lproj/OrdinaryHelpScene.sks; sourceTree = "<group>"; };
 		A4E28CA31B20A3060053770A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = en; path = en.lproj/ZenHelpScene.sks; sourceTree = "<group>"; };
 		A4E7594E19F7B8E600C08783 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
@@ -253,14 +265,20 @@
 				A47E78E519F39C4E003D5143 /* vortexShader.fsh */,
 				A4B05A3919E9642900B303C0 /* spiral.sketch */,
 				A4DF90DC1AF0C92200CD8CEE /* Bamboo.pcvd */,
-				A4B104BD19D6F5EA008BD1BA /* killer.wav */,
-				A4B104BB19D6F3A0008BD1BA /* shield.wav */,
-				A4B104B919D6F2C0008BD1BA /* score.mp3 */,
-				A4B104B719D6F166008BD1BA /* levelup.mp3 */,
-				A4B104B519D6ECEF008BD1BA /* gameover.mp3 */,
+				A4B104BD19D6F5EA008BD1BA /* killer_ordinary.wav */,
+				A4E243481B22EF5900356FCA /* killer_zen.wav */,
+				A4B104BB19D6F3A0008BD1BA /* shield_ordinary.wav */,
+				A4E243441B22E94800356FCA /* shield_zen.mp3 */,
+				A4B104B919D6F2C0008BD1BA /* score_ordinary.mp3 */,
+				A4E2434A1B22EFC200356FCA /* score_zen.wav */,
+				A4B104B719D6F166008BD1BA /* levelup_ordinary.mp3 */,
+				A4E2434E1B22F2B900356FCA /* levelup_zen.wav */,
+				A4B104B519D6ECEF008BD1BA /* gameover_ordinary.mp3 */,
+				A4E2434C1B22F04200356FCA /* gameover_zen.wav */,
 				A4B104B119D6DF01008BD1BA /* bg_zen.mp3 */,
 				A4175E7E1B22024F00156886 /* bg_ordinary.mp3 */,
-				A4B104AC19D6DB30008BD1BA /* jump.mp3 */,
+				A4B104AC19D6DB30008BD1BA /* jump_ordinary.mp3 */,
+				A4E243461B22EC4A00356FCA /* jump_zen.wav */,
 				A45A65E319860AD000EA40D7 /* pew-pew-lei.caf */,
 			);
 			name = Resources;
@@ -548,24 +566,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				A46323F01A0263AA00902D3A /* Starcraft Normal.ttf in Resources */,
+				A4E243451B22E94800356FCA /* shield_zen.mp3 in Resources */,
 				A46323F11A0263AA00902D3A /* 颜体.ttf in Resources */,
-				A4B104B619D6ECEF008BD1BA /* gameover.mp3 in Resources */,
+				A4B104B619D6ECEF008BD1BA /* gameover_ordinary.mp3 in Resources */,
+				A4E2434F1B22F2B900356FCA /* levelup_zen.wav in Resources */,
 				A4E7595019F7B8E600C08783 /* spark.png in Resources */,
+				A4E2434B1B22EFC200356FCA /* score_zen.wav in Resources */,
 				A4DF90DD1AF0C92200CD8CEE /* Bamboo.pcvd in Resources */,
 				A4F92B8719DCF69600C87D0E /* Localizable.strings in Resources */,
-				A4B104BA19D6F2C0008BD1BA /* score.mp3 in Resources */,
+				A4B104BA19D6F2C0008BD1BA /* score_ordinary.mp3 in Resources */,
 				A4E7595A19F7BAD600C08783 /* spark.sks in Resources */,
-				A4B104AD19D6DB30008BD1BA /* jump.mp3 in Resources */,
+				A4B104AD19D6DB30008BD1BA /* jump_ordinary.mp3 in Resources */,
 				A4787755197113D000F6F611 /* Images.xcassets in Resources */,
+				A4E2434D1B22F04200356FCA /* gameover_zen.wav in Resources */,
 				A46762221B209E8400DC2529 /* ZenHelpScene.sks in Resources */,
 				A4175E7F1B22024F00156886 /* bg_ordinary.mp3 in Resources */,
+				A4E243491B22EF5900356FCA /* killer_zen.wav in Resources */,
 				A47E78E619F39C4E003D5143 /* vortexShader.fsh in Resources */,
 				A46762211B209E8400DC2529 /* OrdinaryHelpScene.sks in Resources */,
-				A4B104BC19D6F3A0008BD1BA /* shield.wav in Resources */,
+				A4B104BC19D6F3A0008BD1BA /* shield_ordinary.wav in Resources */,
+				A4E243471B22EC4A00356FCA /* jump_zen.wav in Resources */,
 				A4787753197113D000F6F611 /* Main.storyboard in Resources */,
-				A4B104BE19D6F5EA008BD1BA /* killer.wav in Resources */,
+				A4B104BE19D6F5EA008BD1BA /* killer_ordinary.wav in Resources */,
 				A45A65E419860AD000EA40D7 /* pew-pew-lei.caf in Resources */,
-				A4B104B819D6F166008BD1BA /* levelup.mp3 in Resources */,
+				A4B104B819D6F166008BD1BA /* levelup_ordinary.mp3 in Resources */,
 				A4605B6C19F5235500F8DD96 /* Launch Screen.xib in Resources */,
 				A4B104B219D6DF01008BD1BA /* bg_zen.mp3 in Resources */,
 				A4B05A3A19E9642900B303C0 /* spiral.sketch in Resources */,

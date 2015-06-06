@@ -11,5 +11,5 @@
 
 @interface SendWX : NSObject 
 + (void) sendImageContent:(UIImage *) image withScore:(NSString *)score;
-+ (void) sendLinkContentWithImage:(UIImage *) image score:(NSString *)score;
++ (BOOL) sendLinkContentWithImage:(UIImage *) image score:(NSString *)score;
 @end
