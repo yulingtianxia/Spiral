@@ -60,36 +60,33 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
         let score = Score()
         let shield = Shield()
         let reaper = Reaper()
-        //设定起始点
-        player.position = center
-        killer.position = center
-        score.position = center
-        shield.position = center
-        reaper.position = center
-        //取消碰撞检测
-        player.physicsBody?.contactTestBitMask = 0
-        killer.physicsBody?.contactTestBitMask = 0
-        score.physicsBody?.contactTestBitMask = 0
-        shield.physicsBody?.contactTestBitMask = 0
-        reaper.physicsBody?.contactTestBitMask = 0
-        //赋予随机初速度
-        player.physicsBody?.velocity = randomVelocity()
-        killer.physicsBody?.velocity = randomVelocity()
-        score.physicsBody?.velocity = randomVelocity()
-        shield.physicsBody?.velocity = randomVelocity()
-        reaper.physicsBody?.velocity = randomVelocity()
-        //点亮照明灯
-        player.light.enabled = true
-        killer.light.enabled = true
-        score.light.enabled = true
-        shield.light.enabled = true
-        reaper.light.enabled = true
-        //添加到场景
-        addChild(player)
-        addChild(killer)
-        addChild(score)
-        addChild(shield)
-        addChild(reaper)
+        
+        let shapes = [player,killer,score,shield,reaper]
+        
+        for shape in shapes {
+            //设定起始点
+            shape.position = center
+            //使用像素级物理体
+            shape.physicsBody = SKPhysicsBody(texture: player.texture, size: player.size)
+            //设置碰撞
+            shape.physicsBody?.contactTestBitMask = 0
+            shape.physicsBody?.usesPreciseCollisionDetection = true
+            shape.physicsBody?.collisionBitMask = mainSceneCategory
+            shape.zPosition = 100
+            //设置速度衰减和表面摩擦
+            shape.physicsBody?.angularDamping = 0
+            shape.physicsBody?.linearDamping = 0
+            shape.physicsBody?.restitution = 1
+            //        shape.physicsBody?.restitution = 1
+            shape.physicsBody?.friction = 1
+            shape.normalTexture = shape.texture?.textureByGeneratingNormalMap()
+            //赋予随机初速度
+            shape.physicsBody?.velocity = randomVelocity()
+            //点亮照明灯
+            shape.light.enabled = true
+            //添加到场景
+            addChild(shape)
+        }
     }
     
     //产生随机速度

@@ -90,6 +90,9 @@ class OrdinaryDisplay: SKNode ,DisplayData{
         highScoreLabel.text = NSLocalizedString("HIGHSCORE ", comment: "")+"\(Data.highScore)"
         addChild(highScoreLabel)
         let scene = self.scene as! OrdinaryModeScene
+        for child in scene.children{
+            (child as? SKNode)?.removeAllActions()
+        }
         scene.hideGame()
         scene.soundManager.playGameOver()
         (UIApplication.sharedApplication().keyWindow?.rootViewController as! GameViewController).removeGestureRecognizers()

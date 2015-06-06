@@ -128,7 +128,6 @@ class SoundManager: SKNode {
     }
     
     func playJump(){
-//        jumpPlayer.prepareToPlay()
         jumpPlayer.play()
     }
     

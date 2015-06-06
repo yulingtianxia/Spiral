@@ -33,6 +33,7 @@ class OrdinaryModeScene: GameScene {
         nextShape.physicsBody = nil
         nextShape.alpha = 0.4
         nextShape.zPosition = 100
+        eye.zPosition = 100
         eye.position = map.points.last! as CGPoint
         super.init(size:size)
         player.position = map.points[player.lineNum]
@@ -163,6 +164,7 @@ class OrdinaryModeScene: GameScene {
         Data.restart()
         player.restart()
         player.position = map.points[player.lineNum]
+        nodeFactory()
         player.runInOrdinaryMap(map)
         soundManager.playBackGround()
     }
@@ -195,9 +197,55 @@ class OrdinaryModeScene: GameScene {
     }
     
     func nodeFactory(){
-        self.runAction(SKAction.repeatActionForever(SKAction.sequence([SKAction.runBlock({
+//        self.runAction(SKAction.repeatActionForever(SKAction.sequence([SKAction.runBlock({
+//            if !Data.gameOver {
+//                
+//                let type = arc4random_uniform(4)
+//                switch type {
+//                case 0,1:
+//                    self.nextShapeName = "Killer"
+//                    self.nextShape.texture = SKTexture(imageNamed: "killer")
+//                case 2:
+//                    self.nextShapeName = "Score"
+//                    self.nextShape.texture = SKTexture(imageNamed: "score")
+//                case 3:
+//                    self.nextShapeName = "Shield"
+//                    self.nextShape.texture = SKTexture(imageNamed: "shield")
+//                default:
+//                    self.nextShapeName = "Killer"
+//                    self.nextShape.texture = SKTexture(imageNamed: "killer")
+//                    println(type)
+//                }
+//                
+//            }
+//        }),SKAction.group([SKAction.waitForDuration(5, withRange: 0),SKAction.runBlock({ () -> Void in
+//            self.nextShape.runAction(SKAction.scaleTo(0.4, duration: 5), completion: { () -> Void in
+//                self.nextShape.setScale(1)
+//            })
+//        })]),SKAction.runBlock({ () -> Void in
+//            if !Data.gameOver {
+//                var shape:Shape
+//                switch self.nextShapeName {
+//                case "Killer":
+//                    shape = Killer()
+//                case "Score":
+//                    shape = Score()
+//                case "Shield":
+//                    shape = Shield()
+//                default:
+//                    println(self.nextShapeName)
+//                    shape = Killer()
+//                }
+//                shape.lineNum = 0
+//                shape.position = self.map.points[shape.lineNum]
+//                shape.runInOrdinaryMap(self.map)
+//                self.addChild(shape)
+//            }
+//        })])))
+        
+        let createNextShape = SKAction.runBlock({
             if !Data.gameOver {
-                
+
                 let type = arc4random_uniform(4)
                 switch type {
                 case 0,1:
@@ -214,13 +262,11 @@ class OrdinaryModeScene: GameScene {
                     self.nextShape.texture = SKTexture(imageNamed: "killer")
                     println(type)
                 }
-                
-            }
-        }),SKAction.group([SKAction.waitForDuration(5, withRange: 0),SKAction.runBlock({ () -> Void in
-            self.nextShape.runAction(SKAction.scaleTo(0.4, duration: 5), completion: { () -> Void in
                 self.nextShape.setScale(1)
-            })
-        })]),SKAction.runBlock({ () -> Void in
+            }
+        })
+        let scale = SKAction.scaleTo(0.4, duration: 5)
+        let run = SKAction.runBlock({ () -> Void in
             if !Data.gameOver {
                 var shape:Shape
                 switch self.nextShapeName {
@@ -239,12 +285,13 @@ class OrdinaryModeScene: GameScene {
                 shape.runInOrdinaryMap(self.map)
                 self.addChild(shape)
             }
-        })])))
-        
-        
+        })
+        let sequence = SKAction.sequence([createNextShape, scale, run])
+        let repeat = SKAction.repeatActionForever(sequence)
+        nextShape.runAction(repeat)
     }
     
-    //MARK: SKPhysicsContactDelegate
+    //MARK: lifecycle callback
     
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
@@ -252,13 +299,12 @@ class OrdinaryModeScene: GameScene {
     }
     
     override func didSimulatePhysics() {
-        if Data.gameOver {
-            for child in self.children{
-                (child as! SKNode).removeAllActions()
-            }
-        }
+//        if Data.gameOver {
+//            for child in self.children{
+//                (child as! SKNode).removeAllActions()
+//            }
+//        }
     }
-    
     
     
     //MARK: pause&resume game
