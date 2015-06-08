@@ -119,6 +119,9 @@
 		A437599D1B20349200935DE7 /* OrdinaryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrdinaryButton.swift; sourceTree = "<group>"; };
 		A437599F1B2038D500935DE7 /* ZenButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZenButton.swift; sourceTree = "<group>"; };
 		A43759A61B20632E00935DE7 /* GameOverIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverIcon.swift; sourceTree = "<group>"; };
+		A44270291B24950E0031B7FC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "en.lproj/Launch Screen.xib"; sourceTree = "<group>"; };
+		A442702D1B2497E70031B7FC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = en; path = en.lproj/OrdinaryHelpScene.sks; sourceTree = "<group>"; };
+		A442702F1B2498AB0031B7FC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = en; path = en.lproj/ZenHelpScene.sks; sourceTree = "<group>"; };
 		A45A65DF1986073B00EA40D7 /* SoundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		A45A65E319860AD000EA40D7 /* pew-pew-lei.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pew-pew-lei.caf"; sourceTree = "<group>"; };
 		A45A9FA219F3E7250087C192 /* OrdinaryHelpScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrdinaryHelpScene.swift; sourceTree = "<group>"; };
@@ -180,8 +183,6 @@
 		A4E2434A1B22EFC200356FCA /* score_zen.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = score_zen.wav; sourceTree = "<group>"; };
 		A4E2434C1B22F04200356FCA /* gameover_zen.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gameover_zen.wav; sourceTree = "<group>"; };
 		A4E2434E1B22F2B900356FCA /* levelup_zen.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = levelup_zen.wav; sourceTree = "<group>"; };
-		A4E28CA21B20A2F70053770A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = en; path = en.lproj/OrdinaryHelpScene.sks; sourceTree = "<group>"; };
-		A4E28CA31B20A3060053770A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = en; path = en.lproj/ZenHelpScene.sks; sourceTree = "<group>"; };
 		A4E7594E19F7B8E600C08783 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		A4E7595919F7BAD600C08783 /* spark.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = spark.sks; sourceTree = "<group>"; };
 		A4EEE3B319F6917900A43108 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
@@ -729,6 +730,7 @@
 			children = (
 				A4605B6D19F5235500F8DD96 /* zh-Hans */,
 				A4605B6F19F5235700F8DD96 /* Base */,
+				A44270291B24950E0031B7FC /* en */,
 			);
 			name = "Launch Screen.xib";
 			sourceTree = "<group>";
@@ -738,7 +740,7 @@
 			children = (
 				A467621E1B209E8400DC2529 /* Base */,
 				A46762241B209F8500DC2529 /* zh-Hans */,
-				A4E28CA21B20A2F70053770A /* en */,
+				A442702D1B2497E70031B7FC /* en */,
 			);
 			name = OrdinaryHelpScene.sks;
 			sourceTree = "<group>";
@@ -748,7 +750,7 @@
 			children = (
 				A46762201B209E8400DC2529 /* Base */,
 				A46762261B209F8B00DC2529 /* zh-Hans */,
-				A4E28CA31B20A3060053770A /* en */,
+				A442702F1B2498AB0031B7FC /* en */,
 			);
 			name = ZenHelpScene.sks;
 			sourceTree = "<group>";

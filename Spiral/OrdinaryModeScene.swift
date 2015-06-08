@@ -72,6 +72,7 @@ class OrdinaryModeScene: GameScene {
     //MARK: UI control methods
     
     override func tap(){
+        super.tap()
         if Data.gameOver {
             //                restartGame()
         }
@@ -86,8 +87,9 @@ class OrdinaryModeScene: GameScene {
     }
     
     override func allShapesJumpIn(){
+        super.allShapesJumpIn()
         if !Data.gameOver && view?.paused == false {
-            for node in self.children {
+            for node in children {
                 if let shape = node as? Shape {
                     if shape.lineNum>3 {
                         calNewLocationOfShape(shape)
@@ -100,6 +102,7 @@ class OrdinaryModeScene: GameScene {
     }
     
     override func createReaper(){
+        super.createReaper()
         if !Data.gameOver && view?.paused == false {
             if Data.reaperNum>0 {
                 var shape = Reaper()
@@ -113,7 +116,7 @@ class OrdinaryModeScene: GameScene {
     }
     
     func speedUp(){
-        for node in self.children{
+        for node in children{
             if let shape = node as? Shape {
                 shape.removeAllActions()
                 shape.moveSpeed += Data.speedScale * shape.speedUpBase
@@ -126,35 +129,47 @@ class OrdinaryModeScene: GameScene {
         map.alpha = 0.2
         eye.alpha = 0.2
         background.alpha = 0.2
-        for node in self.children{
+        for node in children{
             if let shape = node as? Shape {
                 shape.alpha = 0.2
             }
         }
-        soundManager.stopBackGround()
+//        soundManager.stopBackGround()
+        soundManager.pauseBackGround()
     }
     
     func showGame(){
         map.alpha = 1
         eye.alpha = 1
         background.alpha = 0.5
-        for node in self.children{
+        for node in children{
             if let shape = node as? Shape {
                 shape.alpha = 1
             }
         }
-        soundManager.playBackGround()
+        soundManager.resumeBackGround()
     }
     
     func restartGame(){
-        for node in self.children{
-            if let shape = node as? Shape {
-                if shape.name=="Killer"||shape.name=="Score"||shape.name=="Shield"||shape.name=="Reaper" {
-                    shape.removeFromParent()
-                }
-            }
-            
-        }
+//        for node in self.children{
+//            if let shape = node as? Shape {
+//                if shape.name=="Killer"||shape.name=="Score"||shape.name=="Shield"||shape.name=="Reaper" {
+//                    shape.removeFromParent()
+//                }
+//            }
+//        }
+        enumerateChildNodesWithName("Killer", usingBlock: { (node, stop) -> Void in
+            node.removeFromParent()
+        })
+        enumerateChildNodesWithName("Score", usingBlock: { (node, stop) -> Void in
+            node.removeFromParent()
+        })
+        enumerateChildNodesWithName("Shield", usingBlock: { (node, stop) -> Void in
+            node.removeFromParent()
+        })
+        enumerateChildNodesWithName("Reaper", usingBlock: { (node, stop) -> Void in
+            node.removeFromParent()
+        })
         map.alpha = 1
         eye.alpha = 1
         if eye.parent == nil {
@@ -310,10 +325,10 @@ class OrdinaryModeScene: GameScene {
     //MARK: pause&resume game
     
     override func pause() {
+        super.pause()
         if !Data.gameOver{
             self.runAction(SKAction.runBlock({ [unowned self]() -> Void in
                 self.display.pause()
-                self.soundManager.pauseBackGround()
                 }), completion: { [unowned self]() -> Void in
                     self.view!.paused = true
                 })
@@ -321,7 +336,6 @@ class OrdinaryModeScene: GameScene {
     }
     
     func resume() {
-        soundManager.resumeBackGround()
         display.resume()
         view?.paused = false
     }

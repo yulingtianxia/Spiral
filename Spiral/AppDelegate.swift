@@ -23,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
         Fabric.with([Crashlytics()])
         SKNode.yxy_swizzleAddChild()
         SKNode.yxy_swizzleRemoveFromParent()
+        
+        
         return true
     }
 

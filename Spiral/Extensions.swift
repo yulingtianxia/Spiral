@@ -53,7 +53,7 @@ extension SKNode {
     
     func yxy_addChild(node: SKNode) {
         if node.parent == nil {
-            yxy_addChild(node)
+            self.yxy_addChild(node)
         }
         else {
             println("This node has already a parent!\(node.name)")
@@ -62,7 +62,9 @@ extension SKNode {
     
     func yxy_removeFromParent() {
         if parent != nil {
-            yxy_removeFromParent()
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.yxy_removeFromParent()
+            })
         }
         else {
             println("This node has no parent!\(name)")

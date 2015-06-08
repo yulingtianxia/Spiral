@@ -17,5 +17,6 @@ let tips = [
     "The Blue Reaper can help you to collect score and clean killers",
     "Try to manipulate the game with two fingers, you must have surprise!",
     "When the Star reaches the end of rope or it was killed:game over",
-    "You can pause the game by a long press. To resume, just tap again"
+    "You can pause the game by a long press. To resume, just tap again",
+    "Let the Star(with shield) rush the Killer can get one score"
 ]

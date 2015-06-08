@@ -63,6 +63,8 @@ class OrdinaryDisplay: SKNode ,DisplayData{
         
     }
     
+    // MARK: - DisplayData
+    
     func updateData() {
         scoreLabel.text = NSLocalizedString("SCORE ", comment: "")+"\(Data.score)"
         levelLabel.text = NSLocalizedString("LEVEL ", comment: "")+"\(Data.level)"
@@ -77,6 +79,10 @@ class OrdinaryDisplay: SKNode ,DisplayData{
     }
     
     func gameOver() {
+        let scene = self.scene as! OrdinaryModeScene
+        for child in scene.children{
+            (child as? SKNode)?.removeAllActions()
+        }
         addChild(gameOverLabel)
         addChild(share)
         addChild(replay)
@@ -89,10 +95,6 @@ class OrdinaryDisplay: SKNode ,DisplayData{
         reaperNumLabel.removeFromParent()
         highScoreLabel.text = NSLocalizedString("HIGHSCORE ", comment: "")+"\(Data.highScore)"
         addChild(highScoreLabel)
-        let scene = self.scene as! OrdinaryModeScene
-        for child in scene.children{
-            (child as? SKNode)?.removeAllActions()
-        }
         scene.hideGame()
         scene.soundManager.playGameOver()
         (UIApplication.sharedApplication().keyWindow?.rootViewController as! GameViewController).removeGestureRecognizers()
@@ -111,6 +113,8 @@ class OrdinaryDisplay: SKNode ,DisplayData{
         (scene as! OrdinaryModeScene).restartGame()
         (UIApplication.sharedApplication().keyWindow?.rootViewController as! GameViewController).addGestureRecognizers()
     }
+    
+    //MARK: - pause&resume
     
     func pause(){
         pauseLabel.text = NSLocalizedString("PAUSE", comment: "")

@@ -22,6 +22,7 @@ class PlayerContactVisitor:ContactVisitor{
 
         if thisNode.shield {
             thisNode.shield = false
+            Data.score++
             var achievement = GameKitHelper.sharedGameKitHelper().getAchievementForIdentifier(kClean100KillerAchievementID)
             if achievement.percentComplete <= 99.0{
                 achievement.percentComplete += 1
