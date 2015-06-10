@@ -8,4 +8,4 @@
 
 import Foundation
 
-let MAINBUTTONSIZE = CGSize(width: 150, height: 150)
+let mainButtonSize = CGSize(width: 150, height: 150)

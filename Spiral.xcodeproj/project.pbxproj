@@ -18,6 +18,8 @@
 		A4254A891AF6396F00620AA7 /* ZenHelpScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4254A881AF6396F00620AA7 /* ZenHelpScene.swift */; };
 		A434A14B1976955000F4C94B /* ShareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A434A14A1976955000F4C94B /* ShareButton.swift */; };
 		A434A14F19769F4600F4C94B /* ReplayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A434A14E19769F4600F4C94B /* ReplayButton.swift */; };
+		A436ADE31B26EB1300D7F407 /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A436ADE21B26EB1300D7F407 /* MotionManager.swift */; };
+		A436ADE51B271FE400D7F407 /* HelpFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A436ADE41B271FE400D7F407 /* HelpFile.swift */; };
 		A437599E1B20349200935DE7 /* OrdinaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A437599D1B20349200935DE7 /* OrdinaryButton.swift */; };
 		A43759A01B2038D500935DE7 /* ZenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A437599F1B2038D500935DE7 /* ZenButton.swift */; };
 		A43759A71B20632E00935DE7 /* GameOverIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43759A61B20632E00935DE7 /* GameOverIcon.swift */; };
@@ -116,6 +118,8 @@
 		A434A14A1976955000F4C94B /* ShareButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareButton.swift; sourceTree = "<group>"; };
 		A434A14C197696BC00F4C94B /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		A434A14E19769F4600F4C94B /* ReplayButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplayButton.swift; sourceTree = "<group>"; };
+		A436ADE21B26EB1300D7F407 /* MotionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
+		A436ADE41B271FE400D7F407 /* HelpFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpFile.swift; sourceTree = "<group>"; };
 		A437599D1B20349200935DE7 /* OrdinaryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrdinaryButton.swift; sourceTree = "<group>"; };
 		A437599F1B2038D500935DE7 /* ZenButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZenButton.swift; sourceTree = "<group>"; };
 		A43759A61B20632E00935DE7 /* GameOverIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverIcon.swift; sourceTree = "<group>"; };
@@ -392,6 +396,8 @@
 				A4254A841AF61A9B00620AA7 /* ScreenShot.swift */,
 				A4175E7A1B21DF1B00156886 /* Constant.swift */,
 				A4175E7C1B21EBBC00156886 /* Extensions.swift */,
+				A436ADE21B26EB1300D7F407 /* MotionManager.swift */,
+				A436ADE41B271FE400D7F407 /* HelpFile.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -523,6 +529,7 @@
 		A478773C197113D000F6F611 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "杨萧玉";
 				TargetAttributes = {
@@ -675,6 +682,7 @@
 				A4F3505019FBA41B00F6B8DF /* Eye.swift in Sources */,
 				A478774E197113D000F6F611 /* GameScene.swift in Sources */,
 				A47D3D18197415C1005AF736 /* KillerContactVisitor.swift in Sources */,
+				A436ADE51B271FE400D7F407 /* HelpFile.swift in Sources */,
 				A47D3D1C19741B04005AF736 /* Killer.swift in Sources */,
 				A4FF927019751AA50060CE6D /* VisitablePhysicsBody.swift in Sources */,
 				A43759A01B2038D500935DE7 /* ZenButton.swift in Sources */,
@@ -696,6 +704,7 @@
 				A45A9FA319F3E7250087C192 /* OrdinaryHelpScene.swift in Sources */,
 				A47D3D1A19741859005AF736 /* ScoreContactVisitor.swift in Sources */,
 				A4254A891AF6396F00620AA7 /* ZenHelpScene.swift in Sources */,
+				A436ADE31B26EB1300D7F407 /* MotionManager.swift in Sources */,
 				A48F921419724822007BDAE4 /* Player.swift in Sources */,
 				A41591E719CC71C500C3420B /* GameKitHelper.m in Sources */,
 				A437599E1B20349200935DE7 /* OrdinaryButton.swift in Sources */,

@@ -10,7 +10,7 @@ import SpriteKit
 
 class OrdinaryButton: SKSpriteNode {
     init() {
-        super.init(texture: SKTexture(imageNamed: "OrdinaryBtn"), color: UIColor.clearColor(), size: MAINBUTTONSIZE)
+        super.init(texture: SKTexture(imageNamed: "OrdinaryBtn"), color: UIColor.clearColor(), size: mainButtonSize)
         normalTexture = texture?.textureByGeneratingNormalMapWithSmoothness(0.2, contrast: 2.5)
         lightingBitMask = playerLightCategory | killerLightCategory | scoreLightCategory | shieldLightCategory | reaperLightCategory
         userInteractionEnabled = true

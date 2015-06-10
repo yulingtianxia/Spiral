@@ -7,11 +7,22 @@
 //
 
 import SpriteKit
+import CoreMotion
+
+private let kShapeSize = CGSize(width: 50, height: 50)
+private let kUpdateInterval = NSTimeInterval(1)/60
+private let kAccelerateScale:Double = 50
+private let kRandomSpeed:UInt32 = 1000
 
 class MainScene: SKScene, SKPhysicsContactDelegate {
+    
     let ordinaryBtn = OrdinaryButton()
     let zenBtn = ZenButton()
     let spiralLabel = SKLabelNode(text: "Spiral")
+    let gameCenter = GameCenterButton()
+    let mManager = MotionManager.sharedMotionManager
+    var shapes = [Shape]()
+    
     override init(size: CGSize) {
         super.init(size: size)
         let center = CGPointMake(size.width/2, size.height/2)
@@ -26,6 +37,10 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
         spiralLabel.position = CGPoint(x: center.x, y: center.y * 1.5)
         spiralLabel
         addChild(spiralLabel)
+        
+        //添加 GameCenter 按钮
+        gameCenter.position = CGPoint(x: gameCenter.size.width/2, y: self.scene!.size.height-gameCenter.size.height/2)
+        addChild(gameCenter)
         
         //添加模式选择按钮
         ordinaryBtn.position = CGPoint(x: center.x, y: CGRectGetMinY(spiralLabel.frame) - ordinaryBtn.size.height/2)
@@ -44,7 +59,22 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
 //        physicsBody?.restitution = 1
         physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         physicsWorld.contactDelegate = self
+        
+        //创建 shape
         createShapes()
+        
+        //监听加速计数据
+        if mManager.deviceMotionAvailable {
+            mManager.deviceMotionUpdateInterval = kUpdateInterval
+            mManager.startDeviceMotionUpdatesToQueue(NSOperationQueue.mainQueue(), withHandler: { (deviceMotion, error) -> Void in
+                let acceleration = deviceMotion.userAcceleration
+                for shape in self.shapes {
+                    let mass = shape.physicsBody!.mass
+                    let impulse = CGVector(dx: -mass * acceleration.x * kAccelerateScale, dy: -mass * acceleration.y * kAccelerateScale)
+                    shape.physicsBody?.applyImpulse(impulse)
+                }
+            })
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -61,17 +91,19 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
         let shield = Shield()
         let reaper = Reaper()
         
-        let shapes = [player,killer,score,shield,reaper]
+        shapes = [player,killer,score,shield,reaper]
         
         for shape in shapes {
             //设定起始点
             shape.position = center
+            shape.size = kShapeSize
             //使用像素级物理体
             shape.physicsBody = SKPhysicsBody(texture: player.texture, size: player.size)
             //设置碰撞
             shape.physicsBody?.contactTestBitMask = 0
             shape.physicsBody?.usesPreciseCollisionDetection = true
             shape.physicsBody?.collisionBitMask = mainSceneCategory
+            shape.physicsBody?.usesPreciseCollisionDetection = true
             shape.zPosition = 100
             //设置速度衰减和表面摩擦
             shape.physicsBody?.angularDamping = 0
@@ -91,8 +123,12 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
     
     //产生随机速度
     func randomVelocity() -> CGVector {
-        let x = CGFloat(arc4random_uniform(1000)) - 500
-        let y = CGFloat(arc4random_uniform(1000)) - 500
+        let x = CGFloat(arc4random_uniform(kRandomSpeed)) - CGFloat(kRandomSpeed/2)
+        let y = CGFloat(arc4random_uniform(kRandomSpeed)) - CGFloat(kRandomSpeed/2)
         return CGVector(dx: x, dy: y)
+    }
+    
+    deinit {
+        mManager.stopDeviceMotionUpdates()
     }
 }

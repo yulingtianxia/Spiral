@@ -10,12 +10,14 @@ import UIKit
 import Fabric
 import Crashlytics
 import SpriteKit
+import CoreMotion
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
                             
     var window: UIWindow?
-
+    
+    
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -72,5 +74,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
             }
         }
     }
+    
 }
 
