@@ -14,7 +14,7 @@ class Background: SKSpriteNode {
     init(size:CGSize, imageName:String?=nil){
         let imageString:String
         if imageName == nil {
-            switch Data.currentMode {
+            switch Data.sharedData.currentMode {
             case .Ordinary:
                 imageString = "bg_ordinary"
             case .Zen:
@@ -30,7 +30,7 @@ class Background: SKSpriteNode {
         zPosition = -100
         alpha = 0.5
         var light = SKLightNode()
-        switch Data.currentMode {
+        switch Data.sharedData.currentMode {
         case .Ordinary:
             light.lightColor = SKColor.blackColor()
             light.ambientColor = SKColor.blackColor()

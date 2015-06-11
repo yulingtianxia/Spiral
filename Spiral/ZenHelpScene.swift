@@ -21,7 +21,7 @@ class ZenHelpScene: SKScene {
     }
     
     func back() {
-        Data.gameOver = false
+        Data.sharedData.gameOver = false
         let scene = ZenModeScene(size: self.size)
         let flip = SKTransition.flipHorizontalWithDuration(1)
         flip.pausesIncomingScene = false

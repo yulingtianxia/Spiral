@@ -9,13 +9,13 @@
 import SpriteKit
 
 class OrdinaryDisplay: SKNode ,DisplayData{
-    let scoreLabel = SKLabelNode(text: NSLocalizedString("SCORE ", comment: "")+"\(Data.score)")
-    let levelLabel = SKLabelNode(text:NSLocalizedString("LEVEL ", comment: "")+"\(Data.level)")
-    let highScoreLabel = SKLabelNode(text: NSLocalizedString("HIGHSCORE ", comment: "")+"\(Data.highScore)")
+    let scoreLabel = SKLabelNode(text: NSLocalizedString("SCORE ", comment: "")+"\(Data.sharedData.score)")
+    let levelLabel = SKLabelNode(text:NSLocalizedString("LEVEL ", comment: "")+"\(Data.sharedData.level)")
+    let highScoreLabel = SKLabelNode(text: NSLocalizedString("HIGHSCORE ", comment: "")+"\(Data.sharedData.highScore)")
     let gameOverLabel = GameOverIcon(size: CGSize(width: 200, height: 120))
     let pauseLabel = SKLabelNode(text: NSLocalizedString("PAUSE", comment: ""))
     let reaperIcon = SKSpriteNode(imageNamed: "reaper")
-    let reaperNumLabel = SKLabelNode(text: String.localizedStringWithFormat("%d", Data.reaperNum))
+    let reaperNumLabel = SKLabelNode(text: String.localizedStringWithFormat("%d", Data.sharedData.reaperNum))
     let tipsLabel = SKLabelNode(text: NSLocalizedString("TIPS", comment: ""))
     let share = ShareButton()
     let replay = ReplayButton()
@@ -66,9 +66,9 @@ class OrdinaryDisplay: SKNode ,DisplayData{
     // MARK: - DisplayData
     
     func updateData() {
-        scoreLabel.text = NSLocalizedString("SCORE ", comment: "")+"\(Data.score)"
-        levelLabel.text = NSLocalizedString("LEVEL ", comment: "")+"\(Data.level)"
-        reaperNumLabel.text = String.localizedStringWithFormat("%d", Data.reaperNum)
+        scoreLabel.text = NSLocalizedString("SCORE ", comment: "")+"\(Data.sharedData.score)"
+        levelLabel.text = NSLocalizedString("LEVEL ", comment: "")+"\(Data.sharedData.level)"
+        reaperNumLabel.text = String.localizedStringWithFormat("%d", Data.sharedData.reaperNum)
     }
     
     func levelUp() {
@@ -81,7 +81,7 @@ class OrdinaryDisplay: SKNode ,DisplayData{
     func gameOver() {
         let scene = self.scene as! OrdinaryModeScene
         for child in scene.children{
-            (child as? SKNode)?.removeAllActions()
+            child.removeAllActions()
         }
         addChild(gameOverLabel)
         addChild(share)
@@ -93,7 +93,7 @@ class OrdinaryDisplay: SKNode ,DisplayData{
         addChild(tipsLabel)
         reaperIcon.removeFromParent()
         reaperNumLabel.removeFromParent()
-        highScoreLabel.text = NSLocalizedString("HIGHSCORE ", comment: "")+"\(Data.highScore)"
+        highScoreLabel.text = NSLocalizedString("HIGHSCORE ", comment: "")+"\(Data.sharedData.highScore)"
         addChild(highScoreLabel)
         scene.hideGame()
         scene.soundManager.playGameOver()
@@ -125,7 +125,7 @@ class OrdinaryDisplay: SKNode ,DisplayData{
     func resume(){
         pauseLabel.text = ""
         pauseLabel.alpha = 0
-        if !Data.gameOver{
+        if !Data.sharedData.gameOver{
             (self.scene as! OrdinaryModeScene).showGame()
         }
     }

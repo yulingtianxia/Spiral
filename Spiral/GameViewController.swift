@@ -17,6 +17,7 @@ public class GameViewController: UIViewController {
     var pan:UIPanGestureRecognizer!
     var swipeRight:UISwipeGestureRecognizer!
     var pinch:UIPinchGestureRecognizer!
+    var screenEdgePanRight:UIScreenEdgePanGestureRecognizer!
     
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -26,17 +27,19 @@ public class GameViewController: UIViewController {
         skView.ignoresSiblingOrder = true
         
         
-        longPress = UILongPressGestureRecognizer(target: self, action: Selector("handleLongPressFrom:"))
-        tapWithOneFinger = UITapGestureRecognizer(target: self, action: Selector("handleTapWithOneFingerFrom:"))
-        tapWithTwoFinger = UITapGestureRecognizer(target: self, action: Selector("handleTapWithTwoFingerFrom:"))
+        longPress = UILongPressGestureRecognizer(target: self, action: Selector("handleLongPressGesture:"))
+        tapWithOneFinger = UITapGestureRecognizer(target: self, action: Selector("handleTapWithOneFingerGesture:"))
+        tapWithTwoFinger = UITapGestureRecognizer(target: self, action: Selector("handleTapWithTwoFingerGesture:"))
         tapWithTwoFinger.numberOfTouchesRequired = 2
-        pan = UIPanGestureRecognizer(target: self, action: Selector("handlePanFrom:"))
+        pan = UIPanGestureRecognizer(target: self, action: Selector("handlePanGesture:"))
         pan.maximumNumberOfTouches = 1
-        swipeRight = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipeFrom:"))
+        swipeRight = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipeGesture:"))
         swipeRight.direction = UISwipeGestureRecognizerDirection.Right
         swipeRight.numberOfTouchesRequired = 2
         
-        pinch = UIPinchGestureRecognizer(target: self, action: Selector("handlePinchFrom:"))
+        pinch = UIPinchGestureRecognizer(target: self, action: Selector("handlePinchGesture:"))
+        screenEdgePanRight = UIScreenEdgePanGestureRecognizer(target: self, action: Selector("handleEdgePanGesture:"))
+        screenEdgePanRight.edges = UIRectEdge.Left
         
 //        addGestureRecognizers()
         let scene = MainScene(size: skView.bounds.size)
@@ -67,25 +70,25 @@ public class GameViewController: UIViewController {
         return true
     }
     
-    func handleLongPressFrom(recognizer:UILongPressGestureRecognizer) {
+    func handleLongPressGesture(recognizer:UILongPressGestureRecognizer) {
         if recognizer.state == .Began {
             ((self.view as! SKView).scene as? GameScene)?.pause()
         }
     }
     
-    func handleTapWithOneFingerFrom(recognizer:UILongPressGestureRecognizer) {
+    func handleTapWithOneFingerGesture(recognizer:UILongPressGestureRecognizer) {
         if recognizer.state == .Ended {
             ((self.view as! SKView).scene as? GameScene)?.tap()
         }
     }
     
-    func handleTapWithTwoFingerFrom(recognizer:UILongPressGestureRecognizer) {
+    func handleTapWithTwoFingerGesture(recognizer:UILongPressGestureRecognizer) {
         if recognizer.state == .Ended {
 //            ((self.view as! SKView).scene as? OrdinaryModeScene)?.createReaper()
         }
     }
     
-    func handlePanFrom(recognizer:UIPanGestureRecognizer) {
+    func handlePanGesture(recognizer:UIPanGestureRecognizer) {
         if recognizer.state == .Changed {
             ((self.view as! SKView).scene as? OrdinaryHelpScene)?.lightWithFinger(recognizer.locationInView(self.view))
             ((self.view as! SKView).scene as? ZenHelpScene)?.lightWithFinger(recognizer.locationInView(self.view))
@@ -96,14 +99,14 @@ public class GameViewController: UIViewController {
         }
     }
     
-    func handleSwipeFrom(recognizer:UISwipeGestureRecognizer) {
+    func handleSwipeGesture(recognizer:UISwipeGestureRecognizer) {
         if recognizer.direction == .Right {
             ((self.view as! SKView).scene as? OrdinaryHelpScene)?.back()
             ((self.view as! SKView).scene as? ZenHelpScene)?.back()
         }
     }
     
-    func handlePinchFrom(recognizer:UIPinchGestureRecognizer) {
+    func handlePinchGesture(recognizer:UIPinchGestureRecognizer) {
         if recognizer.state == .Began {
             if recognizer.scale > 1 {
                 ((self.view as! SKView).scene as? GameScene)?.createReaper()
@@ -111,6 +114,18 @@ public class GameViewController: UIViewController {
             else {
                 ((self.view as! SKView).scene as? GameScene)?.allShapesJumpIn()
             }
+        }
+    }
+    
+    func handleEdgePanGesture(recognizer:UIPinchGestureRecognizer) {
+        if recognizer.state == .Ended {
+            let skView = view as! SKView
+            Data.sharedData.display = nil
+            let scene = MainScene(size: skView.bounds.size)
+            let push = SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 1)
+            push.pausesIncomingScene = false
+            skView.presentScene(scene, transition: push)
+            removeGestureRecognizers()
         }
     }
     
@@ -122,6 +137,7 @@ public class GameViewController: UIViewController {
         skView.addGestureRecognizer(pan)
         skView.addGestureRecognizer(swipeRight)
         skView.addGestureRecognizer(pinch)
+        skView.addGestureRecognizer(screenEdgePanRight)
     }
     
     func removeGestureRecognizers(){
@@ -132,6 +148,7 @@ public class GameViewController: UIViewController {
         skView.removeGestureRecognizer(pan)
         skView.removeGestureRecognizer(swipeRight)
         skView.removeGestureRecognizer(pinch)
+        skView.removeGestureRecognizer(screenEdgePanRight)
     }
     
 }

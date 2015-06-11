@@ -26,7 +26,7 @@ class ReaperContactVisitor: ContactVisitor {
         let thisNode = self.body.node as? Reaper
         let otherNode = body.node
 
-        Data.score += 2
+        Data.sharedData.score += 2
         (thisNode?.parent as? GameScene)?.soundManager.playScore()
     }
     
@@ -35,7 +35,7 @@ class ReaperContactVisitor: ContactVisitor {
         let otherNode = body.node
 
         scene?.player.shield = true
-        Data.score++
+        Data.sharedData.score++
         scene?.soundManager.playShield()
     }
     

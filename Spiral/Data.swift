@@ -19,11 +19,21 @@ protocol DisplayData: class{
     func restart()
 }
 
-public struct Data{
-    weak static var display:DisplayData?
-    static var updateScore:Int = 5
-    static var currentMode: GameMode = .Ordinary
-    public static var score:Int = 0{
+public class Data{
+    
+    private static let instance = Data()
+    
+    class var sharedData: Data {
+        return instance
+    }
+    
+    weak var display: DisplayData?
+    
+    var updateScore:Int = 5
+    
+    var currentMode: GameMode = .Ordinary
+    
+    public var score:Int = 0{
         willSet{
         if newValue>=updateScore{
             updateScore+=5 * ++level
@@ -48,15 +58,17 @@ public struct Data{
             }
         }
     }
-    static var highScore:Int = 0
-    static var gameOver:Bool = false {
+    
+    var highScore:Int = 0
+    
+    var gameOver:Bool = false {
         willSet{
             if newValue {
                 let standardDefaults = NSUserDefaults.standardUserDefaults()
-                Data.highScore = standardDefaults.integerForKey("highscore")
-                if Data.highScore < Data.score {
-                    Data.highScore = Data.score
-                    standardDefaults.setInteger(Data.score, forKey: "highscore")
+                highScore = standardDefaults.integerForKey("highscore")
+                if highScore < score {
+                    highScore = score
+                    standardDefaults.setInteger(score, forKey: "highscore")
                     standardDefaults.synchronize()
                 }
                 display?.gameOver()
@@ -69,7 +81,8 @@ public struct Data{
             sendDataToGameCenter()
         }
     }
-    static var level:Int = 1{
+    
+    var level:Int = 1{
         willSet{
         speedScale = 1/CGFloat(newValue)
         if newValue != 1{
@@ -82,22 +95,25 @@ public struct Data{
             
         }
     }
-    static var speedScale:CGFloat = 0
-    static var reaperNum:Int = 1{
+    
+    var speedScale:CGFloat = 0
+    
+    var reaperNum:Int = 1{
         didSet{
             display?.updateData()
         }
     }
-    static func restart(){
-        Data.updateScore = 5
-        Data.score = 0
-        Data.level = 1
-        Data.speedScale = 0
-        Data.reaperNum = 1
+    
+    func restart(){
+        updateScore = 5
+        score = 0
+        level = 1
+        speedScale = 0
+        reaperNum = 1
     }
     
-    private static func sendDataToGameCenter(){
-        GameKitHelper.sharedGameKitHelper().submitScore(Int64(Data.score), identifier: kHighScoreLeaderboardIdentifier)
+    private func sendDataToGameCenter(){
+        GameKitHelper.sharedGameKitHelper().submitScore(Int64(score), identifier: kHighScoreLeaderboardIdentifier)
         GameKitHelper.sharedGameKitHelper().reportMultipleAchievements()
     }
 }

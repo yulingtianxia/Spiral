@@ -21,8 +21,8 @@ class ZenButton: SKSpriteNode {
     }
     
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
-        Data.currentMode = .Zen
-        Data.gameOver = false
+        Data.sharedData.currentMode = .Zen
+        Data.sharedData.gameOver = false
         let scene = ZenModeScene(size: self.scene!.size)
         let flip = SKTransition.flipHorizontalWithDuration(1)
         flip.pausesIncomingScene = false

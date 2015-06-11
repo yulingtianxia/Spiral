@@ -22,7 +22,7 @@ class PlayerContactVisitor:ContactVisitor{
 
         if thisNode.shield {
             thisNode.shield = false
-            Data.score++
+            Data.sharedData.score++
             var achievement = GameKitHelper.sharedGameKitHelper().getAchievementForIdentifier(kClean100KillerAchievementID)
             if achievement.percentComplete <= 99.0{
                 achievement.percentComplete += 1
@@ -31,7 +31,8 @@ class PlayerContactVisitor:ContactVisitor{
             (thisNode.parent as! GameScene).soundManager.playKiller()
         }
         else {
-            Data.gameOver = true
+            thisNode.removeAllActions()
+            Data.sharedData.gameOver = true
         }
     }
     
@@ -39,7 +40,7 @@ class PlayerContactVisitor:ContactVisitor{
         let thisNode = self.body.node as! Player
         let otherNode = body.node
 
-        Data.score += 2
+        Data.sharedData.score += 2
         var achievement = GameKitHelper.sharedGameKitHelper().getAchievementForIdentifier(kCatch500ScoreAchievementID)
         if achievement.percentComplete <= 99.8{
             achievement.percentComplete += 0.2
@@ -53,7 +54,7 @@ class PlayerContactVisitor:ContactVisitor{
         let otherNode = body.node
 
         thisNode.shield = true
-        Data.score++
+        Data.sharedData.score++
         var achievement = GameKitHelper.sharedGameKitHelper().getAchievementForIdentifier(kCatch500ShieldAchievementID)
         if achievement.percentComplete <= 99.8{
             achievement.percentComplete += 0.2

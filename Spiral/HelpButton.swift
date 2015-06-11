@@ -11,7 +11,7 @@ import SpriteKit
 class HelpButton: SKSpriteNode {
     init() {
         let imageString:String
-        switch Data.currentMode {
+        switch Data.sharedData.currentMode {
         case .Ordinary:
             imageString = "help_ordinary"
         case .Zen:
@@ -31,9 +31,9 @@ class HelpButton: SKSpriteNode {
         loading.zPosition = 150
         self.scene?.addChild(loading)
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), { () -> Void in
-            Data.display = nil
+            Data.sharedData.display = nil
             self.userInteractionEnabled = false
-            switch Data.currentMode {
+            switch Data.sharedData.currentMode {
             case .Ordinary:
                 if let scene = OrdinaryHelpScene.unarchiveFromFile("OrdinaryHelpScene") as? OrdinaryHelpScene {
                     loading.removeFromParent()

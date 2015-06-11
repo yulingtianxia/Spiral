@@ -21,8 +21,8 @@ class OrdinaryButton: SKSpriteNode {
     }
     
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
-        Data.currentMode = .Ordinary
-        Data.gameOver = false
+        Data.sharedData.currentMode = .Ordinary
+        Data.sharedData.gameOver = false
         let scene = OrdinaryModeScene(size: self.scene!.size)
         let flip = SKTransition.flipHorizontalWithDuration(1)
         flip.pausesIncomingScene = false

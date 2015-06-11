@@ -11,3 +11,7 @@ import Foundation
 func * (left:CGFloat, right:Double) -> Double {
     return Double(left) * right
 }
+
+func * (left:Int, right:CGFloat) -> CGFloat {
+    return CGFloat(left) * right
+}

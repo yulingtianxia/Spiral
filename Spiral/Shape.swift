@@ -33,14 +33,14 @@ class Shape: SKSpriteNode {
         fatalError("NSCoding not supported")
     }
     
-    init(name aName:String,imageName:String){
+    init(name aName:String,imageName:String) {
         super.init(texture: SKTexture(imageNamed: imageName),color:SKColor.clearColor(), size: CGSizeMake(radius*2, radius*2))
 //        physicsBody = SKPhysicsBody(texture: texture, size: size)
         physicsBody = SKPhysicsBody(circleOfRadius: radius)
         physicsBody!.usesPreciseCollisionDetection = true
         physicsBody!.collisionBitMask = mainSceneCategory
         physicsBody!.contactTestBitMask = playerCategory|killerCategory|scoreCategory|shieldCategory|reaperCategory
-        moveSpeed += Data.speedScale * speedUpBase
+        moveSpeed += Data.sharedData.speedScale * speedUpBase
         name = aName
         zPosition = 100
         physicsBody?.angularDamping = 0
@@ -53,17 +53,17 @@ class Shape: SKSpriteNode {
         addChild(light)
     }
     
-    func runInOrdinaryMap(map:OrdinaryMap){
+    func runInOrdinaryMap(map:OrdinaryMap) {
         let distance = calDistanceInOrdinaryMap(map)
-        let duration = distance/moveSpeed
+        let duration = distance / moveSpeed
         let rotate = SKAction.rotateByAngle(distance/10, duration: Double(duration))
         let move = SKAction.moveTo(map.points[lineNum+1], duration: Double(duration))
         let group = SKAction.group([rotate,move])
-        self.runAction(group, completion: {
+        self.runAction(group, completion:{
             self.lineNum++
             if self.lineNum==map.points.count-1 {
                 if self is Player{
-                    Data.gameOver = true
+                    Data.sharedData.gameOver = true
                 }
                 else{
                     self.removeFromParent()
@@ -72,7 +72,7 @@ class Shape: SKSpriteNode {
             else {
                 self.runInOrdinaryMap(map)
             }
-            })
+        })
     }
     
     func calDistanceInOrdinaryMap(map:OrdinaryMap)->CGFloat{
@@ -103,7 +103,7 @@ class Shape: SKSpriteNode {
             self.lineNum++
             if self.lineNum==map.points[self.pathOrientation]!.count-1 {
                 if self is Player{
-                    Data.gameOver = true
+                    Data.sharedData.gameOver = true
                 }
                 else{
                     self.removeFromParent()

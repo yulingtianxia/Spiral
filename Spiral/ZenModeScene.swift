@@ -22,12 +22,12 @@ class ZenModeScene: GameScene {
     
     override init(size:CGSize){
         GameKitHelper.sharedGameKitHelper().authenticateLocalPlayer()
-        Data.currentMode = .Zen
+        Data.sharedData.currentMode = .Zen
         let center = CGPointMake(size.width/2, size.height/2)
         map = ZenMap(origin:center, layer: 5, size:size)
         
         display = ZenDisplay()
-        Data.display = display
+        Data.sharedData.display = display
         background = Background(size: size)
         background.position = center
         nextShape.size = CGSize(width: 50, height: 50)
@@ -71,7 +71,7 @@ class ZenModeScene: GameScene {
     
     override func tap(){
         super.tap()
-        if Data.gameOver {
+        if Data.sharedData.gameOver {
             //                restartGame()
         }
         else if view?.paused == true{
@@ -86,7 +86,7 @@ class ZenModeScene: GameScene {
     
     override func allShapesJumpIn(){
         super.allShapesJumpIn()
-        if !Data.gameOver && view?.paused == false {
+        if !Data.sharedData.gameOver && view?.paused == false {
             for node in children {
                 if let shape = node as? Shape {
                     if shape.lineNum>0 {
@@ -101,9 +101,9 @@ class ZenModeScene: GameScene {
     
     override func createReaper(){
         super.createReaper()
-        if !Data.gameOver && view?.paused == false {
-            if Data.reaperNum>0 {
-                Data.reaperNum--
+        if !Data.sharedData.gameOver && view?.paused == false {
+            if Data.sharedData.reaperNum>0 {
+                Data.sharedData.reaperNum--
                 for pathNum in 0...3 {
                     var shape = Reaper()
                     shape.lineNum = 0
@@ -120,7 +120,7 @@ class ZenModeScene: GameScene {
         for node in children{
             if let shape = node as? Shape {
                 shape.removeAllActions()
-                shape.moveSpeed += Data.speedScale * shape.speedUpBase
+                shape.moveSpeed += Data.sharedData.speedScale * shape.speedUpBase
                 shape.runInZenMap(map)
             }
         }
@@ -178,7 +178,7 @@ class ZenModeScene: GameScene {
 //            addChild(eye)
 //        }
         background.alpha = 0.5
-        Data.restart()
+        Data.sharedData.restart()
         player.restart()
         player.position = map.points[player.pathOrientation]![player.lineNum]
         nodeFactory()
@@ -222,7 +222,7 @@ class ZenModeScene: GameScene {
     
     func nodeFactory(){
 //        self.runAction(SKAction.repeatActionForever(SKAction.sequence([SKAction.runBlock({
-//            if !Data.gameOver {
+//            if !Data.sharedData.gameOver {
 //                
 //                let type = arc4random_uniform(4)
 //                switch type {
@@ -247,7 +247,7 @@ class ZenModeScene: GameScene {
 //                self.nextShape.setScale(1)
 //            })
 //        })]),SKAction.runBlock({ () -> Void in
-//            if !Data.gameOver {
+//            if !Data.sharedData.gameOver {
 //                var shape:Shape
 //                switch self.nextShapeName {
 //                case "Killer":
@@ -268,7 +268,7 @@ class ZenModeScene: GameScene {
 //        })])))
         
         let createNextShape = SKAction.runBlock({
-            if !Data.gameOver {
+            if !Data.sharedData.gameOver {
                 
                 let type = arc4random_uniform(4)
                 switch type {
@@ -291,7 +291,7 @@ class ZenModeScene: GameScene {
         })
         let scale = SKAction.scaleTo(0.4, duration: 5)
         let run = SKAction.runBlock({ () -> Void in
-            if !Data.gameOver {
+            if !Data.sharedData.gameOver {
                 var shape:Shape
                 switch self.nextShapeName {
                 case "Killer":
@@ -322,7 +322,7 @@ class ZenModeScene: GameScene {
     }
     
     override func didSimulatePhysics() {
-//        if Data.gameOver {
+//        if Data.sharedData.gameOver {
 //            for child in self.children{
 //                (child as! SKNode).removeAllActions()
 //            }
@@ -333,7 +333,7 @@ class ZenModeScene: GameScene {
     
     override func pause() {
         super.pause()
-        if !Data.gameOver{
+        if !Data.sharedData.gameOver{
             self.runAction(SKAction.runBlock({ [unowned self]() -> Void in
                 self.display.pause()
                 }), completion: { [unowned self]() -> Void in

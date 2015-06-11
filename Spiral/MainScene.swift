@@ -10,9 +10,9 @@ import SpriteKit
 import CoreMotion
 
 private let kShapeSize = CGSize(width: 50, height: 50)
-private let kUpdateInterval = NSTimeInterval(1)/60
-private let kAccelerateScale:Double = 50
-private let kRandomSpeed:UInt32 = 1000
+private let kUpdateInterval:NSTimeInterval = Double(1)/60
+private let kAccelerateScale:Double = 100
+private let kRandomSpeed:UInt32 = 100
 
 class MainScene: SKScene, SKPhysicsContactDelegate {
     
@@ -35,7 +35,7 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
         spiralLabel.fontName = "Chalkboard SE Regular"
         spiralLabel.fontSize = 100
         spiralLabel.position = CGPoint(x: center.x, y: center.y * 1.5)
-        spiralLabel
+
         addChild(spiralLabel)
         
         //添加 GameCenter 按钮
@@ -56,7 +56,6 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
         physicsBody?.contactTestBitMask = 0
         physicsBody?.linearDamping = 0
         physicsBody?.angularDamping = 0
-//        physicsBody?.restitution = 1
         physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         physicsWorld.contactDelegate = self
         
@@ -66,14 +65,20 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
         //监听加速计数据
         if mManager.deviceMotionAvailable {
             mManager.deviceMotionUpdateInterval = kUpdateInterval
-            mManager.startDeviceMotionUpdatesToQueue(NSOperationQueue.mainQueue(), withHandler: { (deviceMotion, error) -> Void in
-                let acceleration = deviceMotion.userAcceleration
-                for shape in self.shapes {
-                    let mass = shape.physicsBody!.mass
-                    let impulse = CGVector(dx: -mass * acceleration.x * kAccelerateScale, dy: -mass * acceleration.y * kAccelerateScale)
-                    shape.physicsBody?.applyImpulse(impulse)
-                }
-            })
+            mManager.startDeviceMotionUpdates()
+//            mManager.startDeviceMotionUpdatesToQueue(NSOperationQueue.mainQueue(), withHandler: { (deviceMotion, error) -> Void in
+//                if error != nil {
+//                    println(error.description)
+//                }
+//                else {
+//                    let acceleration = deviceMotion.userAcceleration
+//                    for shape in self.shapes {
+//                        let mass = shape.physicsBody!.mass
+//                        let impulse = CGVector(dx: -mass * acceleration.x * kAccelerateScale, dy: -mass * acceleration.y * kAccelerateScale)
+//                        shape.physicsBody?.applyImpulse(impulse)
+//                    }
+//                }
+//            })
         }
     }
 
@@ -91,11 +96,17 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
         let shield = Shield()
         let reaper = Reaper()
         
+        //设定起始点
+        player.position = center
+        killer.position = CGPoint(x: kShapeSize.width, y: kShapeSize.height)
+        score.position = CGPoint(x: kShapeSize.width, y: frame.size.height - kShapeSize.height)
+        shield.position = CGPoint(x: frame.size.width - kShapeSize.width, y: kShapeSize.height)
+        reaper.position = CGPoint(x: frame.size.width - kShapeSize.width, y: frame.size.height - kShapeSize.height)
+        
         shapes = [player,killer,score,shield,reaper]
         
         for shape in shapes {
-            //设定起始点
-            shape.position = center
+            
             shape.size = kShapeSize
             //使用像素级物理体
             shape.physicsBody = SKPhysicsBody(texture: player.texture, size: player.size)
@@ -108,9 +119,8 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
             //设置速度衰减和表面摩擦
             shape.physicsBody?.angularDamping = 0
             shape.physicsBody?.linearDamping = 0
-            shape.physicsBody?.restitution = 1
-            //        shape.physicsBody?.restitution = 1
-            shape.physicsBody?.friction = 1
+            shape.physicsBody?.restitution = 0.5
+            shape.physicsBody?.friction = 1.0
             shape.normalTexture = shape.texture?.textureByGeneratingNormalMap()
             //赋予随机初速度
             shape.physicsBody?.velocity = randomVelocity()
@@ -128,7 +138,19 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
         return CGVector(dx: x, dy: y)
     }
     
+    override func didSimulatePhysics() {
+        if mManager.deviceMotion != nil {
+            let acceleration = mManager.deviceMotion.userAcceleration
+            for shape in self.shapes {
+                let mass = shape.physicsBody!.mass
+                let impulse = CGVector(dx: -mass * acceleration.x * kAccelerateScale, dy: -mass * acceleration.y * kAccelerateScale)
+                shape.physicsBody?.applyImpulse(impulse)
+            }
+        }
+    }
+    
     deinit {
         mManager.stopDeviceMotionUpdates()
     }
+    
 }

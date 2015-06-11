@@ -20,12 +20,12 @@ class OrdinaryModeScene: GameScene {
     
     override init(size:CGSize){
         GameKitHelper.sharedGameKitHelper().authenticateLocalPlayer()
-        Data.currentMode = .Ordinary
+        Data.sharedData.currentMode = .Ordinary
         let center = CGPointMake(size.width/2, size.height/2)
         map = OrdinaryMap(origin:center, layer: 5, size:size)
         
         display = OrdinaryDisplay()
-        Data.display = display
+        Data.sharedData.display = display
         background = Background(size: size)
         background.position = center
         nextShape.size = CGSize(width: 50, height: 50)
@@ -73,7 +73,7 @@ class OrdinaryModeScene: GameScene {
     
     override func tap(){
         super.tap()
-        if Data.gameOver {
+        if Data.sharedData.gameOver {
             //                restartGame()
         }
         else if view?.paused == true{
@@ -88,7 +88,7 @@ class OrdinaryModeScene: GameScene {
     
     override func allShapesJumpIn(){
         super.allShapesJumpIn()
-        if !Data.gameOver && view?.paused == false {
+        if !Data.sharedData.gameOver && view?.paused == false {
             for node in children {
                 if let shape = node as? Shape {
                     if shape.lineNum>3 {
@@ -103,10 +103,10 @@ class OrdinaryModeScene: GameScene {
     
     override func createReaper(){
         super.createReaper()
-        if !Data.gameOver && view?.paused == false {
-            if Data.reaperNum>0 {
+        if !Data.sharedData.gameOver && view?.paused == false {
+            if Data.sharedData.reaperNum>0 {
                 var shape = Reaper()
-                Data.reaperNum--
+                Data.sharedData.reaperNum--
                 shape.lineNum = 0
                 shape.position = self.map.points[shape.lineNum]
                 shape.runInOrdinaryMap(map)
@@ -119,7 +119,7 @@ class OrdinaryModeScene: GameScene {
         for node in children{
             if let shape = node as? Shape {
                 shape.removeAllActions()
-                shape.moveSpeed += Data.speedScale * shape.speedUpBase
+                shape.moveSpeed += Data.sharedData.speedScale * shape.speedUpBase
                 shape.runInOrdinaryMap(map)
             }
         }
@@ -176,7 +176,7 @@ class OrdinaryModeScene: GameScene {
             addChild(eye)
         }
         background.alpha = 0.5
-        Data.restart()
+        Data.sharedData.restart()
         player.restart()
         player.position = map.points[player.lineNum]
         nodeFactory()
@@ -213,7 +213,7 @@ class OrdinaryModeScene: GameScene {
     
     func nodeFactory(){
 //        self.runAction(SKAction.repeatActionForever(SKAction.sequence([SKAction.runBlock({
-//            if !Data.gameOver {
+//            if !Data.sharedData.gameOver {
 //                
 //                let type = arc4random_uniform(4)
 //                switch type {
@@ -238,7 +238,7 @@ class OrdinaryModeScene: GameScene {
 //                self.nextShape.setScale(1)
 //            })
 //        })]),SKAction.runBlock({ () -> Void in
-//            if !Data.gameOver {
+//            if !Data.sharedData.gameOver {
 //                var shape:Shape
 //                switch self.nextShapeName {
 //                case "Killer":
@@ -259,7 +259,7 @@ class OrdinaryModeScene: GameScene {
 //        })])))
         
         let createNextShape = SKAction.runBlock({
-            if !Data.gameOver {
+            if !Data.sharedData.gameOver {
 
                 let type = arc4random_uniform(4)
                 switch type {
@@ -282,7 +282,7 @@ class OrdinaryModeScene: GameScene {
         })
         let scale = SKAction.scaleTo(0.4, duration: 5)
         let run = SKAction.runBlock({ () -> Void in
-            if !Data.gameOver {
+            if !Data.sharedData.gameOver {
                 var shape:Shape
                 switch self.nextShapeName {
                 case "Killer":
@@ -314,7 +314,7 @@ class OrdinaryModeScene: GameScene {
     }
     
     override func didSimulatePhysics() {
-//        if Data.gameOver {
+//        if Data.sharedData.gameOver {
 //            for child in self.children{
 //                (child as! SKNode).removeAllActions()
 //            }
@@ -326,7 +326,7 @@ class OrdinaryModeScene: GameScene {
     
     override func pause() {
         super.pause()
-        if !Data.gameOver{
+        if !Data.sharedData.gameOver{
             self.runAction(SKAction.runBlock({ [unowned self]() -> Void in
                 self.display.pause()
                 }), completion: { [unowned self]() -> Void in

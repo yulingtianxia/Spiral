@@ -11,7 +11,7 @@ import SpriteKit
 class GameOverIcon: SKSpriteNode {
     init(size:CGSize) {
         let imageString:String
-        switch Data.currentMode {
+        switch Data.sharedData.currentMode {
         case .Ordinary:
             imageString = "gameover_ordinary"
         case .Zen:
@@ -26,7 +26,7 @@ class GameOverIcon: SKSpriteNode {
     }
     
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
-        Data.display = nil
+        Data.sharedData.display = nil
         let scene = MainScene(size: self.scene!.size)
         let flip = SKTransition.flipHorizontalWithDuration(1)
         flip.pausesIncomingScene = false

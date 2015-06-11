@@ -22,7 +22,7 @@ class OrdinaryHelpScene: SKScene {
     }
     
     func back() {
-        Data.gameOver = false
+        Data.sharedData.gameOver = false
         let scene = OrdinaryModeScene(size: self.size)
         let flip = SKTransition.flipHorizontalWithDuration(1)
         flip.pausesIncomingScene = false

@@ -66,7 +66,7 @@ class SpiralTests: XCTestCase {
 //            XCTAssert(success, "failed to submit score")
 //            expectation.fulfill()
 //        }
-//        GameKitHelper.sharedGameKitHelper().submitScore(Int64(Data.score), identifier: kHighScoreLeaderboardIdentifier)
+//        GameKitHelper.sharedGameKitHelper().submitScore(Int64(Data.sharedData.score), identifier: kHighScoreLeaderboardIdentifier)
 //        waitForExpectationsWithTimeout(1000, handler: { (error) -> Void in
 //
 //        })

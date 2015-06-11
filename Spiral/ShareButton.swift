@@ -27,8 +27,8 @@ class ShareButton: SKLabelNode {
         let scene = self.scene as! GameScene
         let image = imageFromNode(scene)
         if lang == "zh-Hans" {
-//            SendWX.sendImageContent(image, withScore: "\(Data.score)")
-            if !SendWX.sendLinkContentWithImage(image, score: "\(Data.score)") {
+//            SendWX.sendImageContent(image, withScore: "\(Data.sharedData.score)")
+            if !SendWX.sendLinkContentWithImage(image, score: "\(Data.sharedData.score)") {
                 //微信不可用
                 let alert = UIAlertController(title: "抱歉", message: "你没有安装微信", preferredStyle: .Alert)
                 let action = UIAlertAction(title: "哎", style: .Default, handler: nil)
@@ -37,7 +37,7 @@ class ShareButton: SKLabelNode {
             }
         }
         else{
-            let text = String.localizedStringWithFormat(NSLocalizedString("I got %d points in Spiral. Come on with me! https://itunes.apple.com/us/app/square-spiral/id920811081", comment: ""), Data.score)
+            let text = String.localizedStringWithFormat(NSLocalizedString("I got %d points in Spiral. Come on with me! https://itunes.apple.com/us/app/square-spiral/id920811081", comment: ""), Data.sharedData.score)
             let activityItems = [image,text]
             let activityController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
             (scene.view!.nextResponder() as! UIViewController).presentViewController(activityController, animated: true, completion: nil)

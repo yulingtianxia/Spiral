@@ -20,7 +20,7 @@ class SoundManager: SKNode {
     private var killerPlayer:AVAudioPlayer?
     func playBackGround(){
         let backgroundFileName:String
-        switch Data.currentMode {
+        switch Data.sharedData.currentMode {
         case .Ordinary:
             backgroundFileName = "bg_ordinary"
         case .Zen:
@@ -49,7 +49,7 @@ class SoundManager: SKNode {
     
     func playJump(){
         let backgroundFileName:String
-        switch Data.currentMode {
+        switch Data.sharedData.currentMode {
         case .Ordinary:
             if let bgMusicURL =  NSBundle.mainBundle().URLForResource("jump_ordinary", withExtension: "mp3"){
                 jumpPlayer = AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
@@ -63,7 +63,7 @@ class SoundManager: SKNode {
     }
     
     func playGameOver(){
-        switch Data.currentMode {
+        switch Data.sharedData.currentMode {
         case .Ordinary:
             if let bgMusicURL =  NSBundle.mainBundle().URLForResource("gameover_ordinary", withExtension: "mp3"){
                 gameoverPlayer = AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
@@ -77,7 +77,7 @@ class SoundManager: SKNode {
     }
     
     func playLevelUp(){
-        switch Data.currentMode {
+        switch Data.sharedData.currentMode {
         case .Ordinary:
             if let bgMusicURL =  NSBundle.mainBundle().URLForResource("levelup_ordinary", withExtension: "mp3"){
                 levelupPlayer = AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
@@ -91,7 +91,7 @@ class SoundManager: SKNode {
     }
     
     func playScore(){
-        switch Data.currentMode {
+        switch Data.sharedData.currentMode {
         case .Ordinary:
             if let bgMusicURL =  NSBundle.mainBundle().URLForResource("score_ordinary", withExtension: "mp3"){
                 scorePlayer = AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
@@ -105,7 +105,7 @@ class SoundManager: SKNode {
     }
     
     func playShield(){
-        switch Data.currentMode {
+        switch Data.sharedData.currentMode {
         case .Ordinary:
             if let bgMusicURL =  NSBundle.mainBundle().URLForResource("shield_ordinary", withExtension: "wav"){
                 shieldPlayer = AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
@@ -119,7 +119,7 @@ class SoundManager: SKNode {
     }
     
     func playKiller(){
-        switch Data.currentMode {
+        switch Data.sharedData.currentMode {
         case .Ordinary:
             if let bgMusicURL =  NSBundle.mainBundle().URLForResource("killer_ordinary", withExtension: "wav"){
                 killerPlayer = AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
