@@ -15,8 +15,8 @@ let tips = [
     "Catching the Purple Shield can give the Star one more life&score",
     "Catching the Green Plant can give the Star two more score",
     "The Blue Reaper can help you to collect score and clean killers",
-    "Try to manipulate the game with two fingers, you must have surprise!",
-    "When the Star reaches the end of rope or it was killed:game over",
+    "Try to manipulate the game with two fingers",
+    "Don't let the Star reache the end of rope or be killed",
     "You can pause the game by a long press. To resume, just tap again",
     "Let the Star(with shield) rush the Killer can get one score"
 ]

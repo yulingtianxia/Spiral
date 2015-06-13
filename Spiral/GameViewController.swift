@@ -15,7 +15,7 @@ public class GameViewController: UIViewController {
     var tapWithOneFinger:UITapGestureRecognizer!
     var tapWithTwoFinger:UITapGestureRecognizer!
     var pan:UIPanGestureRecognizer!
-    var swipeRight:UISwipeGestureRecognizer!
+//    var swipeRight:UISwipeGestureRecognizer!
     var pinch:UIPinchGestureRecognizer!
     var screenEdgePanRight:UIScreenEdgePanGestureRecognizer!
     
@@ -33,9 +33,9 @@ public class GameViewController: UIViewController {
         tapWithTwoFinger.numberOfTouchesRequired = 2
         pan = UIPanGestureRecognizer(target: self, action: Selector("handlePanGesture:"))
         pan.maximumNumberOfTouches = 1
-        swipeRight = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipeGesture:"))
-        swipeRight.direction = UISwipeGestureRecognizerDirection.Right
-        swipeRight.numberOfTouchesRequired = 2
+//        swipeRight = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipeGesture:"))
+//        swipeRight.direction = UISwipeGestureRecognizerDirection.Right
+//        swipeRight.numberOfTouchesRequired = 2
         
         pinch = UIPinchGestureRecognizer(target: self, action: Selector("handlePinchGesture:"))
         screenEdgePanRight = UIScreenEdgePanGestureRecognizer(target: self, action: Selector("handleEdgePanGesture:"))
@@ -119,13 +119,23 @@ public class GameViewController: UIViewController {
     
     func handleEdgePanGesture(recognizer:UIPinchGestureRecognizer) {
         if recognizer.state == .Ended {
-            let skView = view as! SKView
-            Data.sharedData.display = nil
-            let scene = MainScene(size: skView.bounds.size)
-            let push = SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 1)
-            push.pausesIncomingScene = false
-            skView.presentScene(scene, transition: push)
-            removeGestureRecognizers()
+            let scene = (self.view as! SKView).scene
+            if let scene = scene as? OrdinaryHelpScene {
+                scene.back()
+            }
+            else if let scene = scene as? ZenHelpScene {
+                scene.back()
+            }
+            else if let scene = scene as? GameScene {
+                let skView = view as! SKView
+                Data.sharedData.display = nil
+                scene.soundManager.stopBackGround()
+                let scene = MainScene(size: skView.bounds.size)
+                let push = SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 1)
+                push.pausesIncomingScene = false
+                skView.presentScene(scene, transition: push)
+                removeGestureRecognizers()
+            }
         }
     }
     
@@ -135,7 +145,7 @@ public class GameViewController: UIViewController {
         skView.addGestureRecognizer(tapWithOneFinger)
         skView.addGestureRecognizer(tapWithTwoFinger)
         skView.addGestureRecognizer(pan)
-        skView.addGestureRecognizer(swipeRight)
+//        skView.addGestureRecognizer(swipeRight)
         skView.addGestureRecognizer(pinch)
         skView.addGestureRecognizer(screenEdgePanRight)
     }
@@ -146,7 +156,7 @@ public class GameViewController: UIViewController {
         skView.removeGestureRecognizer(tapWithOneFinger)
         skView.removeGestureRecognizer(tapWithTwoFinger)
         skView.removeGestureRecognizer(pan)
-        skView.removeGestureRecognizer(swipeRight)
+//        skView.removeGestureRecognizer(swipeRight)
         skView.removeGestureRecognizer(pinch)
         skView.removeGestureRecognizer(screenEdgePanRight)
     }

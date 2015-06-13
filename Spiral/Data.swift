@@ -17,6 +17,7 @@ protocol DisplayData: class{
     func levelUp()
     func gameOver()
     func restart()
+    func disableButtons()
 }
 
 public class Data{

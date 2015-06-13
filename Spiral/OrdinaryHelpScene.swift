@@ -24,9 +24,9 @@ class OrdinaryHelpScene: SKScene {
     func back() {
         Data.sharedData.gameOver = false
         let scene = OrdinaryModeScene(size: self.size)
-        let flip = SKTransition.flipHorizontalWithDuration(1)
-        flip.pausesIncomingScene = false
-        self.scene?.view?.presentScene(scene, transition: flip)
+        let push = SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 1)
+        push.pausesIncomingScene = false
+        self.scene?.view?.presentScene(scene, transition: push)
     }
     
     override func didMoveToView(view: SKView) {

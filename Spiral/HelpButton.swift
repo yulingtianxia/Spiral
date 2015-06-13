@@ -32,7 +32,7 @@ class HelpButton: SKSpriteNode {
         self.scene?.addChild(loading)
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), { () -> Void in
             Data.sharedData.display = nil
-            self.userInteractionEnabled = false
+            (self.parent as? DisplayData)?.disableButtons()
             switch Data.sharedData.currentMode {
             case .Ordinary:
                 if let scene = OrdinaryHelpScene.unarchiveFromFile("OrdinaryHelpScene") as? OrdinaryHelpScene {

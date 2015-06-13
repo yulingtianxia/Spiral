@@ -63,6 +63,14 @@ class ZenDisplay: SKNode, DisplayData {
         
     }
     
+    func disableButtons() {
+        share.userInteractionEnabled = false
+        replay.userInteractionEnabled = false
+        gameCenter.userInteractionEnabled = false
+        help.userInteractionEnabled = false
+        gameOverLabel.userInteractionEnabled = false
+    }
+    
     // MARK: - DisplayData
     
     func updateData() {

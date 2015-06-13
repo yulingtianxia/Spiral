@@ -12,12 +12,12 @@ import AVFoundation
 class SoundManager: SKNode {
     
     private var bgMusicPlayer:AVAudioPlayer?
-    private var jumpPlayer:AVAudioPlayer?
-    private var gameoverPlayer:AVAudioPlayer?
-    private var levelupPlayer:AVAudioPlayer?
-    private var scorePlayer:AVAudioPlayer?
-    private var shieldPlayer:AVAudioPlayer?
-    private var killerPlayer:AVAudioPlayer?
+//    private var jumpPlayer:AVAudioPlayer?
+//    private var gameoverPlayer:AVAudioPlayer?
+//    private var levelupPlayer:AVAudioPlayer?
+//    private var scorePlayer:AVAudioPlayer?
+//    private var shieldPlayer:AVAudioPlayer?
+//    private var killerPlayer:AVAudioPlayer?
     func playBackGround(){
         let backgroundFileName:String
         switch Data.sharedData.currentMode {
@@ -51,84 +51,96 @@ class SoundManager: SKNode {
         let backgroundFileName:String
         switch Data.sharedData.currentMode {
         case .Ordinary:
-            if let bgMusicURL =  NSBundle.mainBundle().URLForResource("jump_ordinary", withExtension: "mp3"){
-                jumpPlayer = AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
-            }
+            runAction(SKAction.playSoundFileNamed("jump_ordinary.wav", waitForCompletion: true))
+//            if let bgMusicURL =  NSBundle.mainBundle().URLForResource("jump_ordinary", withExtension: "mp3"){
+//                jumpPlayer = AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
+//            }
         case .Zen:
-            if let bgMusicURL =  NSBundle.mainBundle().URLForResource("jump_zen", withExtension: "wav"){
-                jumpPlayer = AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
-            }
+            runAction(SKAction.playSoundFileNamed("jump_zen.wav", waitForCompletion: true))
+//            if let bgMusicURL =  NSBundle.mainBundle().URLForResource("jump_zen", withExtension: "wav"){
+//                jumpPlayer = AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
+//            }
         }
-        jumpPlayer?.play()
+//        jumpPlayer?.play()
     }
     
     func playGameOver(){
         switch Data.sharedData.currentMode {
         case .Ordinary:
-            if let bgMusicURL =  NSBundle.mainBundle().URLForResource("gameover_ordinary", withExtension: "mp3"){
-                gameoverPlayer = AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
-            }
+            runAction(SKAction.playSoundFileNamed("gameover_ordinary.wav", waitForCompletion: true))
+//            if let bgMusicURL =  NSBundle.mainBundle().URLForResource("gameover_ordinary", withExtension: "mp3"){
+//                gameoverPlayer = AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
+//            }
         case .Zen:
-            if let bgMusicURL =  NSBundle.mainBundle().URLForResource("gameover_zen", withExtension: "wav"){
-                gameoverPlayer = AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
-            }
+            runAction(SKAction.playSoundFileNamed("gameover_zen.wav", waitForCompletion: true))
+//            if let bgMusicURL =  NSBundle.mainBundle().URLForResource("gameover_zen", withExtension: "wav"){
+//                gameoverPlayer = AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
+//            }
         }
-        gameoverPlayer?.play()
+//        gameoverPlayer?.play()
     }
     
     func playLevelUp(){
         switch Data.sharedData.currentMode {
         case .Ordinary:
-            if let bgMusicURL =  NSBundle.mainBundle().URLForResource("levelup_ordinary", withExtension: "mp3"){
-                levelupPlayer = AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
-            }
+            runAction(SKAction.playSoundFileNamed("levelup_ordinary.wav", waitForCompletion: true))
+//            if let bgMusicURL =  NSBundle.mainBundle().URLForResource("levelup_ordinary", withExtension: "mp3"){
+//                levelupPlayer = AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
+//            }
         case .Zen:
-            if let bgMusicURL =  NSBundle.mainBundle().URLForResource("levelup_zen", withExtension: "wav"){
-                levelupPlayer = AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
-            }
+            runAction(SKAction.playSoundFileNamed("levelup_zen.wav", waitForCompletion: true))
+//            if let bgMusicURL =  NSBundle.mainBundle().URLForResource("levelup_zen", withExtension: "wav"){
+//                levelupPlayer = AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
+//            }
         }
-        levelupPlayer?.play()
+//        levelupPlayer?.play()
     }
     
     func playScore(){
         switch Data.sharedData.currentMode {
         case .Ordinary:
-            if let bgMusicURL =  NSBundle.mainBundle().URLForResource("score_ordinary", withExtension: "mp3"){
-                scorePlayer = AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
-            }
+            runAction(SKAction.playSoundFileNamed("score_ordinary.wav", waitForCompletion: true))
+//            if let bgMusicURL =  NSBundle.mainBundle().URLForResource("score_ordinary", withExtension: "mp3"){
+//                scorePlayer = AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
+//            }
         case .Zen:
-            if let bgMusicURL =  NSBundle.mainBundle().URLForResource("score_zen", withExtension: "wav"){
-                scorePlayer = AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
-            }
+            runAction(SKAction.playSoundFileNamed("score_zen.wav", waitForCompletion: true))
+//            if let bgMusicURL =  NSBundle.mainBundle().URLForResource("score_zen", withExtension: "wav"){
+//                scorePlayer = AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
+//            }
         }
-        scorePlayer?.play()
+//        scorePlayer?.play()
     }
     
     func playShield(){
         switch Data.sharedData.currentMode {
         case .Ordinary:
-            if let bgMusicURL =  NSBundle.mainBundle().URLForResource("shield_ordinary", withExtension: "wav"){
-                shieldPlayer = AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
-            }
+            runAction(SKAction.playSoundFileNamed("shield_ordinary.wav", waitForCompletion: true))
+//            if let bgMusicURL =  NSBundle.mainBundle().URLForResource("shield_ordinary", withExtension: "wav"){
+//                shieldPlayer = AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
+//            }
         case .Zen:
-            if let bgMusicURL =  NSBundle.mainBundle().URLForResource("shield_zen", withExtension: "mp3"){
-                shieldPlayer = AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
-            }
+            runAction(SKAction.playSoundFileNamed("shield_zen.wav", waitForCompletion: true))
+//            if let bgMusicURL =  NSBundle.mainBundle().URLForResource("shield_zen", withExtension: "mp3"){
+//                shieldPlayer = AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
+//            }
         }
-        shieldPlayer?.play()
+//        shieldPlayer?.play()
     }
     
     func playKiller(){
         switch Data.sharedData.currentMode {
         case .Ordinary:
-            if let bgMusicURL =  NSBundle.mainBundle().URLForResource("killer_ordinary", withExtension: "wav"){
-                killerPlayer = AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
-            }
+            runAction(SKAction.playSoundFileNamed("killer_ordinary.wav", waitForCompletion: true))
+//            if let bgMusicURL =  NSBundle.mainBundle().URLForResource("killer_ordinary", withExtension: "wav"){
+//                killerPlayer = AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
+//            }
         case .Zen:
-            if let bgMusicURL =  NSBundle.mainBundle().URLForResource("killer_zen", withExtension: "wav"){
-                killerPlayer = AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
-            }
+            runAction(SKAction.playSoundFileNamed("killer_zen.wav", waitForCompletion: true))
+//            if let bgMusicURL =  NSBundle.mainBundle().URLForResource("killer_zen", withExtension: "wav"){
+//                killerPlayer = AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
+//            }
         }
-        killerPlayer?.play()
+//        killerPlayer?.play()
     }
 }

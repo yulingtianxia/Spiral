@@ -23,9 +23,9 @@ class ZenHelpScene: SKScene {
     func back() {
         Data.sharedData.gameOver = false
         let scene = ZenModeScene(size: self.size)
-        let flip = SKTransition.flipHorizontalWithDuration(1)
-        flip.pausesIncomingScene = false
-        self.scene?.view?.presentScene(scene, transition: flip)
+        let push = SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 1)
+        push.pausesIncomingScene = false
+        self.scene?.view?.presentScene(scene, transition: push)
         
     }
     
