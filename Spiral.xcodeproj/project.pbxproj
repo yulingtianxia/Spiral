@@ -23,6 +23,7 @@
 		A437599E1B20349200935DE7 /* OrdinaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A437599D1B20349200935DE7 /* OrdinaryButton.swift */; };
 		A43759A01B2038D500935DE7 /* ZenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A437599F1B2038D500935DE7 /* ZenButton.swift */; };
 		A43759A71B20632E00935DE7 /* GameOverIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43759A61B20632E00935DE7 /* GameOverIcon.swift */; };
+		A43F9CE11B2C5420001835F5 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43F9CE01B2C5420001835F5 /* GameScene.swift */; };
 		A45A65E01986073B00EA40D7 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45A65DF1986073B00EA40D7 /* SoundManager.swift */; };
 		A45A93511B2C305A00EE4A56 /* OrdinaryHelpScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A45A934D1B2C305A00EE4A56 /* OrdinaryHelpScene.sks */; };
 		A45A93521B2C305A00EE4A56 /* ZenHelpScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A45A934F1B2C305A00EE4A56 /* ZenHelpScene.sks */; };
@@ -121,6 +122,7 @@
 		A437599D1B20349200935DE7 /* OrdinaryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = OrdinaryButton.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A437599F1B2038D500935DE7 /* ZenButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ZenButton.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A43759A61B20632E00935DE7 /* GameOverIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = GameOverIcon.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		A43F9CE01B2C5420001835F5 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		A44270291B24950E0031B7FC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "en.lproj/Launch Screen.xib"; sourceTree = "<group>"; };
 		A45A65DF1986073B00EA40D7 /* SoundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SoundManager.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A45A934E1B2C305A00EE4A56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Base; path = Base.lproj/OrdinaryHelpScene.sks; sourceTree = "<group>"; };
@@ -402,6 +404,7 @@
 			children = (
 				A4E28CA11B209FF30053770A /* sks file */,
 				A46E911B1AFF01D200AC1400 /* MainScene.swift */,
+				A43F9CE01B2C5420001835F5 /* GameScene.swift */,
 				A4254A821AF618CF00620AA7 /* OrdinaryModeScene.swift */,
 				A492F67A1AF3C67C004B040B /* ZenModeScene.swift */,
 				A45A9FA219F3E7250087C192 /* OrdinaryHelpScene.swift */,
@@ -675,6 +678,7 @@
 				A4F3505019FBA41B00F6B8DF /* Eye.swift in Sources */,
 				A47D3D18197415C1005AF736 /* KillerContactVisitor.swift in Sources */,
 				A436ADE51B271FE400D7F407 /* HelpFile.swift in Sources */,
+				A43F9CE11B2C5420001835F5 /* GameScene.swift in Sources */,
 				A47D3D1C19741B04005AF736 /* Killer.swift in Sources */,
 				A4FF927019751AA50060CE6D /* VisitablePhysicsBody.swift in Sources */,
 				A43759A01B2038D500935DE7 /* ZenButton.swift in Sources */,
