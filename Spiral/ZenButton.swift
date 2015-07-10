@@ -20,7 +20,7 @@ class ZenButton: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         Data.sharedData.currentMode = .Zen
         Data.sharedData.gameOver = false
         let scene = ZenModeScene(size: self.scene!.size)

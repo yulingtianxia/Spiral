@@ -109,7 +109,7 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
             
             shape.size = kShapeSize
             //使用像素级物理体
-            shape.physicsBody = SKPhysicsBody(texture: player.texture, size: player.size)
+            shape.physicsBody = SKPhysicsBody(texture: player.texture!, size: player.size)
             //设置碰撞
             shape.physicsBody?.contactTestBitMask = 0
             shape.physicsBody?.usesPreciseCollisionDetection = true
@@ -139,8 +139,8 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func didSimulatePhysics() {
-        if mManager.deviceMotion != nil {
-            let acceleration = mManager.deviceMotion.userAcceleration
+        if let deviceMotion = mManager.deviceMotion {
+            let acceleration = deviceMotion.userAcceleration
             for shape in self.shapes {
                 let mass = shape.physicsBody!.mass
                 let impulse = CGVector(dx: -mass * acceleration.x * kAccelerateScale, dy: -mass * acceleration.y * kAccelerateScale)

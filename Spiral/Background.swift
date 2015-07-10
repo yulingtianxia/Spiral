@@ -29,7 +29,7 @@ class Background: SKSpriteNode {
         normalTexture = texture?.textureByGeneratingNormalMapWithSmoothness(0.2, contrast: 2.5)
         zPosition = -100
         alpha = 0.5
-        var light = SKLightNode()
+        let light = SKLightNode()
         switch Data.sharedData.currentMode {
         case .Ordinary:
             light.lightColor = SKColor.blackColor()

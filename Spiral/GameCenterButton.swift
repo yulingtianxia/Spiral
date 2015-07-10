@@ -18,7 +18,7 @@ class GameCenterButton: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         GameKitHelper.sharedGameKitHelper().showLeaderboard()
     }
     

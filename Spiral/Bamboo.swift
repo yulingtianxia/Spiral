@@ -17,7 +17,7 @@ class Bamboo: SKSpriteNode {
         maxLength = texture.size().height / (texture.size().width / fixWidth)
         let size = CGSize(width: fixWidth, height: min(length,maxLength))
         super.init(texture: SKTexture(rect: CGRect(origin: CGPointZero, size: CGSize(width: 1, height: min(length / maxLength, 1))), inTexture: texture),color:SKColor.clearColor(), size: size)
-        normalTexture = texture?.textureByGeneratingNormalMapWithSmoothness(0.5, contrast: 0.4)
+        normalTexture = texture.textureByGeneratingNormalMapWithSmoothness(0.5, contrast: 0.4)
         lightingBitMask = playerLightCategory|killerLightCategory|scoreLightCategory|shieldLightCategory|reaperLightCategory
     }
     

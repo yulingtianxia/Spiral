@@ -105,7 +105,7 @@ class ZenModeScene: GameScene {
             if Data.sharedData.reaperNum>0 {
                 Data.sharedData.reaperNum--
                 for pathNum in 0...3 {
-                    var shape = Reaper()
+                    let shape = Reaper()
                     shape.lineNum = 0
                     shape.pathOrientation = PathOrientation(rawValue: pathNum)!
                     shape.position = self.map.points[shape.pathOrientation]![shape.lineNum]
@@ -192,7 +192,7 @@ class ZenModeScene: GameScene {
         if shape.lineNum == 0 {
             return
         }
-        let spacing = map.spacing
+
         let scale = CGFloat(shape.lineNum-1)/CGFloat(shape.lineNum)
         let newDistance = shape.calDistanceInZenMap(map)*scale
         shape.lineNum--
@@ -213,7 +213,7 @@ class ZenModeScene: GameScene {
             //go up
             shape.position = CGPointMake(nextPoint.x, nextPoint.y-newDistance)
         default:
-            println("Why?")
+            print("Why?")
         }
         if shape.lineNum == 0 {
             shape.lineNum++
@@ -284,7 +284,7 @@ class ZenModeScene: GameScene {
                 default:
                     self.nextShapeName = "Killer"
                     self.nextShape.texture = SKTexture(imageNamed: "killer")
-                    println(type)
+                    print(type)
                 }
                 self.nextShape.setScale(1)
             }
@@ -301,7 +301,7 @@ class ZenModeScene: GameScene {
                 case "Shield":
                     shape = Shield()
                 default:
-                    println(self.nextShapeName)
+                    print(self.nextShapeName)
                     shape = Killer()
                 }
                 shape.lineNum = 0
@@ -310,9 +310,9 @@ class ZenModeScene: GameScene {
                 self.addChild(shape)
             }
         })
-        let sequence = SKAction.sequence([createNextShape, scale, run])
-        let repeat = SKAction.repeatActionForever(sequence)
-        nextShape.runAction(repeat)
+        let sequenceAction = SKAction.sequence([createNextShape, scale, run])
+        let repeatAction = SKAction.repeatActionForever(sequenceAction)
+        nextShape.runAction(repeatAction)
     }
     
     //MARK: lifecycle callback

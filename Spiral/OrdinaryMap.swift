@@ -40,7 +40,7 @@ public class OrdinaryMap: SKNode {
     func addRopesFromPointA(a:CGPoint, toPointB b:CGPoint){
         let xDistance = b.x-a.x
         let yDistance = b.y-a.y
-        var distance = sqrt(xDistance * xDistance + yDistance * yDistance)
+        let distance = sqrt(xDistance * xDistance + yDistance * yDistance)
         let rope = Rope(length: distance)
         rope.zRotation = atan(xDistance / yDistance)
         let scale = rope.size.height / distance

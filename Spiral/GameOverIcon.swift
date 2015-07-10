@@ -25,7 +25,7 @@ class GameOverIcon: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         Data.sharedData.display = nil
         let scene = MainScene(size: self.scene!.size)
         let flip = SKTransition.flipHorizontalWithDuration(1)

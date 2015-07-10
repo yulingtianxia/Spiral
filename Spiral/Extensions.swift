@@ -11,8 +11,8 @@ import SpriteKit
 extension SKScene {
     class func unarchiveFromFile(file:String) -> SKNode? {
         if let path = NSBundle.mainBundle().pathForResource(file, ofType: "sks") {
-            var sceneData = NSData(contentsOfFile: path, options: .DataReadingMappedIfSafe, error: nil)!
-            var archiver = NSKeyedUnarchiver(forReadingWithData: sceneData)
+            let sceneData = try! NSData(contentsOfFile: path, options: .DataReadingMappedIfSafe)
+            let archiver = NSKeyedUnarchiver(forReadingWithData: sceneData)
             
             archiver.setClass(self.classForKeyedUnarchiver(), forClassName: "SKScene")
             let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as! SKScene
@@ -56,7 +56,7 @@ extension SKNode {
             self.yxy_addChild(node)
         }
         else {
-            println("This node has already a parent!\(node.name)")
+            print("This node has already a parent!\(node.name)")
         }
     }
     
@@ -67,7 +67,7 @@ extension SKNode {
             })
         }
         else {
-            println("This node has no parent!\(name)")
+            print("This node has no parent!\(name)")
         }
     }
     

@@ -70,7 +70,7 @@ public class ZenMap: SKNode {
     func addBamboosFromPointA(a:CGPoint, toPointB b:CGPoint){
         let xDistance = b.x-a.x
         let yDistance = b.y-a.y
-        var distance = sqrt(xDistance * xDistance + yDistance * yDistance)
+        let distance = sqrt(xDistance * xDistance + yDistance * yDistance)
         let bamboo = Bamboo(length: distance)
         bamboo.zRotation = atan(xDistance / yDistance)
         let scale = bamboo.size.height / distance

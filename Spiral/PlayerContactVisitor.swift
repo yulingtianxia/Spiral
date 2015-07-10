@@ -11,19 +11,19 @@ import SpriteKit
 class PlayerContactVisitor:ContactVisitor{
     
     func visitPlayer(body:SKPhysicsBody){
-        let thisNode = self.body.node
-        let otherNode = body.node
+//        let thisNode = self.body.node
+//        let otherNode = body.node
 //        println(thisNode.name+"->"+otherNode.name)
     }
     
     func visitKiller(body:SKPhysicsBody){
         let thisNode = self.body.node as! Player
-        let otherNode = body.node
+//        let otherNode = body.node
 
         if thisNode.shield {
             thisNode.shield = false
             Data.sharedData.score++
-            var achievement = GameKitHelper.sharedGameKitHelper().getAchievementForIdentifier(kClean100KillerAchievementID)
+            let achievement = GameKitHelper.sharedGameKitHelper().getAchievementForIdentifier(kClean100KillerAchievementID)
             if achievement.percentComplete <= 99.0{
                 achievement.percentComplete += 1
             }
@@ -38,10 +38,10 @@ class PlayerContactVisitor:ContactVisitor{
     
     func visitScore(body:SKPhysicsBody){
         let thisNode = self.body.node as! Player
-        let otherNode = body.node
+//        let otherNode = body.node
 
         Data.sharedData.score += 2
-        var achievement = GameKitHelper.sharedGameKitHelper().getAchievementForIdentifier(kCatch500ScoreAchievementID)
+        let achievement = GameKitHelper.sharedGameKitHelper().getAchievementForIdentifier(kCatch500ScoreAchievementID)
         if achievement.percentComplete <= 99.8{
             achievement.percentComplete += 0.2
         }
@@ -51,11 +51,11 @@ class PlayerContactVisitor:ContactVisitor{
     
     func visitShield(body:SKPhysicsBody){
         let thisNode = self.body.node as! Player
-        let otherNode = body.node
+//        let otherNode = body.node
 
         thisNode.shield = true
         Data.sharedData.score++
-        var achievement = GameKitHelper.sharedGameKitHelper().getAchievementForIdentifier(kCatch500ShieldAchievementID)
+        let achievement = GameKitHelper.sharedGameKitHelper().getAchievementForIdentifier(kCatch500ShieldAchievementID)
         if achievement.percentComplete <= 99.8{
             achievement.percentComplete += 0.2
         }

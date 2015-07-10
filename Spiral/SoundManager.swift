@@ -27,7 +27,11 @@ class SoundManager: SKNode {
             backgroundFileName = "bg_zen"
         }
         if let bgMusicURL =  NSBundle.mainBundle().URLForResource(backgroundFileName, withExtension: "mp3") {
-            bgMusicPlayer = AVAudioPlayer(contentsOfURL: bgMusicURL, error: nil)
+            do {
+                bgMusicPlayer = try AVAudioPlayer(contentsOfURL: bgMusicURL)
+            } catch _ {
+                bgMusicPlayer = nil
+            }
         }
         bgMusicPlayer?.numberOfLoops = -1
         bgMusicPlayer?.prepareToPlay()
@@ -48,7 +52,7 @@ class SoundManager: SKNode {
     }
     
     func playJump(){
-        let backgroundFileName:String
+//        let backgroundFileName:String
         switch Data.sharedData.currentMode {
         case .Ordinary:
             runAction(SKAction.playSoundFileNamed("jump_ordinary.wav", waitForCompletion: true))

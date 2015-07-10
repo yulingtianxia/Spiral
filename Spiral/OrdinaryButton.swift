@@ -20,7 +20,7 @@ class OrdinaryButton: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         Data.sharedData.currentMode = .Ordinary
         Data.sharedData.gameOver = false
         let scene = OrdinaryModeScene(size: self.scene!.size)

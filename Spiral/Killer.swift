@@ -15,7 +15,9 @@ class Killer: Shape {
         light.lightColor = SKColor(red: 208.0/255, green: 2.0/255, blue: 27.0/255, alpha: 1)
         light.categoryBitMask = killerLightCategory
 //        light.enabled = true
-        let spark = SKEmitterNode(fileNamed: "spark")
-        self.addChild(spark)
+        if let spark = SKEmitterNode(fileNamed: "spark") {
+            self.addChild(spark)
+        }
+
     }
 }
