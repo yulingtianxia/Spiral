@@ -289,9 +289,6 @@
 		A478773B197113D000F6F611 = {
 			isa = PBXGroup;
 			children = (
-				A490225C19B9D8A8009114ED /* SpriteKit.framework */,
-				A490225A19B9D89F009114ED /* Foundation.framework */,
-				A434A14C197696BC00F4C94B /* Social.framework */,
 				A4787746197113D000F6F611 /* Spiral */,
 				A478775D197113D000F6F611 /* SpiralTests */,
 				A4787745197113D000F6F611 /* Products */,
@@ -472,6 +469,9 @@
 		F7CB57B3A321435B8FBA1FD7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A490225C19B9D8A8009114ED /* SpriteKit.framework */,
+				A490225A19B9D89F009114ED /* Foundation.framework */,
+				A434A14C197696BC00F4C94B /* Social.framework */,
 				A4DCE0261A839E0E00EA39B1 /* Crashlytics.framework */,
 				A4DCE0271A839E0E00EA39B1 /* Fabric.framework */,
 				5840075B84044E92A52535DA /* libPods.a */,

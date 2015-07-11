@@ -23,7 +23,7 @@ class ShareButton: SKLabelNode {
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        let lang = NSUserDefaults.standardUserDefaults().objectForKey("AppleLanguages")?.objectAtIndex(0) as! String
+        let lang = (NSUserDefaults.standardUserDefaults().objectForKey("AppleLanguages") as? Array<String>)?[0]
         let scene = self.scene as! GameScene
         let image = imageFromNode(scene)
         if lang == "zh-Hans" {
