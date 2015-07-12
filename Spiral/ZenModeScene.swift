@@ -178,7 +178,7 @@ class ZenModeScene: GameScene {
 //            addChild(eye)
 //        }
         background.alpha = 0.5
-        Data.sharedData.restart()
+        Data.sharedData.reset()
         player.restart()
         player.position = map.points[player.pathOrientation]![player.lineNum]
         nodeFactory()
@@ -333,11 +333,11 @@ class ZenModeScene: GameScene {
     
     override func pause() {
         super.pause()
-        if !Data.sharedData.gameOver{
+        if !Data.sharedData.gameOver {
             self.runAction(SKAction.runBlock({ [unowned self]() -> Void in
                 self.display.pause()
                 }), completion: { [unowned self]() -> Void in
-                    self.view!.paused = true
+                    self.view?.paused = true
                 })
         }
     }

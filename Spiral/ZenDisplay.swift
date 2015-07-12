@@ -19,6 +19,7 @@ class ZenDisplay: SKNode, DisplayData {
     let tipsLabel = SKLabelNode(text: NSLocalizedString("TIPS", comment: ""))
     let share = ShareButton()
     let replay = ReplayButton()
+    let playRecord = PlayRecordButton()
     let gameCenter = GameCenterButton()
     let help = HelpButton()
     
@@ -48,17 +49,18 @@ class ZenDisplay: SKNode, DisplayData {
     }
     
     func setPosition() {
-        scoreLabel.position = CGPointMake(CGRectGetMidX(self.scene!.frame), CGRectGetMaxY(self.scene!.frame)/8)
-        highScoreLabel.position = CGPointMake(CGRectGetMidX(self.scene!.frame), CGRectGetMinY(self.scene!.frame)+5)
-        levelLabel.position = CGPointMake(CGRectGetMidX(self.scene!.frame), 4*CGRectGetMaxY(self.scene!.frame)/5)
-        gameOverLabel.position = CGPointMake(CGRectGetMidX(self.scene!.frame), CGRectGetMidY(self.scene!.frame))
-        share.position = CGPointMake(CGRectGetMaxX(self.scene!.frame)*3/4, CGRectGetMaxY(self.scene!.frame)/4)
-        replay.position = CGPointMake(CGRectGetMaxX(self.scene!.frame)/4, CGRectGetMaxY(self.scene!.frame)/4)
-        gameCenter.position = CGPoint(x: gameCenter.size.width/2, y: self.scene!.size.height-gameCenter.size.height/2)
-        pauseLabel.position = CGPointMake(CGRectGetMidX(self.scene!.frame), CGRectGetMidY(self.scene!.frame))
+        scoreLabel.position = CGPointMake(CGRectGetMidX(scene!.frame), CGRectGetMaxY(scene!.frame)/8)
+        highScoreLabel.position = CGPointMake(CGRectGetMidX(scene!.frame), CGRectGetMinY(scene!.frame)+5)
+        levelLabel.position = CGPointMake(CGRectGetMidX(scene!.frame), 4*CGRectGetMaxY(scene!.frame)/5)
+        gameOverLabel.position = CGPointMake(CGRectGetMidX(scene!.frame), CGRectGetMidY(scene!.frame))
+        share.position = CGPointMake(CGRectGetMaxX(scene!.frame)*3/4, CGRectGetMaxY(scene!.frame)/4)
+        replay.position = CGPointMake(CGRectGetMaxX(scene!.frame)/4, CGRectGetMaxY(scene!.frame)/4)
+        playRecord.position = CGPoint(x: CGRectGetMidX(scene!.frame), y: CGRectGetMaxY(scene!.frame)/4)
+        gameCenter.position = CGPoint(x: gameCenter.size.width/2, y: scene!.size.height-gameCenter.size.height/2)
+        pauseLabel.position = CGPointMake(CGRectGetMidX(scene!.frame), CGRectGetMidY(scene!.frame))
         reaperIcon.position = CGPoint(x: reaperIcon.size.width/2, y: reaperIcon.frame.height/2)
         reaperNumLabel.position = CGPoint(x: CGRectGetMaxX(reaperIcon.frame) + 5 + reaperNumLabel.frame.width/2, y: reaperNumLabel.frame.height/4)
-        help.position = CGPoint(x: self.scene!.size.width-help.size.width/2, y: self.scene!.size.height-help.size.height/2)
+        help.position = CGPoint(x: scene!.size.width-help.size.width/2, y: scene!.size.height-help.size.height/2)
         tipsLabel.position = CGPoint(x: gameOverLabel.position.x, y: (gameOverLabel.position.y + share.position.y)/2)
         
     }
@@ -66,6 +68,7 @@ class ZenDisplay: SKNode, DisplayData {
     func disableButtons() {
         share.userInteractionEnabled = false
         replay.userInteractionEnabled = false
+        playRecord.userInteractionEnabled = false
         gameCenter.userInteractionEnabled = false
         help.userInteractionEnabled = false
         gameOverLabel.userInteractionEnabled = false
@@ -94,6 +97,7 @@ class ZenDisplay: SKNode, DisplayData {
         addChild(gameOverLabel)
         addChild(share)
         addChild(replay)
+        addChild(playRecord)
         addChild(gameCenter)
         addChild(help)
         let tipNum = Int(arc4random_uniform(9))
@@ -105,13 +109,16 @@ class ZenDisplay: SKNode, DisplayData {
         addChild(highScoreLabel)
         scene.hideGame()
         scene.soundManager.playGameOver()
-        (UIApplication.sharedApplication().keyWindow?.rootViewController as! GameViewController).removeGestureRecognizers()
+        let gvc = UIApplication.sharedApplication().keyWindow?.rootViewController as! GameViewController
+        gvc.stopRecord()
+        gvc.removeGestureRecognizers()
     }
     
     func restart() {
         gameOverLabel.removeFromParent()
         share.removeFromParent()
         replay.removeFromParent()
+        playRecord.removeFromParent()
         gameCenter.removeFromParent()
         help.removeFromParent()
         highScoreLabel.removeFromParent()
@@ -127,14 +134,14 @@ class ZenDisplay: SKNode, DisplayData {
     func pause(){
         pauseLabel.text = NSLocalizedString("PAUSE", comment: "")
         pauseLabel.alpha = 1
-        (self.scene as! ZenModeScene).hideGame()
+        (scene as! ZenModeScene).hideGame()
     }
     
     func resume(){
         pauseLabel.text = ""
         pauseLabel.alpha = 0
         if !Data.sharedData.gameOver{
-            (self.scene as! ZenModeScene).showGame()
+            (scene as! ZenModeScene).showGame()
         }
     }
 }

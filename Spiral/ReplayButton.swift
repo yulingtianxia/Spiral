@@ -8,15 +8,15 @@
 
 import SpriteKit
 
-class ReplayButton: SKLabelNode {
+class ReplayButton: SKSpriteNode {
     required init(coder: NSCoder) {
         fatalError("NSCoding not supported")
     }
-    override init() {
-        super.init()
-        self.userInteractionEnabled = true
-        setDefaultFont()
-        self.text = NSLocalizedString("REPLAY", comment: "")
+    
+    init() {
+        let texture = SKTexture(imageNamed: "replaybtn")
+        super.init(texture: texture, color: UIColor.clearColor(), size: texture.size() * 0.5)
+        userInteractionEnabled = true
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {

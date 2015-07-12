@@ -26,7 +26,11 @@ class OrdinaryButton: SKSpriteNode {
         let scene = OrdinaryModeScene(size: self.scene!.size)
         let flip = SKTransition.flipHorizontalWithDuration(1)
         flip.pausesIncomingScene = false
-        (UIApplication.sharedApplication().keyWindow?.rootViewController as! GameViewController).addGestureRecognizers()
-        self.scene?.view?.presentScene(scene, transition: flip)
+        let gvc = UIApplication.sharedApplication().keyWindow?.rootViewController as! GameViewController
+        gvc.startRecordWithHandler { () -> Void in
+            gvc.addGestureRecognizers()
+            self.scene?.view?.presentScene(scene, transition: flip)
+        }
+        
     }
 }

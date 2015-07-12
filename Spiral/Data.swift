@@ -32,6 +32,8 @@ public class Data{
     
     var updateScore:Int = 5
     
+    var autoRecord:Bool = true
+    
     var currentMode: GameMode = .Ordinary
     
     public var score:Int = 0{
@@ -105,7 +107,7 @@ public class Data{
         }
     }
     
-    func restart(){
+    func reset(){
         updateScore = 5
         score = 0
         level = 1

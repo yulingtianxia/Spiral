@@ -20,6 +20,7 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
     let zenBtn = ZenButton()
     let spiralLabel = SKLabelNode(text: "Spiral")
     let gameCenter = GameCenterButton()
+    let autoRecord = AutoRecordButton()
     let mManager = MotionManager.sharedMotionManager
     var shapes = [Shape]()
     
@@ -39,8 +40,12 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
         addChild(spiralLabel)
         
         //添加 GameCenter 按钮
-        gameCenter.position = CGPoint(x: gameCenter.size.width/2, y: self.scene!.size.height-gameCenter.size.height/2)
+        gameCenter.position = CGPoint(x: gameCenter.size.width/2, y: scene!.size.height-gameCenter.size.height/2)
         addChild(gameCenter)
+        
+        //添加 AutoRecord 按钮
+        autoRecord.position = CGPoint(x: CGRectGetMaxX(frame) - autoRecord.size.width / 2, y: CGRectGetMaxY(frame) - autoRecord.size.height / 2)
+        addChild(autoRecord)
         
         //添加模式选择按钮
         ordinaryBtn.position = CGPoint(x: center.x, y: CGRectGetMinY(spiralLabel.frame) - ordinaryBtn.size.height/2)

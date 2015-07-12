@@ -176,7 +176,7 @@ class OrdinaryModeScene: GameScene {
             addChild(eye)
         }
         background.alpha = 0.5
-        Data.sharedData.restart()
+        Data.sharedData.reset()
         player.restart()
         player.position = map.points[player.lineNum]
         nodeFactory()
@@ -330,7 +330,7 @@ class OrdinaryModeScene: GameScene {
             self.runAction(SKAction.runBlock({ [unowned self]() -> Void in
                 self.display.pause()
                 }), completion: { [unowned self]() -> Void in
-                    self.view!.paused = true
+                    self.view?.paused = true
                 })
         }
     }

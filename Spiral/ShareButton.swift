@@ -8,18 +8,16 @@
 
 import SpriteKit
 
-class ShareButton: SKLabelNode {
+class ShareButton: SKSpriteNode {
     
     required init(coder: NSCoder) {
         fatalError("NSCoding not supported")
     }
     
-    override init() {
-        super.init()
-        self.userInteractionEnabled = true
-        setDefaultFont()
-        self.text = NSLocalizedString("SHARE", comment: "")
-        
+    init() {
+        let texture = SKTexture(imageNamed: "sharebtn")
+        super.init(texture: texture, color: UIColor.clearColor(), size: texture.size() * 0.5)
+        userInteractionEnabled = true
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {

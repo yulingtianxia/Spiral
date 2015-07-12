@@ -13,17 +13,18 @@
 		A4175E7F1B22024F00156886 /* bg_ordinary.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A4175E7E1B22024F00156886 /* bg_ordinary.mp3 */; };
 		A424E2F119E78176007FE1C1 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = A424E2F019E78176007FE1C1 /* Background.swift */; };
 		A4254A831AF618CF00620AA7 /* OrdinaryModeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4254A821AF618CF00620AA7 /* OrdinaryModeScene.swift */; };
-		A4254A851AF61A9B00620AA7 /* ScreenShot.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4254A841AF61A9B00620AA7 /* ScreenShot.swift */; };
 		A4254A871AF6356300620AA7 /* ZenDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4254A861AF6356300620AA7 /* ZenDisplay.swift */; };
 		A4254A891AF6396F00620AA7 /* ZenHelpScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4254A881AF6396F00620AA7 /* ZenHelpScene.swift */; };
 		A434A14B1976955000F4C94B /* ShareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A434A14A1976955000F4C94B /* ShareButton.swift */; };
 		A434A14F19769F4600F4C94B /* ReplayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A434A14E19769F4600F4C94B /* ReplayButton.swift */; };
 		A436ADE31B26EB1300D7F407 /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A436ADE21B26EB1300D7F407 /* MotionManager.swift */; };
-		A436ADE51B271FE400D7F407 /* HelpFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A436ADE41B271FE400D7F407 /* HelpFile.swift */; };
+		A436ADE51B271FE400D7F407 /* HelpMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A436ADE41B271FE400D7F407 /* HelpMethods.swift */; };
 		A437599E1B20349200935DE7 /* OrdinaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A437599D1B20349200935DE7 /* OrdinaryButton.swift */; };
 		A43759A01B2038D500935DE7 /* ZenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A437599F1B2038D500935DE7 /* ZenButton.swift */; };
 		A43759A71B20632E00935DE7 /* GameOverIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43759A61B20632E00935DE7 /* GameOverIcon.swift */; };
 		A43F9CE11B2C5420001835F5 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43F9CE01B2C5420001835F5 /* GameScene.swift */; };
+		A444B6AA1B50E9E10026B0EB /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A444B6A91B50E9E10026B0EB /* GameKit.framework */; };
+		A45320EB1B51427D00CBD634 /* PlayRecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45320EA1B51427D00CBD634 /* PlayRecordButton.swift */; };
 		A45A65E01986073B00EA40D7 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45A65DF1986073B00EA40D7 /* SoundManager.swift */; };
 		A45A93511B2C305A00EE4A56 /* OrdinaryHelpScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A45A934D1B2C305A00EE4A56 /* OrdinaryHelpScene.sks */; };
 		A45A93521B2C305A00EE4A56 /* ZenHelpScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A45A934F1B2C305A00EE4A56 /* ZenHelpScene.sks */; };
@@ -54,7 +55,6 @@
 		A47D3D1C19741B04005AF736 /* Killer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47D3D1B19741B04005AF736 /* Killer.swift */; };
 		A47D3D1E19741E54005AF736 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47D3D1D19741E54005AF736 /* Score.swift */; };
 		A47E78E619F39C4E003D5143 /* vortexShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = A47E78E519F39C4E003D5143 /* vortexShader.fsh */; };
-		A48F921219724362007BDAE4 /* NodeCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48F921119724362007BDAE4 /* NodeCategories.swift */; };
 		A48F921419724822007BDAE4 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48F921319724822007BDAE4 /* Player.swift */; };
 		A490225E19B9D8EE009114ED /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A434A14C197696BC00F4C94B /* Social.framework */; };
 		A492F6771AF346B2004B040B /* ZenMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A492F6761AF346B2004B040B /* ZenMap.swift */; };
@@ -83,6 +83,7 @@
 		A4F3C60A19E8E990000514AC /* Reaper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F3C60919E8E990000514AC /* Reaper.swift */; };
 		A4F3C60C19E8EAF7000514AC /* ReaperContactVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F3C60B19E8EAF7000514AC /* ReaperContactVisitor.swift */; };
 		A4F3C61019E90FFF000514AC /* Rope.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F3C60F19E90FFF000514AC /* Rope.swift */; };
+		A4F8A7A91B528D99007248C1 /* AutoRecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F8A7A81B528D99007248C1 /* AutoRecordButton.swift */; };
 		A4F92B8719DCF69600C87D0E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A4F92B8919DCF69600C87D0E /* Localizable.strings */; };
 		A4FF927019751AA50060CE6D /* VisitablePhysicsBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FF926F19751AA50060CE6D /* VisitablePhysicsBody.swift */; };
 		A4FF9274197526830060CE6D /* OrdinaryDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FF9273197526830060CE6D /* OrdinaryDisplay.swift */; };
@@ -111,19 +112,20 @@
 		A4175E7E1B22024F00156886 /* bg_ordinary.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bg_ordinary.mp3; sourceTree = "<group>"; };
 		A424E2F019E78176007FE1C1 /* Background.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Background.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A4254A821AF618CF00620AA7 /* OrdinaryModeScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = OrdinaryModeScene.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		A4254A841AF61A9B00620AA7 /* ScreenShot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenShot.swift; sourceTree = "<group>"; };
 		A4254A861AF6356300620AA7 /* ZenDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ZenDisplay.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A4254A881AF6396F00620AA7 /* ZenHelpScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ZenHelpScene.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A434A14A1976955000F4C94B /* ShareButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ShareButton.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A434A14C197696BC00F4C94B /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		A434A14E19769F4600F4C94B /* ReplayButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ReplayButton.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A436ADE21B26EB1300D7F407 /* MotionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
-		A436ADE41B271FE400D7F407 /* HelpFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpFile.swift; sourceTree = "<group>"; };
+		A436ADE41B271FE400D7F407 /* HelpMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpMethods.swift; sourceTree = "<group>"; };
 		A437599D1B20349200935DE7 /* OrdinaryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = OrdinaryButton.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A437599F1B2038D500935DE7 /* ZenButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ZenButton.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A43759A61B20632E00935DE7 /* GameOverIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = GameOverIcon.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A43F9CE01B2C5420001835F5 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		A44270291B24950E0031B7FC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "en.lproj/Launch Screen.xib"; sourceTree = "<group>"; };
+		A444B6A91B50E9E10026B0EB /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		A45320EA1B51427D00CBD634 /* PlayRecordButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayRecordButton.swift; sourceTree = "<group>"; };
 		A45A65DF1986073B00EA40D7 /* SoundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SoundManager.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A45A934E1B2C305A00EE4A56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Base; path = Base.lproj/OrdinaryHelpScene.sks; sourceTree = "<group>"; };
 		A45A93501B2C305A00EE4A56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Base; path = Base.lproj/ZenHelpScene.sks; sourceTree = "<group>"; };
@@ -164,7 +166,6 @@
 		A47D3D1B19741B04005AF736 /* Killer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Killer.swift; sourceTree = "<group>"; };
 		A47D3D1D19741E54005AF736 /* Score.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 		A47E78E519F39C4E003D5143 /* vortexShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = vortexShader.fsh; sourceTree = "<group>"; };
-		A48F921119724362007BDAE4 /* NodeCategories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeCategories.swift; sourceTree = "<group>"; };
 		A48F921319724822007BDAE4 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		A490225A19B9D89F009114ED /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A490225C19B9D8A8009114ED /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
@@ -197,6 +198,7 @@
 		A4F3C60919E8E990000514AC /* Reaper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reaper.swift; sourceTree = "<group>"; };
 		A4F3C60B19E8EAF7000514AC /* ReaperContactVisitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ReaperContactVisitor.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A4F3C60F19E90FFF000514AC /* Rope.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rope.swift; sourceTree = "<group>"; };
+		A4F8A7A81B528D99007248C1 /* AutoRecordButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoRecordButton.swift; sourceTree = "<group>"; };
 		A4F92B8419DCF65900C87D0E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		A4F92B8819DCF69600C87D0E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		A4FF926F19751AA50060CE6D /* VisitablePhysicsBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitablePhysicsBody.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				A490225E19B9D8EE009114ED /* Social.framework in Frameworks */,
 				A4DCE0291A839E0E00EA39B1 /* Fabric.framework in Frameworks */,
 				D43F5311657C4A8E9E4CECD3 /* libPods.a in Frameworks */,
+				A444B6AA1B50E9E10026B0EB /* GameKit.framework in Frameworks */,
 				A4DCE0281A839E0E00EA39B1 /* Crashlytics.framework in Frameworks */,
 				A4EEE3B619F6917900A43108 /* libWeChatSDK.a in Frameworks */,
 			);
@@ -247,6 +250,8 @@
 				A45A9FA419F3F1640087C192 /* HelpButton.swift */,
 				A437599D1B20349200935DE7 /* OrdinaryButton.swift */,
 				A437599F1B2038D500935DE7 /* ZenButton.swift */,
+				A45320EA1B51427D00CBD634 /* PlayRecordButton.swift */,
+				A4F8A7A81B528D99007248C1 /* AutoRecordButton.swift */,
 			);
 			name = Buttons;
 			sourceTree = "<group>";
@@ -309,9 +314,9 @@
 		A4787746197113D000F6F611 /* Spiral */ = {
 			isa = PBXGroup;
 			children = (
+				A45A65E2198607F400EA40D7 /* Resources */,
 				A47D3D1F19741F6D005AF736 /* Scenes */,
 				A47D3D12197407AC005AF736 /* Util */,
-				A47D3D0B1973DBA4005AF736 /* Visitors */,
 				A47D3D0A1973D9F5005AF736 /* Nodes */,
 				A4787749197113D000F6F611 /* AppDelegate.swift */,
 				A478774F197113D000F6F611 /* GameViewController.swift */,
@@ -362,7 +367,7 @@
 			name = Nodes;
 			sourceTree = "<group>";
 		};
-		A47D3D0B1973DBA4005AF736 /* Visitors */ = {
+		A47D3D0B1973DBA4005AF736 /* VisitorPattern */ = {
 			isa = PBXGroup;
 			children = (
 				A47D3D0C1973DBE4005AF736 /* ContactVisitor.swift */,
@@ -372,26 +377,24 @@
 				A47D3D1919741859005AF736 /* ScoreContactVisitor.swift */,
 				A4F3C60B19E8EAF7000514AC /* ReaperContactVisitor.swift */,
 				A4F3505119FBAD2200F6B8DF /* EyeContactVisitor.swift */,
+				A4FF926F19751AA50060CE6D /* VisitablePhysicsBody.swift */,
 			);
-			name = Visitors;
+			name = VisitorPattern;
 			sourceTree = "<group>";
 		};
 		A47D3D12197407AC005AF736 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				A45A65E2198607F400EA40D7 /* Resources */,
+				A47D3D0B1973DBA4005AF736 /* VisitorPattern */,
 				A41591E319CC71AD00C3420B /* GameKitFiles */,
 				A4EEE3B219F6916600A43108 /* Weixin */,
 				A4FF9275197529B50060CE6D /* Data.swift */,
-				A4FF926F19751AA50060CE6D /* VisitablePhysicsBody.swift */,
-				A48F921119724362007BDAE4 /* NodeCategories.swift */,
 				A45A65DF1986073B00EA40D7 /* SoundManager.swift */,
 				A49B03F71A772AA9009D8F40 /* Tips.swift */,
-				A4254A841AF61A9B00620AA7 /* ScreenShot.swift */,
 				A4175E7A1B21DF1B00156886 /* Constant.swift */,
 				A4175E7C1B21EBBC00156886 /* Extensions.swift */,
 				A436ADE21B26EB1300D7F407 /* MotionManager.swift */,
-				A436ADE41B271FE400D7F407 /* HelpFile.swift */,
+				A436ADE41B271FE400D7F407 /* HelpMethods.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -469,6 +472,7 @@
 		F7CB57B3A321435B8FBA1FD7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A444B6A91B50E9E10026B0EB /* GameKit.framework */,
 				A490225C19B9D8A8009114ED /* SpriteKit.framework */,
 				A490225A19B9D89F009114ED /* Foundation.framework */,
 				A434A14C197696BC00F4C94B /* Social.framework */,
@@ -537,6 +541,9 @@
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
+							};
+							com.apple.GameCenter = {
+								enabled = 1;
 							};
 						};
 					};
@@ -678,7 +685,7 @@
 				A46D8C031976C3B800A32924 /* ShieldContactVisitor.swift in Sources */,
 				A4F3505019FBA41B00F6B8DF /* Eye.swift in Sources */,
 				A47D3D18197415C1005AF736 /* KillerContactVisitor.swift in Sources */,
-				A436ADE51B271FE400D7F407 /* HelpFile.swift in Sources */,
+				A436ADE51B271FE400D7F407 /* HelpMethods.swift in Sources */,
 				A43F9CE11B2C5420001835F5 /* GameScene.swift in Sources */,
 				A47D3D1C19741B04005AF736 /* Killer.swift in Sources */,
 				A4FF927019751AA50060CE6D /* VisitablePhysicsBody.swift in Sources */,
@@ -688,6 +695,7 @@
 				A4175E7D1B21EBBC00156886 /* Extensions.swift in Sources */,
 				A4F3505219FBAD2200F6B8DF /* EyeContactVisitor.swift in Sources */,
 				A46E911C1AFF01D200AC1400 /* MainScene.swift in Sources */,
+				A4F8A7A91B528D99007248C1 /* AutoRecordButton.swift in Sources */,
 				A478776B197113DB00F6F611 /* OrdinaryMap.swift in Sources */,
 				A4B2788519EA781C00A2D065 /* GameCenterButton.swift in Sources */,
 				A4F3C60A19E8E990000514AC /* Reaper.swift in Sources */,
@@ -697,17 +705,16 @@
 				A434A14B1976955000F4C94B /* ShareButton.swift in Sources */,
 				A4EEE3B919F6A45200A43108 /* SendWX.m in Sources */,
 				A492F6791AF3B0D8004B040B /* Bamboo.swift in Sources */,
-				A4254A851AF61A9B00620AA7 /* ScreenShot.swift in Sources */,
 				A45A9FA319F3E7250087C192 /* OrdinaryHelpScene.swift in Sources */,
 				A47D3D1A19741859005AF736 /* ScoreContactVisitor.swift in Sources */,
 				A4254A891AF6396F00620AA7 /* ZenHelpScene.swift in Sources */,
 				A436ADE31B26EB1300D7F407 /* MotionManager.swift in Sources */,
 				A48F921419724822007BDAE4 /* Player.swift in Sources */,
+				A45320EB1B51427D00CBD634 /* PlayRecordButton.swift in Sources */,
 				A41591E719CC71C500C3420B /* GameKitHelper.m in Sources */,
 				A437599E1B20349200935DE7 /* OrdinaryButton.swift in Sources */,
 				A478774A197113D000F6F611 /* AppDelegate.swift in Sources */,
 				A492F67B1AF3C67C004B040B /* ZenModeScene.swift in Sources */,
-				A48F921219724362007BDAE4 /* NodeCategories.swift in Sources */,
 				A4FF9276197529B50060CE6D /* Data.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -816,7 +823,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				"LIBRARY_SEARCH_PATHS[arch=*]" = /Users/yangxiaoyu/Documents/Code/Spiral/Spiral;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -854,7 +861,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				"LIBRARY_SEARCH_PATHS[arch=*]" = /Users/yangxiaoyu/Documents/Code/Spiral/Spiral;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;

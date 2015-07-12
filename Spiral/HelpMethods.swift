@@ -1,12 +1,24 @@
 //
-//  ScreenShot.swift
+//  HelpFile.swift
 //  Spiral
 //
-//  Created by 杨萧玉 on 15/5/3.
+//  Created by 杨萧玉 on 15/6/9.
 //  Copyright (c) 2015年 杨萧玉. All rights reserved.
 //
 
-import SpriteKit
+import Foundation
+
+func * (left:CGFloat, right:Double) -> Double {
+    return Double(left) * right
+}
+
+func * (left:Int, right:CGFloat) -> CGFloat {
+    return CGFloat(left) * right
+}
+
+func * (left:CGSize, right:CGFloat) -> CGSize {
+    return CGSize(width: left.width * right, height: left.height * right)
+}
 
 private func imageWithView(view:UIView)->UIImage{
     UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.opaque, 0.0);

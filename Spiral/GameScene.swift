@@ -25,6 +25,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameControlProtocol{
         soundManager.playBackGround()
         super.init(size: size)
         addChild(soundManager)
+        
     }
 
     required init?(coder aDecoder: NSCoder) {

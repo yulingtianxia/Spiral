@@ -9,7 +9,7 @@
 import UIKit
 import SpriteKit
 
-public class GameViewController: UIViewController {
+public class GameViewController: UIViewController, RPPreviewViewControllerDelegate {
 
     var longPress:UILongPressGestureRecognizer!
     var tapWithOneFinger:UITapGestureRecognizer!
@@ -18,6 +18,7 @@ public class GameViewController: UIViewController {
 //    var swipeRight:UISwipeGestureRecognizer!
     var pinch:UIPinchGestureRecognizer!
     var screenEdgePanRight:UIScreenEdgePanGestureRecognizer!
+    var previewViewController:RPPreviewViewController?
     
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +26,6 @@ public class GameViewController: UIViewController {
         let skView = self.view as! SKView
         /* Sprite Kit applies additional optimizations to improve rendering performance */
         skView.ignoresSiblingOrder = true
-        
         
         longPress = UILongPressGestureRecognizer(target: self, action: Selector("handleLongPressGesture:"))
         tapWithOneFinger = UITapGestureRecognizer(target: self, action: Selector("handleTapWithOneFingerGesture:"))
@@ -70,6 +70,7 @@ public class GameViewController: UIViewController {
         return true
     }
     
+    // MARK: - handle gestures
     func handleLongPressGesture(recognizer:UILongPressGestureRecognizer) {
         if recognizer.state == .Began {
             ((self.view as! SKView).scene as? GameScene)?.pause()
@@ -129,7 +130,10 @@ public class GameViewController: UIViewController {
             else if let scene = scene as? GameScene {
                 let skView = view as! SKView
                 Data.sharedData.display = nil
+                Data.sharedData.gameOver = true
+                Data.sharedData.reset()
                 scene.soundManager.stopBackGround()
+                stopRecord()
                 let scene = MainScene(size: skView.bounds.size)
                 let push = SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 1)
                 push.pausesIncomingScene = false
@@ -139,7 +143,8 @@ public class GameViewController: UIViewController {
         }
     }
     
-    func addGestureRecognizers(){
+    // MARK: - add&remove gesture recognizers
+    func addGestureRecognizers() {
         let skView = self.view as! SKView
         skView.addGestureRecognizer(longPress)
         skView.addGestureRecognizer(tapWithOneFinger)
@@ -150,7 +155,7 @@ public class GameViewController: UIViewController {
         skView.addGestureRecognizer(screenEdgePanRight)
     }
     
-    func removeGestureRecognizers(){
+    func removeGestureRecognizers() {
         let skView = self.view as! SKView
         skView.removeGestureRecognizer(longPress)
         skView.removeGestureRecognizer(tapWithOneFinger)
@@ -161,6 +166,41 @@ public class GameViewController: UIViewController {
         skView.removeGestureRecognizer(screenEdgePanRight)
     }
     
+    // MARK: - record game
+    
+    func startRecordWithHandler(handler:() -> Void) {
+        RPScreenRecorder.sharedRecorder().startRecordingWithMicrophoneEnabled(true) { (error) -> Void in
+            
+            if error != nil {
+                //TODO: 提示错误,无法录制
+            }
+            else{
+                handler()
+            }
+        }
+    }
+    
+    func stopRecord() {
+        RPScreenRecorder.sharedRecorder().stopRecordingWithHandler({ (previewViewController, ErrorType) -> Void in
+            self.previewViewController = previewViewController
+            previewViewController?.previewControllerDelegate = self
+        })
+    }
+    
+    func discardRecordWithHandler(handler:() -> Void) {
+        RPScreenRecorder.sharedRecorder().discardRecordingWithHandler(handler)
+    }
+    
+    func playRecord() {
+        if let pvc = previewViewController {
+            presentViewController(pvc, animated: true, completion: nil)
+        }
+    }
+    
+    // MARK: - RPPreviewViewControllerDelegate
+    public func previewControllerDidFinish(previewController: RPPreviewViewController) {
+        previewController.dismissViewControllerAnimated(true, completion: nil)
+    }
 }
 
 

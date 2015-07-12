@@ -27,6 +27,7 @@ class GameOverIcon: SKSpriteNode {
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         Data.sharedData.display = nil
+        Data.sharedData.reset()
         let scene = MainScene(size: self.scene!.size)
         let flip = SKTransition.flipHorizontalWithDuration(1)
         flip.pausesIncomingScene = false
