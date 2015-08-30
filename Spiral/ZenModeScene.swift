@@ -50,6 +50,9 @@ class ZenModeScene: GameScene {
         display.setPosition()
         player.runInZenMap(map)
         nodeFactory()
+        
+        resume()
+        
         //Observe Notification
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pause"), name: UIApplicationWillResignActiveNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pause"), name: UIApplicationDidEnterBackgroundNotification, object: nil)

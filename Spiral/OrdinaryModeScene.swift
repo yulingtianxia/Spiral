@@ -49,6 +49,9 @@ class OrdinaryModeScene: GameScene {
         display.setPosition()
         player.runInOrdinaryMap(map)
         nodeFactory()
+        
+        resume()
+        
         //Observe Notification
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pause"), name: UIApplicationWillResignActiveNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pause"), name: UIApplicationDidEnterBackgroundNotification, object: nil)
@@ -326,7 +329,7 @@ class OrdinaryModeScene: GameScene {
     
     override func pause() {
         super.pause()
-        if !Data.sharedData.gameOver{
+        if !Data.sharedData.gameOver {
             self.runAction(SKAction.runBlock({ [unowned self]() -> Void in
                 self.display.pause()
                 }), completion: { [unowned self]() -> Void in
