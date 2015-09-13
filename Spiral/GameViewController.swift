@@ -192,9 +192,9 @@ public class GameViewController: UIViewController, RPPreviewViewControllerDelega
     }
     
     func playRecord() {
-        if let pvc = previewViewController {
-            presentViewController(pvc, animated: true, completion: nil)
-        }
+        guard let previewViewController = previewViewController else { fatalError("The user requested playback, but a valid preview controller does not exist.") }
+        previewViewController.modalPresentationStyle = UIModalPresentationStyle.FullScreen
+        presentViewController(previewViewController, animated: true, completion:nil)
     }
     
     // MARK: - RPPreviewViewControllerDelegate

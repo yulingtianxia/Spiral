@@ -23,7 +23,6 @@
 		A43759A01B2038D500935DE7 /* ZenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A437599F1B2038D500935DE7 /* ZenButton.swift */; };
 		A43759A71B20632E00935DE7 /* GameOverIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43759A61B20632E00935DE7 /* GameOverIcon.swift */; };
 		A43F9CE11B2C5420001835F5 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43F9CE01B2C5420001835F5 /* GameScene.swift */; };
-		A444B6AA1B50E9E10026B0EB /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A444B6A91B50E9E10026B0EB /* GameKit.framework */; };
 		A45320EB1B51427D00CBD634 /* PlayRecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45320EA1B51427D00CBD634 /* PlayRecordButton.swift */; };
 		A45A65E01986073B00EA40D7 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45A65DF1986073B00EA40D7 /* SoundManager.swift */; };
 		A45A93511B2C305A00EE4A56 /* OrdinaryHelpScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A45A934D1B2C305A00EE4A56 /* OrdinaryHelpScene.sks */; };
@@ -214,7 +213,6 @@
 				A490225E19B9D8EE009114ED /* Social.framework in Frameworks */,
 				A4DCE0291A839E0E00EA39B1 /* Fabric.framework in Frameworks */,
 				D43F5311657C4A8E9E4CECD3 /* libPods.a in Frameworks */,
-				A444B6AA1B50E9E10026B0EB /* GameKit.framework in Frameworks */,
 				A4DCE0281A839E0E00EA39B1 /* Crashlytics.framework in Frameworks */,
 				A4EEE3B619F6917900A43108 /* libWeChatSDK.a in Frameworks */,
 			);
