@@ -19,7 +19,7 @@ class GameCenterButton: SKSpriteNode {
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        GameKitHelper.sharedGameKitHelper().showLeaderboard()
+        GameKitHelper.sharedGameKitHelper.showLeaderboard()
     }
     
 }

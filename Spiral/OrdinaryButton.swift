@@ -21,6 +21,7 @@ class OrdinaryButton: SKSpriteNode {
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        userInteractionEnabled = false
         Data.sharedData.currentMode = .Ordinary
         Data.sharedData.gameOver = false
         let scene = OrdinaryModeScene(size: self.scene!.size)

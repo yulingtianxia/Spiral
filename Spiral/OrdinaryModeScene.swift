@@ -19,7 +19,7 @@ class OrdinaryModeScene: GameScene {
     let eye = Eye()
     
     override init(size:CGSize){
-        GameKitHelper.sharedGameKitHelper().authenticateLocalPlayer()
+        GameKitHelper.sharedGameKitHelper.authenticateLocalPlayer()
         Data.sharedData.currentMode = .Ordinary
         let center = CGPointMake(size.width/2, size.height/2)
         map = OrdinaryMap(origin:center, layer: 5, size:size)

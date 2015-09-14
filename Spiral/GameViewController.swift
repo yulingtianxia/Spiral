@@ -8,6 +8,7 @@
 
 import UIKit
 import SpriteKit
+import ReplayKit
 
 public class GameViewController: UIViewController, RPPreviewViewControllerDelegate {
 

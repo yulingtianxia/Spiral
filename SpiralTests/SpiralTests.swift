@@ -20,7 +20,7 @@ class SpiralTests: XCTestCase {
 //        // Put setup code here. This method is called before the invocation of each test method in the class.
 //        myApp = UIApplication.sharedApplication()
 //        gameVC = myApp.keyWindow?.rootViewController as GameViewController
-////        GameKitHelper.sharedGameKitHelper().authenticateLocalPlayer()
+////        GameKitHelper.sharedGameKitHelper.authenticateLocalPlayer()
 //    }
 //    
 //    override func tearDown() {
@@ -50,11 +50,11 @@ class SpiralTests: XCTestCase {
 //    
 //    func testGameCenterLogin(){
 //        let expectation = expectationWithDescription("login game center")
-//        GameKitHelper.sharedGameKitHelper().submitScoreWithCompletionHandler = {(success:Bool) in
+//        GameKitHelper.sharedGameKitHelper.submitScoreWithCompletionHandler = {(success:Bool) in
 //            XCTAssert(success, "failed to login game center")
 //            expectation.fulfill()
 //        }
-//        GameKitHelper.sharedGameKitHelper().authenticateLocalPlayer()
+//        GameKitHelper.sharedGameKitHelper.authenticateLocalPlayer()
 //        waitForExpectationsWithTimeout(1000, handler: { (error) -> Void in
 //            
 //        })
@@ -62,11 +62,11 @@ class SpiralTests: XCTestCase {
 //    
 //    func testSubmitScore(){
 //        let expectation = expectationWithDescription("submit score")
-//        GameKitHelper.sharedGameKitHelper().submitScoreWithCompletionHandler = {(success:Bool) in
+//        GameKitHelper.sharedGameKitHelper.submitScoreWithCompletionHandler = {(success:Bool) in
 //            XCTAssert(success, "failed to submit score")
 //            expectation.fulfill()
 //        }
-//        GameKitHelper.sharedGameKitHelper().submitScore(Int64(Data.sharedData.score), identifier: kHighScoreLeaderboardIdentifier)
+//        GameKitHelper.sharedGameKitHelper.submitScore(Int64(Data.sharedData.score), identifier: kHighScoreLeaderboardIdentifier)
 //        waitForExpectationsWithTimeout(1000, handler: { (error) -> Void in
 //
 //        })

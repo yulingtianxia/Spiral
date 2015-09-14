@@ -16,7 +16,7 @@ extension SKScene {
             
             archiver.setClass(self.classForKeyedUnarchiver(), forClassName: "SKScene")
             let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as! SKScene
-            scene.size = GameKitHelper.sharedGameKitHelper().getRootViewController().view.frame.size
+            scene.size = (GameKitHelper.sharedGameKitHelper.getRootViewController()?.view.frame.size)!
             archiver.finishDecoding()
             return scene
         } else {

@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 杨萧玉. All rights reserved.
 //
 
-import Foundation
+import SpriteKit
 
 func * (left:CGFloat, right:Double) -> Double {
     return Double(left) * right

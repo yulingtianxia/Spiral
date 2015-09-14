@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 杨萧玉. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 //SKSpriteNode
 let mainSceneCategory:UInt32   =  0x1 << 0

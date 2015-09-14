@@ -21,7 +21,7 @@ class ZenModeScene: GameScene {
     }
     
     override init(size:CGSize){
-        GameKitHelper.sharedGameKitHelper().authenticateLocalPlayer()
+        GameKitHelper.sharedGameKitHelper.authenticateLocalPlayer()
         Data.sharedData.currentMode = .Zen
         let center = CGPointMake(size.width/2, size.height/2)
         map = ZenMap(origin:center, layer: 5, size:size)

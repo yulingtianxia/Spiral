@@ -5,7 +5,7 @@
 //  Created by 杨萧玉 on 14-7-15.
 //  Copyright (c) 2014年 杨萧玉. All rights reserved.
 //
-import Foundation
+import UIKit
 
 enum GameMode {
     case Ordinary
@@ -45,19 +45,19 @@ public class Data{
         didSet{
             display?.updateData()
             if score >= 50{
-                let achievement = GameKitHelper.sharedGameKitHelper().getAchievementForIdentifier(kget50PointsAchievementID)
+                let achievement = GameKitHelper.sharedGameKitHelper.getAchievementForIdentifier(kget50PointsAchievementID)
                 achievement.percentComplete = 100
-                GameKitHelper.sharedGameKitHelper().updateAchievement(achievement, identifier: kget50PointsAchievementID)
+                GameKitHelper.sharedGameKitHelper.updateAchievement(achievement, identifier: kget50PointsAchievementID)
             }
             if score >= 100{
-                let achievement = GameKitHelper.sharedGameKitHelper().getAchievementForIdentifier(kget100PointsAchievementID)
+                let achievement = GameKitHelper.sharedGameKitHelper.getAchievementForIdentifier(kget100PointsAchievementID)
                 achievement.percentComplete = 100
-                GameKitHelper.sharedGameKitHelper().updateAchievement(achievement, identifier: kget100PointsAchievementID)
+                GameKitHelper.sharedGameKitHelper.updateAchievement(achievement, identifier: kget100PointsAchievementID)
             }
             if score >= 200{
-                let achievement = GameKitHelper.sharedGameKitHelper().getAchievementForIdentifier(kget200PointsAchievementID)
+                let achievement = GameKitHelper.sharedGameKitHelper.getAchievementForIdentifier(kget200PointsAchievementID)
                 achievement.percentComplete = 100
-                GameKitHelper.sharedGameKitHelper().updateAchievement(achievement, identifier: kget200PointsAchievementID)
+                GameKitHelper.sharedGameKitHelper.updateAchievement(achievement, identifier: kget200PointsAchievementID)
             }
         }
     }
@@ -116,7 +116,7 @@ public class Data{
     }
     
     private func sendDataToGameCenter(){
-        GameKitHelper.sharedGameKitHelper().submitScore(Int64(score), identifier: kHighScoreLeaderboardIdentifier)
-        GameKitHelper.sharedGameKitHelper().reportMultipleAchievements()
+        GameKitHelper.sharedGameKitHelper.submitScore(Int64(score), identifier: kHighScoreLeaderboardIdentifier)
+        GameKitHelper.sharedGameKitHelper.reportMultipleAchievements()
     }
 }

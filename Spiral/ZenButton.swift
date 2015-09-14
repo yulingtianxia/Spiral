@@ -21,6 +21,7 @@ class ZenButton: SKSpriteNode {
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        userInteractionEnabled = false
         Data.sharedData.currentMode = .Zen
         Data.sharedData.gameOver = false
         let scene = ZenModeScene(size: self.scene!.size)

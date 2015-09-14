@@ -23,11 +23,11 @@ class PlayerContactVisitor:ContactVisitor{
         if thisNode.shield {
             thisNode.shield = false
             Data.sharedData.score++
-            let achievement = GameKitHelper.sharedGameKitHelper().getAchievementForIdentifier(kClean100KillerAchievementID)
+            let achievement = GameKitHelper.sharedGameKitHelper.getAchievementForIdentifier(kClean100KillerAchievementID)
             if achievement.percentComplete <= 99.0{
                 achievement.percentComplete += 1
             }
-            GameKitHelper.sharedGameKitHelper().updateAchievement(achievement, identifier: kClean100KillerAchievementID)
+            GameKitHelper.sharedGameKitHelper.updateAchievement(achievement, identifier: kClean100KillerAchievementID)
             (thisNode.parent as! GameScene).soundManager.playKiller()
         }
         else {
@@ -41,11 +41,11 @@ class PlayerContactVisitor:ContactVisitor{
 //        let otherNode = body.node
 
         Data.sharedData.score += 2
-        let achievement = GameKitHelper.sharedGameKitHelper().getAchievementForIdentifier(kCatch500ScoreAchievementID)
+        let achievement = GameKitHelper.sharedGameKitHelper.getAchievementForIdentifier(kCatch500ScoreAchievementID)
         if achievement.percentComplete <= 99.8{
             achievement.percentComplete += 0.2
         }
-        GameKitHelper.sharedGameKitHelper().updateAchievement(achievement, identifier: kCatch500ScoreAchievementID)
+        GameKitHelper.sharedGameKitHelper.updateAchievement(achievement, identifier: kCatch500ScoreAchievementID)
         (thisNode.parent as! GameScene).soundManager.playScore()
     }
     
@@ -55,11 +55,11 @@ class PlayerContactVisitor:ContactVisitor{
 
         thisNode.shield = true
         Data.sharedData.score++
-        let achievement = GameKitHelper.sharedGameKitHelper().getAchievementForIdentifier(kCatch500ShieldAchievementID)
+        let achievement = GameKitHelper.sharedGameKitHelper.getAchievementForIdentifier(kCatch500ShieldAchievementID)
         if achievement.percentComplete <= 99.8{
             achievement.percentComplete += 0.2
         }
-        GameKitHelper.sharedGameKitHelper().updateAchievement(achievement, identifier: kCatch500ShieldAchievementID)
+        GameKitHelper.sharedGameKitHelper.updateAchievement(achievement, identifier: kCatch500ShieldAchievementID)
         (thisNode.parent as! GameScene).soundManager.playShield()
     }
 }
