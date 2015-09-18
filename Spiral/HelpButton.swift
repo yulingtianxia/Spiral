@@ -17,7 +17,7 @@ class HelpButton: SKSpriteNode {
         case .Zen:
             imageString = "help_zen"
         }
-        super.init(texture: SKTexture(imageNamed: imageString), color: SKColor.clearColor(), size: CGSize(width: 30, height: 30))
+        super.init(texture: SKTexture(imageNamed: imageString), color: SKColor.clearColor(), size: CGSize(width: 40, height: 40))
         userInteractionEnabled = true
     }
     

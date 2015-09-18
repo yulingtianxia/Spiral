@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A40AB2261BABF5B000DBE971 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A40AB2251BABF5B000DBE971 /* libsqlite3.tbd */; };
+		A40AB2281BABF65400DBE971 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A40AB2271BABF65400DBE971 /* libz.tbd */; };
+		A40AB22A1BABF66000DBE971 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A40AB2291BABF66000DBE971 /* libc++.tbd */; };
+		A40AB22C1BABFB2B00DBE971 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A40AB22B1BABFB2B00DBE971 /* SystemConfiguration.framework */; };
+		A40AB22E1BABFF3000DBE971 /* WeChatActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40AB22D1BABFF3000DBE971 /* WeChatActivity.swift */; settings = {ASSET_TAGS = (); }; };
 		A4175E7B1B21DF1B00156886 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4175E7A1B21DF1B00156886 /* Constant.swift */; };
 		A4175E7D1B21EBBC00156886 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4175E7C1B21EBBC00156886 /* Extensions.swift */; };
 		A4175E7F1B22024F00156886 /* bg_ordinary.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A4175E7E1B22024F00156886 /* bg_ordinary.mp3 */; };
@@ -86,7 +91,6 @@
 		A4FF927019751AA50060CE6D /* VisitablePhysicsBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FF926F19751AA50060CE6D /* VisitablePhysicsBody.swift */; };
 		A4FF9274197526830060CE6D /* OrdinaryDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FF9273197526830060CE6D /* OrdinaryDisplay.swift */; };
 		A4FF9276197529B50060CE6D /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FF9275197529B50060CE6D /* Data.swift */; };
-		D43F5311657C4A8E9E4CECD3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5840075B84044E92A52535DA /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,8 +104,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5840075B84044E92A52535DA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		8BCC118355E4463D84D833AC /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		A40AB2251BABF5B000DBE971 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		A40AB2271BABF65400DBE971 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		A40AB2291BABF66000DBE971 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		A40AB22B1BABFB2B00DBE971 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		A40AB22D1BABFF3000DBE971 /* WeChatActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeChatActivity.swift; sourceTree = "<group>"; };
 		A4175E7A1B21DF1B00156886 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		A4175E7C1B21EBBC00156886 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Extensions.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A4175E7E1B22024F00156886 /* bg_ordinary.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bg_ordinary.mp3; sourceTree = "<group>"; };
@@ -209,8 +216,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A40AB22C1BABFB2B00DBE971 /* SystemConfiguration.framework in Frameworks */,
+				A40AB22A1BABF66000DBE971 /* libc++.tbd in Frameworks */,
+				A40AB2281BABF65400DBE971 /* libz.tbd in Frameworks */,
+				A40AB2261BABF5B000DBE971 /* libsqlite3.tbd in Frameworks */,
 				A4DCE0291A839E0E00EA39B1 /* Fabric.framework in Frameworks */,
-				D43F5311657C4A8E9E4CECD3 /* libPods.a in Frameworks */,
 				A4DCE0281A839E0E00EA39B1 /* Crashlytics.framework in Frameworks */,
 				A4EEE3B619F6917900A43108 /* libWeChatSDK.a in Frameworks */,
 			);
@@ -292,7 +302,6 @@
 				A478775D197113D000F6F611 /* SpiralTests */,
 				A4787745197113D000F6F611 /* Products */,
 				F7CB57B3A321435B8FBA1FD7 /* Frameworks */,
-				8BCC118355E4463D84D833AC /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -433,6 +442,7 @@
 				A4EEE3B519F6917900A43108 /* libWeChatSDK.a */,
 				A4EEE3B719F6A45200A43108 /* SendWX.h */,
 				A4EEE3B819F6A45200A43108 /* SendWX.m */,
+				A40AB22D1BABFF3000DBE971 /* WeChatActivity.swift */,
 			);
 			name = Weixin;
 			sourceTree = "<group>";
@@ -466,6 +476,10 @@
 		F7CB57B3A321435B8FBA1FD7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A40AB22B1BABFB2B00DBE971 /* SystemConfiguration.framework */,
+				A40AB2291BABF66000DBE971 /* libc++.tbd */,
+				A40AB2271BABF65400DBE971 /* libz.tbd */,
+				A40AB2251BABF5B000DBE971 /* libsqlite3.tbd */,
 				A4AE8C621BA58DB600E2739F /* ReplayKit.framework */,
 				A4AE8C5F1BA58DA600E2739F /* UIKit.framework */,
 				A444B6A91B50E9E10026B0EB /* GameKit.framework */,
@@ -474,7 +488,6 @@
 				A434A14C197696BC00F4C94B /* Social.framework */,
 				A4DCE0261A839E0E00EA39B1 /* Crashlytics.framework */,
 				A4DCE0271A839E0E00EA39B1 /* Fabric.framework */,
-				5840075B84044E92A52535DA /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -486,11 +499,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A4787764197113D000F6F611 /* Build configuration list for PBXNativeTarget "Spiral" */;
 			buildPhases = (
-				63787A5A92E649D785F1E95B /* Check Pods Manifest.lock */,
 				A4787740197113D000F6F611 /* Sources */,
 				A4787741197113D000F6F611 /* Frameworks */,
 				A4787742197113D000F6F611 /* Resources */,
-				686B2C005EF443E7AB1D2530 /* Copy Pods Resources */,
 				A4DCE01D1A83973200EA39B1 /* ShellScript */,
 			);
 			buildRules = (
@@ -614,36 +625,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		63787A5A92E649D785F1E95B /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		686B2C005EF443E7AB1D2530 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		A4DCE01D1A83973200EA39B1 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -677,6 +658,7 @@
 				A47D3D0D1973DBE4005AF736 /* ContactVisitor.swift in Sources */,
 				A45A65E01986073B00EA40D7 /* SoundManager.swift in Sources */,
 				A47D3D1619740AA3005AF736 /* PlayerContactVisitor.swift in Sources */,
+				A40AB22E1BABFF3000DBE971 /* WeChatActivity.swift in Sources */,
 				A4F3C60C19E8EAF7000514AC /* ReaperContactVisitor.swift in Sources */,
 				A46D8C031976C3B800A32924 /* ShieldContactVisitor.swift in Sources */,
 				A4F3505019FBA41B00F6B8DF /* Eye.swift in Sources */,
@@ -867,7 +849,6 @@
 		};
 		A4787765197113D000F6F611 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8BCC118355E4463D84D833AC /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -893,7 +874,6 @@
 		};
 		A4787766197113D000F6F611 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8BCC118355E4463D84D833AC /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -920,10 +900,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -939,10 +916,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = SpiralTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

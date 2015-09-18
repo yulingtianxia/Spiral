@@ -17,20 +17,22 @@ class AutoRecordButton: SKSpriteNode {
         else {
             texture = SKTexture(imageNamed: "ButtonAutoRecordOff")
         }
-        super.init(texture: texture, color: UIColor.clearColor(), size: texture.size() * 0.5)
+        super.init(texture: texture, color: UIColor.clearColor(), size: texture.size() * 0.7)
         userInteractionEnabled = true
         
         //添加"AUTORECORD"文字
         let auto = SKLabelNode(text: "AUTO")
         let record = SKLabelNode(text: "RECORD")
+        auto.fontSize = 15
+        record.fontSize = 15
         auto.fontName = "Menlo Bold"
         record.fontName = "Menlo Bold"
         auto.position = CGPoint(x: size.width / 6, y: 0)
         record.position = CGPoint(x: size.width / 6, y: -size.height / 3)
         auto.fontColor = UIColor.blackColor()
         record.fontColor = UIColor.blackColor()
-        auto.fontSize = 12
-        record.fontSize = 12
+        auto.zPosition = 100
+        record.zPosition = 100
         addChild(auto)
         addChild(record)
     }

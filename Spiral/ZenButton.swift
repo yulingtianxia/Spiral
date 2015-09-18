@@ -22,15 +22,24 @@ class ZenButton: SKSpriteNode {
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         userInteractionEnabled = false
-        Data.sharedData.currentMode = .Zen
-        Data.sharedData.gameOver = false
-        let scene = ZenModeScene(size: self.scene!.size)
-        let flip = SKTransition.flipHorizontalWithDuration(1)
-        flip.pausesIncomingScene = false
-        let gvc = UIApplication.sharedApplication().keyWindow?.rootViewController as! GameViewController
-        gvc.startRecordWithHandler { () -> Void in
-            gvc.addGestureRecognizers()
-            self.scene?.view?.presentScene(scene, transition: flip)
+        if !Data.sharedData.gameOver {
+            return
+        }
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0)) { () -> Void in
+            Data.sharedData.currentMode = .Zen
+            Data.sharedData.gameOver = false
+            let gvc = UIApplication.sharedApplication().keyWindow?.rootViewController as! GameViewController
+            gvc.startRecordWithHandler { () -> Void in
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    if self.scene is MainScene {
+                        gvc.addGestureRecognizers()
+                        let scene = ZenModeScene(size: self.scene!.size)
+                        let flip = SKTransition.flipHorizontalWithDuration(1)
+                        flip.pausesIncomingScene = false
+                        self.scene?.view?.presentScene(scene, transition: flip)
+                    }
+                })
+            }
         }
     }
 }

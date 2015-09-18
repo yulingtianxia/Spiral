@@ -32,6 +32,8 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
         background.position = center
         addChild(background)
         
+        Data.sharedData.gameOver = true
+        
         //添加牛逼的 Logo
         spiralLabel.fontName = "Chalkboard SE Regular"
         spiralLabel.fontSize = 100
@@ -41,10 +43,12 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
         
         //添加 GameCenter 按钮
         gameCenter.position = CGPoint(x: gameCenter.size.width/2, y: scene!.size.height-gameCenter.size.height/2)
+        gameCenter.zPosition = 101
         addChild(gameCenter)
         
         //添加 AutoRecord 按钮
         autoRecord.position = CGPoint(x: CGRectGetMaxX(frame) - autoRecord.size.width / 2, y: CGRectGetMaxY(frame) - autoRecord.size.height / 2)
+        autoRecord.zPosition = 101
         addChild(autoRecord)
         
         //添加模式选择按钮

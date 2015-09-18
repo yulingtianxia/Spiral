@@ -13,8 +13,8 @@ class ZenModeScene: GameScene {
     let display:ZenDisplay
     let background:Background
     var nextShapeName = "Killer"
-    let nextShape = SKSpriteNode(imageNamed: "killer")
-//    let eye = Eye()
+    let nextShape: SKSpriteNode
+    let eyes = [Eye(), Eye(), Eye(), Eye()]
     
     required init(coder: NSCoder) {
         fatalError("NSCoding not supported")
@@ -30,12 +30,12 @@ class ZenModeScene: GameScene {
         Data.sharedData.display = display
         background = Background(size: size)
         background.position = center
+        nextShape = SKSpriteNode(imageNamed: "killer")
         nextShape.size = CGSize(width: 50, height: 50)
-        nextShape.position = self.map.points[.right]![0]
+        nextShape.position = map.points[.right]![0]
         nextShape.physicsBody = nil
         nextShape.alpha = 0.4
         nextShape.zPosition = 100
-//        eye.position = map.points.last! as CGPoint
         super.init(size:size)
         player.position = map.points[player.pathOrientation]![player.lineNum]
         physicsWorld.gravity = CGVectorMake(0, 0)
@@ -45,8 +45,12 @@ class ZenModeScene: GameScene {
         addChild(player)
         addChild(display)
         addChild(nextShape)
-//        addChild(eye)
-//        eye.lookAtNode(player)
+        for (i,eye) in eyes.enumerate() {
+            eye.zPosition = 100
+            eye.position = map.points[PathOrientation(rawValue: i)!]!.last!
+            addChild(eye)
+            eye.lookAtNode(player)
+        }
         display.setPosition()
         player.runInZenMap(map)
         nodeFactory()
@@ -61,6 +65,7 @@ class ZenModeScene: GameScene {
     
     deinit{
         NSNotificationCenter.defaultCenter().removeObserver(self)
+        soundManager.stopBackGround()
     }
     
     override func didMoveToView(view: SKView) {
@@ -131,7 +136,9 @@ class ZenModeScene: GameScene {
     
     func hideGame(){
         map.alpha = 0.2
-//        eye.alpha = 0.2
+        for eye in eyes {
+            eye.alpha = 0.2
+        }
         background.alpha = 0.2
         for node in children{
             if let shape = node as? Shape {
@@ -144,7 +151,9 @@ class ZenModeScene: GameScene {
     
     func showGame(){
         map.alpha = 1
-//        eye.alpha = 1
+        for eye in eyes {
+            eye.alpha = 1
+        }
         background.alpha = 0.5
         for node in children{
             if let shape = node as? Shape {
@@ -176,10 +185,12 @@ class ZenModeScene: GameScene {
             node.removeFromParent()
         })
         map.alpha = 1
-//        eye.alpha = 1
-//        if eye.parent == nil {
-//            addChild(eye)
-//        }
+        for eye in eyes {
+            eye.alpha = 1
+            if eye.parent == nil {
+                addChild(eye)
+            }
+        }
         background.alpha = 0.5
         Data.sharedData.reset()
         player.restart()

@@ -18,7 +18,7 @@ public class ZenMap: SKNode {
     public convenience init(origin:CGPoint, layer:Int, size:CGSize) {
         self.init()
         //计算每层路径间隔距离
-        spacing = size.width / CGFloat((layer + 1) * 2)
+        spacing = size.width / CGFloat((layer + 2) * 2)
         var needles = [CGPoint(x: origin.x + spacing, y: origin.y),CGPoint(x: origin.x, y: origin.y - spacing),CGPoint(x: origin.x - spacing, y: origin.y),CGPoint(x: origin.x, y: origin.y + spacing)]
         //init paths
         rightPath.append(origin)

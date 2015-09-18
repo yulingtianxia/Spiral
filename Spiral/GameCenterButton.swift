@@ -10,7 +10,7 @@ import SpriteKit
 
 class GameCenterButton: SKSpriteNode {
     init(){
-        super.init(texture: SKTexture(imageNamed: "GameCenter"), color: SKColor.clearColor(), size: CGSize(width: 30, height: 30))
+        super.init(texture: SKTexture(imageNamed: "GameCenter"), color: SKColor.clearColor(), size: CGSize(width: 40, height: 40))
         self.userInteractionEnabled = true
     }
 

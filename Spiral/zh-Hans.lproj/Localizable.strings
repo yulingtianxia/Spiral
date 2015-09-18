@@ -5,6 +5,7 @@
   Created by 杨萧玉 on 14-10-2.
   Copyright (c) 2014年 杨萧玉. All rights reserved.
 */
+"Square Spiral"="旋球华尔兹";
 "SCORE "="分数 ";
 "LEVEL "="关卡 ";
 "HIGHSCORE "="最高得分";
@@ -12,7 +13,10 @@
 "PAUSE"="暂停";
 "SHARE"="炫耀战绩";
 "REPLAY"="重新开始";
-"I got %d points in Spiral. Come on with me! https://itunes.apple.com/us/app/square-spiral/id920811081"="我在Spiral游戏中得了%1$d分，快来超越我吧！https://itunes.apple.com/cn/app/square-spiral/id920811081";
+"WeChat Session"="微信好友";
+"WeChat Timeline"="朋友圈";
+"https://itunes.apple.com/us/app/square-spiral/id920811081"="https://itunes.apple.com/cn/app/square-spiral/id920811081";
+"I got %d points in Spiral. Come on with me!"="我在Spiral游戏中得了%1$d分，快来超越我吧！";
 "HelveticaNeue-Thin"="FashionFont052,by-www.6763.net";
 //Tips
 "You must manipulate the Star to get more score before its death"="你必须操控星星来在游戏结束前获取更多的分数";

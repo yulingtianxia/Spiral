@@ -173,7 +173,10 @@ public class GameViewController: UIViewController, RPPreviewViewControllerDelega
         RPScreenRecorder.sharedRecorder().startRecordingWithMicrophoneEnabled(true) { (error) -> Void in
             
             if error != nil {
-                //TODO: 提示错误,无法录制
+                let alert = UIAlertController(title: "错误", message: "无法录制", preferredStyle: .Alert)
+                let action = UIAlertAction(title: "哦", style: .Default, handler: nil)
+                alert.addAction(action)
+                self.presentViewController(alert, animated: true, completion: nil)
             }
             else{
                 handler()
