@@ -18,6 +18,11 @@ extension SKScene {
             let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as! SKScene
             scene.size = (GameKitHelper.sharedGameKitHelper.getRootViewController()?.view.frame.size)!
             archiver.finishDecoding()
+            for child in scene.children {
+                if let sprite = child as? SKSpriteNode {
+                    sprite.texture?.preloadWithCompletionHandler({ })
+                }
+            }
             return scene
         } else {
             return nil

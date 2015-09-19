@@ -15,6 +15,8 @@
 		A4175E7B1B21DF1B00156886 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4175E7A1B21DF1B00156886 /* Constant.swift */; };
 		A4175E7D1B21EBBC00156886 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4175E7C1B21EBBC00156886 /* Extensions.swift */; };
 		A4175E7F1B22024F00156886 /* bg_ordinary.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A4175E7E1B22024F00156886 /* bg_ordinary.mp3 */; };
+		A42414AD1BAD600F00DF3879 /* OrdinaryHelpScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A42414A91BAD600F00DF3879 /* OrdinaryHelpScene.sks */; settings = {ASSET_TAGS = (); }; };
+		A42414AE1BAD600F00DF3879 /* ZenHelpScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A42414AB1BAD600F00DF3879 /* ZenHelpScene.sks */; settings = {ASSET_TAGS = (); }; };
 		A424E2F119E78176007FE1C1 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = A424E2F019E78176007FE1C1 /* Background.swift */; };
 		A4254A831AF618CF00620AA7 /* OrdinaryModeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4254A821AF618CF00620AA7 /* OrdinaryModeScene.swift */; };
 		A4254A871AF6356300620AA7 /* ZenDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4254A861AF6356300620AA7 /* ZenDisplay.swift */; };
@@ -30,8 +32,6 @@
 		A43F9CE11B2C5420001835F5 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43F9CE01B2C5420001835F5 /* GameScene.swift */; };
 		A45320EB1B51427D00CBD634 /* PlayRecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45320EA1B51427D00CBD634 /* PlayRecordButton.swift */; };
 		A45A65E01986073B00EA40D7 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45A65DF1986073B00EA40D7 /* SoundManager.swift */; };
-		A45A93511B2C305A00EE4A56 /* OrdinaryHelpScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A45A934D1B2C305A00EE4A56 /* OrdinaryHelpScene.sks */; };
-		A45A93521B2C305A00EE4A56 /* ZenHelpScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A45A934F1B2C305A00EE4A56 /* ZenHelpScene.sks */; };
 		A45A935C1B2C4FDF00EE4A56 /* gameover_ordinary.wav in Resources */ = {isa = PBXBuildFile; fileRef = A45A93571B2C4FDF00EE4A56 /* gameover_ordinary.wav */; };
 		A45A935D1B2C4FDF00EE4A56 /* jump_ordinary.wav in Resources */ = {isa = PBXBuildFile; fileRef = A45A93581B2C4FDF00EE4A56 /* jump_ordinary.wav */; };
 		A45A935E1B2C4FDF00EE4A56 /* levelup_ordinary.wav in Resources */ = {isa = PBXBuildFile; fileRef = A45A93591B2C4FDF00EE4A56 /* levelup_ordinary.wav */; };
@@ -80,7 +80,6 @@
 		A4E7595019F7B8E600C08783 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = A4E7594E19F7B8E600C08783 /* spark.png */; };
 		A4E7595A19F7BAD600C08783 /* spark.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4E7595919F7BAD600C08783 /* spark.sks */; };
 		A4EEE3B619F6917900A43108 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4EEE3B519F6917900A43108 /* libWeChatSDK.a */; };
-		A4EEE3B919F6A45200A43108 /* SendWX.m in Sources */ = {isa = PBXBuildFile; fileRef = A4EEE3B819F6A45200A43108 /* SendWX.m */; };
 		A4F3505019FBA41B00F6B8DF /* Eye.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F3504F19FBA41B00F6B8DF /* Eye.swift */; };
 		A4F3505219FBAD2200F6B8DF /* EyeContactVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F3505119FBAD2200F6B8DF /* EyeContactVisitor.swift */; };
 		A4F3C60A19E8E990000514AC /* Reaper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F3C60919E8E990000514AC /* Reaper.swift */; };
@@ -112,6 +111,8 @@
 		A4175E7A1B21DF1B00156886 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		A4175E7C1B21EBBC00156886 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Extensions.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A4175E7E1B22024F00156886 /* bg_ordinary.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bg_ordinary.mp3; sourceTree = "<group>"; };
+		A42414AA1BAD600F00DF3879 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = en; path = en.lproj/OrdinaryHelpScene.sks; sourceTree = "<group>"; };
+		A42414AC1BAD600F00DF3879 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = en; path = en.lproj/ZenHelpScene.sks; sourceTree = "<group>"; };
 		A424E2F019E78176007FE1C1 /* Background.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Background.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A4254A821AF618CF00620AA7 /* OrdinaryModeScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = OrdinaryModeScene.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A4254A861AF6356300620AA7 /* ZenDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ZenDisplay.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -125,17 +126,15 @@
 		A437599D1B20349200935DE7 /* OrdinaryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = OrdinaryButton.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A437599F1B2038D500935DE7 /* ZenButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ZenButton.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A43759A61B20632E00935DE7 /* GameOverIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = GameOverIcon.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		A43EDC971BAD6289003F50A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Base; path = Base.lproj/OrdinaryHelpScene.sks; sourceTree = "<group>"; };
+		A43EDC981BAD628E003F50A3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = "zh-Hans"; path = "zh-Hans.lproj/OrdinaryHelpScene.sks"; sourceTree = "<group>"; };
+		A43EDC991BAD6291003F50A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Base; path = Base.lproj/ZenHelpScene.sks; sourceTree = "<group>"; };
+		A43EDC9A1BAD6295003F50A3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = "zh-Hans"; path = "zh-Hans.lproj/ZenHelpScene.sks"; sourceTree = "<group>"; };
 		A43F9CE01B2C5420001835F5 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		A44270291B24950E0031B7FC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "en.lproj/Launch Screen.xib"; sourceTree = "<group>"; };
 		A444B6A91B50E9E10026B0EB /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		A45320EA1B51427D00CBD634 /* PlayRecordButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayRecordButton.swift; sourceTree = "<group>"; };
 		A45A65DF1986073B00EA40D7 /* SoundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SoundManager.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		A45A934E1B2C305A00EE4A56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Base; path = Base.lproj/OrdinaryHelpScene.sks; sourceTree = "<group>"; };
-		A45A93501B2C305A00EE4A56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Base; path = Base.lproj/ZenHelpScene.sks; sourceTree = "<group>"; };
-		A45A93531B2C306B00EE4A56 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = en; path = en.lproj/ZenHelpScene.sks; sourceTree = "<group>"; };
-		A45A93541B2C307000EE4A56 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = "zh-Hans"; path = "zh-Hans.lproj/ZenHelpScene.sks"; sourceTree = "<group>"; };
-		A45A93551B2C307600EE4A56 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = en; path = en.lproj/OrdinaryHelpScene.sks; sourceTree = "<group>"; };
-		A45A93561B2C307900EE4A56 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = "zh-Hans"; path = "zh-Hans.lproj/OrdinaryHelpScene.sks"; sourceTree = "<group>"; };
 		A45A93571B2C4FDF00EE4A56 /* gameover_ordinary.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gameover_ordinary.wav; sourceTree = "<group>"; };
 		A45A93581B2C4FDF00EE4A56 /* jump_ordinary.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jump_ordinary.wav; sourceTree = "<group>"; };
 		A45A93591B2C4FDF00EE4A56 /* levelup_ordinary.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = levelup_ordinary.wav; sourceTree = "<group>"; };
@@ -196,8 +195,6 @@
 		A4EEE3B319F6917900A43108 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		A4EEE3B419F6917900A43108 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		A4EEE3B519F6917900A43108 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
-		A4EEE3B719F6A45200A43108 /* SendWX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendWX.h; sourceTree = "<group>"; };
-		A4EEE3B819F6A45200A43108 /* SendWX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendWX.m; sourceTree = "<group>"; };
 		A4F3504F19FBA41B00F6B8DF /* Eye.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Eye.swift; sourceTree = "<group>"; };
 		A4F3505119FBAD2200F6B8DF /* EyeContactVisitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EyeContactVisitor.swift; sourceTree = "<group>"; };
 		A4F3C60919E8E990000514AC /* Reaper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reaper.swift; sourceTree = "<group>"; };
@@ -419,8 +416,8 @@
 		A4E28CA11B209FF30053770A /* sks file */ = {
 			isa = PBXGroup;
 			children = (
-				A45A934D1B2C305A00EE4A56 /* OrdinaryHelpScene.sks */,
-				A45A934F1B2C305A00EE4A56 /* ZenHelpScene.sks */,
+				A42414A91BAD600F00DF3879 /* OrdinaryHelpScene.sks */,
+				A42414AB1BAD600F00DF3879 /* ZenHelpScene.sks */,
 			);
 			name = "sks file";
 			sourceTree = "<group>";
@@ -440,8 +437,6 @@
 				A4EEE3B319F6917900A43108 /* WXApi.h */,
 				A4EEE3B419F6917900A43108 /* WXApiObject.h */,
 				A4EEE3B519F6917900A43108 /* libWeChatSDK.a */,
-				A4EEE3B719F6A45200A43108 /* SendWX.h */,
-				A4EEE3B819F6A45200A43108 /* SendWX.m */,
 				A40AB22D1BABFF3000DBE971 /* WeChatActivity.swift */,
 			);
 			name = Weixin;
@@ -589,7 +584,6 @@
 				A45A935D1B2C4FDF00EE4A56 /* jump_ordinary.wav in Resources */,
 				A46323F01A0263AA00902D3A /* Starcraft Normal.ttf in Resources */,
 				A46323F11A0263AA00902D3A /* 颜体.ttf in Resources */,
-				A45A93521B2C305A00EE4A56 /* ZenHelpScene.sks in Resources */,
 				A4E2434F1B22F2B900356FCA /* levelup_zen.wav in Resources */,
 				A45A935C1B2C4FDF00EE4A56 /* gameover_ordinary.wav in Resources */,
 				A4E7595019F7B8E600C08783 /* spark.png in Resources */,
@@ -599,8 +593,8 @@
 				A4E7595A19F7BAD600C08783 /* spark.sks in Resources */,
 				A45A93601B2C4FDF00EE4A56 /* shield_zen.wav in Resources */,
 				A4787755197113D000F6F611 /* Images.xcassets in Resources */,
+				A42414AE1BAD600F00DF3879 /* ZenHelpScene.sks in Resources */,
 				A4E2434D1B22F04200356FCA /* gameover_zen.wav in Resources */,
-				A45A93511B2C305A00EE4A56 /* OrdinaryHelpScene.sks in Resources */,
 				A4175E7F1B22024F00156886 /* bg_ordinary.mp3 in Resources */,
 				A4E243491B22EF5900356FCA /* killer_zen.wav in Resources */,
 				A47E78E619F39C4E003D5143 /* vortexShader.fsh in Resources */,
@@ -610,6 +604,7 @@
 				A4B104BE19D6F5EA008BD1BA /* killer_ordinary.wav in Resources */,
 				A45A935F1B2C4FDF00EE4A56 /* score_ordinary.wav in Resources */,
 				A4605B6C19F5235500F8DD96 /* Launch Screen.xib in Resources */,
+				A42414AD1BAD600F00DF3879 /* OrdinaryHelpScene.sks in Resources */,
 				A4B104B219D6DF01008BD1BA /* bg_zen.mp3 in Resources */,
 				A4B05A3A19E9642900B303C0 /* spiral.sketch in Resources */,
 			);
@@ -682,7 +677,6 @@
 				A4FF9274197526830060CE6D /* OrdinaryDisplay.swift in Sources */,
 				A49B03F81A772AA9009D8F40 /* Tips.swift in Sources */,
 				A434A14B1976955000F4C94B /* ShareButton.swift in Sources */,
-				A4EEE3B919F6A45200A43108 /* SendWX.m in Sources */,
 				A492F6791AF3B0D8004B040B /* Bamboo.swift in Sources */,
 				A45A9FA319F3E7250087C192 /* OrdinaryHelpScene.swift in Sources */,
 				A47D3D1A19741859005AF736 /* ScoreContactVisitor.swift in Sources */,
@@ -716,22 +710,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		A45A934D1B2C305A00EE4A56 /* OrdinaryHelpScene.sks */ = {
+		A42414A91BAD600F00DF3879 /* OrdinaryHelpScene.sks */ = {
 			isa = PBXVariantGroup;
 			children = (
-				A45A934E1B2C305A00EE4A56 /* Base */,
-				A45A93551B2C307600EE4A56 /* en */,
-				A45A93561B2C307900EE4A56 /* zh-Hans */,
+				A42414AA1BAD600F00DF3879 /* en */,
+				A43EDC971BAD6289003F50A3 /* Base */,
+				A43EDC981BAD628E003F50A3 /* zh-Hans */,
 			);
 			name = OrdinaryHelpScene.sks;
 			sourceTree = "<group>";
 		};
-		A45A934F1B2C305A00EE4A56 /* ZenHelpScene.sks */ = {
+		A42414AB1BAD600F00DF3879 /* ZenHelpScene.sks */ = {
 			isa = PBXVariantGroup;
 			children = (
-				A45A93501B2C305A00EE4A56 /* Base */,
-				A45A93531B2C306B00EE4A56 /* en */,
-				A45A93541B2C307000EE4A56 /* zh-Hans */,
+				A42414AC1BAD600F00DF3879 /* en */,
+				A43EDC991BAD6291003F50A3 /* Base */,
+				A43EDC9A1BAD6295003F50A3 /* zh-Hans */,
 			);
 			name = ZenHelpScene.sks;
 			sourceTree = "<group>";

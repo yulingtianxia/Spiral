@@ -16,7 +16,7 @@ class ShareButton: SKSpriteNode {
     
     init() {
         let texture = SKTexture(imageNamed: "sharebtn")
-        super.init(texture: texture, color: UIColor.clearColor(), size: texture.size() * 0.5)
+        super.init(texture: texture, color: UIColor.clearColor(), size: texture.size() * 0.6)
         userInteractionEnabled = true
     }
     
