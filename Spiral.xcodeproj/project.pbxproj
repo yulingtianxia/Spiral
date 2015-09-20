@@ -69,7 +69,6 @@
 		A4B104BC19D6F3A0008BD1BA /* shield_ordinary.wav in Resources */ = {isa = PBXBuildFile; fileRef = A4B104BB19D6F3A0008BD1BA /* shield_ordinary.wav */; };
 		A4B104BE19D6F5EA008BD1BA /* killer_ordinary.wav in Resources */ = {isa = PBXBuildFile; fileRef = A4B104BD19D6F5EA008BD1BA /* killer_ordinary.wav */; };
 		A4B2788519EA781C00A2D065 /* GameCenterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B2788419EA781C00A2D065 /* GameCenterButton.swift */; };
-		A4B666AB1BAEBF32005E2E73 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = A4B666A91BAEBF32005E2E73 /* README.md */; settings = {ASSET_TAGS = (); }; };
 		A4B666AC1BAEBF32005E2E73 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = A4B666AA1BAEBF32005E2E73 /* LICENSE */; settings = {ASSET_TAGS = (); }; };
 		A4DCE0281A839E0E00EA39B1 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DCE0261A839E0E00EA39B1 /* Crashlytics.framework */; };
 		A4DCE0291A839E0E00EA39B1 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DCE0271A839E0E00EA39B1 /* Fabric.framework */; };
@@ -664,7 +663,6 @@
 				A4F3C60C19E8EAF7000514AC /* ReaperContactVisitor.swift in Sources */,
 				A46D8C031976C3B800A32924 /* ShieldContactVisitor.swift in Sources */,
 				A4F3505019FBA41B00F6B8DF /* Eye.swift in Sources */,
-				A4B666AB1BAEBF32005E2E73 /* README.md in Sources */,
 				A47D3D18197415C1005AF736 /* KillerContactVisitor.swift in Sources */,
 				A436ADE51B271FE400D7F407 /* HelpMethods.swift in Sources */,
 				A43F9CE11B2C5420001835F5 /* GameScene.swift in Sources */,
