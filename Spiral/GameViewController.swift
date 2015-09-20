@@ -170,7 +170,7 @@ public class GameViewController: UIViewController, RPPreviewViewControllerDelega
     // MARK: - record game
     
     func startRecordWithHandler(handler:() -> Void) {
-        RPScreenRecorder.sharedRecorder().startRecordingWithMicrophoneEnabled(true) { (error) -> Void in
+        RPScreenRecorder.sharedRecorder().startRecordingWithMicrophoneEnabled(false) { (error) -> Void in
             
             if error != nil {
                 let alert = UIAlertController(title: "错误", message: "无法录制", preferredStyle: .Alert)
