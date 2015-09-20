@@ -170,17 +170,22 @@ public class GameViewController: UIViewController, RPPreviewViewControllerDelega
     // MARK: - record game
     
     func startRecordWithHandler(handler:() -> Void) {
+        previewViewController = nil
+        guard Data.sharedData.autoRecord else {
+            handler()
+            return
+        }
         RPScreenRecorder.sharedRecorder().startRecordingWithMicrophoneEnabled(false) { (error) -> Void in
-            
-            if error != nil {
-                let alert = UIAlertController(title: "错误", message: "无法录制", preferredStyle: .Alert)
-                let action = UIAlertAction(title: "哦", style: .Default, handler: nil)
+            if let rpError = error where rpError.domain == RPRecordingErrorDomain {
+                let alert = UIAlertController(title: "😌", message: "🚫🎥", preferredStyle: .Alert)
+                let action = UIAlertAction(title: "(⊙o⊙)", style: .Default, handler: { (action) -> Void in
+                    handler()
+                })
                 alert.addAction(action)
                 self.presentViewController(alert, animated: true, completion: nil)
+                return
             }
-            else{
-                handler()
-            }
+            handler()
         }
     }
     
@@ -196,9 +201,15 @@ public class GameViewController: UIViewController, RPPreviewViewControllerDelega
     }
     
     func playRecord() {
-        guard let previewViewController = previewViewController else { fatalError("The user requested playback, but a valid preview controller does not exist.") }
-        previewViewController.modalPresentationStyle = UIModalPresentationStyle.FullScreen
-        presentViewController(previewViewController, animated: true, completion:nil)
+        guard let pvController = previewViewController else {
+            let alert = UIAlertController(title: "😌", message: "🙈🎥", preferredStyle: .Alert)
+            let action = UIAlertAction(title: "😭", style: .Default, handler: nil)
+            alert.addAction(action)
+            self.presentViewController(alert, animated: true, completion: nil)
+            return
+        }
+        pvController.modalPresentationStyle = UIModalPresentationStyle.FullScreen
+        presentViewController(pvController, animated: true, completion:nil)
     }
     
     // MARK: - RPPreviewViewControllerDelegate

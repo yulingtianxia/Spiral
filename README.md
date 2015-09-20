@@ -3,9 +3,9 @@ Spiral
 
 [![Join the chat at https://gitter.im/yulingtianxia/Spiral](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/yulingtianxia/Spiral?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-A Game Developed with Swift and SpriteKit  
+A Game Developed with Swift 2.0 and SpriteKit  
 
-![](http://byetz.img41.wal8.com/img41/425047_20140623222918/140557437844.gif)  
+![](http://7ni3rk.com1.z0.glb.clouddn.com/spiral.gif)  
 
 现已上架AppStore：https://itunes.apple.com/us/app/square-spiral/id920811081?l=zh&ls=1&mt=8  
 
@@ -15,16 +15,5 @@ A Game Developed with Swift and SpriteKit
 
 关于Spiral的教程：http://yulingtianxia.com/blog/2014/07/17/a-ios-game-developed-by-swift-and-spritekit/
 
-如果遇到了类型转换编译报错，可以手动加代码强制转换或者用64位模拟器（如iPhone5s）运行
 
-~~建议在Xcode6beta3下运行，beta4会出现问题，正在修复中:(~~
 
-~~在Xcode6beta4中，使用**模拟器**运行时，SKShapeNode的path无法被绘制出来（Objective-C工作正常），目前没有找到好的解决方法，建议关注stackoverflow：http://stackoverflow.com/questions/24951185/in-xcode-6-beta-4-drawing-a-simple-circle-doesnt-work-anymore~~
-
-~~已经修复了Xcode6beta5中因Swift更新产生的语法问题，但依然不能绘制SKShapeNode :(  ~~  
-
-~~苹果官方论坛也有人提出了同样的问题：https://devforums.apple.com/message/1011007#1011007~~
-
-~~语法更新至beta7（2014.9.5），出现连接错误时可以clean build folder（点product->clean之前按住option）试试。~~
-
-语法更新至1.2
