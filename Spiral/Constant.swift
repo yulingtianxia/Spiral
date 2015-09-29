@@ -26,3 +26,4 @@ let bgLightCategory:UInt32     =  0x1 << 5
 
 
 let mainButtonSize = CGSize(width: 150, height: 150)
+let mazeCellWidth: CGFloat = 27.0
