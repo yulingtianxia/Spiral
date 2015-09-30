@@ -12,12 +12,21 @@ import SpriteKit
 
 class SpriteComponent: GKComponent {
     
-    let sprite: SpriteNode
-    let defaultColor: SKColor
+    let sprite: Shape
     
-    init(sprite s: SpriteNode, defaultColor color: SKColor) {
-        sprite = s
-        defaultColor = color
+    init(type: ShapeType) {
+        switch type {
+        case .Player:
+            sprite = Player()
+        case .Killer:
+            sprite = Killer()
+        case .Score:
+            sprite = Score()
+        case .Shield:
+            sprite = Shield()
+        case .Reaper:
+            sprite = Reaper()
+        }
         super.init()
     }
     
@@ -38,11 +47,13 @@ class SpriteComponent: GKComponent {
     }
     
     func useNormalAppearance() {
-        sprite.color = defaultColor
+        //TODO: 普通外观
+//        sprite.color = defaultColor
     }
     
     func useFleeAppearance() {
-        sprite.color = SKColor.whiteColor()
+        //TODO: 逃逸外观
+//        sprite.color = SKColor.whiteColor()
     }
     
     func useDefeatedAppearance() {

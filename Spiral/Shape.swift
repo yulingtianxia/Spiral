@@ -28,6 +28,7 @@ class Shape: SKSpriteNode {
     var lineNum = 0
     let speedUpBase:CGFloat = 50
     var light = SKLightNode()
+    weak var owner: SpriteComponent?
     
     required init(coder: NSCoder) {
         fatalError("NSCoding not supported")

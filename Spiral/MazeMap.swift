@@ -68,9 +68,7 @@ class MazeMap: NSObject {
     
     var startPosition: GKGridGraphNode
     
-    let enemyStartPositions: [GKGridGraphNode]
-    
-    
+    let shapeStartPositions: [GKGridGraphNode]
     
     override init() {
         
@@ -99,11 +97,10 @@ class MazeMap: NSObject {
         }
         
         pathfindingGraph.removeNodes(walls)
-        enemyStartPositions = spawnPoints
+        shapeStartPositions = spawnPoints
         
         super.init()
         
     }
-    
     
 }

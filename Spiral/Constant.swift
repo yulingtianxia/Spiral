@@ -24,6 +24,13 @@ let shieldLightCategory:UInt32 =  0x1 << 3
 let reaperLightCategory:UInt32 =  0x1 << 4
 let bgLightCategory:UInt32     =  0x1 << 5
 
+enum ShapeType {
+    case Player
+    case Shield
+    case Killer
+    case Score
+    case Reaper
+}
 
 let mainButtonSize = CGSize(width: 150, height: 150)
 let mazeCellWidth: CGFloat = 27.0

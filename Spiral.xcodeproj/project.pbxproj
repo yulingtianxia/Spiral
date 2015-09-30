@@ -13,7 +13,6 @@
 		A40AB22C1BABFB2B00DBE971 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A40AB22B1BABFB2B00DBE971 /* SystemConfiguration.framework */; };
 		A40AB22E1BABFF3000DBE971 /* WeChatActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40AB22D1BABFF3000DBE971 /* WeChatActivity.swift */; settings = {ASSET_TAGS = (); }; };
 		A40F39DB1BBA874B0061E32A /* SpriteComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40F39DA1BBA874B0061E32A /* SpriteComponent.swift */; settings = {ASSET_TAGS = (); }; };
-		A40F39DE1BBA8A960061E32A /* SpriteNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40F39DD1BBA8A960061E32A /* SpriteNode.swift */; settings = {ASSET_TAGS = (); }; };
 		A40F39E11BBA972C0061E32A /* MazeMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40F39E01BBA972C0061E32A /* MazeMap.swift */; settings = {ASSET_TAGS = (); }; };
 		A40F39E31BBAC4F30061E32A /* MazeModeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40F39E21BBAC4F30061E32A /* MazeModeScene.swift */; settings = {ASSET_TAGS = (); }; };
 		A40F39E51BBAC7BB0061E32A /* PlayerControlComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40F39E41BBAC7BB0061E32A /* PlayerControlComponent.swift */; settings = {ASSET_TAGS = (); }; };
@@ -70,6 +69,12 @@
 		A492F67B1AF3C67C004B040B /* ZenModeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A492F67A1AF3C67C004B040B /* ZenModeScene.swift */; };
 		A49B03F81A772AA9009D8F40 /* Tips.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B03F71A772AA9009D8F40 /* Tips.swift */; };
 		A49ECCD21BBA80DF00447A3E /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49ECCD11BBA80DF00447A3E /* Entity.swift */; settings = {ASSET_TAGS = (); }; };
+		A4A286E81BBBF88700A6CE7F /* IntelligenceComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A286E71BBBF88700A6CE7F /* IntelligenceComponent.swift */; settings = {ASSET_TAGS = (); }; };
+		A4A286ED1BBBFD3C00A6CE7F /* ShapeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A286EC1BBBFD3C00A6CE7F /* ShapeState.swift */; settings = {ASSET_TAGS = (); }; };
+		A4A286EF1BBC116700A6CE7F /* ShapeChaseState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A286EE1BBC116700A6CE7F /* ShapeChaseState.swift */; settings = {ASSET_TAGS = (); }; };
+		A4A286F11BBC119500A6CE7F /* ShapeFleeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A286F01BBC119500A6CE7F /* ShapeFleeState.swift */; settings = {ASSET_TAGS = (); }; };
+		A4A286F31BBC11AB00A6CE7F /* ShapeDefeatedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A286F21BBC11AB00A6CE7F /* ShapeDefeatedState.swift */; settings = {ASSET_TAGS = (); }; };
+		A4A286F51BBC11BE00A6CE7F /* ShapeRespawnState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A286F41BBC11BE00A6CE7F /* ShapeRespawnState.swift */; settings = {ASSET_TAGS = (); }; };
 		A4B05A3A19E9642900B303C0 /* spiral.sketch in Resources */ = {isa = PBXBuildFile; fileRef = A4B05A3919E9642900B303C0 /* spiral.sketch */; };
 		A4B104B219D6DF01008BD1BA /* bg_zen.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A4B104B119D6DF01008BD1BA /* bg_zen.mp3 */; };
 		A4B104BC19D6F3A0008BD1BA /* shield_ordinary.wav in Resources */ = {isa = PBXBuildFile; fileRef = A4B104BB19D6F3A0008BD1BA /* shield_ordinary.wav */; };
@@ -116,7 +121,6 @@
 		A40AB22B1BABFB2B00DBE971 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A40AB22D1BABFF3000DBE971 /* WeChatActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeChatActivity.swift; sourceTree = "<group>"; };
 		A40F39DA1BBA874B0061E32A /* SpriteComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpriteComponent.swift; sourceTree = "<group>"; };
-		A40F39DD1BBA8A960061E32A /* SpriteNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpriteNode.swift; sourceTree = "<group>"; };
 		A40F39E01BBA972C0061E32A /* MazeMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MazeMap.swift; sourceTree = "<group>"; };
 		A40F39E21BBAC4F30061E32A /* MazeModeScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MazeModeScene.swift; sourceTree = "<group>"; };
 		A40F39E41BBAC7BB0061E32A /* PlayerControlComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerControlComponent.swift; sourceTree = "<group>"; };
@@ -188,6 +192,12 @@
 		A492F67A1AF3C67C004B040B /* ZenModeScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ZenModeScene.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A49B03F71A772AA9009D8F40 /* Tips.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tips.swift; sourceTree = "<group>"; };
 		A49ECCD11BBA80DF00447A3E /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		A4A286E71BBBF88700A6CE7F /* IntelligenceComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntelligenceComponent.swift; sourceTree = "<group>"; };
+		A4A286EC1BBBFD3C00A6CE7F /* ShapeState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeState.swift; sourceTree = "<group>"; };
+		A4A286EE1BBC116700A6CE7F /* ShapeChaseState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeChaseState.swift; sourceTree = "<group>"; };
+		A4A286F01BBC119500A6CE7F /* ShapeFleeState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeFleeState.swift; sourceTree = "<group>"; };
+		A4A286F21BBC11AB00A6CE7F /* ShapeDefeatedState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeDefeatedState.swift; sourceTree = "<group>"; };
+		A4A286F41BBC11BE00A6CE7F /* ShapeRespawnState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeRespawnState.swift; sourceTree = "<group>"; };
 		A4AE8C5F1BA58DA600E2739F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A4AE8C621BA58DB600E2739F /* ReplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReplayKit.framework; path = System/Library/Frameworks/ReplayKit.framework; sourceTree = SDKROOT; };
 		A4B05A3919E9642900B303C0 /* spiral.sketch */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = spiral.sketch; sourceTree = "<group>"; };
@@ -385,7 +395,6 @@
 		A47D3D0A1973D9F5005AF736 /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
-				A40F39DD1BBA8A960061E32A /* SpriteNode.swift */,
 				A40F39DF1BBA96EF0061E32A /* Maps */,
 				A4E7594C19F7B8A700C08783 /* Particles */,
 				A434A1491976952800F4C94B /* Buttons */,
@@ -414,6 +423,7 @@
 		A47D3D12197407AC005AF736 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				A4A286EB1BBBFCEC00A6CE7F /* State Machine */,
 				A49ECCD01BBA7FFA00447A3E /* Entity-Component */,
 				A47D3D0B1973DBA4005AF736 /* VisitorPattern */,
 				A41591E319CC71AD00C3420B /* GameKitFiles */,
@@ -450,8 +460,21 @@
 				A49ECCD11BBA80DF00447A3E /* Entity.swift */,
 				A40F39DA1BBA874B0061E32A /* SpriteComponent.swift */,
 				A40F39E41BBAC7BB0061E32A /* PlayerControlComponent.swift */,
+				A4A286E71BBBF88700A6CE7F /* IntelligenceComponent.swift */,
 			);
 			name = "Entity-Component";
+			sourceTree = "<group>";
+		};
+		A4A286EB1BBBFCEC00A6CE7F /* State Machine */ = {
+			isa = PBXGroup;
+			children = (
+				A4A286EC1BBBFD3C00A6CE7F /* ShapeState.swift */,
+				A4A286EE1BBC116700A6CE7F /* ShapeChaseState.swift */,
+				A4A286F01BBC119500A6CE7F /* ShapeFleeState.swift */,
+				A4A286F21BBC11AB00A6CE7F /* ShapeDefeatedState.swift */,
+				A4A286F41BBC11BE00A6CE7F /* ShapeRespawnState.swift */,
+			);
+			name = "State Machine";
 			sourceTree = "<group>";
 		};
 		A4E28CA11B209FF30053770A /* sks file */ = {
@@ -684,9 +707,11 @@
 				A4F3C61019E90FFF000514AC /* Rope.swift in Sources */,
 				A4175E7B1B21DF1B00156886 /* Constant.swift in Sources */,
 				A45A9FA519F3F1640087C192 /* HelpButton.swift in Sources */,
+				A4A286ED1BBBFD3C00A6CE7F /* ShapeState.swift in Sources */,
 				A46D8C011976BF9400A32924 /* Shield.swift in Sources */,
 				A47D3D1E19741E54005AF736 /* Score.swift in Sources */,
 				A478777119712E9D00F6F611 /* Shape.swift in Sources */,
+				A4A286E81BBBF88700A6CE7F /* IntelligenceComponent.swift in Sources */,
 				A4254A831AF618CF00620AA7 /* OrdinaryModeScene.swift in Sources */,
 				A4254A871AF6356300620AA7 /* ZenDisplay.swift in Sources */,
 				A492F6771AF346B2004B040B /* ZenMap.swift in Sources */,
@@ -698,8 +723,10 @@
 				A46D8C031976C3B800A32924 /* ShieldContactVisitor.swift in Sources */,
 				A40F39E31BBAC4F30061E32A /* MazeModeScene.swift in Sources */,
 				A4F3505019FBA41B00F6B8DF /* Eye.swift in Sources */,
+				A4A286F11BBC119500A6CE7F /* ShapeFleeState.swift in Sources */,
 				A47D3D18197415C1005AF736 /* KillerContactVisitor.swift in Sources */,
 				A436ADE51B271FE400D7F407 /* HelpMethods.swift in Sources */,
+				A4A286EF1BBC116700A6CE7F /* ShapeChaseState.swift in Sources */,
 				A43F9CE11B2C5420001835F5 /* GameScene.swift in Sources */,
 				A47D3D1C19741B04005AF736 /* Killer.swift in Sources */,
 				A4FF927019751AA50060CE6D /* VisitablePhysicsBody.swift in Sources */,
@@ -717,9 +744,9 @@
 				A4F3C60A19E8E990000514AC /* Reaper.swift in Sources */,
 				A424E2F119E78176007FE1C1 /* Background.swift in Sources */,
 				A4FF9274197526830060CE6D /* OrdinaryDisplay.swift in Sources */,
+				A4A286F31BBC11AB00A6CE7F /* ShapeDefeatedState.swift in Sources */,
 				A49B03F81A772AA9009D8F40 /* Tips.swift in Sources */,
 				A40F39E51BBAC7BB0061E32A /* PlayerControlComponent.swift in Sources */,
-				A40F39DE1BBA8A960061E32A /* SpriteNode.swift in Sources */,
 				A434A14B1976955000F4C94B /* ShareButton.swift in Sources */,
 				A492F6791AF3B0D8004B040B /* Bamboo.swift in Sources */,
 				A45A9FA319F3E7250087C192 /* OrdinaryHelpScene.swift in Sources */,
@@ -729,6 +756,7 @@
 				A48F921419724822007BDAE4 /* Player.swift in Sources */,
 				A45320EB1B51427D00CBD634 /* PlayRecordButton.swift in Sources */,
 				A49ECCD21BBA80DF00447A3E /* Entity.swift in Sources */,
+				A4A286F51BBC11BE00A6CE7F /* ShapeRespawnState.swift in Sources */,
 				A437599E1B20349200935DE7 /* OrdinaryButton.swift in Sources */,
 				A478774A197113D000F6F611 /* AppDelegate.swift in Sources */,
 				A492F67B1AF3C67C004B040B /* ZenModeScene.swift in Sources */,
