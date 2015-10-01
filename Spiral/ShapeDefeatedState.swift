@@ -15,4 +15,25 @@ class ShapeDefeatedState: ShapeState {
         respawnPosition = respawn
         super.init(scene: s, entity: e)
     }
+    
+    //    MARK: - GKState Life Cycle
+    
+    override func isValidNextState(stateClass: AnyClass) -> Bool {
+        return stateClass == ShapeRespawnState.self
+    }
+    
+    override func didEnterWithPreviousState(previousState: GKState?) {
+        // Change the shape sprite's appearance to indicate defeat.
+        if let component = entity.componentForClass(SpriteComponent.self) {
+            component.useDefeatedAppearance()
+            // Use pathfinding to find a route back to this shape's starting position.
+            let graph = scene.map.pathfindingGraph
+            if let shapeNode = graph.nodeAtGridPosition(entity.gridPosition),
+                let path = graph.findPathFromNode(shapeNode, toNode: respawnPosition) as? [GKGridGraphNode] {
+                component.followPath(path, completion: { () -> Void in
+                    stateMachine?.enterState(ShapeRespawnState.self)
+                })
+            }
+        }
+    }
 }

@@ -9,7 +9,7 @@
 import GameplayKit
 
 class ShapeState: GKState {
-    weak var scene: MazeModeScene?
+    unowned var scene: MazeModeScene
     let entity: Entity
     init(scene s: MazeModeScene, entity e: Entity) {
         scene = s
@@ -19,18 +19,19 @@ class ShapeState: GKState {
     }
     
     func pathToNode(node: GKGridGraphNode) -> [GKGridGraphNode]? {
-        if let graph = scene?.map.pathfindingGraph, let sourceNode = graph.nodeAtGridPosition(entity.gridPosition) {
+        let graph = scene.map.pathfindingGraph
+        if let sourceNode = graph.nodeAtGridPosition(entity.gridPosition) {
             return graph.findPathFromNode(sourceNode, toNode: node) as? [GKGridGraphNode]
         }
         return nil
     }
     
-    func startFollowingPath(path: [GKGridGraphNode]) {
+    func startFollowingPath(path: [GKGridGraphNode]?) {
         /*
         Set up a move to the first node on the path, but
         no farther because the next update will recalculate the path.
         */
-        if path.count > 1 {
+        if let path = path where path.count > 1 {
             let firstMove = path[1] // path[0] is the shape's current position.
             let component = entity.componentForClass(SpriteComponent)
             component?.nextGridPosition = firstMove.gridPosition
