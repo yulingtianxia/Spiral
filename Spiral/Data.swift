@@ -10,6 +10,7 @@ import UIKit
 enum GameMode {
     case Ordinary
     case Zen
+    case Maze
 }
 
 protocol DisplayData: class{

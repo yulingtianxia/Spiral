@@ -10,9 +10,21 @@ import SpriteKit
 
 class ShieldContactVisitor: ContactVisitor {
     func visitPlayer(body:SKPhysicsBody){
-        let thisNode = self.body.node
-//        let otherNode = body.node
-        thisNode?.removeFromParent()
+        if let thisNode = self.body.node as? Shield {
+            if Data.sharedData.currentMode == .Maze {
+                if let entity = thisNode.owner?.entity,
+                    let aiComponent = entity.componentForClass(IntelligenceComponent.self),
+                    let state = aiComponent.stateMachine.currentState {
+                        guard state.isKindOfClass(ShapeChaseState.self) else {
+                            aiComponent.stateMachine.enterState(ShapeDefeatedState.self)
+                            return
+                        }
+                }
+            }
+            else {
+                thisNode.removeFromParent()
+            }
+        }
     }
     
     func visitKiller(body:SKPhysicsBody){
@@ -34,8 +46,20 @@ class ShieldContactVisitor: ContactVisitor {
     }
     
     func visitReaper(body:SKPhysicsBody){
-        let thisNode = self.body.node
-//        let otherNode = body.node
-        thisNode?.removeFromParent()
+        if let thisNode = self.body.node as? Shield {
+            if Data.sharedData.currentMode == .Maze {
+                if let entity = thisNode.owner?.entity,
+                    let aiComponent = entity.componentForClass(IntelligenceComponent.self),
+                    let state = aiComponent.stateMachine.currentState {
+                        guard state.isKindOfClass(ShapeChaseState.self) else {
+                            aiComponent.stateMachine.enterState(ShapeDefeatedState.self)
+                            return
+                        }
+                }
+            }
+            else {
+                thisNode.removeFromParent()
+            }
+        }
     }
 }

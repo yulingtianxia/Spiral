@@ -12,6 +12,7 @@ import SpriteKit
 class ContactVisitor:NSObject{
     let body:SKPhysicsBody!
     let contact:SKPhysicsContact!
+    
     class func contactVisitorWithBody(body:SKPhysicsBody,forContact contact:SKPhysicsContact)->ContactVisitor!{
         //第一次dispatch，通过node类别返回对应的实例
         if 0 != body.categoryBitMask&playerCategory {
@@ -35,12 +36,14 @@ class ContactVisitor:NSObject{
         return nil
         
     }
+    
     init(body:SKPhysicsBody, forContact contact:SKPhysicsContact){
         self.body = body
         self.contact = contact
         super.init()
         
     }
+    
     func visitBody(body:SKPhysicsBody){
         //第二次dispatch，通过构造方法名来执行对应方法
         // 生成方法名，比如"visitPlayer"

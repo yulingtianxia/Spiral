@@ -19,6 +19,8 @@ class Background: SKSpriteNode {
                 imageString = "bg_ordinary"
             case .Zen:
                 imageString = "bg_zen"
+            case .Maze:
+                imageString = "bg_maze"
             }
         }
         else{
@@ -37,6 +39,9 @@ class Background: SKSpriteNode {
         case .Zen:
             light.lightColor = SKColor.brownColor()
             light.ambientColor = SKColor.brownColor()
+        case .Maze:
+            light.lightColor = SKColor.blackColor()
+            light.ambientColor = SKColor.blackColor()
         }
         
         light.categoryBitMask = bgLightCategory

@@ -13,21 +13,29 @@ import SpriteKit
 class SpriteComponent: GKComponent {
     
     let sprite: Shape
+    let shapeType: ShapeType
     
     init(type: ShapeType) {
+        shapeType = type
+        
         switch type {
         case .Player:
             sprite = Player()
         case .Killer:
             sprite = Killer()
+            sprite.physicsBody?.contactTestBitMask = playerCategory | reaperCategory
         case .Score:
             sprite = Score()
+            sprite.physicsBody?.contactTestBitMask = playerCategory | reaperCategory
         case .Shield:
             sprite = Shield()
+            sprite.physicsBody?.contactTestBitMask = playerCategory | reaperCategory
         case .Reaper:
             sprite = Reaper()
+            sprite.physicsBody?.contactTestBitMask = playerCategory
         }
         super.init()
+        sprite.owner = self
     }
     
 //    MARK: - Appearance
@@ -64,8 +72,8 @@ class SpriteComponent: GKComponent {
     
     var nextGridPosition: vector_int2 = vector_int2(0, 0) {
         willSet {
-            guard nextGridPosition == newValue else {
-                let action = SKAction.moveTo((sprite.scene as! MazeModeScene).pointForGridPosition(newValue), duration: 0.35)
+            if nextGridPosition != newValue, let scene = sprite.scene as? MazeModeScene {
+                let action = SKAction.moveTo(scene.pointForGridPosition(newValue), duration: 0.35)
                 let update = SKAction.runBlock({ () -> Void in
                     (entity as? Entity)?.gridPosition = newValue
                 })

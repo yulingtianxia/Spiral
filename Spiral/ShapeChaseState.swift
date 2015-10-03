@@ -19,7 +19,8 @@ class ShapeChaseState: ShapeState {
             }
         }
     }
-    private var scatterTarget: GKGridGraphNode!
+    
+    private var scatterTarget = GKGridGraphNode(gridPosition: vector_int2(0, 0))
     
     override init(scene s: MazeModeScene, entity e: Entity) {
         

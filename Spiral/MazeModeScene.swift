@@ -21,7 +21,16 @@ class MazeModeScene: SKScene, SKPhysicsContactDelegate {
     let map: MazeMap
     var shapes = [Entity]()
     let player: Entity
-    var playerDirection: PlayerDirection = .None
+    var playerDirection: PlayerDirection {
+        get {
+            let component = player.componentForClass(PlayerControlComponent.self)
+            return component?.direction ?? .None
+        }
+        set {
+            let component = player.componentForClass(PlayerControlComponent.self)
+            component?.attemptedDirection = newValue
+        }
+    }
     var hasPowerup: Bool = false {
         willSet {
             let powerupDuration: NSTimeInterval = 10
@@ -54,7 +63,7 @@ class MazeModeScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    override init(size: CGSize) {
+    override init() {
         random = GKRandomSource()
         map = MazeMap()
         
@@ -68,8 +77,7 @@ class MazeModeScene: SKScene, SKPhysicsContactDelegate {
         let types: [ShapeType] = [.Killer, .Score, .Killer, .Shield]
         intelligenceSystem = GKComponentSystem(componentClass: IntelligenceComponent.self)
         
-        //TODO: 这里的 size 应该是CGSize(self.level.width * AAPLCellWidth, self.level.height * AAPLCellWidth)
-        super.init(size: size)
+        super.init(size: CGSize(width: map.width * mazeCellWidth, height: map.height * mazeCellWidth))
         
         for (index, node) in map.shapeStartPositions.enumerate() {
             let shape = Entity()
@@ -89,7 +97,37 @@ class MazeModeScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func didMoveToView(view: SKView) {
+        backgroundColor = SKColor.blackColor()
         
+        // Generate maze.
+        let maze = SKNode()
+        let cellSize = CGSize(width: mazeCellWidth, height: mazeCellWidth)
+        let graph = map.pathfindingGraph
+        for i in 0 ..< map.width {
+            for j in 0 ..< map.height {
+                if graph.nodeAtGridPosition(vector_int2(i, j)) != nil {
+                    //TODO:  绘制地图：墙和道路
+                    let node = SKSpriteNode(color: SKColor.grayColor(), size: cellSize)
+                    node.position = pointForGridPosition(vector_int2(i, j))
+                    maze.addChild(node)
+                }
+            }
+        }
+        addChild(maze)
+        
+        // Add player entity to scene.
+        if let playerComponent = player.componentForClass(SpriteComponent.self) {
+            playerComponent.sprite.position = pointForGridPosition(player.gridPosition)
+            addChild(playerComponent.sprite)
+        }
+        
+        // Add shape entities to scene.
+        for entity in shapes {
+            if let shapeComponent = entity.componentForClass(SpriteComponent.self) {
+                shapeComponent.sprite.position = pointForGridPosition(entity.gridPosition)
+                addChild(shapeComponent.sprite)
+            }
+        }
     }
     
     override func update(currentTime: NSTimeInterval) {
@@ -108,13 +146,21 @@ class MazeModeScene: SKScene, SKPhysicsContactDelegate {
         player.updateWithDeltaTime(dt)
     }
     
-//    MARK: - SKPhysicsContactDelegate
-    
-    func didBeginContact(contact: SKPhysicsContact) {
-        
-    }
-    
     func pointForGridPosition(position: vector_int2) -> CGPoint {
         return CGPoint(x: position.x * mazeCellWidth + mazeCellWidth / 2, y: position.y * mazeCellWidth  + mazeCellWidth / 2)
     }
+    
+//    MARK: - SKPhysicsContactDelegate
+    
+    func didBeginContact(contact: SKPhysicsContact) {
+        //A->B
+        let visitorA = ContactVisitor.contactVisitorWithBody(contact.bodyA, forContact: contact)
+        let visitableBodyB = VisitablePhysicsBody(body: contact.bodyB)
+        visitableBodyB.acceptVisitor(visitorA)
+        //B->A
+        let visitorB = ContactVisitor.contactVisitorWithBody(contact.bodyB, forContact: contact)
+        let visitableBodyA = VisitablePhysicsBody(body: contact.bodyA)
+        visitableBodyA.acceptVisitor(visitorB)
+    }
+    
 }

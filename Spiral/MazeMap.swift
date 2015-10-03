@@ -74,7 +74,7 @@ class MazeMap: NSObject {
         
         var walls = [GKGridGraphNode]()
         var spawnPoints = [GKGridGraphNode]()
-        startPosition = GKGridGraphNode()
+        startPosition = GKGridGraphNode(gridPosition: vector_int2(0, 0))
         
         for i in 0 ..< width {
             for j in 0 ..< height {

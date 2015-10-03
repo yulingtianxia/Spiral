@@ -28,7 +28,7 @@ class PlayerContactVisitor:ContactVisitor{
                 achievement.percentComplete += 1
             }
             GameKitHelper.sharedGameKitHelper.updateAchievement(achievement, identifier: kClean100KillerAchievementID)
-            (thisNode.parent as! GameScene).soundManager.playKiller()
+            (thisNode.parent as? GameScene)?.soundManager.playKiller()
         }
         else {
             thisNode.removeAllActions()
@@ -46,7 +46,7 @@ class PlayerContactVisitor:ContactVisitor{
             achievement.percentComplete += 0.2
         }
         GameKitHelper.sharedGameKitHelper.updateAchievement(achievement, identifier: kCatch500ScoreAchievementID)
-        (thisNode.parent as! GameScene).soundManager.playScore()
+        (thisNode.parent as? GameScene)?.soundManager.playScore()
     }
     
     func visitShield(body:SKPhysicsBody){
@@ -60,6 +60,6 @@ class PlayerContactVisitor:ContactVisitor{
             achievement.percentComplete += 0.2
         }
         GameKitHelper.sharedGameKitHelper.updateAchievement(achievement, identifier: kCatch500ShieldAchievementID)
-        (thisNode.parent as! GameScene).soundManager.playShield()
+        (thisNode.parent as? GameScene)?.soundManager.playShield()
     }
 }

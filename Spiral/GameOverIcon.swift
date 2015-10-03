@@ -16,6 +16,8 @@ class GameOverIcon: SKSpriteNode {
             imageString = "gameover_ordinary"
         case .Zen:
             imageString = "gameover_zen"
+        case .Maze:
+            imageString = "gameover_maze"
         }
         super.init(texture: SKTexture(imageNamed: imageString), color: UIColor.clearColor(), size: size)
         userInteractionEnabled = true

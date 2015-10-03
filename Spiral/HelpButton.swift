@@ -16,6 +16,8 @@ class HelpButton: SKSpriteNode {
             imageString = "help_ordinary"
         case .Zen:
             imageString = "help_zen"
+        case .Maze:
+            imageString = "help_maze"
         }
         super.init(texture: SKTexture(imageNamed: imageString), color: SKColor.clearColor(), size: CGSize(width: 40, height: 40))
         userInteractionEnabled = true
@@ -50,6 +52,9 @@ class HelpButton: SKSpriteNode {
                     self.scene?.view?.presentScene(scene, transition: crossFade)
                     (UIApplication.sharedApplication().keyWindow?.rootViewController as! GameViewController).addGestureRecognizers()
                 }
+            case .Maze:
+                //TODO: maze mode help scene
+                break
             }
         })
     }
