@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "dead.pdf"
+      "filename" : "killer.pdf"
     },
     {
       "idiom" : "universal",
@@ -14,8 +14,8 @@
     },
     {
       "idiom" : "universal",
-      "scale" : "3x",
-      "filename" : "killer.png"
+      "filename" : "killer.png",
+      "scale" : "3x"
     }
   ],
   "info" : {

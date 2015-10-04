@@ -14,8 +14,8 @@
     },
     {
       "idiom" : "universal",
-      "scale" : "3x",
-      "filename" : "shield.png"
+      "filename" : "shield.png",
+      "scale" : "3x"
     }
   ],
   "info" : {

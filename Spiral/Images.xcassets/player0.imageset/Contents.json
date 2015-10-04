@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "player0.pdf"
+      "filename" : "player.pdf"
     },
     {
       "idiom" : "universal",
@@ -14,8 +14,8 @@
     },
     {
       "idiom" : "universal",
-      "scale" : "3x",
-      "filename" : "player0.png"
+      "filename" : "player0.png",
+      "scale" : "3x"
     }
   ],
   "info" : {

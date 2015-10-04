@@ -35,6 +35,8 @@
 		A43759A71B20632E00935DE7 /* GameOverIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43759A61B20632E00935DE7 /* GameOverIcon.swift */; };
 		A43F9CE11B2C5420001835F5 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43F9CE01B2C5420001835F5 /* GameScene.swift */; };
 		A45320EB1B51427D00CBD634 /* PlayRecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45320EA1B51427D00CBD634 /* PlayRecordButton.swift */; };
+		A45484621BC12AED002D9748 /* MazeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45484611BC12AED002D9748 /* MazeButton.swift */; settings = {ASSET_TAGS = (); }; };
+		A45484641BC1469D002D9748 /* MazeDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45484631BC1469C002D9748 /* MazeDisplay.swift */; settings = {ASSET_TAGS = (); }; };
 		A45A65E01986073B00EA40D7 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45A65DF1986073B00EA40D7 /* SoundManager.swift */; };
 		A45A935C1B2C4FDF00EE4A56 /* gameover_ordinary.wav in Resources */ = {isa = PBXBuildFile; fileRef = A45A93571B2C4FDF00EE4A56 /* gameover_ordinary.wav */; };
 		A45A935D1B2C4FDF00EE4A56 /* jump_ordinary.wav in Resources */ = {isa = PBXBuildFile; fileRef = A45A93581B2C4FDF00EE4A56 /* jump_ordinary.wav */; };
@@ -150,6 +152,8 @@
 		A44270291B24950E0031B7FC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "en.lproj/Launch Screen.xib"; sourceTree = "<group>"; };
 		A444B6A91B50E9E10026B0EB /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		A45320EA1B51427D00CBD634 /* PlayRecordButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayRecordButton.swift; sourceTree = "<group>"; };
+		A45484611BC12AED002D9748 /* MazeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MazeButton.swift; sourceTree = "<group>"; };
+		A45484631BC1469C002D9748 /* MazeDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MazeDisplay.swift; sourceTree = "<group>"; };
 		A45A65DF1986073B00EA40D7 /* SoundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SoundManager.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A45A93571B2C4FDF00EE4A56 /* gameover_ordinary.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gameover_ordinary.wav; sourceTree = "<group>"; };
 		A45A93581B2C4FDF00EE4A56 /* jump_ordinary.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jump_ordinary.wav; sourceTree = "<group>"; };
@@ -286,6 +290,7 @@
 				A45A9FA419F3F1640087C192 /* HelpButton.swift */,
 				A437599D1B20349200935DE7 /* OrdinaryButton.swift */,
 				A437599F1B2038D500935DE7 /* ZenButton.swift */,
+				A45484611BC12AED002D9748 /* MazeButton.swift */,
 				A45320EA1B51427D00CBD634 /* PlayRecordButton.swift */,
 				A4F8A7A81B528D99007248C1 /* AutoRecordButton.swift */,
 			);
@@ -297,6 +302,7 @@
 			children = (
 				A4FF9273197526830060CE6D /* OrdinaryDisplay.swift */,
 				A4254A861AF6356300620AA7 /* ZenDisplay.swift */,
+				A45484631BC1469C002D9748 /* MazeDisplay.swift */,
 			);
 			name = Display;
 			sourceTree = "<group>";
@@ -717,6 +723,7 @@
 				A492F6771AF346B2004B040B /* ZenMap.swift in Sources */,
 				A47D3D0D1973DBE4005AF736 /* ContactVisitor.swift in Sources */,
 				A45A65E01986073B00EA40D7 /* SoundManager.swift in Sources */,
+				A45484641BC1469D002D9748 /* MazeDisplay.swift in Sources */,
 				A47D3D1619740AA3005AF736 /* PlayerContactVisitor.swift in Sources */,
 				A40AB22E1BABFF3000DBE971 /* WeChatActivity.swift in Sources */,
 				A4F3C60C19E8EAF7000514AC /* ReaperContactVisitor.swift in Sources */,
@@ -735,6 +742,7 @@
 				A43759A71B20632E00935DE7 /* GameOverIcon.swift in Sources */,
 				A4175E7D1B21EBBC00156886 /* Extensions.swift in Sources */,
 				A40F39DB1BBA874B0061E32A /* SpriteComponent.swift in Sources */,
+				A45484621BC12AED002D9748 /* MazeButton.swift in Sources */,
 				A4F3505219FBAD2200F6B8DF /* EyeContactVisitor.swift in Sources */,
 				A46E911C1AFF01D200AC1400 /* MainScene.swift in Sources */,
 				A4F8A7A91B528D99007248C1 /* AutoRecordButton.swift in Sources */,

@@ -19,6 +19,9 @@ import GameplayKit
 class MazeModeScene: SKScene, SKPhysicsContactDelegate {
     
     let map: MazeMap
+    let soundManager = SoundManager()
+    let display: MazeDisplay
+    let background:Background
     var shapes = [Entity]()
     let player: Entity
     var playerDirection: PlayerDirection {
@@ -63,9 +66,16 @@ class MazeModeScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    override init() {
+    override init(size: CGSize) {
         random = GKRandomSource()
-        map = MazeMap()
+        GameKitHelper.sharedGameKitHelper.authenticateLocalPlayer()
+        Data.sharedData.currentMode = .Maze
+        let center = CGPointMake(size.width/2, size.height/2)
+        map = MazeMap(size: size)
+        display = MazeDisplay()
+        Data.sharedData.display = display
+        background = Background(size: size)
+        background.position = center
         
         // Create player entity with display and control components.
         player = Entity()
@@ -77,7 +87,8 @@ class MazeModeScene: SKScene, SKPhysicsContactDelegate {
         let types: [ShapeType] = [.Killer, .Score, .Killer, .Shield]
         intelligenceSystem = GKComponentSystem(componentClass: IntelligenceComponent.self)
         
-        super.init(size: CGSize(width: map.width * mazeCellWidth, height: map.height * mazeCellWidth))
+//        CGSize(width: map.width * mazeCellWidth, height: map.height * mazeCellWidth)
+        super.init(size: size)
         
         for (index, node) in map.shapeStartPositions.enumerate() {
             let shape = Entity()
@@ -90,30 +101,33 @@ class MazeModeScene: SKScene, SKPhysicsContactDelegate {
         
         physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         physicsWorld.contactDelegate = self
+        
+        //Observe Notification
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pause"), name: UIApplicationWillResignActiveNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pause"), name: UIApplicationDidEnterBackgroundNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pause"), name: WantGamePauseNotification, object: nil)
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit{
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+        soundManager.stopBackGround()
+    }
+    
     override func didMoveToView(view: SKView) {
-        backgroundColor = SKColor.blackColor()
         
-        // Generate maze.
-        let maze = SKNode()
-        let cellSize = CGSize(width: mazeCellWidth, height: mazeCellWidth)
-        let graph = map.pathfindingGraph
-        for i in 0 ..< map.width {
-            for j in 0 ..< map.height {
-                if graph.nodeAtGridPosition(vector_int2(i, j)) != nil {
-                    //TODO:  绘制地图：墙和道路
-                    let node = SKSpriteNode(color: SKColor.grayColor(), size: cellSize)
-                    node.position = pointForGridPosition(vector_int2(i, j))
-                    maze.addChild(node)
-                }
-            }
-        }
-        addChild(maze)
+        addChild(background)
+        addChild(map)
+        addChild(display)
+        display.setPosition()
+        
+        
+//        play background music
+        soundManager.playBackGround()
+        addChild(soundManager)
         
         // Add player entity to scene.
         if let playerComponent = player.componentForClass(SpriteComponent.self) {
@@ -128,6 +142,8 @@ class MazeModeScene: SKScene, SKPhysicsContactDelegate {
                 addChild(shapeComponent.sprite)
             }
         }
+        
+        resume()
     }
     
     override func update(currentTime: NSTimeInterval) {
@@ -163,4 +179,101 @@ class MazeModeScene: SKScene, SKPhysicsContactDelegate {
         visitableBodyA.acceptVisitor(visitorB)
     }
     
+    //MARK: - UI control methods
+    
+    func tap(){
+        if Data.sharedData.gameOver {
+            //                restartGame()
+        }
+        else if view?.paused == true{
+            resume()
+        }
+        else {
+            soundManager.playJump()
+        }
+    }
+    
+    func createReaper(){
+        if !Data.sharedData.gameOver && view?.paused == false {
+            if Data.sharedData.reaperNum>0 {
+                Data.sharedData.reaperNum--
+                //TODO: 释放收割机，去收获。。。
+            }
+        }
+    }
+    
+    func speedUp(){
+        for node in children{
+            if let shape = node as? Shape {
+                shape.removeAllActions()
+                shape.moveSpeed += Data.sharedData.speedScale * shape.speedUpBase
+            }
+        }
+    }
+    
+    func hideGame(){
+        map.alpha = 0.2
+
+        background.alpha = 0.2
+        for node in children{
+            if let shape = node as? Shape {
+                shape.alpha = 0.2
+            }
+        }
+        soundManager.pauseBackGround()
+    }
+    
+    func showGame(){
+        map.alpha = 1
+
+        background.alpha = 0.5
+        for node in children{
+            if let shape = node as? Shape {
+                shape.alpha = 1
+            }
+        }
+        soundManager.resumeBackGround()
+    }
+    
+    func restartGame(){
+        enumerateChildNodesWithName("Killer", usingBlock: { (node, stop) -> Void in
+            node.removeFromParent()
+        })
+        enumerateChildNodesWithName("Score", usingBlock: { (node, stop) -> Void in
+            node.removeFromParent()
+        })
+        enumerateChildNodesWithName("Shield", usingBlock: { (node, stop) -> Void in
+            node.removeFromParent()
+        })
+        enumerateChildNodesWithName("Reaper", usingBlock: { (node, stop) -> Void in
+            node.removeFromParent()
+        })
+        map.alpha = 1
+
+        background.alpha = 0.5
+        Data.sharedData.reset()
+        if let sprite = (player.componentForClass(SpriteComponent.self)?.sprite as? Player) {
+            sprite.restart()
+            sprite.position = pointForGridPosition(map.startPosition.gridPosition)
+        }
+        soundManager.playBackGround()
+    }
+    
+    //MARK: pause&resume game
+    
+    func pause() {
+        if !Data.sharedData.gameOver {
+            self.runAction(SKAction.runBlock({ [unowned self]() -> Void in
+                self.display.pause()
+                }), completion: { [unowned self]() -> Void in
+                    self.view?.paused = true
+                })
+        }
+    }
+    
+    func resume() {
+        display.resume()
+        view?.paused = false
+    }
+
 }

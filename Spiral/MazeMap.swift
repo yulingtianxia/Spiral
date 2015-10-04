@@ -7,6 +7,7 @@
 //
 
 import GameplayKit
+import SpriteKit
 
 enum TileType: Int {
     case Open
@@ -58,7 +59,7 @@ private func tileAtRow(row: Int32, column col: Int32) -> TileType {
     return  TileType(rawValue: Maze[Int(row * MazeHeight + col)]) ?? .None
 }
 
-class MazeMap: NSObject {
+class MazeMap: SKNode {
     
     let width = MazeWidth
     
@@ -70,7 +71,7 @@ class MazeMap: NSObject {
     
     let shapeStartPositions: [GKGridGraphNode]
     
-    override init() {
+    init(size: CGSize) {
         
         var walls = [GKGridGraphNode]()
         var spawnPoints = [GKGridGraphNode]()
@@ -101,6 +102,26 @@ class MazeMap: NSObject {
         
         super.init()
         
+        // Generate maze.
+        let maze = SKNode()
+        let cellSize = CGSize(width: mazeCellWidth, height: mazeCellWidth)
+        let graph = pathfindingGraph
+        for i in 0 ..< width {
+            for j in 0 ..< height {
+                if graph.nodeAtGridPosition(vector_int2(i, j)) != nil,
+                let scene = scene as? MazeModeScene {
+                    //TODO:  绘制地图：墙和道路
+                    let node = SKSpriteNode(color: SKColor.grayColor(), size: cellSize)
+                    node.position = scene.pointForGridPosition(vector_int2(i, j))
+                    maze.addChild(node)
+                }
+            }
+        }
+        addChild(maze)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
 }

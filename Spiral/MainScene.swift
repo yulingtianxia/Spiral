@@ -15,13 +15,19 @@ private let kAccelerateScale:Double = 100
 private let kRandomSpeed:UInt32 = 100
 
 class MainScene: SKScene, SKPhysicsContactDelegate {
-    
+//    模式选择按钮
     let ordinaryBtn = OrdinaryButton()
     let zenBtn = ZenButton()
+    let mazeBtn = MazeButton()
+//    logo
     let spiralLabel = SKLabelNode(text: "Spiral")
+//    GameCenter 按钮
     let gameCenter = GameCenterButton()
+//    游戏录制按钮
     let autoRecord = AutoRecordButton()
+//    加速计管理器
     let mManager = MotionManager.sharedMotionManager
+//    主页面漂浮的各类 Shape 数组
     var shapes = [Shape]()
     
     override init(size: CGSize) {
@@ -52,10 +58,12 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
         addChild(autoRecord)
         
         //添加模式选择按钮
-        ordinaryBtn.position = CGPoint(x: center.x, y: CGRectGetMinY(spiralLabel.frame) - ordinaryBtn.size.height/2)
-        zenBtn.position = CGPoint(x: center.x, y: CGRectGetMinY(ordinaryBtn.frame) - zenBtn.size.height/2)
+        ordinaryBtn.position = CGPoint(x: center.x - ordinaryBtn.size.width/2, y: CGRectGetMinY(spiralLabel.frame) - ordinaryBtn.size.height/2)
+        zenBtn.position = CGPoint(x: center.x + zenBtn.size.width/2, y: CGRectGetMinY(spiralLabel.frame) - ordinaryBtn.size.height/2)
+        mazeBtn.position = CGPoint(x: center.x - mazeBtn.size.width/2, y: CGRectGetMinY(ordinaryBtn.frame) - zenBtn.size.height/2)
         addChild(ordinaryBtn)
         addChild(zenBtn)
+        addChild(mazeBtn)
         
         //设定物理特性
         physicsBody = SKPhysicsBody(edgeLoopFromRect: frame)

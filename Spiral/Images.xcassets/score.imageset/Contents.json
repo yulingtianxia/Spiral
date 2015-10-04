@@ -14,8 +14,8 @@
     },
     {
       "idiom" : "universal",
-      "scale" : "3x",
-      "filename" : "score.png"
+      "filename" : "score.png",
+      "scale" : "3x"
     }
   ],
   "info" : {

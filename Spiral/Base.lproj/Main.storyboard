@@ -17,35 +17,9 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="IoU-VM-WEA" appends="YES" id="Tf1-AJ-td7"/>
-                            <outletCollection property="gestureRecognizers" destination="F30-N8-gCT" appends="YES" id="7Sf-su-QDg"/>
-                            <outletCollection property="gestureRecognizers" destination="hU2-RB-APQ" appends="YES" id="eKH-4b-5FM"/>
-                            <outletCollection property="gestureRecognizers" destination="Y9o-1o-ZmX" appends="YES" id="ZTn-zu-kvs"/>
-                        </connections>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="btX-cZ-eVz" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="IoU-VM-WEA">
-                    <connections>
-                        <action selector="swipeRight:" destination="LVB-YS-i5n" id="ENg-Co-GAH"/>
-                    </connections>
-                </swipeGestureRecognizer>
-                <swipeGestureRecognizer direction="left" id="F30-N8-gCT">
-                    <connections>
-                        <action selector="swipeLeft:" destination="LVB-YS-i5n" id="7RR-4m-Udi"/>
-                    </connections>
-                </swipeGestureRecognizer>
-                <swipeGestureRecognizer direction="up" id="hU2-RB-APQ">
-                    <connections>
-                        <action selector="swipeUp:" destination="LVB-YS-i5n" id="QbX-9H-pUR"/>
-                    </connections>
-                </swipeGestureRecognizer>
-                <swipeGestureRecognizer direction="down" id="Y9o-1o-ZmX">
-                    <connections>
-                        <action selector="swipeDown:" destination="LVB-YS-i5n" id="UZ6-td-jRm"/>
-                    </connections>
-                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="273" y="237"/>
         </scene>

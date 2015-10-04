@@ -22,7 +22,7 @@ class ShareButton: SKSpriteNode {
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         let scene = self.scene as! GameScene
-        let image = imageFromNode(scene)
+        let image = UIImage.imageFromNode(scene)
         let url = NSURL(string: NSLocalizedString("https://itunes.apple.com/us/app/square-spiral/id920811081", comment: ""))
         let messageDiscription = String.localizedStringWithFormat(NSLocalizedString("I got %d points in Spiral. Come on with me!", comment: ""), Data.sharedData.score)
         

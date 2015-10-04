@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "player.pdf"
+      "filename" : "Star 1.pdf"
     },
     {
       "idiom" : "universal",
@@ -14,8 +14,8 @@
     },
     {
       "idiom" : "universal",
-      "scale" : "3x",
-      "filename" : "player.png"
+      "filename" : "player.png",
+      "scale" : "3x"
     }
   ],
   "info" : {

@@ -75,7 +75,7 @@ class ZenModeScene: GameScene {
         
     }
     
-    //MARK: UI control methods
+    //MARK: - UI control methods
     
     override func tap(){
         super.tap()
@@ -164,14 +164,6 @@ class ZenModeScene: GameScene {
     }
     
     func restartGame(){
-//        for node in self.children{
-//            if let shape = node as? Shape {
-//                if shape.name=="Killer"||shape.name=="Score"||shape.name=="Shield"||shape.name=="Reaper" {
-//                    shape.removeFromParent()
-//                }
-//            }
-//            
-//        }
         enumerateChildNodesWithName("Killer", usingBlock: { (node, stop) -> Void in
             node.removeFromParent()
         })

@@ -72,8 +72,10 @@ class SpriteComponent: GKComponent {
     
     var nextGridPosition: vector_int2 = vector_int2(0, 0) {
         willSet {
-            if nextGridPosition != newValue, let scene = sprite.scene as? MazeModeScene {
-                let action = SKAction.moveTo(scene.pointForGridPosition(newValue), duration: 0.35)
+            if nextGridPosition != newValue,
+                let scene = sprite.scene as? MazeModeScene {
+//                移动到下个节点，设置速度
+                let action = SKAction.moveTo(scene.pointForGridPosition(newValue), duration: durationForDistance(mazeCellWidth))
                 let update = SKAction.runBlock({ () -> Void in
                     (entity as? Entity)?.gridPosition = newValue
                 })
@@ -84,6 +86,7 @@ class SpriteComponent: GKComponent {
         }
     }
     
+    //通过渐变的动画变换位置
     func warpToGridPosition(gridPosition: vector_int2) {
         let fadeOut = SKAction.fadeOutWithDuration(0.5)
         let warp = SKAction.moveTo(((sprite.scene as? MazeModeScene)?.pointForGridPosition(gridPosition))!, duration:0.5)
@@ -103,6 +106,7 @@ class SpriteComponent: GKComponent {
         
         for node in dropFirst {
             if let point = (sprite.scene as? MazeModeScene)?.pointForGridPosition(node.gridPosition) {
+                //溃逃回复活点的动画
                 sequence.append(SKAction.moveTo(point, duration: 0.15))
                 sequence.append(SKAction.runBlock({ () -> Void in
                     (entity as? Entity)?.gridPosition = node.gridPosition
@@ -112,5 +116,9 @@ class SpriteComponent: GKComponent {
         
         sequence.append(SKAction.runBlock(completionHandler))
         sprite.runAction(SKAction.sequence(sequence))
+    }
+    
+    func durationForDistance(distance: CGFloat) -> NSTimeInterval {
+        return NSTimeInterval(distance / sprite.moveSpeed)
     }
 }

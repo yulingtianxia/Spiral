@@ -17,8 +17,13 @@ public class GameViewController: UIViewController, RPPreviewViewControllerDelega
     var tapWithTwoFinger:UITapGestureRecognizer!
     var pan:UIPanGestureRecognizer!
     var pinch:UIPinchGestureRecognizer!
+    var swipeRight:UISwipeGestureRecognizer!
+    var swipeLeft:UISwipeGestureRecognizer!
+    var swipeUp:UISwipeGestureRecognizer!
+    var swipeDown:UISwipeGestureRecognizer!
     var screenEdgePanRight:UIScreenEdgePanGestureRecognizer!
     var previewViewController:RPPreviewViewController?
+    
     
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -34,12 +39,18 @@ public class GameViewController: UIViewController, RPPreviewViewControllerDelega
         pan = UIPanGestureRecognizer(target: self, action: Selector("handlePanGesture:"))
         pan.maximumNumberOfTouches = 1
         pinch = UIPinchGestureRecognizer(target: self, action: Selector("handlePinchGesture:"))
+        swipeRight = UISwipeGestureRecognizer(target: self, action: Selector("swipeRight:"))
+        swipeRight.direction = .Right
+        swipeLeft = UISwipeGestureRecognizer(target: self, action: Selector("swipeLeft:"))
+        swipeLeft.direction = .Left
+        swipeUp = UISwipeGestureRecognizer(target: self, action: Selector("swipeUp:"))
+        swipeUp.direction = .Up
+        swipeDown = UISwipeGestureRecognizer(target: self, action: Selector("swipeDown:"))
+        swipeDown.direction = .Down
         screenEdgePanRight = UIScreenEdgePanGestureRecognizer(target: self, action: Selector("handleEdgePanGesture:"))
         screenEdgePanRight.edges = UIRectEdge.Left
         
-//        addGestureRecognizers()
-//        let scene = MainScene(size: skView.bounds.size)
-        let scene = MazeModeScene()
+        let scene = MainScene(size: skView.bounds.size)
         /* Set the scale mode to scale to fit the window */
         scene.scaleMode = .AspectFit
         skView.presentScene(scene)
@@ -98,19 +109,19 @@ public class GameViewController: UIViewController, RPPreviewViewControllerDelega
     }
     
     
-    @IBAction func swipeRight(sender: UISwipeGestureRecognizer) {
+    func swipeRight(sender: UISwipeGestureRecognizer) {
         ((self.view as! SKView).scene as? MazeModeScene)?.playerDirection = .Right
     }
     
-    @IBAction func swipeLeft(sender: UISwipeGestureRecognizer) {
+    func swipeLeft(sender: UISwipeGestureRecognizer) {
         ((self.view as! SKView).scene as? MazeModeScene)?.playerDirection = .Left
     }
     
-    @IBAction func swipeUp(sender: UISwipeGestureRecognizer) {
+    func swipeUp(sender: UISwipeGestureRecognizer) {
         ((self.view as! SKView).scene as? MazeModeScene)?.playerDirection = .Up
     }
     
-    @IBAction func swipeDown(sender: UISwipeGestureRecognizer) {
+    func swipeDown(sender: UISwipeGestureRecognizer) {
         ((self.view as! SKView).scene as? MazeModeScene)?.playerDirection = .Down
     }
     
@@ -134,6 +145,7 @@ public class GameViewController: UIViewController, RPPreviewViewControllerDelega
             else if let scene = scene as? ZenHelpScene {
                 scene.back()
             }
+                //TODO: mazehelpscene back
             else if let scene = scene as? GameScene {
                 let skView = view as! SKView
                 Data.sharedData.display = nil
@@ -153,12 +165,21 @@ public class GameViewController: UIViewController, RPPreviewViewControllerDelega
     // MARK: - add&remove gesture recognizers
     func addGestureRecognizers() {
         let skView = self.view as! SKView
-        skView.addGestureRecognizer(longPress)
+        
+        skView.addGestureRecognizer(swipeRight)
+        skView.addGestureRecognizer(swipeLeft)
+        skView.addGestureRecognizer(swipeUp)
+        skView.addGestureRecognizer(swipeDown)
+        
         skView.addGestureRecognizer(tapWithOneFinger)
-        skView.addGestureRecognizer(tapWithTwoFinger)
-        skView.addGestureRecognizer(pan)
-        skView.addGestureRecognizer(pinch)
+        
         skView.addGestureRecognizer(screenEdgePanRight)
+        if Data.sharedData.gameOver {
+            skView.addGestureRecognizer(pan)
+        }
+        skView.addGestureRecognizer(longPress)
+        skView.addGestureRecognizer(pinch)
+        skView.addGestureRecognizer(tapWithTwoFinger)
     }
     
     func removeGestureRecognizers() {
@@ -168,6 +189,10 @@ public class GameViewController: UIViewController, RPPreviewViewControllerDelega
         skView.removeGestureRecognizer(tapWithTwoFinger)
         skView.removeGestureRecognizer(pan)
         skView.removeGestureRecognizer(pinch)
+        skView.removeGestureRecognizer(swipeRight)
+        skView.removeGestureRecognizer(swipeLeft)
+        skView.removeGestureRecognizer(swipeUp)
+        skView.removeGestureRecognizer(swipeDown)
         skView.removeGestureRecognizer(screenEdgePanRight)
     }
     

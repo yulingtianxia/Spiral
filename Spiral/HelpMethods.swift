@@ -36,24 +36,6 @@ func + (left: vector_int2, right: vector_int2) -> vector_int2 {
     return vector_int2(left.x + right.x, left.y + right.y)
 }
 
-private func imageWithView(view:UIView)->UIImage{
-    UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.opaque, 0.0);
-    view.drawViewHierarchyInRect(view.bounds,afterScreenUpdates:true)
-    let img = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return img;
-}
-
-
-func imageFromNode(node:SKNode)->UIImage{
-    if let tex = ((UIApplication.sharedApplication().delegate as! AppDelegate).window?.rootViewController?.view as! SKView).textureFromNode(node) {
-        let view  = SKView(frame: CGRectMake(0, 0, tex.size().width, tex.size().height))
-        let scene = SKScene(size: tex.size())
-        let sprite  = SKSpriteNode(texture: tex)
-        sprite.position = CGPointMake( CGRectGetMidX(view.frame), CGRectGetMidY(view.frame) );
-        scene.addChild(sprite)
-        view.presentScene(scene)
-        return imageWithView(view)
-    }
-    return UIImage()
+func / (left: Int, right: CGFloat) -> CGFloat {
+    return CGFloat(left) / right
 }
