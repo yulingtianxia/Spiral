@@ -14,7 +14,7 @@ class ShapeRespawnState: ShapeState {
     //    MARK: - GKState Life Cycle
     
     override func isValidNextState(stateClass: AnyClass) -> Bool {
-        return stateClass == ShapeChaseState.self
+        return stateClass == ShapeChaseState.self || stateClass == ShapeFleeState.self
     }
     
     override func didEnterWithPreviousState(previousState: GKState?) {
@@ -36,7 +36,14 @@ class ShapeRespawnState: ShapeState {
     override func updateWithDeltaTime(seconds: NSTimeInterval) {
         timeRemaining -= seconds
         if timeRemaining < 0 {
-            stateMachine?.enterState(ShapeChaseState.self)
+            switch entity.shapeType {
+            case .Killer:
+                stateMachine?.enterState(ShapeChaseState.self)
+            case .Score, .Shield:
+                stateMachine?.enterState(ShapeFleeState.self)
+            case .Player, .Reaper:
+                break
+            }
         }
     }
 }

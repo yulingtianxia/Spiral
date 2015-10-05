@@ -149,11 +149,12 @@
 		A43EDC991BAD6291003F50A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Base; path = Base.lproj/ZenHelpScene.sks; sourceTree = "<group>"; };
 		A43EDC9A1BAD6295003F50A3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = "zh-Hans"; path = "zh-Hans.lproj/ZenHelpScene.sks"; sourceTree = "<group>"; };
 		A43F9CE01B2C5420001835F5 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		A44270291B24950E0031B7FC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "en.lproj/Launch Screen.xib"; sourceTree = "<group>"; };
 		A444B6A91B50E9E10026B0EB /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		A45320EA1B51427D00CBD634 /* PlayRecordButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayRecordButton.swift; sourceTree = "<group>"; };
 		A45484611BC12AED002D9748 /* MazeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MazeButton.swift; sourceTree = "<group>"; };
 		A45484631BC1469C002D9748 /* MazeDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MazeDisplay.swift; sourceTree = "<group>"; };
+		A45484661BC26753002D9748 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "en.lproj/Launch Screen.strings"; sourceTree = "<group>"; };
+		A45484681BC26754002D9748 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Launch Screen.strings"; sourceTree = "<group>"; };
 		A45A65DF1986073B00EA40D7 /* SoundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SoundManager.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A45A93571B2C4FDF00EE4A56 /* gameover_ordinary.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gameover_ordinary.wav; sourceTree = "<group>"; };
 		A45A93581B2C4FDF00EE4A56 /* jump_ordinary.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jump_ordinary.wav; sourceTree = "<group>"; };
@@ -162,7 +163,6 @@
 		A45A935B1B2C4FDF00EE4A56 /* shield_zen.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shield_zen.wav; sourceTree = "<group>"; };
 		A45A9FA219F3E7250087C192 /* OrdinaryHelpScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = OrdinaryHelpScene.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A45A9FA419F3F1640087C192 /* HelpButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = HelpButton.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		A4605B6D19F5235500F8DD96 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/Launch Screen.xib"; sourceTree = "<group>"; };
 		A4605B6F19F5235700F8DD96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "Base.lproj/Launch Screen.xib"; sourceTree = "<group>"; };
 		A46323EE1A02639E00902D3A /* Starcraft Normal.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Starcraft Normal.ttf"; sourceTree = "<group>"; };
 		A46323EF1A02639E00902D3A /* 颜体.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "颜体.ttf"; sourceTree = "<group>"; };
@@ -815,9 +815,9 @@
 		A4605B6E19F5235500F8DD96 /* Launch Screen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				A4605B6D19F5235500F8DD96 /* zh-Hans */,
 				A4605B6F19F5235700F8DD96 /* Base */,
-				A44270291B24950E0031B7FC /* en */,
+				A45484661BC26753002D9748 /* en */,
+				A45484681BC26754002D9748 /* zh-Hans */,
 			);
 			name = "Launch Screen.xib";
 			sourceTree = "<group>";

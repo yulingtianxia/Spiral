@@ -8,19 +8,24 @@
 import SpriteKit
 
 class Player: Shape {
-    var shield:Bool = false {
-    willSet{
-        if newValue {
-            if !shield {
-                self.texture = SKTexture(imageNamed: "player0")
-                light.enabled = true
+    var shield: Bool = false {
+        willSet{
+            if shield != newValue {
+                if newValue {
+                    self.texture = SKTexture(imageNamed: "player0")
+                    light.enabled = true
+                }
+                else{
+                    self.texture = SKTexture(imageNamed: "player")
+                    light.enabled = false
+                }
             }
         }
-        else{
-            self.texture = SKTexture(imageNamed: "player")
-            light.enabled = false
+        didSet {
+            if shield {
+                (scene as? MazeModeScene)?.hasPowerup = true
+            }
         }
-    }
     }
     
     convenience init() {

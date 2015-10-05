@@ -85,14 +85,13 @@ class MazeDisplay: SKNode, DisplayData {
     func levelUp() {
         levelLabel.runAction(SKAction.sequence([SKAction.scaleTo(1.5, duration: 0.5),SKAction.scaleTo(1, duration: 0.5)]))
         let scene = self.scene as! MazeModeScene
-        scene.speedUp()
         scene.soundManager.playLevelUp()
     }
     
     func gameOver() {
         let scene = self.scene as! MazeModeScene
-        for child in scene.children{
-            child.removeAllActions()
+        for entity in scene.shapes {
+            entity.componentForClass(SpriteComponent)?.sprite.removeAllActions()
         }
         addChild(gameOverLabel)
         addChild(share)

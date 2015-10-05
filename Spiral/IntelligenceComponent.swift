@@ -18,7 +18,16 @@ class IntelligenceComponent: GKComponent {
         let respawn = ShapeRespawnState(scene: scene, entity: entity)
         
         stateMachine = GKStateMachine(states: [chase, flee, defeated, respawn])
-        stateMachine.enterState(ShapeChaseState.self)
+        
+        switch entity.shapeType {
+        case .Killer:
+            stateMachine.enterState(ShapeChaseState.self)
+        case .Score, .Shield:
+            stateMachine.enterState(ShapeFleeState.self)
+        case .Player, .Reaper:
+            break
+        }
+        
 
         super.init()
         

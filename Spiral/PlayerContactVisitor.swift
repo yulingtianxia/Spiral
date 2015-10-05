@@ -18,10 +18,25 @@ class PlayerContactVisitor:ContactVisitor{
     
     func visitKiller(body:SKPhysicsBody){
         let thisNode = self.body.node as! Player
-//        let otherNode = body.node
+        let otherNode = body.node as! Killer
 
         if thisNode.shield {
-            thisNode.shield = false
+            // Maze 模式下防止 shape 死亡后被触碰到重复生效
+            if Data.sharedData.currentMode == .Maze {
+                if let entity = otherNode.owner?.entity,
+                    let aiComponent = entity.componentForClass(IntelligenceComponent.self),
+                    let state = aiComponent.stateMachine.currentState {
+                        if !state.isKindOfClass(ShapeFleeState.self) {
+                            return
+                        }
+                        else {
+                            aiComponent.stateMachine.enterState(ShapeDefeatedState.self)
+                        }
+                }
+            }
+            else {
+                thisNode.shield = false
+            }
             Data.sharedData.score++
             let achievement = GameKitHelper.sharedGameKitHelper.getAchievementForIdentifier(kClean100KillerAchievementID)
             if achievement.percentComplete <= 99.0{
@@ -38,7 +53,20 @@ class PlayerContactVisitor:ContactVisitor{
     
     func visitScore(body:SKPhysicsBody){
         let thisNode = self.body.node as! Player
-//        let otherNode = body.node
+        let otherNode = body.node as! Score
+        // Maze 模式下防止 shape 死亡后被触碰到重复生效
+        if Data.sharedData.currentMode == .Maze {
+            if let entity = otherNode.owner?.entity,
+                let aiComponent = entity.componentForClass(IntelligenceComponent.self),
+                let state = aiComponent.stateMachine.currentState {
+                    if !state.isKindOfClass(ShapeFleeState.self) {
+                        return
+                    }
+                    else {
+                        aiComponent.stateMachine.enterState(ShapeDefeatedState.self)
+                    }
+            }
+        }
 
         Data.sharedData.score += 2
         let achievement = GameKitHelper.sharedGameKitHelper.getAchievementForIdentifier(kCatch500ScoreAchievementID)
@@ -51,7 +79,20 @@ class PlayerContactVisitor:ContactVisitor{
     
     func visitShield(body:SKPhysicsBody){
         let thisNode = self.body.node as! Player
-//        let otherNode = body.node
+        let otherNode = body.node as! Shield
+        // Maze 模式下防止 shape 死亡后被触碰到重复生效
+        if Data.sharedData.currentMode == .Maze {
+            if let entity = otherNode.owner?.entity,
+                let aiComponent = entity.componentForClass(IntelligenceComponent.self),
+                let state = aiComponent.stateMachine.currentState {
+                    if !state.isKindOfClass(ShapeFleeState.self) {
+                        return
+                    }
+                    else {
+                        aiComponent.stateMachine.enterState(ShapeDefeatedState.self)
+                    }
+            }
+        }
 
         thisNode.shield = true
         Data.sharedData.score++

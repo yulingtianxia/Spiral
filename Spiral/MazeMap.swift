@@ -52,11 +52,11 @@ private let Maze = [
     1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
 ]
 
-private let MazeWidth: Int32 = 32
-private let MazeHeight: Int32 = 28
+private let MazeWidth: Int32 = 28
+private let MazeHeight: Int32 = 32
 
 private func tileAtRow(row: Int32, column col: Int32) -> TileType {
-    return  TileType(rawValue: Maze[Int(row * MazeHeight + col)]) ?? .None
+    return  TileType(rawValue: Maze[Int(row * MazeWidth + col)]) ?? .None
 }
 
 class MazeMap: SKNode {
@@ -77,9 +77,9 @@ class MazeMap: SKNode {
         var spawnPoints = [GKGridGraphNode]()
         startPosition = GKGridGraphNode(gridPosition: vector_int2(0, 0))
         
-        for i in 0 ..< width {
-            for j in 0 ..< height {
-                let tile = tileAtRow(i, column: j)
+        for j in 0 ..< height {
+            for i in 0 ..< width {
+                let tile = tileAtRow(height - 1 - j, column: i)
                 switch tile {
                 case .Wall:
                     if let wall = pathfindingGraph.nodeAtGridPosition(vector_int2(i, j)) {
@@ -103,21 +103,18 @@ class MazeMap: SKNode {
         super.init()
         
         // Generate maze.
-        let maze = SKNode()
         let cellSize = CGSize(width: mazeCellWidth, height: mazeCellWidth)
         let graph = pathfindingGraph
-        for i in 0 ..< width {
-            for j in 0 ..< height {
-                if graph.nodeAtGridPosition(vector_int2(i, j)) != nil,
-                let scene = scene as? MazeModeScene {
+        for j in 0 ..< height {
+            for i in 0 ..< width {
+                if graph.nodeAtGridPosition(vector_int2(i, j)) != nil {
                     //TODO:  绘制地图：墙和道路
-                    let node = SKSpriteNode(color: SKColor.grayColor(), size: cellSize)
-                    node.position = scene.pointForGridPosition(vector_int2(i, j))
-                    maze.addChild(node)
+                    let node = SKSpriteNode(color: SKColor.whiteColor(), size: cellSize)
+                    node.position = pointForGridPosition(vector_int2(i, j))
+                    addChild(node)
                 }
             }
         }
-        addChild(maze)
     }
 
     required init?(coder aDecoder: NSCoder) {

@@ -34,7 +34,6 @@ class MazeButton: SKSpriteNode {
                     if self.scene is MainScene {
                         gvc.addGestureRecognizers()
                         let scene = MazeModeScene(size: self.scene!.size)
-                        scene.scaleMode = .AspectFit
                         let flip = SKTransition.flipHorizontalWithDuration(1)
                         flip.pausesIncomingScene = false
                         self.scene?.view?.presentScene(scene, transition: flip)

@@ -10,7 +10,7 @@ import UIKit
 import SpriteKit
 import ReplayKit
 
-public class GameViewController: UIViewController, RPPreviewViewControllerDelegate {
+public class GameViewController: UIViewController, RPPreviewViewControllerDelegate, UIGestureRecognizerDelegate {
 
     var longPress:UILongPressGestureRecognizer!
     var tapWithOneFinger:UITapGestureRecognizer!
@@ -33,22 +33,39 @@ public class GameViewController: UIViewController, RPPreviewViewControllerDelega
         skView.ignoresSiblingOrder = true
         
         longPress = UILongPressGestureRecognizer(target: self, action: Selector("handleLongPressGesture:"))
+        longPress.delegate = self
+        
         tapWithOneFinger = UITapGestureRecognizer(target: self, action: Selector("handleTapWithOneFingerGesture:"))
         tapWithTwoFinger = UITapGestureRecognizer(target: self, action: Selector("handleTapWithTwoFingerGesture:"))
         tapWithTwoFinger.numberOfTouchesRequired = 2
+        tapWithTwoFinger.delegate = self
+        
         pan = UIPanGestureRecognizer(target: self, action: Selector("handlePanGesture:"))
         pan.maximumNumberOfTouches = 1
+        pan.delegate = self
+        
         pinch = UIPinchGestureRecognizer(target: self, action: Selector("handlePinchGesture:"))
+        pinch.delegate = self
+        
         swipeRight = UISwipeGestureRecognizer(target: self, action: Selector("swipeRight:"))
         swipeRight.direction = .Right
+        swipeRight.delegate = self
+        
         swipeLeft = UISwipeGestureRecognizer(target: self, action: Selector("swipeLeft:"))
         swipeLeft.direction = .Left
+        swipeLeft.delegate = self
+        
         swipeUp = UISwipeGestureRecognizer(target: self, action: Selector("swipeUp:"))
         swipeUp.direction = .Up
+        swipeUp.delegate = self
+        
         swipeDown = UISwipeGestureRecognizer(target: self, action: Selector("swipeDown:"))
         swipeDown.direction = .Down
+        swipeDown.delegate = self
+        
         screenEdgePanRight = UIScreenEdgePanGestureRecognizer(target: self, action: Selector("handleEdgePanGesture:"))
         screenEdgePanRight.edges = UIRectEdge.Left
+        screenEdgePanRight.delegate = self
         
         let scene = MainScene(size: skView.bounds.size)
         /* Set the scale mode to scale to fit the window */
@@ -174,9 +191,7 @@ public class GameViewController: UIViewController, RPPreviewViewControllerDelega
         skView.addGestureRecognizer(tapWithOneFinger)
         
         skView.addGestureRecognizer(screenEdgePanRight)
-        if Data.sharedData.gameOver {
-            skView.addGestureRecognizer(pan)
-        }
+        skView.addGestureRecognizer(pan)
         skView.addGestureRecognizer(longPress)
         skView.addGestureRecognizer(pinch)
         skView.addGestureRecognizer(tapWithTwoFinger)
@@ -244,6 +259,11 @@ public class GameViewController: UIViewController, RPPreviewViewControllerDelega
     // MARK: - RPPreviewViewControllerDelegate
     public func previewControllerDidFinish(previewController: RPPreviewViewController) {
         previewController.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+//    MARK: - UIGestureRecognizerDelegate
+    public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
 }
 

@@ -10,4 +10,10 @@ import GameplayKit
 
 class Entity: GKEntity {
     var gridPosition = vector_int2(0, 0)
+    let shapeType: ShapeType
+    
+    init(type: ShapeType) {
+        shapeType = type
+        super.init()
+    }
 }

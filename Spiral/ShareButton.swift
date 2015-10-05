@@ -21,8 +21,7 @@ class ShareButton: SKSpriteNode {
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        let scene = self.scene as! GameScene
-        let image = UIImage.imageFromNode(scene)
+        let image = UIImage.imageFromNode(scene!)
         let url = NSURL(string: NSLocalizedString("https://itunes.apple.com/us/app/square-spiral/id920811081", comment: ""))
         let messageDiscription = String.localizedStringWithFormat(NSLocalizedString("I got %d points in Spiral. Come on with me!", comment: ""), Data.sharedData.score)
         
@@ -34,6 +33,6 @@ class ShareButton: SKSpriteNode {
         
         let activityItems = [image,messageDiscription]
         let activityController = UIActivityViewController(activityItems: activityItems, applicationActivities: [wechatSessionActivity, wechatTimelineActivity])
-        (scene.view!.nextResponder() as! UIViewController).presentViewController(activityController, animated: true, completion: nil)
+        (scene!.view!.nextResponder() as! UIViewController).presentViewController(activityController, animated: true, completion: nil)
     }
 }

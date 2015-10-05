@@ -39,3 +39,7 @@ func + (left: vector_int2, right: vector_int2) -> vector_int2 {
 func / (left: Int, right: CGFloat) -> CGFloat {
     return CGFloat(left) / right
 }
+
+func pointForGridPosition(position: vector_int2) -> CGPoint {
+    return CGPoint(x: position.x * mazeCellWidth + mazeCellWidth / 2, y: position.y * mazeCellWidth  + mazeCellWidth / 2)
+}
