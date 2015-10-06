@@ -7,6 +7,7 @@
 //
 
 import GameplayKit
+import SpriteKit
 
 class ShapeDefeatedState: ShapeState {
     let respawnPosition: GKGridGraphNode
@@ -26,6 +27,13 @@ class ShapeDefeatedState: ShapeState {
         // Change the shape sprite's appearance to indicate defeat.
         if let component = entity.componentForClass(SpriteComponent.self) {
             component.useDefeatedAppearance()
+            if entity.shapeType == .Reaper {
+                let minseconds = 0.25 * Double(NSEC_PER_SEC)
+                let dtime = dispatch_time(DISPATCH_TIME_NOW, Int64(minseconds))
+                dispatch_after(dtime, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
+                    entity.componentForClass(SpriteComponent.self)?.sprite.removeFromParent()
+                })
+            }
             // Use pathfinding to find a route back to this shape's starting position.
             let graph = scene.map.pathfindingGraph
             if let shapeNode = graph.nodeAtGridPosition(entity.gridPosition),

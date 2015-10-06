@@ -9,21 +9,20 @@
 import SpriteKit
 import GameplayKit
 
-class MazeModeScene: SKScene, SKPhysicsContactDelegate {
+class MazeModeScene: GameScene {
     
     let map: MazeMap
-    let soundManager = SoundManager()
     let display: MazeDisplay
     let background:Background
     var shapes = [Entity]()
-    var player: Entity
+    var playerEntity: Entity
     var playerDirection: PlayerDirection {
         get {
-            let component = player.componentForClass(PlayerControlComponent.self)
+            let component = playerEntity.componentForClass(PlayerControlComponent.self)
             return component?.direction ?? .None
         }
         set {
-            let component = player.componentForClass(PlayerControlComponent.self)
+            let component = playerEntity.componentForClass(PlayerControlComponent.self)
             component?.attemptedDirection = newValue
         }
     }
@@ -36,7 +35,7 @@ class MazeModeScene: SKScene, SKPhysicsContactDelegate {
                     nextState = ShapeFleeState.self
                 }
                 else {
-                    (player.componentForClass(SpriteComponent.self)?.sprite as? Player)?.shield = false
+                    (playerEntity.componentForClass(SpriteComponent.self)?.sprite as? Player)?.shield = false
                     nextState = ShapeChaseState.self
                 }
                 
@@ -74,10 +73,10 @@ class MazeModeScene: SKScene, SKPhysicsContactDelegate {
         background.position = center
         
         // Create player entity with display and control components.
-        player = Entity(type: .Player)
-        player.gridPosition = map.startPosition.gridPosition
-        player.addComponent(SpriteComponent(entity: player))
-        player.addComponent(PlayerControlComponent(map: map))
+        playerEntity = Entity(type: .Player)
+        playerEntity.gridPosition = map.startPosition.gridPosition
+        playerEntity.addComponent(SpriteComponent(entity: playerEntity))
+        playerEntity.addComponent(PlayerControlComponent(map: map))
         
         // Create shape entities with display and AI components.
         let types: [ShapeType] = [.Killer, .Score, .Killer, .Shield]
@@ -115,7 +114,7 @@ class MazeModeScene: SKScene, SKPhysicsContactDelegate {
     func resetShapes() {
         
         //clean shapes
-        if let playerComponent = player.componentForClass(SpriteComponent.self) {
+        if let playerComponent = playerEntity.componentForClass(SpriteComponent.self) {
             playerComponent.sprite.removeFromParent()
         }
         for entity in shapes {
@@ -125,10 +124,10 @@ class MazeModeScene: SKScene, SKPhysicsContactDelegate {
         }
         
         // Create player entity with display and control components.
-        player = Entity(type: .Player)
-        player.gridPosition = map.startPosition.gridPosition
-        player.addComponent(SpriteComponent(entity: player))
-        player.addComponent(PlayerControlComponent(map: map))
+        playerEntity = Entity(type: .Player)
+        playerEntity.gridPosition = map.startPosition.gridPosition
+        playerEntity.addComponent(SpriteComponent(entity: playerEntity))
+        playerEntity.addComponent(PlayerControlComponent(map: map))
         
         // Create shape entities with display and AI components.
         let types: [ShapeType] = [.Killer, .Score, .Killer, .Shield]
@@ -145,15 +144,15 @@ class MazeModeScene: SKScene, SKPhysicsContactDelegate {
         }
         
         // Add player entity to scene.
-        if let playerComponent = player.componentForClass(SpriteComponent.self) {
-            playerComponent.sprite.position = pointForGridPosition(player.gridPosition)
+        if let playerComponent = playerEntity.componentForClass(SpriteComponent.self) {
+            playerComponent.sprite.position = map.pointForGridPosition(playerEntity.gridPosition)
             addChild(playerComponent.sprite)
         }
         
         // Add shape entities to scene.
         for entity in shapes {
             if let shapeComponent = entity.componentForClass(SpriteComponent.self) {
-                shapeComponent.sprite.position = pointForGridPosition(entity.gridPosition)
+                shapeComponent.sprite.position = map.pointForGridPosition(entity.gridPosition)
                 addChild(shapeComponent.sprite)
             }
         }
@@ -166,21 +165,16 @@ class MazeModeScene: SKScene, SKPhysicsContactDelegate {
         addChild(display)
         display.setPosition()
         
-        
-//        play background music
-        soundManager.playBackGround()
-        addChild(soundManager)
-        
         // Add player entity to scene.
-        if let playerComponent = player.componentForClass(SpriteComponent.self) {
-            playerComponent.sprite.position = pointForGridPosition(player.gridPosition)
+        if let playerComponent = playerEntity.componentForClass(SpriteComponent.self) {
+            playerComponent.sprite.position = map.pointForGridPosition(playerEntity.gridPosition)
             addChild(playerComponent.sprite)
         }
         
         // Add shape entities to scene.
         for entity in shapes {
             if let shapeComponent = entity.componentForClass(SpriteComponent.self) {
-                shapeComponent.sprite.position = pointForGridPosition(entity.gridPosition)
+                shapeComponent.sprite.position = map.pointForGridPosition(entity.gridPosition)
                 addChild(shapeComponent.sprite)
             }
         }
@@ -189,6 +183,9 @@ class MazeModeScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func update(currentTime: NSTimeInterval) {
+        if Data.sharedData.gameOver {
+            return
+        }
         // Track the time delta since the last update.
         if prevUpdateTime < 0 {
             prevUpdateTime = currentTime
@@ -201,25 +198,12 @@ class MazeModeScene: SKScene, SKPhysicsContactDelegate {
         
         // Update components with the new time delta.
         intelligenceSystem.updateWithDeltaTime(dt)
-        player.updateWithDeltaTime(dt)
-    }
-    
-//    MARK: - SKPhysicsContactDelegate
-    
-    func didBeginContact(contact: SKPhysicsContact) {
-        //A->B
-        let visitorA = ContactVisitor.contactVisitorWithBody(contact.bodyA, forContact: contact)
-        let visitableBodyB = VisitablePhysicsBody(body: contact.bodyB)
-        visitableBodyB.acceptVisitor(visitorA)
-        //B->A
-        let visitorB = ContactVisitor.contactVisitorWithBody(contact.bodyB, forContact: contact)
-        let visitableBodyA = VisitablePhysicsBody(body: contact.bodyA)
-        visitableBodyA.acceptVisitor(visitorB)
+        playerEntity.updateWithDeltaTime(dt)
     }
     
     //MARK: - UI control methods
     
-    func tap(){
+    override func tap(){
         if Data.sharedData.gameOver {
             //                restartGame()
         }
@@ -231,11 +215,20 @@ class MazeModeScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func createReaper(){
+    override func createReaper(){
         if !Data.sharedData.gameOver && view?.paused == false {
             if Data.sharedData.reaperNum>0 {
                 Data.sharedData.reaperNum--
-                //TODO: 释放收割机，去收获。。。
+                // 释放收割机，去收获。。。
+                let reaper = Entity(type: .Reaper)
+                reaper.gridPosition = playerEntity.gridPosition
+                reaper.addComponent(SpriteComponent(entity: reaper))
+                reaper.addComponent(IntelligenceComponent(scene: self, entity: reaper, startingPosition: map.pathfindingGraph.nodeAtGridPosition(reaper.gridPosition)!))
+                intelligenceSystem.addComponentWithEntity(reaper)
+                if let reaperComponent = reaper.componentForClass(SpriteComponent.self) {
+                    reaperComponent.sprite.position = map.pointForGridPosition(reaper.gridPosition)
+                    addChild(reaperComponent.sprite)
+                }
             }
         }
     }
@@ -272,7 +265,7 @@ class MazeModeScene: SKScene, SKPhysicsContactDelegate {
 //            }
 //        }
 //        
-//        if let spriteComponent = player.componentForClass(SpriteComponent.self) {
+//        if let spriteComponent = playerEntity.componentForClass(SpriteComponent.self) {
 //            (spriteComponent.sprite as? Player)?.restart()
 //            spriteComponent.warpToGridPosition(map.startPosition.gridPosition)
 //        }
@@ -289,7 +282,7 @@ class MazeModeScene: SKScene, SKPhysicsContactDelegate {
     
     //MARK: pause&resume game
     
-    func pause() {
+    override func pause() {
         if !Data.sharedData.gameOver {
             self.runAction(SKAction.runBlock({ [unowned self]() -> Void in
                 self.display.pause()

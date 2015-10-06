@@ -37,6 +37,7 @@
 		A45320EB1B51427D00CBD634 /* PlayRecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45320EA1B51427D00CBD634 /* PlayRecordButton.swift */; };
 		A45484621BC12AED002D9748 /* MazeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45484611BC12AED002D9748 /* MazeButton.swift */; settings = {ASSET_TAGS = (); }; };
 		A45484641BC1469D002D9748 /* MazeDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45484631BC1469C002D9748 /* MazeDisplay.swift */; settings = {ASSET_TAGS = (); }; };
+		A454846A1BC3EF0D002D9748 /* ShapeReapState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45484691BC3EF0D002D9748 /* ShapeReapState.swift */; settings = {ASSET_TAGS = (); }; };
 		A45A65E01986073B00EA40D7 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45A65DF1986073B00EA40D7 /* SoundManager.swift */; };
 		A45A935C1B2C4FDF00EE4A56 /* gameover_ordinary.wav in Resources */ = {isa = PBXBuildFile; fileRef = A45A93571B2C4FDF00EE4A56 /* gameover_ordinary.wav */; };
 		A45A935D1B2C4FDF00EE4A56 /* jump_ordinary.wav in Resources */ = {isa = PBXBuildFile; fileRef = A45A93581B2C4FDF00EE4A56 /* jump_ordinary.wav */; };
@@ -155,6 +156,7 @@
 		A45484631BC1469C002D9748 /* MazeDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MazeDisplay.swift; sourceTree = "<group>"; };
 		A45484661BC26753002D9748 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "en.lproj/Launch Screen.strings"; sourceTree = "<group>"; };
 		A45484681BC26754002D9748 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Launch Screen.strings"; sourceTree = "<group>"; };
+		A45484691BC3EF0D002D9748 /* ShapeReapState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeReapState.swift; sourceTree = "<group>"; };
 		A45A65DF1986073B00EA40D7 /* SoundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SoundManager.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A45A93571B2C4FDF00EE4A56 /* gameover_ordinary.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gameover_ordinary.wav; sourceTree = "<group>"; };
 		A45A93581B2C4FDF00EE4A56 /* jump_ordinary.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jump_ordinary.wav; sourceTree = "<group>"; };
@@ -479,6 +481,7 @@
 				A4A286F01BBC119500A6CE7F /* ShapeFleeState.swift */,
 				A4A286F21BBC11AB00A6CE7F /* ShapeDefeatedState.swift */,
 				A4A286F41BBC11BE00A6CE7F /* ShapeRespawnState.swift */,
+				A45484691BC3EF0D002D9748 /* ShapeReapState.swift */,
 			);
 			name = "State Machine";
 			sourceTree = "<group>";
@@ -718,6 +721,7 @@
 				A47D3D1E19741E54005AF736 /* Score.swift in Sources */,
 				A478777119712E9D00F6F611 /* Shape.swift in Sources */,
 				A4A286E81BBBF88700A6CE7F /* IntelligenceComponent.swift in Sources */,
+				A454846A1BC3EF0D002D9748 /* ShapeReapState.swift in Sources */,
 				A4254A831AF618CF00620AA7 /* OrdinaryModeScene.swift in Sources */,
 				A4254A871AF6356300620AA7 /* ZenDisplay.swift in Sources */,
 				A492F6771AF346B2004B040B /* ZenMap.swift in Sources */,

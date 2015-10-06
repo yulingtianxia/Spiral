@@ -54,12 +54,12 @@ class SpriteComponent: GKComponent {
     
     func useNormalAppearance() {
         //TODO: 普通外观
-//        sprite.color = defaultColor
+        sprite.color = SKColor.clearColor()
     }
     
     func useFleeAppearance() {
         //TODO: 逃逸外观
-//        sprite.color = SKColor.whiteColor()
+        sprite.color = SKColor.whiteColor()
     }
     
     func useDefeatedAppearance() {
@@ -70,9 +70,10 @@ class SpriteComponent: GKComponent {
     
     var nextGridPosition: vector_int2 = vector_int2(0, 0) {
         willSet {
-            if nextGridPosition != newValue {
+            if nextGridPosition != newValue,
+            let map = (sprite.scene as? MazeModeScene)?.map {
 //                移动到下个节点，设置速度
-                let action = SKAction.moveTo(pointForGridPosition(newValue), duration: durationForDistance(mazeCellWidth))
+                let action = SKAction.moveTo(map.pointForGridPosition(newValue), duration: durationForDistance(mazeCellWidth))
                 let update = SKAction.runBlock({ () -> Void in
                     (entity as? Entity)?.gridPosition = newValue
                 })
@@ -85,14 +86,16 @@ class SpriteComponent: GKComponent {
     
     //通过渐变的动画变换位置
     func warpToGridPosition(gridPosition: vector_int2) {
-        let fadeOut = SKAction.fadeOutWithDuration(0.5)
-        let warp = SKAction.moveTo(pointForGridPosition(gridPosition), duration:0.5)
-        let fadeIn = SKAction.fadeInWithDuration(0.5)
-        let update = SKAction.runBlock({
-            (entity as? Entity)?.gridPosition = gridPosition
-        })
-        
-        sprite.runAction(SKAction.sequence([fadeOut, update, warp, fadeIn]))
+        if let map = (sprite.scene as? MazeModeScene)?.map {
+            let fadeOut = SKAction.fadeOutWithDuration(0.5)
+            let warp = SKAction.moveTo(map.pointForGridPosition(gridPosition), duration:0.5)
+            let fadeIn = SKAction.fadeInWithDuration(0.5)
+            let update = SKAction.runBlock({
+                (entity as? Entity)?.gridPosition = gridPosition
+            })
+            
+            sprite.runAction(SKAction.sequence([fadeOut, update, warp, fadeIn]))
+        }
     }
     
     func followPath(path: [GKGridGraphNode], completion completionHandler: Void -> Void) {
@@ -103,11 +106,13 @@ class SpriteComponent: GKComponent {
         
         for node in dropFirst {
             //溃逃回复活点的动画
-            let point = pointForGridPosition(node.gridPosition)
-            sequence.append(SKAction.moveTo(point, duration: 0.15))
-            sequence.append(SKAction.runBlock({ () -> Void in
-                (entity as? Entity)?.gridPosition = node.gridPosition
-            }))
+            if let map = (sprite.scene as? MazeModeScene)?.map {
+                let point = map.pointForGridPosition(node.gridPosition)
+                sequence.append(SKAction.moveTo(point, duration: 0.15))
+                sequence.append(SKAction.runBlock({ () -> Void in
+                    (entity as? Entity)?.gridPosition = node.gridPosition
+                }))
+            }
         }
         
         sequence.append(SKAction.runBlock(completionHandler))

@@ -89,6 +89,9 @@ class MazeDisplay: SKNode, DisplayData {
     }
     
     func gameOver() {
+        if Data.sharedData.gameOver {
+            return
+        }
         let scene = self.scene as! MazeModeScene
         for entity in scene.shapes {
             entity.componentForClass(SpriteComponent)?.sprite.removeAllActions()

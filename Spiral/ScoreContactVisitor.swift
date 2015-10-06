@@ -38,18 +38,9 @@ class ScoreContactVisitor:ContactVisitor{
     
     func visitReaper(body:SKPhysicsBody){
         if let thisNode = self.body.node as? Score {
-            if Data.sharedData.currentMode == .Maze {
-                if let entity = thisNode.owner?.entity,
-                    let aiComponent = entity.componentForClass(IntelligenceComponent.self),
-                    let state = aiComponent.stateMachine.currentState {
-                        guard state.isKindOfClass(ShapeChaseState.self) else {
-                            aiComponent.stateMachine.enterState(ShapeDefeatedState.self)
-                            return
-                        }
-                }
-            }
-            else {
+            guard Data.sharedData.currentMode == .Maze else {
                 thisNode.removeFromParent()
+                return
             }
         }
     }

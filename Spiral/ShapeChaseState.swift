@@ -25,7 +25,7 @@ class ShapeChaseState: ShapeState {
     override init(scene s: MazeModeScene, entity e: Entity) {
         
         super.init(scene: s, entity: e)
-        
+        //TODO: 随机 grade
         let playerFar = NSPredicate(format: "$distanceToPlayer.floatValue >= 10.0")
         ruleSystem.addRule(GKRule(predicate: playerFar, assertingFact: "hunt", grade: 1.0))
         
@@ -35,7 +35,7 @@ class ShapeChaseState: ShapeState {
     
     func pathToPlayer() -> [GKGridGraphNode]? {
         let graph = scene.map.pathfindingGraph
-        if let playerNode = graph.nodeAtGridPosition(scene.player.gridPosition) {
+        if let playerNode = graph.nodeAtGridPosition(scene.playerEntity.gridPosition) {
             return pathToNode(playerNode)
         }
         return nil
