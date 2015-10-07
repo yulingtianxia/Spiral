@@ -47,7 +47,6 @@ class Shape: SKSpriteNode {
         physicsBody?.angularDamping = 0
         physicsBody?.linearDamping = 0
         physicsBody?.restitution = 1
-//        physicsBody?.restitution = 1
         physicsBody?.friction = 1
         normalTexture = texture?.textureByGeneratingNormalMap()
         light.enabled = false

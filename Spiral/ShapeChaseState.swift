@@ -13,7 +13,20 @@ class ShapeChaseState: ShapeState {
     private var hunting: Bool = false {
         willSet {
             if hunting != newValue && !newValue {
-                if let positions = scene.random.arrayByShufflingObjectsInArray(scene.map.shapeStartPositions) as? [GKGridGraphNode] {
+                let playerPos = scene.playerEntity.gridPosition
+                //将目标点设为 player 周围的随机点
+                let targets = [vector_int2(playerPos.x, playerPos.y + 2),
+                    vector_int2(playerPos.x + 2, playerPos.y),
+                    vector_int2(playerPos.x, playerPos.y - 2),
+                    vector_int2(playerPos.x - 2, playerPos.y),
+                    vector_int2(playerPos.x, playerPos.y + 3),
+                    vector_int2(playerPos.x + 3, playerPos.y),
+                    vector_int2(playerPos.x, playerPos.y - 3),
+                    vector_int2(playerPos.x - 3, playerPos.y)].flatMap({ (position) -> GKGridGraphNode? in
+                        return scene.map.pathfindingGraph.nodeAtGridPosition(position)
+                    })
+                
+                if let positions = scene.random.arrayByShufflingObjectsInArray(targets) as? [GKGridGraphNode] {
                     scatterTarget = positions.first!
                 }
             }
@@ -25,20 +38,12 @@ class ShapeChaseState: ShapeState {
     override init(scene s: MazeModeScene, entity e: Entity) {
         
         super.init(scene: s, entity: e)
-        //TODO: 随机 grade
-        let playerFar = NSPredicate(format: "$distanceToPlayer.floatValue >= 10.0")
+
+        let playerFar = NSPredicate(format: "$distanceToPlayer.floatValue >= 12.0")
         ruleSystem.addRule(GKRule(predicate: playerFar, assertingFact: "hunt", grade: 1.0))
         
-        let playerNear = NSPredicate(format: "$distanceToPlayer.floatValue < 10.0")
+        let playerNear = NSPredicate(format: "$distanceToPlayer.floatValue < 12.0")
         ruleSystem.addRule(GKRule(predicate: playerNear, retractingFact: "hunt", grade: 1.0))
-    }
-    
-    func pathToPlayer() -> [GKGridGraphNode]? {
-        let graph = scene.map.pathfindingGraph
-        if let playerNode = graph.nodeAtGridPosition(scene.playerEntity.gridPosition) {
-            return pathToNode(playerNode)
-        }
-        return nil
     }
     
 //    MARK: - GKState Life Cycle

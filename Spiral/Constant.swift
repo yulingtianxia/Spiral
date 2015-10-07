@@ -33,4 +33,4 @@ enum ShapeType {
 }
 
 let mainButtonSize = CGSize(width: 150, height: 150)
-let mazeCellWidth: CGFloat = UIScreen.mainScreen().bounds.width / 33
+let mazeCellWidth: CGFloat = UIScreen.mainScreen().bounds.width / 31

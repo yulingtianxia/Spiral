@@ -26,6 +26,14 @@ class ShapeState: GKState {
         return nil
     }
     
+    func pathToPlayer() -> [GKGridGraphNode]? {
+        let graph = scene.map.pathfindingGraph
+        if let playerNode = graph.nodeAtGridPosition(scene.playerEntity.gridPosition) {
+            return pathToNode(playerNode)
+        }
+        return nil
+    }
+    
     func startFollowingPath(path: [GKGridGraphNode]?) {
         /*
         Set up a move to the first node on the path, but
@@ -36,5 +44,10 @@ class ShapeState: GKState {
             let component = entity.componentForClass(SpriteComponent)
             component?.nextGridPosition = firstMove.gridPosition
         }
+    }
+    
+    func startRunToNode(node: GKGridGraphNode) {
+        let component = entity.componentForClass(SpriteComponent)
+        component?.nextGridPosition = node.gridPosition
     }
 }

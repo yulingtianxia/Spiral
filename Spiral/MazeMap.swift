@@ -103,19 +103,7 @@ class MazeMap: SKNode {
         
         super.init()
         
-        // Generate maze.
-        let cellSize = CGSize(width: mazeCellWidth, height: mazeCellWidth)
-        let graph = pathfindingGraph
-        for j in 0 ..< height {
-            for i in 0 ..< width {
-                if graph.nodeAtGridPosition(vector_int2(i, j)) != nil {
-                    //TODO:  绘制地图：墙和道路
-                    let node = SKSpriteNode(color: SKColor.whiteColor(), size: cellSize)
-                    node.position = pointForGridPosition(vector_int2(i, j))
-                    addChild(node)
-                }
-            }
-        }
+        addMagicRoads()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -123,7 +111,23 @@ class MazeMap: SKNode {
     }
     
     func pointForGridPosition(position: vector_int2) -> CGPoint {
-        let deltaY = (UIScreen.mainScreen().bounds.height - UIScreen.mainScreen().bounds.width) / 2
-        return CGPoint(x: position.x * mazeCellWidth + mazeCellWidth / 2, y: deltaY + position.y * mazeCellWidth  + mazeCellWidth / 2)
+        let center = CGPoint(x: UIScreen.mainScreen().bounds.midX, y: UIScreen.mainScreen().bounds.midY)
+        let deltaX = (position.x - MazeWidth / 2) * mazeCellWidth
+        let deltaY = (position.y - MazeHeight / 2) * mazeCellWidth
+        return CGPoint(x: center.x + deltaX , y: center.y + deltaY)
+    }
+    
+    func addMagicRoads() {
+        // Generate maze.
+        let graph = pathfindingGraph
+        for j in 0 ..< height {
+            for i in 0 ..< width {
+                if graph.nodeAtGridPosition(vector_int2(i, j)) != nil {
+                    let node = MagicRoad(graph: graph, position: vector_int2(i, j))
+                    node.position = pointForGridPosition(vector_int2(i, j))
+                    addChild(node)
+                }
+            }
+        }
     }
 }

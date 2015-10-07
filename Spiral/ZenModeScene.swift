@@ -227,52 +227,6 @@ class ZenModeScene: GameScene {
     }
     
     func nodeFactory(){
-//        self.runAction(SKAction.repeatActionForever(SKAction.sequence([SKAction.runBlock({
-//            if !Data.sharedData.gameOver {
-//                
-//                let type = arc4random_uniform(4)
-//                switch type {
-//                case 0,1:
-//                    self.nextShapeName = "Killer"
-//                    self.nextShape.texture = SKTexture(imageNamed: "killer")
-//                case 2:
-//                    self.nextShapeName = "Score"
-//                    self.nextShape.texture = SKTexture(imageNamed: "score")
-//                case 3:
-//                    self.nextShapeName = "Shield"
-//                    self.nextShape.texture = SKTexture(imageNamed: "shield")
-//                default:
-//                    self.nextShapeName = "Killer"
-//                    self.nextShape.texture = SKTexture(imageNamed: "killer")
-//                    println(type)
-//                }
-//                
-//            }
-//        }),SKAction.group([SKAction.waitForDuration(5, withRange: 0),SKAction.runBlock({ () -> Void in
-//            self.nextShape.runAction(SKAction.scaleTo(0.4, duration: 5), completion: { () -> Void in
-//                self.nextShape.setScale(1)
-//            })
-//        })]),SKAction.runBlock({ () -> Void in
-//            if !Data.sharedData.gameOver {
-//                var shape:Shape
-//                switch self.nextShapeName {
-//                case "Killer":
-//                    shape = Killer()
-//                case "Score":
-//                    shape = Score()
-//                case "Shield":
-//                    shape = Shield()
-//                default:
-//                    println(self.nextShapeName)
-//                    shape = Killer()
-//                }
-//                shape.lineNum = 0
-//                shape.position = self.map.points[shape.pathOrientation]![shape.lineNum]
-//                shape.runInZenMap(self.map)
-//                self.addChild(shape)
-//            }
-//        })])))
-        
         let createNextShape = SKAction.runBlock({
             if !Data.sharedData.gameOver {
                 

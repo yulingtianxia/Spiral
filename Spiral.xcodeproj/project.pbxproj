@@ -19,6 +19,8 @@
 		A4175E7B1B21DF1B00156886 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4175E7A1B21DF1B00156886 /* Constant.swift */; };
 		A4175E7D1B21EBBC00156886 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4175E7C1B21EBBC00156886 /* Extensions.swift */; };
 		A4175E7F1B22024F00156886 /* bg_ordinary.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A4175E7E1B22024F00156886 /* bg_ordinary.mp3 */; };
+		A41C07741BC5165B0016CEEF /* magic.sks in Resources */ = {isa = PBXBuildFile; fileRef = A41C07731BC5165B0016CEEF /* magic.sks */; settings = {ASSET_TAGS = (); }; };
+		A41C07761BC5196A0016CEEF /* MagicRoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41C07751BC5196A0016CEEF /* MagicRoad.swift */; settings = {ASSET_TAGS = (); }; };
 		A42414AD1BAD600F00DF3879 /* OrdinaryHelpScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A42414A91BAD600F00DF3879 /* OrdinaryHelpScene.sks */; settings = {ASSET_TAGS = (); }; };
 		A42414AE1BAD600F00DF3879 /* ZenHelpScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A42414AB1BAD600F00DF3879 /* ZenHelpScene.sks */; settings = {ASSET_TAGS = (); }; };
 		A424E2F119E78176007FE1C1 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = A424E2F019E78176007FE1C1 /* Background.swift */; };
@@ -130,6 +132,8 @@
 		A4175E7A1B21DF1B00156886 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		A4175E7C1B21EBBC00156886 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Extensions.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A4175E7E1B22024F00156886 /* bg_ordinary.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bg_ordinary.mp3; sourceTree = "<group>"; };
+		A41C07731BC5165B0016CEEF /* magic.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = magic.sks; sourceTree = "<group>"; };
+		A41C07751BC5196A0016CEEF /* MagicRoad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagicRoad.swift; sourceTree = "<group>"; };
 		A42414AA1BAD600F00DF3879 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = en; path = en.lproj/OrdinaryHelpScene.sks; sourceTree = "<group>"; };
 		A42414AC1BAD600F00DF3879 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = en; path = en.lproj/ZenHelpScene.sks; sourceTree = "<group>"; };
 		A424E2F019E78176007FE1C1 /* Background.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Background.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -500,6 +504,7 @@
 			children = (
 				A4E7594E19F7B8E600C08783 /* spark.png */,
 				A4E7595919F7BAD600C08783 /* spark.sks */,
+				A41C07731BC5165B0016CEEF /* magic.sks */,
 			);
 			name = Particles;
 			sourceTree = "<group>";
@@ -532,6 +537,7 @@
 			isa = PBXGroup;
 			children = (
 				A424E2F019E78176007FE1C1 /* Background.swift */,
+				A41C07751BC5196A0016CEEF /* MagicRoad.swift */,
 				A492F6781AF3B0D8004B040B /* Bamboo.swift */,
 				A4F3C60F19E90FFF000514AC /* Rope.swift */,
 				A4F3504F19FBA41B00F6B8DF /* Eye.swift */,
@@ -665,6 +671,7 @@
 				A4E7595A19F7BAD600C08783 /* spark.sks in Resources */,
 				A45A93601B2C4FDF00EE4A56 /* shield_zen.wav in Resources */,
 				A4787755197113D000F6F611 /* Images.xcassets in Resources */,
+				A41C07741BC5165B0016CEEF /* magic.sks in Resources */,
 				A42414AE1BAD600F00DF3879 /* ZenHelpScene.sks in Resources */,
 				A4E2434D1B22F04200356FCA /* gameover_zen.wav in Resources */,
 				A4175E7F1B22024F00156886 /* bg_ordinary.mp3 in Resources */,
@@ -730,6 +737,7 @@
 				A45484641BC1469D002D9748 /* MazeDisplay.swift in Sources */,
 				A47D3D1619740AA3005AF736 /* PlayerContactVisitor.swift in Sources */,
 				A40AB22E1BABFF3000DBE971 /* WeChatActivity.swift in Sources */,
+				A41C07761BC5196A0016CEEF /* MagicRoad.swift in Sources */,
 				A4F3C60C19E8EAF7000514AC /* ReaperContactVisitor.swift in Sources */,
 				A46D8C031976C3B800A32924 /* ShieldContactVisitor.swift in Sources */,
 				A40F39E31BBAC4F30061E32A /* MazeModeScene.swift in Sources */,

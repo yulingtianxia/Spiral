@@ -9,13 +9,13 @@
 import SpriteKit
 
 class ReaperContactVisitor: ContactVisitor {
-    func visitPlayer(body:SKPhysicsBody){
+    func visitPlayer(body:SKPhysicsBody) {
 //        let thisNode = self.body.node
 //        let otherNode = body.node
         
     }
     
-    func visitKiller(body:SKPhysicsBody){
+    func visitKiller(body:SKPhysicsBody) {
         let thisNode = self.body.node as! Reaper
         let otherNode = body.node as! Killer
         if Data.sharedData.currentMode == .Maze {
@@ -43,7 +43,7 @@ class ReaperContactVisitor: ContactVisitor {
         (thisNode.scene as? GameScene)?.soundManager.playKiller()
     }
     
-    func visitScore(body:SKPhysicsBody){
+    func visitScore(body:SKPhysicsBody) {
         let thisNode = self.body.node as! Reaper
         let otherNode = body.node as! Score
         if Data.sharedData.currentMode == .Maze {
@@ -69,7 +69,7 @@ class ReaperContactVisitor: ContactVisitor {
         (thisNode.scene as? GameScene)?.soundManager.playScore()
     }
     
-    func visitShield(body:SKPhysicsBody){
+    func visitShield(body:SKPhysicsBody) {
         let scene = self.body.node?.scene as? GameScene
         let thisNode = self.body.node as! Reaper
         let otherNode = body.node as! Shield

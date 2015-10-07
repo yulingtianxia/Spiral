@@ -31,7 +31,7 @@ class ShareButton: SKSpriteNode {
         let wechatTimelineMessage = WeChatActivity.Message(title:NSLocalizedString(messageDiscription, comment: ""), description:"", thumbnail:UIImage(named: "shareThumb"), media: WeChatActivity.Message.Media.URL(url!))
         let wechatTimelineActivity = WeChatActivity(scene: .Timeline, message: wechatTimelineMessage)
         
-        let activityItems = [image,messageDiscription]
+        let activityItems = [image, messageDiscription, url!.absoluteString]
         let activityController = UIActivityViewController(activityItems: activityItems, applicationActivities: [wechatSessionActivity, wechatTimelineActivity])
         (scene!.view!.nextResponder() as! UIViewController).presentViewController(activityController, animated: true, completion: nil)
     }

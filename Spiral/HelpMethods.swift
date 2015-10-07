@@ -36,6 +36,12 @@ func + (left: vector_int2, right: vector_int2) -> vector_int2 {
     return vector_int2(left.x + right.x, left.y + right.y)
 }
 
+func - (left: vector_int2, right: vector_int2) -> vector_int2 {
+    return vector_int2(left.x - right.x, left.y - right.y)
+}
+
 func / (left: Int, right: CGFloat) -> CGFloat {
     return CGFloat(left) / right
 }
+
+

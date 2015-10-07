@@ -79,7 +79,7 @@ class MazeModeScene: GameScene {
         playerEntity.addComponent(PlayerControlComponent(map: map))
         
         // Create shape entities with display and AI components.
-        let types: [ShapeType] = [.Killer, .Score, .Killer, .Shield]
+        let types: [ShapeType] = [.Killer, .Score, .Shield, .Killer]
         intelligenceSystem = GKComponentSystem(componentClass: IntelligenceComponent.self)
         
         super.init(size: size)
@@ -130,7 +130,7 @@ class MazeModeScene: GameScene {
         playerEntity.addComponent(PlayerControlComponent(map: map))
         
         // Create shape entities with display and AI components.
-        let types: [ShapeType] = [.Killer, .Score, .Killer, .Shield]
+        let types: [ShapeType] = [.Killer, .Score, .Shield, .Killer]
         intelligenceSystem = GKComponentSystem(componentClass: IntelligenceComponent.self)
         
         shapes.removeAll()
