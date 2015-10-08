@@ -51,6 +51,8 @@
 		A4605B6C19F5235500F8DD96 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4605B6E19F5235500F8DD96 /* Launch Screen.xib */; };
 		A46323F01A0263AA00902D3A /* Starcraft Normal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A46323EE1A02639E00902D3A /* Starcraft Normal.ttf */; };
 		A46323F11A0263AA00902D3A /* 颜体.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A46323EF1A02639E00902D3A /* 颜体.ttf */; };
+		A469E09D1BC6AE7E00CBCB27 /* MazeHelpScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A469E09C1BC6AE7E00CBCB27 /* MazeHelpScene.sks */; settings = {ASSET_TAGS = (); }; };
+		A469E09F1BC6C7E100CBCB27 /* MazeHelpScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A469E09E1BC6C7E100CBCB27 /* MazeHelpScene.swift */; settings = {ASSET_TAGS = (); }; };
 		A46D8C011976BF9400A32924 /* Shield.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D8C001976BF9400A32924 /* Shield.swift */; };
 		A46D8C031976C3B800A32924 /* ShieldContactVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D8C021976C3B800A32924 /* ShieldContactVisitor.swift */; };
 		A46E911C1AFF01D200AC1400 /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46E911B1AFF01D200AC1400 /* MainScene.swift */; };
@@ -172,6 +174,8 @@
 		A4605B6F19F5235700F8DD96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "Base.lproj/Launch Screen.xib"; sourceTree = "<group>"; };
 		A46323EE1A02639E00902D3A /* Starcraft Normal.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Starcraft Normal.ttf"; sourceTree = "<group>"; };
 		A46323EF1A02639E00902D3A /* 颜体.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "颜体.ttf"; sourceTree = "<group>"; };
+		A469E09C1BC6AE7E00CBCB27 /* MazeHelpScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MazeHelpScene.sks; sourceTree = "<group>"; };
+		A469E09E1BC6C7E100CBCB27 /* MazeHelpScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MazeHelpScene.swift; sourceTree = "<group>"; };
 		A46D8C001976BF9400A32924 /* Shield.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shield.swift; sourceTree = "<group>"; };
 		A46D8C021976C3B800A32924 /* ShieldContactVisitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShieldContactVisitor.swift; sourceTree = "<group>"; };
 		A46E911B1AFF01D200AC1400 /* MainScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScene.swift; sourceTree = "<group>"; };
@@ -462,6 +466,7 @@
 				A40F39E21BBAC4F30061E32A /* MazeModeScene.swift */,
 				A45A9FA219F3E7250087C192 /* OrdinaryHelpScene.swift */,
 				A4254A881AF6396F00620AA7 /* ZenHelpScene.swift */,
+				A469E09E1BC6C7E100CBCB27 /* MazeHelpScene.swift */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -495,6 +500,7 @@
 			children = (
 				A42414A91BAD600F00DF3879 /* OrdinaryHelpScene.sks */,
 				A42414AB1BAD600F00DF3879 /* ZenHelpScene.sks */,
+				A469E09C1BC6AE7E00CBCB27 /* MazeHelpScene.sks */,
 			);
 			name = "sks file";
 			sourceTree = "<group>";
@@ -671,6 +677,7 @@
 				A4E7595A19F7BAD600C08783 /* spark.sks in Resources */,
 				A45A93601B2C4FDF00EE4A56 /* shield_zen.wav in Resources */,
 				A4787755197113D000F6F611 /* Images.xcassets in Resources */,
+				A469E09D1BC6AE7E00CBCB27 /* MazeHelpScene.sks in Resources */,
 				A41C07741BC5165B0016CEEF /* magic.sks in Resources */,
 				A42414AE1BAD600F00DF3879 /* ZenHelpScene.sks in Resources */,
 				A4E2434D1B22F04200356FCA /* gameover_zen.wav in Resources */,
@@ -769,6 +776,7 @@
 				A40F39E51BBAC7BB0061E32A /* PlayerControlComponent.swift in Sources */,
 				A434A14B1976955000F4C94B /* ShareButton.swift in Sources */,
 				A492F6791AF3B0D8004B040B /* Bamboo.swift in Sources */,
+				A469E09F1BC6C7E100CBCB27 /* MazeHelpScene.swift in Sources */,
 				A45A9FA319F3E7250087C192 /* OrdinaryHelpScene.swift in Sources */,
 				A47D3D1A19741859005AF736 /* ScoreContactVisitor.swift in Sources */,
 				A4254A891AF6396F00620AA7 /* ZenHelpScene.swift in Sources */,

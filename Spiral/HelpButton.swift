@@ -53,8 +53,13 @@ class HelpButton: SKSpriteNode {
                     (UIApplication.sharedApplication().keyWindow?.rootViewController as! GameViewController).addGestureRecognizers()
                 }
             case .Maze:
-                //TODO: maze mode help scene
-                break
+                if let scene = MazeHelpScene.unarchiveFromFile("MazeHelpScene") as? ZenHelpScene {
+                    loading.removeFromParent()
+                    let crossFade = SKTransition.crossFadeWithDuration(2)
+                    crossFade.pausesIncomingScene = false
+                    self.scene?.view?.presentScene(scene, transition: crossFade)
+                    (UIApplication.sharedApplication().keyWindow?.rootViewController as! GameViewController).addGestureRecognizers()
+                }
             }
         })
     }

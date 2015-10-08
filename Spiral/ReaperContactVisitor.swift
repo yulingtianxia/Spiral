@@ -32,7 +32,7 @@ class ReaperContactVisitor: ContactVisitor {
             if let entity = otherNode.owner?.entity,
                 let aiComponent = entity.componentForClass(IntelligenceComponent.self),
                 let state = aiComponent.stateMachine.currentState {
-                    if !state.isKindOfClass(ShapeFleeState.self) {
+                    if !state.isKindOfClass(ShapeChaseState.self) {
                         return
                     }
                     else {
@@ -92,7 +92,7 @@ class ReaperContactVisitor: ContactVisitor {
                     }
             }
         }
-
+        
         scene?.player.shield = true
         Data.sharedData.score++
         scene?.soundManager.playShield()

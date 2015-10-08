@@ -129,6 +129,7 @@ class MazeModeScene: GameScene {
         playerEntity.addComponent(SpriteComponent(entity: playerEntity))
         playerEntity.addComponent(PlayerControlComponent(map: map))
         
+        
         // Create shape entities with display and AI components.
         let types: [ShapeType] = [.Killer, .Score, .Shield, .Killer]
         intelligenceSystem = GKComponentSystem(componentClass: IntelligenceComponent.self)
@@ -145,6 +146,7 @@ class MazeModeScene: GameScene {
         
         // Add player entity to scene.
         if let playerComponent = playerEntity.componentForClass(SpriteComponent.self) {
+            player = playerComponent.sprite as! Player
             playerComponent.sprite.position = map.pointForGridPosition(playerEntity.gridPosition)
             addChild(playerComponent.sprite)
         }
@@ -167,6 +169,7 @@ class MazeModeScene: GameScene {
         
         // Add player entity to scene.
         if let playerComponent = playerEntity.componentForClass(SpriteComponent.self) {
+            player = playerComponent.sprite as! Player
             playerComponent.sprite.position = map.pointForGridPosition(playerEntity.gridPosition)
             addChild(playerComponent.sprite)
         }

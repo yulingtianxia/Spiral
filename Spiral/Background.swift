@@ -27,7 +27,16 @@ class Background: SKSpriteNode {
             imageString = imageName!
         }
         
-        super.init(texture: SKTexture(imageNamed: imageString),color:SKColor.clearColor(), size: size)
+        //TODO: 背景纹理调节比例
+        var bgTexture = SKTexture(imageNamed: imageString)
+        let xScale = size.width / bgTexture.size().width
+        let yScale = size.height / bgTexture.size().height
+        let scale = max(xScale, yScale)
+        let fitRect = CGRect(origin: CGPointZero, size: CGSize(width: xScale / scale, height: yScale / scale))
+        bgTexture = SKTexture(rect: fitRect, inTexture: bgTexture)
+        
+        super.init(texture: bgTexture,color:SKColor.clearColor(), size: size)
+        
         normalTexture = texture?.textureByGeneratingNormalMapWithSmoothness(0.2, contrast: 2.5)
         zPosition = -100
         alpha = 0.5

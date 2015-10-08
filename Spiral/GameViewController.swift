@@ -162,8 +162,9 @@ public class GameViewController: UIViewController, RPPreviewViewControllerDelega
             else if let scene = scene as? ZenHelpScene {
                 scene.back()
             }
-            
-                //TODO: mazehelpscene back
+            else if let scene = scene as? MazeHelpScene {
+                scene.back()
+            }
             else if let scene = scene as? GameScene {
                 let skView = view as! SKView
                 Data.sharedData.display = nil
