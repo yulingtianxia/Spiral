@@ -28,16 +28,17 @@ class Background: SKSpriteNode {
         }
         
         //TODO: 背景纹理调节比例
-        var bgTexture = SKTexture(imageNamed: imageString)
+        let bgTexture = SKTexture(imageNamed: imageString)
         let xScale = size.width / bgTexture.size().width
         let yScale = size.height / bgTexture.size().height
         let scale = max(xScale, yScale)
-        let fitRect = CGRect(origin: CGPointZero, size: CGSize(width: xScale / scale, height: yScale / scale))
-        bgTexture = SKTexture(rect: fitRect, inTexture: bgTexture)
+        let scaleSize = CGSize(width: xScale / scale, height: yScale / scale)
+        let fitRect = CGRect(origin: CGPoint(x: (1 - scaleSize.width) / 2, y: (1 - scaleSize.height) / 2), size: scaleSize)
+        let resultTexture = SKTexture(rect: fitRect, inTexture: bgTexture)
         
-        super.init(texture: bgTexture,color:SKColor.clearColor(), size: size)
-        
-        normalTexture = texture?.textureByGeneratingNormalMapWithSmoothness(0.2, contrast: 2.5)
+        super.init(texture: resultTexture, color:SKColor.clearColor(), size: size)
+        normalTexture = resultTexture.textureByGeneratingNormalMap()
+        normalTexture = resultTexture.textureByGeneratingNormalMapWithSmoothness(0.2, contrast: 2.5)
         zPosition = -100
         alpha = 0.5
         let light = SKLightNode()
