@@ -51,7 +51,6 @@
 		A4605B6C19F5235500F8DD96 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4605B6E19F5235500F8DD96 /* Launch Screen.xib */; };
 		A46323F01A0263AA00902D3A /* Starcraft Normal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A46323EE1A02639E00902D3A /* Starcraft Normal.ttf */; };
 		A46323F11A0263AA00902D3A /* 颜体.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A46323EF1A02639E00902D3A /* 颜体.ttf */; };
-		A469E09D1BC6AE7E00CBCB27 /* MazeHelpScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A469E09C1BC6AE7E00CBCB27 /* MazeHelpScene.sks */; settings = {ASSET_TAGS = (); }; };
 		A469E09F1BC6C7E100CBCB27 /* MazeHelpScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A469E09E1BC6C7E100CBCB27 /* MazeHelpScene.swift */; settings = {ASSET_TAGS = (); }; };
 		A46D8C011976BF9400A32924 /* Shield.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D8C001976BF9400A32924 /* Shield.swift */; };
 		A46D8C031976C3B800A32924 /* ShieldContactVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D8C021976C3B800A32924 /* ShieldContactVisitor.swift */; };
@@ -74,6 +73,7 @@
 		A492F6771AF346B2004B040B /* ZenMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A492F6761AF346B2004B040B /* ZenMap.swift */; };
 		A492F6791AF3B0D8004B040B /* Bamboo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A492F6781AF3B0D8004B040B /* Bamboo.swift */; };
 		A492F67B1AF3C67C004B040B /* ZenModeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A492F67A1AF3C67C004B040B /* ZenModeScene.swift */; };
+		A4954FA31BC7CA3400E6D0EE /* MazeHelpScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4954FA51BC7CA3400E6D0EE /* MazeHelpScene.sks */; };
 		A49B03F81A772AA9009D8F40 /* Tips.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B03F71A772AA9009D8F40 /* Tips.swift */; };
 		A49ECCD21BBA80DF00447A3E /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49ECCD11BBA80DF00447A3E /* Entity.swift */; settings = {ASSET_TAGS = (); }; };
 		A4A286E81BBBF88700A6CE7F /* IntelligenceComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A286E71BBBF88700A6CE7F /* IntelligenceComponent.swift */; settings = {ASSET_TAGS = (); }; };
@@ -136,6 +136,7 @@
 		A4175E7E1B22024F00156886 /* bg_ordinary.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bg_ordinary.mp3; sourceTree = "<group>"; };
 		A41C07731BC5165B0016CEEF /* magic.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = magic.sks; sourceTree = "<group>"; };
 		A41C07751BC5196A0016CEEF /* MagicRoad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagicRoad.swift; sourceTree = "<group>"; };
+		A41CBF521BC7CAAA00A51569 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = "zh-Hans"; path = "zh-Hans.lproj/MazeHelpScene.sks"; sourceTree = "<group>"; };
 		A42414AA1BAD600F00DF3879 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = en; path = en.lproj/OrdinaryHelpScene.sks; sourceTree = "<group>"; };
 		A42414AC1BAD600F00DF3879 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = en; path = en.lproj/ZenHelpScene.sks; sourceTree = "<group>"; };
 		A424E2F019E78176007FE1C1 /* Background.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Background.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -174,7 +175,6 @@
 		A4605B6F19F5235700F8DD96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "Base.lproj/Launch Screen.xib"; sourceTree = "<group>"; };
 		A46323EE1A02639E00902D3A /* Starcraft Normal.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Starcraft Normal.ttf"; sourceTree = "<group>"; };
 		A46323EF1A02639E00902D3A /* 颜体.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "颜体.ttf"; sourceTree = "<group>"; };
-		A469E09C1BC6AE7E00CBCB27 /* MazeHelpScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MazeHelpScene.sks; sourceTree = "<group>"; };
 		A469E09E1BC6C7E100CBCB27 /* MazeHelpScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MazeHelpScene.swift; sourceTree = "<group>"; };
 		A46D8C001976BF9400A32924 /* Shield.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shield.swift; sourceTree = "<group>"; };
 		A46D8C021976C3B800A32924 /* ShieldContactVisitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShieldContactVisitor.swift; sourceTree = "<group>"; };
@@ -204,6 +204,8 @@
 		A492F6761AF346B2004B040B /* ZenMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZenMap.swift; sourceTree = "<group>"; };
 		A492F6781AF3B0D8004B040B /* Bamboo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bamboo.swift; sourceTree = "<group>"; };
 		A492F67A1AF3C67C004B040B /* ZenModeScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ZenModeScene.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		A4954FA41BC7CA3400E6D0EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Base; path = Base.lproj/MazeHelpScene.sks; sourceTree = "<group>"; };
+		A4954FA61BC7CA3700E6D0EE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = en; path = en.lproj/MazeHelpScene.sks; sourceTree = "<group>"; };
 		A49B03F71A772AA9009D8F40 /* Tips.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tips.swift; sourceTree = "<group>"; };
 		A49ECCD11BBA80DF00447A3E /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		A4A286E71BBBF88700A6CE7F /* IntelligenceComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntelligenceComponent.swift; sourceTree = "<group>"; };
@@ -500,7 +502,7 @@
 			children = (
 				A42414A91BAD600F00DF3879 /* OrdinaryHelpScene.sks */,
 				A42414AB1BAD600F00DF3879 /* ZenHelpScene.sks */,
-				A469E09C1BC6AE7E00CBCB27 /* MazeHelpScene.sks */,
+				A4954FA51BC7CA3400E6D0EE /* MazeHelpScene.sks */,
 			);
 			name = "sks file";
 			sourceTree = "<group>";
@@ -677,7 +679,7 @@
 				A4E7595A19F7BAD600C08783 /* spark.sks in Resources */,
 				A45A93601B2C4FDF00EE4A56 /* shield_zen.wav in Resources */,
 				A4787755197113D000F6F611 /* Images.xcassets in Resources */,
-				A469E09D1BC6AE7E00CBCB27 /* MazeHelpScene.sks in Resources */,
+				A4954FA31BC7CA3400E6D0EE /* MazeHelpScene.sks in Resources */,
 				A41C07741BC5165B0016CEEF /* magic.sks in Resources */,
 				A42414AE1BAD600F00DF3879 /* ZenHelpScene.sks in Resources */,
 				A4E2434D1B22F04200356FCA /* gameover_zen.wav in Resources */,
@@ -849,6 +851,16 @@
 				A4F92B8419DCF65900C87D0E /* zh-Hans */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A4954FA51BC7CA3400E6D0EE /* MazeHelpScene.sks */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4954FA41BC7CA3400E6D0EE /* Base */,
+				A4954FA61BC7CA3700E6D0EE /* en */,
+				A41CBF521BC7CAAA00A51569 /* zh-Hans */,
+			);
+			name = MazeHelpScene.sks;
 			sourceTree = "<group>";
 		};
 		A4F92B8919DCF69600C87D0E /* Localizable.strings */ = {

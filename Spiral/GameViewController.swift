@@ -118,10 +118,12 @@ public class GameViewController: UIViewController, RPPreviewViewControllerDelega
         if recognizer.state == .Changed {
             ((self.view as! SKView).scene as? OrdinaryHelpScene)?.lightWithFinger(recognizer.locationInView(self.view))
             ((self.view as! SKView).scene as? ZenHelpScene)?.lightWithFinger(recognizer.locationInView(self.view))
+            ((self.view as! SKView).scene as? MazeHelpScene)?.lightWithFinger(recognizer.locationInView(self.view))
         }
         else if recognizer.state == .Ended {
             ((self.view as! SKView).scene as? OrdinaryHelpScene)?.turnOffLight()
             ((self.view as! SKView).scene as? ZenHelpScene)?.turnOffLight()
+            ((self.view as! SKView).scene as? MazeHelpScene)?.turnOffLight()
         }
     }
     
@@ -166,17 +168,24 @@ public class GameViewController: UIViewController, RPPreviewViewControllerDelega
                 scene.back()
             }
             else if let scene = scene as? GameScene {
-                let skView = view as! SKView
-                Data.sharedData.display = nil
-                Data.sharedData.gameOver = true
-                Data.sharedData.reset()
-                scene.soundManager.stopBackGround()
-                stopRecord()
-                let scene = MainScene(size: skView.bounds.size)
-                let push = SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 1)
-                push.pausesIncomingScene = false
-                skView.presentScene(scene, transition: push)
-                removeGestureRecognizers()
+                dispatch_async(dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0)) { () -> Void in
+                    if Data.sharedData.gameOver {
+                        return
+                    }
+                    let skView = self.view as! SKView
+                    Data.sharedData.display = nil
+                    Data.sharedData.gameOver = true
+                    Data.sharedData.reset()
+                    scene.soundManager.stopBackGround()
+                    self.stopRecord()
+                    let scene = MainScene(size: skView.bounds.size)
+                    let push = SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 1)
+                    push.pausesIncomingScene = false
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        skView.presentScene(scene, transition: push)
+                        self.removeGestureRecognizers()
+                    })
+                }
             }
         }
     }

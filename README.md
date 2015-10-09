@@ -7,7 +7,7 @@ Spiral
 
 A Game Developed with Swift 2.0 and SpriteKit  
 
-![](http://7ni3rk.com1.z0.glb.clouddn.com/spiral.gif)  
+![](https://github.com/yulingtianxia/Spiral/blob/master/spiral.gif)  
 
 现已上架AppStore：https://itunes.apple.com/us/app/square-spiral/id920811081?l=zh&ls=1&mt=8  
 

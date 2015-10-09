@@ -11,7 +11,7 @@ import SpriteKit
 class Rope: SKSpriteNode {
     let maxLength:CGFloat
     let fixWidth:CGFloat = 5
-    init(length:CGFloat){
+    init(length:CGFloat) {
         
         let texture = SKTexture(imageNamed: "rope")
         maxLength = texture.size().height / (texture.size().width / fixWidth)

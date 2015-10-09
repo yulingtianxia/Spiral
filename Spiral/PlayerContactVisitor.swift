@@ -26,11 +26,11 @@ class PlayerContactVisitor:ContactVisitor{
                 if let entity = otherNode.owner?.entity,
                     let aiComponent = entity.componentForClass(IntelligenceComponent.self),
                     let state = aiComponent.stateMachine.currentState {
-                        if !state.isKindOfClass(ShapeFleeState.self) {
-                            return
+                        if state.isKindOfClass(ShapeFleeState.self) {
+                            aiComponent.stateMachine.enterState(ShapeDefeatedState.self)
                         }
                         else {
-                            aiComponent.stateMachine.enterState(ShapeDefeatedState.self)
+                            return
                         }
                 }
             }
@@ -46,6 +46,18 @@ class PlayerContactVisitor:ContactVisitor{
             (thisNode.scene as? GameScene)?.soundManager.playKiller()
         }
         else {
+            if Data.sharedData.currentMode == .Maze {
+                if let entity = otherNode.owner?.entity,
+                    let aiComponent = entity.componentForClass(IntelligenceComponent.self),
+                    let state = aiComponent.stateMachine.currentState {
+                        if !state.isKindOfClass(ShapeChaseState.self) {
+                            return
+                        }
+                        else {
+                            aiComponent.stateMachine.enterState(ShapeDefeatedState.self)
+                        }
+                }
+            }
             thisNode.removeAllActions()
             Data.sharedData.gameOver = true
         }

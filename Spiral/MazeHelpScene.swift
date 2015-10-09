@@ -17,7 +17,7 @@ class MazeHelpScene: SKScene {
     }
     
     func turnOffLight() {
-        (self.childNodeWithName("light") as? SKLightNode)?.lightColor = SKColor.brownColor()
+        (self.childNodeWithName("light") as? SKLightNode)?.lightColor = SKColor.blackColor()
     }
     
     func back() {

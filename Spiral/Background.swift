@@ -27,17 +27,21 @@ class Background: SKSpriteNode {
             imageString = imageName!
         }
         
-        //TODO: 背景纹理调节比例
-        let bgTexture = SKTexture(imageNamed: imageString)
-        let xScale = size.width / bgTexture.size().width
-        let yScale = size.height / bgTexture.size().height
-        let scale = max(xScale, yScale)
-        let scaleSize = CGSize(width: xScale / scale, height: yScale / scale)
-        let fitRect = CGRect(origin: CGPoint(x: (1 - scaleSize.width) / 2, y: (1 - scaleSize.height) / 2), size: scaleSize)
-        let resultTexture = SKTexture(rect: fitRect, inTexture: bgTexture)
+        var resultTexture = SKTexture(imageNamed: imageString)
+        if let bgImage = UIImage(named: imageString) {
+            let xScale = size.width / bgImage.size.width
+            let yScale = size.height / bgImage.size.height
+            let scale = max(xScale, yScale)
+            let scaleSize = CGSize(width: xScale / scale, height: yScale / scale)
+            let scaleOrigin = CGPoint(x: (1 - scaleSize.width) / 2, y: (1 - scaleSize.height) / 2)
+            if let cgimage = CGImageCreateWithImageInRect(bgImage.CGImage, CGRect(origin: CGPoint(x: scaleOrigin.x * bgImage.size.width, y: scaleOrigin.y * bgImage.size.height), size: CGSize(width: scaleSize.width * bgImage.size.width, height: scaleSize.height * bgImage.size.height))) {
+                resultTexture = SKTexture(CGImage: cgimage)
+            }
+        }
+        
         
         super.init(texture: resultTexture, color:SKColor.clearColor(), size: size)
-        normalTexture = resultTexture.textureByGeneratingNormalMap()
+
         normalTexture = resultTexture.textureByGeneratingNormalMapWithSmoothness(0.2, contrast: 2.5)
         zPosition = -100
         alpha = 0.5

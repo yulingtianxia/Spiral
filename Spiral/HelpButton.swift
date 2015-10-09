@@ -53,7 +53,7 @@ class HelpButton: SKSpriteNode {
                     (UIApplication.sharedApplication().keyWindow?.rootViewController as! GameViewController).addGestureRecognizers()
                 }
             case .Maze:
-                if let scene = MazeHelpScene.unarchiveFromFile("MazeHelpScene") as? ZenHelpScene {
+                if let scene = MazeHelpScene.unarchiveFromFile("MazeHelpScene") as? MazeHelpScene {
                     loading.removeFromParent()
                     let crossFade = SKTransition.crossFadeWithDuration(2)
                     crossFade.pausesIncomingScene = false

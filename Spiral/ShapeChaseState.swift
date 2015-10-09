@@ -49,7 +49,7 @@ class ShapeChaseState: ShapeState {
 //    MARK: - GKState Life Cycle
     
     override func isValidNextState(stateClass: AnyClass) -> Bool {
-        return stateClass == ShapeFleeState.self
+        return stateClass == ShapeFleeState.self || stateClass == ShapeDefeatedState.self
     }
     
     override func didEnterWithPreviousState(previousState: GKState?) {
