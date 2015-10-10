@@ -9,7 +9,8 @@
 import SpriteKit
 
 class EyeContactVisitor: ContactVisitor {
-    func visitPlayer(body:SKPhysicsBody){
+    func visitPlayer(body:SKPhysicsBody) {
         self.body.node?.removeFromParent()
+        Data.sharedData.gameOver = true
     }
 }

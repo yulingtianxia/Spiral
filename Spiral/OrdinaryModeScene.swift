@@ -154,13 +154,6 @@ class OrdinaryModeScene: GameScene {
     }
     
     func restartGame(){
-//        for node in self.children{
-//            if let shape = node as? Shape {
-//                if shape.name=="Killer"||shape.name=="Score"||shape.name=="Shield"||shape.name=="Reaper" {
-//                    shape.removeFromParent()
-//                }
-//            }
-//        }
         enumerateChildNodesWithName("Killer", usingBlock: { (node, stop) -> Void in
             node.removeFromParent()
         })
@@ -271,11 +264,7 @@ class OrdinaryModeScene: GameScene {
     }
     
     override func didSimulatePhysics() {
-//        if Data.sharedData.gameOver {
-//            for child in self.children{
-//                (child as! SKNode).removeAllActions()
-//            }
-//        }
+
     }
     
     

@@ -21,19 +21,7 @@ class PlayerControlComponent: GKComponent {
     
     private var nextNode: GKGridGraphNode!
     
-    var direction: PlayerDirection = .None {
-        willSet {
-//            let proposedNode: GKGridGraphNode?
-//            if newValue != .None {
-//                proposedNode = nodeInDirection(newValue, fromNode: nextNode)
-//            }
-//            else {
-//                if let currentNode = map.pathfindingGraph.nodeAtGridPosition(((entity as? Entity)?.gridPosition)!) {
-//                    proposedNode = nodeInDirection(newValue, fromNode: currentNode)
-//                }
-//            }
-        }
-    }
+    var direction: PlayerDirection = .None
     
     var attemptedDirection: PlayerDirection = .None
     
@@ -72,7 +60,11 @@ class PlayerControlComponent: GKComponent {
             }
             else {
                 //不能再动了
+                if direction != .None {
+                    (map.scene as? MazeModeScene)?.soundManager.playJump()
+                }
                 direction = .None
+                
                 return
             }
             // 给负责精灵动画的组件设置下一步移动的位置

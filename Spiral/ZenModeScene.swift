@@ -145,7 +145,6 @@ class ZenModeScene: GameScene {
                 shape.alpha = 0.2
             }
         }
-//        soundManager.stopBackGround()
         soundManager.pauseBackGround()
     }
     
@@ -282,11 +281,7 @@ class ZenModeScene: GameScene {
     }
     
     override func didSimulatePhysics() {
-//        if Data.sharedData.gameOver {
-//            for child in self.children{
-//                (child as! SKNode).removeAllActions()
-//            }
-//        }
+
     }
     
     //MARK: pause&resume game
