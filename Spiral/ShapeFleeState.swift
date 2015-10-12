@@ -54,7 +54,7 @@ class ShapeFleeState: ShapeState {
     override func updateWithDeltaTime(seconds: NSTimeInterval) {
         // If the shape has reached its target, choose a new target.
         let position = entity.gridPosition
-        if position == target!.gridPosition {
+        if target != nil && position == target!.gridPosition {
             fleeting = true
         }
         
