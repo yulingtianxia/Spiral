@@ -75,7 +75,7 @@ class SpriteComponent: GKComponent {
 //                移动到下个节点，设置速度
                 let action = SKAction.moveTo(map.pointForGridPosition(newValue), duration: durationForDistance(mazeCellWidth))
                 let update = SKAction.runBlock({ () -> Void in
-                    (entity as? Entity)?.gridPosition = newValue
+                    (self.entity as? Entity)?.gridPosition = newValue
                 })
                 
                 sprite.runAction(SKAction.sequence([action, update]), withKey: "move")
@@ -91,7 +91,7 @@ class SpriteComponent: GKComponent {
             let warp = SKAction.moveTo(map.pointForGridPosition(gridPosition), duration:0.5)
             let fadeIn = SKAction.fadeInWithDuration(0.5)
             let update = SKAction.runBlock({
-                (entity as? Entity)?.gridPosition = gridPosition
+                (self.entity as? Entity)?.gridPosition = gridPosition
             })
             
             sprite.runAction(SKAction.sequence([fadeOut, update, warp, fadeIn]))
@@ -110,7 +110,7 @@ class SpriteComponent: GKComponent {
                 let point = map.pointForGridPosition(node.gridPosition)
                 sequence.append(SKAction.moveTo(point, duration: 0.15))
                 sequence.append(SKAction.runBlock({ () -> Void in
-                    (entity as? Entity)?.gridPosition = node.gridPosition
+                    (self.entity as? Entity)?.gridPosition = node.gridPosition
                 }))
             }
         }

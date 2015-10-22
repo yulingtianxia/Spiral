@@ -11,32 +11,32 @@
 		A40AB2281BABF65400DBE971 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A40AB2271BABF65400DBE971 /* libz.tbd */; };
 		A40AB22A1BABF66000DBE971 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A40AB2291BABF66000DBE971 /* libc++.tbd */; };
 		A40AB22C1BABFB2B00DBE971 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A40AB22B1BABFB2B00DBE971 /* SystemConfiguration.framework */; };
-		A40AB22E1BABFF3000DBE971 /* WeChatActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40AB22D1BABFF3000DBE971 /* WeChatActivity.swift */; settings = {ASSET_TAGS = (); }; };
-		A40F39DB1BBA874B0061E32A /* SpriteComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40F39DA1BBA874B0061E32A /* SpriteComponent.swift */; settings = {ASSET_TAGS = (); }; };
-		A40F39E11BBA972C0061E32A /* MazeMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40F39E01BBA972C0061E32A /* MazeMap.swift */; settings = {ASSET_TAGS = (); }; };
-		A40F39E31BBAC4F30061E32A /* MazeModeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40F39E21BBAC4F30061E32A /* MazeModeScene.swift */; settings = {ASSET_TAGS = (); }; };
-		A40F39E51BBAC7BB0061E32A /* PlayerControlComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40F39E41BBAC7BB0061E32A /* PlayerControlComponent.swift */; settings = {ASSET_TAGS = (); }; };
+		A40AB22E1BABFF3000DBE971 /* WeChatActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40AB22D1BABFF3000DBE971 /* WeChatActivity.swift */; };
+		A40F39DB1BBA874B0061E32A /* SpriteComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40F39DA1BBA874B0061E32A /* SpriteComponent.swift */; };
+		A40F39E11BBA972C0061E32A /* MazeMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40F39E01BBA972C0061E32A /* MazeMap.swift */; };
+		A40F39E31BBAC4F30061E32A /* MazeModeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40F39E21BBAC4F30061E32A /* MazeModeScene.swift */; };
+		A40F39E51BBAC7BB0061E32A /* PlayerControlComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40F39E41BBAC7BB0061E32A /* PlayerControlComponent.swift */; };
 		A4175E7B1B21DF1B00156886 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4175E7A1B21DF1B00156886 /* Constant.swift */; };
 		A4175E7D1B21EBBC00156886 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4175E7C1B21EBBC00156886 /* Extensions.swift */; };
 		A4175E7F1B22024F00156886 /* bg_ordinary.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A4175E7E1B22024F00156886 /* bg_ordinary.mp3 */; };
-		A41C07741BC5165B0016CEEF /* magic.sks in Resources */ = {isa = PBXBuildFile; fileRef = A41C07731BC5165B0016CEEF /* magic.sks */; settings = {ASSET_TAGS = (); }; };
-		A41C07761BC5196A0016CEEF /* MagicRoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41C07751BC5196A0016CEEF /* MagicRoad.swift */; settings = {ASSET_TAGS = (); }; };
-		A41CBF541BC911FA00A51569 /* jump_maze.wav in Resources */ = {isa = PBXBuildFile; fileRef = A41CBF531BC911FA00A51569 /* jump_maze.wav */; settings = {ASSET_TAGS = (); }; };
-		A41CBF561BC913F200A51569 /* levelup_maze.wav in Resources */ = {isa = PBXBuildFile; fileRef = A41CBF551BC913F200A51569 /* levelup_maze.wav */; settings = {ASSET_TAGS = (); }; };
-		A41CBF581BC9150900A51569 /* gameover_maze.wav in Resources */ = {isa = PBXBuildFile; fileRef = A41CBF571BC9150900A51569 /* gameover_maze.wav */; settings = {ASSET_TAGS = (); }; };
-		A41CBF5A1BC915A900A51569 /* shield_maze.wav in Resources */ = {isa = PBXBuildFile; fileRef = A41CBF591BC915A900A51569 /* shield_maze.wav */; settings = {ASSET_TAGS = (); }; };
-		A41CBF5C1BC91CE700A51569 /* score_zen.wav in Resources */ = {isa = PBXBuildFile; fileRef = A41CBF5B1BC91CE700A51569 /* score_zen.wav */; settings = {ASSET_TAGS = (); }; };
-		A41CBF601BC9215900A51569 /* killer_ordinary.wav in Resources */ = {isa = PBXBuildFile; fileRef = A41CBF5F1BC9215900A51569 /* killer_ordinary.wav */; settings = {ASSET_TAGS = (); }; };
-		A41CBF621BC9220B00A51569 /* bg_zen.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A41CBF611BC9220B00A51569 /* bg_zen.mp3 */; settings = {ASSET_TAGS = (); }; };
-		A42414AD1BAD600F00DF3879 /* OrdinaryHelpScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A42414A91BAD600F00DF3879 /* OrdinaryHelpScene.sks */; settings = {ASSET_TAGS = (); }; };
-		A42414AE1BAD600F00DF3879 /* ZenHelpScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A42414AB1BAD600F00DF3879 /* ZenHelpScene.sks */; settings = {ASSET_TAGS = (); }; };
+		A41C07741BC5165B0016CEEF /* magic.sks in Resources */ = {isa = PBXBuildFile; fileRef = A41C07731BC5165B0016CEEF /* magic.sks */; };
+		A41C07761BC5196A0016CEEF /* MagicRoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41C07751BC5196A0016CEEF /* MagicRoad.swift */; };
+		A41CBF541BC911FA00A51569 /* jump_maze.wav in Resources */ = {isa = PBXBuildFile; fileRef = A41CBF531BC911FA00A51569 /* jump_maze.wav */; };
+		A41CBF561BC913F200A51569 /* levelup_maze.wav in Resources */ = {isa = PBXBuildFile; fileRef = A41CBF551BC913F200A51569 /* levelup_maze.wav */; };
+		A41CBF581BC9150900A51569 /* gameover_maze.wav in Resources */ = {isa = PBXBuildFile; fileRef = A41CBF571BC9150900A51569 /* gameover_maze.wav */; };
+		A41CBF5A1BC915A900A51569 /* shield_maze.wav in Resources */ = {isa = PBXBuildFile; fileRef = A41CBF591BC915A900A51569 /* shield_maze.wav */; };
+		A41CBF5C1BC91CE700A51569 /* score_zen.wav in Resources */ = {isa = PBXBuildFile; fileRef = A41CBF5B1BC91CE700A51569 /* score_zen.wav */; };
+		A41CBF601BC9215900A51569 /* killer_ordinary.wav in Resources */ = {isa = PBXBuildFile; fileRef = A41CBF5F1BC9215900A51569 /* killer_ordinary.wav */; };
+		A41CBF621BC9220B00A51569 /* bg_zen.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A41CBF611BC9220B00A51569 /* bg_zen.mp3 */; };
+		A42414AD1BAD600F00DF3879 /* OrdinaryHelpScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A42414A91BAD600F00DF3879 /* OrdinaryHelpScene.sks */; };
+		A42414AE1BAD600F00DF3879 /* ZenHelpScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A42414AB1BAD600F00DF3879 /* ZenHelpScene.sks */; };
 		A424E2F119E78176007FE1C1 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = A424E2F019E78176007FE1C1 /* Background.swift */; };
 		A4254A831AF618CF00620AA7 /* OrdinaryModeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4254A821AF618CF00620AA7 /* OrdinaryModeScene.swift */; };
 		A4254A871AF6356300620AA7 /* ZenDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4254A861AF6356300620AA7 /* ZenDisplay.swift */; };
 		A4254A891AF6396F00620AA7 /* ZenHelpScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4254A881AF6396F00620AA7 /* ZenHelpScene.swift */; };
 		A434A14B1976955000F4C94B /* ShareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A434A14A1976955000F4C94B /* ShareButton.swift */; };
 		A434A14F19769F4600F4C94B /* ReplayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A434A14E19769F4600F4C94B /* ReplayButton.swift */; };
-		A43522671BA558A40064FFC1 /* GameKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43522661BA558A40064FFC1 /* GameKitHelper.swift */; settings = {ASSET_TAGS = (); }; };
+		A43522671BA558A40064FFC1 /* GameKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43522661BA558A40064FFC1 /* GameKitHelper.swift */; };
 		A436ADE31B26EB1300D7F407 /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A436ADE21B26EB1300D7F407 /* MotionManager.swift */; };
 		A436ADE51B271FE400D7F407 /* HelpMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A436ADE41B271FE400D7F407 /* HelpMethods.swift */; };
 		A437599E1B20349200935DE7 /* OrdinaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A437599D1B20349200935DE7 /* OrdinaryButton.swift */; };
@@ -44,9 +44,9 @@
 		A43759A71B20632E00935DE7 /* GameOverIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43759A61B20632E00935DE7 /* GameOverIcon.swift */; };
 		A43F9CE11B2C5420001835F5 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43F9CE01B2C5420001835F5 /* GameScene.swift */; };
 		A45320EB1B51427D00CBD634 /* PlayRecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45320EA1B51427D00CBD634 /* PlayRecordButton.swift */; };
-		A45484621BC12AED002D9748 /* MazeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45484611BC12AED002D9748 /* MazeButton.swift */; settings = {ASSET_TAGS = (); }; };
-		A45484641BC1469D002D9748 /* MazeDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45484631BC1469C002D9748 /* MazeDisplay.swift */; settings = {ASSET_TAGS = (); }; };
-		A454846A1BC3EF0D002D9748 /* ShapeReapState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45484691BC3EF0D002D9748 /* ShapeReapState.swift */; settings = {ASSET_TAGS = (); }; };
+		A45484621BC12AED002D9748 /* MazeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45484611BC12AED002D9748 /* MazeButton.swift */; };
+		A45484641BC1469D002D9748 /* MazeDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45484631BC1469C002D9748 /* MazeDisplay.swift */; };
+		A454846A1BC3EF0D002D9748 /* ShapeReapState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45484691BC3EF0D002D9748 /* ShapeReapState.swift */; };
 		A45A65E01986073B00EA40D7 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45A65DF1986073B00EA40D7 /* SoundManager.swift */; };
 		A45A935C1B2C4FDF00EE4A56 /* gameover_ordinary.wav in Resources */ = {isa = PBXBuildFile; fileRef = A45A93571B2C4FDF00EE4A56 /* gameover_ordinary.wav */; };
 		A45A935D1B2C4FDF00EE4A56 /* jump_ordinary.wav in Resources */ = {isa = PBXBuildFile; fileRef = A45A93581B2C4FDF00EE4A56 /* jump_ordinary.wav */; };
@@ -58,7 +58,7 @@
 		A4605B6C19F5235500F8DD96 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4605B6E19F5235500F8DD96 /* Launch Screen.xib */; };
 		A46323F01A0263AA00902D3A /* Starcraft Normal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A46323EE1A02639E00902D3A /* Starcraft Normal.ttf */; };
 		A46323F11A0263AA00902D3A /* 颜体.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A46323EF1A02639E00902D3A /* 颜体.ttf */; };
-		A469E09F1BC6C7E100CBCB27 /* MazeHelpScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A469E09E1BC6C7E100CBCB27 /* MazeHelpScene.swift */; settings = {ASSET_TAGS = (); }; };
+		A469E09F1BC6C7E100CBCB27 /* MazeHelpScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A469E09E1BC6C7E100CBCB27 /* MazeHelpScene.swift */; };
 		A46D8C011976BF9400A32924 /* Shield.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D8C001976BF9400A32924 /* Shield.swift */; };
 		A46D8C031976C3B800A32924 /* ShieldContactVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D8C021976C3B800A32924 /* ShieldContactVisitor.swift */; };
 		A46E911C1AFF01D200AC1400 /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46E911B1AFF01D200AC1400 /* MainScene.swift */; };
@@ -82,19 +82,19 @@
 		A492F67B1AF3C67C004B040B /* ZenModeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A492F67A1AF3C67C004B040B /* ZenModeScene.swift */; };
 		A4954FA31BC7CA3400E6D0EE /* MazeHelpScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4954FA51BC7CA3400E6D0EE /* MazeHelpScene.sks */; };
 		A49B03F81A772AA9009D8F40 /* Tips.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B03F71A772AA9009D8F40 /* Tips.swift */; };
-		A49ECCD21BBA80DF00447A3E /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49ECCD11BBA80DF00447A3E /* Entity.swift */; settings = {ASSET_TAGS = (); }; };
-		A4A286E81BBBF88700A6CE7F /* IntelligenceComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A286E71BBBF88700A6CE7F /* IntelligenceComponent.swift */; settings = {ASSET_TAGS = (); }; };
-		A4A286ED1BBBFD3C00A6CE7F /* ShapeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A286EC1BBBFD3C00A6CE7F /* ShapeState.swift */; settings = {ASSET_TAGS = (); }; };
-		A4A286EF1BBC116700A6CE7F /* ShapeChaseState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A286EE1BBC116700A6CE7F /* ShapeChaseState.swift */; settings = {ASSET_TAGS = (); }; };
-		A4A286F11BBC119500A6CE7F /* ShapeFleeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A286F01BBC119500A6CE7F /* ShapeFleeState.swift */; settings = {ASSET_TAGS = (); }; };
-		A4A286F31BBC11AB00A6CE7F /* ShapeDefeatedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A286F21BBC11AB00A6CE7F /* ShapeDefeatedState.swift */; settings = {ASSET_TAGS = (); }; };
-		A4A286F51BBC11BE00A6CE7F /* ShapeRespawnState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A286F41BBC11BE00A6CE7F /* ShapeRespawnState.swift */; settings = {ASSET_TAGS = (); }; };
+		A49ECCD21BBA80DF00447A3E /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49ECCD11BBA80DF00447A3E /* Entity.swift */; };
+		A4A286E81BBBF88700A6CE7F /* IntelligenceComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A286E71BBBF88700A6CE7F /* IntelligenceComponent.swift */; };
+		A4A286ED1BBBFD3C00A6CE7F /* ShapeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A286EC1BBBFD3C00A6CE7F /* ShapeState.swift */; };
+		A4A286EF1BBC116700A6CE7F /* ShapeChaseState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A286EE1BBC116700A6CE7F /* ShapeChaseState.swift */; };
+		A4A286F11BBC119500A6CE7F /* ShapeFleeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A286F01BBC119500A6CE7F /* ShapeFleeState.swift */; };
+		A4A286F31BBC11AB00A6CE7F /* ShapeDefeatedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A286F21BBC11AB00A6CE7F /* ShapeDefeatedState.swift */; };
+		A4A286F51BBC11BE00A6CE7F /* ShapeRespawnState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A286F41BBC11BE00A6CE7F /* ShapeRespawnState.swift */; };
 		A4B05A3A19E9642900B303C0 /* spiral.sketch in Resources */ = {isa = PBXBuildFile; fileRef = A4B05A3919E9642900B303C0 /* spiral.sketch */; };
 		A4B104B219D6DF01008BD1BA /* bg_maze.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A4B104B119D6DF01008BD1BA /* bg_maze.mp3 */; };
 		A4B104BC19D6F3A0008BD1BA /* shield_ordinary.wav in Resources */ = {isa = PBXBuildFile; fileRef = A4B104BB19D6F3A0008BD1BA /* shield_ordinary.wav */; };
 		A4B104BE19D6F5EA008BD1BA /* killer_maze.wav in Resources */ = {isa = PBXBuildFile; fileRef = A4B104BD19D6F5EA008BD1BA /* killer_maze.wav */; };
 		A4B2788519EA781C00A2D065 /* GameCenterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B2788419EA781C00A2D065 /* GameCenterButton.swift */; };
-		A4B666AC1BAEBF32005E2E73 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = A4B666AA1BAEBF32005E2E73 /* LICENSE */; settings = {ASSET_TAGS = (); }; };
+		A4B666AC1BAEBF32005E2E73 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = A4B666AA1BAEBF32005E2E73 /* LICENSE */; };
 		A4DCE0281A839E0E00EA39B1 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DCE0261A839E0E00EA39B1 /* Crashlytics.framework */; };
 		A4DCE0291A839E0E00EA39B1 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DCE0271A839E0E00EA39B1 /* Fabric.framework */; };
 		A4DF90DD1AF0C92200CD8CEE /* Bamboo.pcvd in Resources */ = {isa = PBXBuildFile; fileRef = A4DF90DC1AF0C92200CD8CEE /* Bamboo.pcvd */; };
@@ -638,9 +638,9 @@
 		A478773C197113D000F6F611 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftMigration = 0700;
+				LastSwiftMigration = 0710;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "杨萧玉";
 				TargetAttributes = {
 					A4787743197113D000F6F611 = {
@@ -923,6 +923,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1001,6 +1002,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Spiral",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yulingtianxia.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Spiral/Spiral-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1026,6 +1028,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Spiral",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yulingtianxia.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Spiral/Spiral-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1043,6 +1046,7 @@
 				);
 				INFOPLIST_FILE = SpiralTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yxy.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Spiral.app/Spiral";
 			};
@@ -1055,6 +1059,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = SpiralTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yxy.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Spiral.app/Spiral";
 			};

@@ -202,7 +202,7 @@ class OrdinaryModeScene: GameScene {
         case 3:
             shape.position = CGPointMake(nextPoint.x-newDistance, nextPoint.y)
         default:
-            print("Why?")
+            print("Why?", terminator: "")
         }
         
     }
@@ -225,7 +225,7 @@ class OrdinaryModeScene: GameScene {
                 default:
                     self.nextShapeName = "Killer"
                     self.nextShape.texture = SKTexture(imageNamed: "killer")
-                    print(type)
+                    print(type, terminator: "")
                 }
                 self.nextShape.setScale(1)
             }
@@ -242,7 +242,7 @@ class OrdinaryModeScene: GameScene {
                 case "Shield":
                     shape = Shield()
                 default:
-                    print(self.nextShapeName)
+                    print(self.nextShapeName, terminator: "")
                     shape = Killer()
                 }
                 shape.lineNum = 0

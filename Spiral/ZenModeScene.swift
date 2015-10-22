@@ -218,7 +218,7 @@ class ZenModeScene: GameScene {
             //go up
             shape.position = CGPointMake(nextPoint.x, nextPoint.y-newDistance)
         default:
-            print("Why?")
+            print("Why?", terminator: "")
         }
         if shape.lineNum == 0 {
             shape.lineNum++
@@ -243,7 +243,7 @@ class ZenModeScene: GameScene {
                 default:
                     self.nextShapeName = "Killer"
                     self.nextShape.texture = SKTexture(imageNamed: "killer")
-                    print(type)
+                    print(type, terminator: "")
                 }
                 self.nextShape.setScale(1)
             }
@@ -260,7 +260,7 @@ class ZenModeScene: GameScene {
                 case "Shield":
                     shape = Shield()
                 default:
-                    print(self.nextShapeName)
+                    print(self.nextShapeName, terminator: "")
                     shape = Killer()
                 }
                 shape.lineNum = 0

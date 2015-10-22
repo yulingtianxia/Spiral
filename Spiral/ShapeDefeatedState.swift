@@ -31,7 +31,7 @@ class ShapeDefeatedState: ShapeState {
                 let minseconds = 0.25 * Double(NSEC_PER_SEC)
                 let dtime = dispatch_time(DISPATCH_TIME_NOW, Int64(minseconds))
                 dispatch_after(dtime, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
-                    entity.componentForClass(SpriteComponent.self)?.sprite.removeFromParent()
+                    self.entity.componentForClass(SpriteComponent.self)?.sprite.removeFromParent()
                 })
             }
             // Use pathfinding to find a route back to this shape's starting position.
@@ -39,7 +39,7 @@ class ShapeDefeatedState: ShapeState {
             if let shapeNode = graph.nodeAtGridPosition(entity.gridPosition),
                 let path = graph.findPathFromNode(shapeNode, toNode: respawnPosition) as? [GKGridGraphNode] {
                 component.followPath(path, completion: { () -> Void in
-                    stateMachine?.enterState(ShapeRespawnState.self)
+                    self.stateMachine?.enterState(ShapeRespawnState.self)
                 })
             }
         }
