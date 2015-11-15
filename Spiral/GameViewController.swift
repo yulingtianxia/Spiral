@@ -169,8 +169,8 @@ public class GameViewController: UIViewController, RPPreviewViewControllerDelega
             }
             else if let scene = scene as? GameScene {
                 GameKitHelper.sharedGameKitHelper.pause()
-                let alert = UIAlertController(title: "Quit Game?", message: "", preferredStyle: .Alert)
-                let quit = UIAlertAction(title: "Confirm", style: .Default, handler: { (action) -> Void in
+                let alert = UIAlertController(title: NSLocalizedString("Quit Game?", comment: ""), message: "", preferredStyle: .Alert)
+                let quit = UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .Default, handler: { (action) -> Void in
                     dispatch_async(dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0)) { () -> Void in
                         if Data.sharedData.gameOver {
                             return
@@ -191,7 +191,7 @@ public class GameViewController: UIViewController, RPPreviewViewControllerDelega
                         })
                     }
                 })
-                let cancel = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+                let cancel = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .Cancel, handler: nil)
                 alert.addAction(quit)
                 alert.addAction(cancel)
                 presentViewController(alert, animated: true, completion: nil)
