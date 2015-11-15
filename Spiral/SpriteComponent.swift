@@ -76,14 +76,14 @@ class SpriteComponent: GKComponent {
                 let action = SKAction.moveTo(map.pointForGridPosition(newValue), duration: self.durationForDistance(mazeCellWidth))
                 let update = SKAction.runBlock({ () -> Void in
                     (self.entity as? Entity)?.gridPosition = newValue
-                })
-                
-                self.sprite.runAction(SKAction.sequence([action, update]), completion: { () -> Void in
                     if self.secondNextGridPosition != nil {
                         self.nextGridPosition = self.secondNextGridPosition!
                         self.secondNextGridPosition = nil
                     }
                 })
+
+                self.sprite.runAction(SKAction.sequence([action, update]), withKey: "move")
+                
                 return
             }
         }
