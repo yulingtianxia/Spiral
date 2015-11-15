@@ -230,7 +230,7 @@ public class GameViewController: UIViewController, RPPreviewViewControllerDelega
             handler()
             return
         }
-        RPScreenRecorder.sharedRecorder().startRecordingWithMicrophoneEnabled(false) { (error) -> Void in
+        RPScreenRecorder.sharedRecorder().startRecordingWithMicrophoneEnabled(true) { (error) -> Void in
             if let rpError = error where rpError.domain == RPRecordingErrorDomain {
                 let alert = UIAlertController(title: "😌", message: "🚫🎥", preferredStyle: .Alert)
                 let action = UIAlertAction(title: "(⊙o⊙)", style: .Default, handler: { (action) -> Void in
