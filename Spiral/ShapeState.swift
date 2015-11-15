@@ -20,8 +20,13 @@ class ShapeState: GKState {
     
     func pathToNode(node: GKGridGraphNode) -> [GKGridGraphNode]? {
         let graph = scene.map.pathfindingGraph
-        if let sourceNode = graph.nodeAtGridPosition(entity.gridPosition) {
-            return graph.findPathFromNode(sourceNode, toNode: node) as? [GKGridGraphNode]
+        if let path = scene.pathCache[line_int4(pa: entity.gridPosition, pb: node.gridPosition)] {
+            return path
+        }
+        if let sourceNode = graph.nodeAtGridPosition(entity.gridPosition),
+            let path = graph.findPathFromNode(sourceNode, toNode: node) as? [GKGridGraphNode] {
+            scene.pathCache[line_int4(pa: entity.gridPosition, pb: node.gridPosition)] = path
+            return path
         }
         return nil
     }

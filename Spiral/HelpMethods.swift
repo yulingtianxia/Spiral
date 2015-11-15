@@ -44,4 +44,7 @@ func / (left: Int, right: CGFloat) -> CGFloat {
     return CGFloat(left) / right
 }
 
+func ==(lhs: Line, rhs: Line) -> Bool {
+    return lhs.pa == rhs.pa && lhs.pb == rhs.pb
+}
 

@@ -9,6 +9,19 @@
 import SpriteKit
 import GameplayKit
 
+struct Line: Hashable{
+    let pa: vector_int2
+    let pb: vector_int2
+    
+    var hashValue: Int {
+        get {
+            return "\(pa.x),\(pa.y),\(pb.x),\(pb.y)".hashValue
+        }
+    }
+}
+
+typealias line_int4 = Line
+
 class MazeModeScene: GameScene {
     
     let map: MazeMap
@@ -60,6 +73,8 @@ class MazeModeScene: GameScene {
             }
         }
     }
+    
+    var pathCache = [line_int4:[GKGridGraphNode]]()
     
     override init(size: CGSize) {
         random = GKRandomSource()

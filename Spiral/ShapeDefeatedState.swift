@@ -35,9 +35,7 @@ class ShapeDefeatedState: ShapeState {
                 })
             }
             // Use pathfinding to find a route back to this shape's starting position.
-            let graph = scene.map.pathfindingGraph
-            if let shapeNode = graph.nodeAtGridPosition(entity.gridPosition),
-                let path = graph.findPathFromNode(shapeNode, toNode: respawnPosition) as? [GKGridGraphNode] {
+            if let path = pathToNode(respawnPosition) {
                 component.followPath(path, completion: { () -> Void in
                     self.stateMachine?.enterState(ShapeRespawnState.self)
                 })

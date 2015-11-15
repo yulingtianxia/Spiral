@@ -72,10 +72,9 @@ class ShapeFleeState: ShapeState {
         else {
             startFollowingPath(pathToNode(target!))
         }
-        
     }
     
-    func nearestTarget() {
+    func generateTarget() {
         let position = entity.gridPosition
         let graph = scene.map.pathfindingGraph
         if let path = pathToPlayer() where path.count > 1 {
@@ -83,10 +82,12 @@ class ShapeFleeState: ShapeState {
             let delta = position - negativeNode.gridPosition
             let expectPos = position + delta
             let expectTarget: GKGridGraphNode
+            //寻找反方向的点（也就是后退）
             if let expectNode = graph.nodeAtGridPosition(expectPos) {
                 expectTarget =  expectNode
             }
             else {
+                //反方向如果没有点，那就寻找垂直两个方向（也就是左拐或右拐）
                 let orthoDelta = vector_int2(delta.y, delta.x)
                 if let expectNode = graph.nodeAtGridPosition(position + orthoDelta) {
                     expectTarget = expectNode
@@ -98,10 +99,25 @@ class ShapeFleeState: ShapeState {
                     expectTarget = graph.nodeAtGridPosition(position)!
                 }
             }
-            if graph.findPathFromNode(expectTarget, toNode: graph.nodeAtGridPosition(scene.playerEntity.gridPosition)!).count <= path.count {
+            //判断朝着期望的方向逃跑后，距离 player 是否反而更近了
+            let expectPath: [GKGraphNode]
+            if let cachePath = scene.pathCache[line_int4(pa: expectTarget.gridPosition, pb: scene.playerEntity.gridPosition)] {
+                expectPath = cachePath
+            }
+            else if let playerNode = graph.nodeAtGridPosition(scene.playerEntity.gridPosition) {
+                expectPath = graph.findPathFromNode(expectTarget, toNode: playerNode)
+                scene.pathCache[line_int4(pa: expectTarget.gridPosition, pb: scene.playerEntity.gridPosition)] = (expectPath as! [GKGridGraphNode])
+            }
+            else {
+                expectPath = [GKGraphNode]()
+            }
+            
+            if expectPath.count <= path.count {
+                //原地不动
                 target = graph.nodeAtGridPosition(position)!
             }
             else {
+                //逃跑
                 target = expectTarget
             }
         }

@@ -40,15 +40,20 @@ class ShapeReapState: ShapeState {
             if let aiComponent = shape.componentForClass(IntelligenceComponent.self),
                 let state = aiComponent.stateMachine.currentState
                 where state.isKindOfClass(ShapeDefeatedState.self)
-                || state.isKindOfClass(ShapeRespawnState.self) {
-                continue
+                    || state.isKindOfClass(ShapeRespawnState.self) {
+                        continue
             }
-            if let sourceNode = scene.map.pathfindingGraph.nodeAtGridPosition(position),
-                let targetNode = scene.map.pathfindingGraph.nodeAtGridPosition(shape.gridPosition) {
-                    let temp = scene.map.pathfindingGraph.findPathFromNode(sourceNode, toNode: targetNode)
-                    if temp.count < nearest {
-                        path = temp
-                        nearest = temp.count
+            let expectPath: [GKGraphNode]
+            if let cachePath = self.scene.pathCache[line_int4(pa: position, pb: shape.gridPosition)] {
+                expectPath = cachePath
+            }
+            else if let sourceNode = self.scene.map.pathfindingGraph.nodeAtGridPosition(position),
+                let targetNode = self.scene.map.pathfindingGraph.nodeAtGridPosition(shape.gridPosition) {
+                    expectPath = self.scene.map.pathfindingGraph.findPathFromNode(sourceNode, toNode: targetNode)
+                    self.scene.pathCache[line_int4(pa: position, pb: shape.gridPosition)] = (expectPath as! [GKGridGraphNode])
+                    if expectPath.count < nearest {
+                        path = expectPath
+                        nearest = expectPath.count
                     }
             }
         }
