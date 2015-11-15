@@ -70,6 +70,7 @@ class PlayerControlComponent: GKComponent {
             // 给负责精灵动画的组件设置下一步移动的位置
             if let component = entity?.componentForClass(SpriteComponent) {
                 component.nextGridPosition = nextNode.gridPosition
+                component.secondNextGridPosition = nodeInDirection(direction, fromNode: nextNode)?.gridPosition
             }
         }
     }

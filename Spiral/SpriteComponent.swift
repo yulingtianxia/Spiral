@@ -73,16 +73,23 @@ class SpriteComponent: GKComponent {
             if nextGridPosition != newValue,
             let map = (sprite.scene as? MazeModeScene)?.map {
 //                移动到下个节点，设置速度
-                let action = SKAction.moveTo(map.pointForGridPosition(newValue), duration: durationForDistance(mazeCellWidth))
+                let action = SKAction.moveTo(map.pointForGridPosition(newValue), duration: self.durationForDistance(mazeCellWidth))
                 let update = SKAction.runBlock({ () -> Void in
                     (self.entity as? Entity)?.gridPosition = newValue
                 })
                 
-                sprite.runAction(SKAction.sequence([action, update]), withKey: "move")
+                self.sprite.runAction(SKAction.sequence([action, update]), completion: { () -> Void in
+                    if self.secondNextGridPosition != nil {
+                        self.nextGridPosition = self.secondNextGridPosition!
+                        self.secondNextGridPosition = nil
+                    }
+                })
                 return
             }
         }
     }
+    
+    var secondNextGridPosition: vector_int2?
     
     //通过渐变的动画变换位置
     func warpToGridPosition(gridPosition: vector_int2) {
