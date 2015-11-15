@@ -168,24 +168,33 @@ public class GameViewController: UIViewController, RPPreviewViewControllerDelega
                 scene.back()
             }
             else if let scene = scene as? GameScene {
-                dispatch_async(dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0)) { () -> Void in
-                    if Data.sharedData.gameOver {
-                        return
+                GameKitHelper.sharedGameKitHelper.pause()
+                let alert = UIAlertController(title: "Quit Game?", message: "", preferredStyle: .Alert)
+                let quit = UIAlertAction(title: "Confirm", style: .Default, handler: { (action) -> Void in
+                    dispatch_async(dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0)) { () -> Void in
+                        if Data.sharedData.gameOver {
+                            return
+                        }
+                        let skView = self.view as! SKView
+                        (skView.scene as? GameScene)?.resume()
+                        Data.sharedData.display = nil
+                        Data.sharedData.gameOver = true
+                        Data.sharedData.reset()
+                        scene.soundManager.stopBackGround()
+                        self.stopRecord()
+                        let scene = MainScene(size: skView.bounds.size)
+                        let push = SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 1)
+                        push.pausesIncomingScene = false
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            skView.presentScene(scene, transition: push)
+                            self.removeGestureRecognizers()
+                        })
                     }
-                    let skView = self.view as! SKView
-                    Data.sharedData.display = nil
-                    Data.sharedData.gameOver = true
-                    Data.sharedData.reset()
-                    scene.soundManager.stopBackGround()
-                    self.stopRecord()
-                    let scene = MainScene(size: skView.bounds.size)
-                    let push = SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 1)
-                    push.pausesIncomingScene = false
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        skView.presentScene(scene, transition: push)
-                        self.removeGestureRecognizers()
-                    })
-                }
+                })
+                let cancel = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+                alert.addAction(quit)
+                alert.addAction(cancel)
+                presentViewController(alert, animated: true, completion: nil)
             }
         }
     }

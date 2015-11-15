@@ -66,7 +66,7 @@ class ShapeFleeState: ShapeState {
         
         fleeting = ruleSystem.gradeForFact("flee") > 0.0
         if fleeting {
-            nearestTarget()
+            generateTarget()
             startRunToNode(target!)
         }
         else {

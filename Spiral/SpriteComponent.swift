@@ -73,7 +73,7 @@ class SpriteComponent: GKComponent {
             if nextGridPosition != newValue,
             let map = (sprite.scene as? MazeModeScene)?.map {
 //                移动到下个节点，设置速度
-                let action = SKAction.moveTo(map.pointForGridPosition(newValue), duration: self.durationForDistance(mazeCellWidth))
+                let action = SKAction.moveTo(map.pointForGridPosition(newValue), duration: durationForDistance(mazeCellWidth))
                 let update = SKAction.runBlock({ () -> Void in
                     (self.entity as? Entity)?.gridPosition = newValue
                     if self.secondNextGridPosition != nil {
@@ -82,7 +82,7 @@ class SpriteComponent: GKComponent {
                     }
                 })
 
-                self.sprite.runAction(SKAction.sequence([action, update]), withKey: "move")
+                sprite.runAction(SKAction.sequence([action, update]), withKey: "move")
                 
                 return
             }
@@ -127,6 +127,6 @@ class SpriteComponent: GKComponent {
     }
     
     func durationForDistance(distance: CGFloat) -> NSTimeInterval {
-        return NSTimeInterval(distance / sprite.moveSpeed)
+        return NSTimeInterval(distance / sprite.moveSpeed * 0.7)
     }
 }

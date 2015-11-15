@@ -281,7 +281,7 @@ class OrdinaryModeScene: GameScene {
         }
     }
     
-    func resume() {
+    override func resume() {
         display.resume()
         view?.paused = false
     }

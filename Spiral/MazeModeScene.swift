@@ -215,8 +215,8 @@ class MazeModeScene: GameScene {
         powerupTimeRemaining -= dt
         
         // Update components with the new time delta.
-        intelligenceSystem.updateWithDeltaTime(dt)
         playerEntity.updateWithDeltaTime(dt)
+        intelligenceSystem.updateWithDeltaTime(dt)
     }
     
     //MARK: - UI control methods
@@ -310,7 +310,7 @@ class MazeModeScene: GameScene {
         }
     }
     
-    func resume() {
+    override func resume() {
         display.resume()
         view?.paused = false
     }

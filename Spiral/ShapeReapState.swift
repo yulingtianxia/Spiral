@@ -44,13 +44,13 @@ class ShapeReapState: ShapeState {
                         continue
             }
             let expectPath: [GKGraphNode]
-            if let cachePath = self.scene.pathCache[line_int4(pa: position, pb: shape.gridPosition)] {
+            if let cachePath = scene.pathCache[line_int4(pa: position, pb: shape.gridPosition)] {
                 expectPath = cachePath
             }
-            else if let sourceNode = self.scene.map.pathfindingGraph.nodeAtGridPosition(position),
-                let targetNode = self.scene.map.pathfindingGraph.nodeAtGridPosition(shape.gridPosition) {
-                    expectPath = self.scene.map.pathfindingGraph.findPathFromNode(sourceNode, toNode: targetNode)
-                    self.scene.pathCache[line_int4(pa: position, pb: shape.gridPosition)] = (expectPath as! [GKGridGraphNode])
+            else if let sourceNode = scene.map.pathfindingGraph.nodeAtGridPosition(position),
+                let targetNode = scene.map.pathfindingGraph.nodeAtGridPosition(shape.gridPosition) {
+                    expectPath = scene.map.pathfindingGraph.findPathFromNode(sourceNode, toNode: targetNode)
+                    scene.pathCache[line_int4(pa: position, pb: shape.gridPosition)] = (expectPath as! [GKGridGraphNode])
                     if expectPath.count < nearest {
                         path = expectPath
                         nearest = expectPath.count

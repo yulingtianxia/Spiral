@@ -48,6 +48,9 @@ class ShapeState: GKState {
             let firstMove = path[1] // path[0] is the shape's current position.
             let component = entity.componentForClass(SpriteComponent)
             component?.nextGridPosition = firstMove.gridPosition
+            if path.count > 2 {
+                component?.secondNextGridPosition = path[2].gridPosition
+            }
         }
     }
     

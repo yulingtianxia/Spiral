@@ -83,19 +83,18 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
         if mManager.deviceMotionAvailable {
             mManager.deviceMotionUpdateInterval = kUpdateInterval
             mManager.startDeviceMotionUpdates()
-//            mManager.startDeviceMotionUpdatesToQueue(NSOperationQueue.mainQueue(), withHandler: { (deviceMotion, error) -> Void in
-//                if error != nil {
-//                    println(error.description)
-//                }
-//                else {
-//                    let acceleration = deviceMotion.userAcceleration
-//                    for shape in self.shapes {
-//                        let mass = shape.physicsBody!.mass
-//                        let impulse = CGVector(dx: -mass * acceleration.x * kAccelerateScale, dy: -mass * acceleration.y * kAccelerateScale)
-//                        shape.physicsBody?.applyImpulse(impulse)
-//                    }
-//                }
-//            })
+            mManager.startDeviceMotionUpdatesToQueue(NSOperationQueue.mainQueue(), withHandler: { (deviceMotion, error) -> Void in
+                if error != nil {
+                    print(error!.description)
+                }
+                else if let acceleration = deviceMotion?.userAcceleration{
+                    for shape in self.shapes {
+                        let mass = shape.physicsBody!.mass
+                        let impulse = CGVector(dx: -mass * acceleration.x * kAccelerateScale, dy: -mass * acceleration.y * kAccelerateScale)
+                        shape.physicsBody?.applyImpulse(impulse)
+                    }
+                }
+            })
         }
     }
 
@@ -142,7 +141,7 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
             //赋予随机初速度
             shape.physicsBody?.velocity = randomVelocity()
             //点亮照明灯
-            shape.light.enabled = true
+            shape.light.enabled = false
             //添加到场景
             addChild(shape)
         }
@@ -156,14 +155,14 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func didSimulatePhysics() {
-        if let deviceMotion = mManager.deviceMotion {
-            let acceleration = deviceMotion.userAcceleration
-            for shape in self.shapes {
-                let mass = shape.physicsBody!.mass
-                let impulse = CGVector(dx: -mass * acceleration.x * kAccelerateScale, dy: -mass * acceleration.y * kAccelerateScale)
-                shape.physicsBody?.applyImpulse(impulse)
-            }
-        }
+//        if let deviceMotion = mManager.deviceMotion {
+//            let acceleration = deviceMotion.userAcceleration
+//            for shape in self.shapes {
+//                let mass = shape.physicsBody!.mass
+//                let impulse = CGVector(dx: -mass * acceleration.x * kAccelerateScale, dy: -mass * acceleration.y * kAccelerateScale)
+//                shape.physicsBody?.applyImpulse(impulse)
+//            }
+//        }
     }
     
     deinit {
