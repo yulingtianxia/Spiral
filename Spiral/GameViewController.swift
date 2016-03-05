@@ -241,7 +241,7 @@ public class GameViewController: UIViewController, RPPreviewViewControllerDelega
         }
         RPScreenRecorder.sharedRecorder().startRecordingWithMicrophoneEnabled(true) { (error) -> Void in
             if let rpError = error where rpError.domain == RPRecordingErrorDomain {
-                let alert = UIAlertController(title: "😌", message: "🚫🎥", preferredStyle: .Alert)
+                let alert = UIAlertController(title: NSLocalizedString("Sorry", comment: ""), message: NSLocalizedString("The screen recorder is not working", comment: ""), preferredStyle: .Alert)
                 let action = UIAlertAction(title: "(⊙o⊙)", style: .Default, handler: { (action) -> Void in
                     handler()
                 })
@@ -266,8 +266,8 @@ public class GameViewController: UIViewController, RPPreviewViewControllerDelega
     
     func playRecord() {
         guard let pvController = previewViewController else {
-            let alert = UIAlertController(title: "😌", message: "🙈🎥", preferredStyle: .Alert)
-            let action = UIAlertAction(title: "😭", style: .Default, handler: nil)
+            let alert = UIAlertController(title: NSLocalizedString("Sorry", comment: ""), message: NSLocalizedString("The screen recorder was not started!", comment: ""), preferredStyle: .Alert)
+            let action = UIAlertAction(title: NSLocalizedString("I'm FINE", comment: ""), style: .Default, handler: nil)
             alert.addAction(action)
             self.presentViewController(alert, animated: true, completion: nil)
             return

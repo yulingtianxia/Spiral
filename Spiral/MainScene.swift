@@ -85,7 +85,7 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
             mManager.startDeviceMotionUpdates()
             mManager.startDeviceMotionUpdatesToQueue(NSOperationQueue.mainQueue(), withHandler: { (deviceMotion, error) -> Void in
                 if error != nil {
-                    print(error!.description)
+                    print(error!.description, terminator: "")
                 }
                 else if let acceleration = deviceMotion?.userAcceleration{
                     for shape in self.shapes {

@@ -15,7 +15,8 @@ class ShapeChaseState: ShapeState {
             if hunting != newValue && !newValue {
                 let playerPos = scene.playerEntity.gridPosition
                 //将目标点设为 player 周围的随机点
-                let targets = [vector_int2(playerPos.x, playerPos.y + 2),
+                let targets = [
+                    vector_int2(playerPos.x, playerPos.y + 2),
                     vector_int2(playerPos.x + 2, playerPos.y),
                     vector_int2(playerPos.x, playerPos.y - 2),
                     vector_int2(playerPos.x - 2, playerPos.y),

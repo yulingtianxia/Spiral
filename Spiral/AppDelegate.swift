@@ -7,8 +7,10 @@
 //
 
 import UIKit
+#if !DEBUG
 import Fabric
 import Crashlytics
+#endif
 import SpriteKit
 import CoreMotion
 
@@ -22,7 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         WXApi.registerApp("wxeeaeb81c5f737329")
+        #if !DEBUG
         Fabric.with([Crashlytics()])
+        #endif
         SKNode.yxy_swizzleAddChild()
         SKNode.yxy_swizzleRemoveFromParent()
         
