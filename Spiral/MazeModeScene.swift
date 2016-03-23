@@ -112,9 +112,9 @@ class MazeModeScene: GameScene {
         physicsWorld.contactDelegate = self
         
         //Observe Notification
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pause"), name: UIApplicationWillResignActiveNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pause"), name: UIApplicationDidEnterBackgroundNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pause"), name: WantGamePauseNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GameControlProtocol.pause), name: UIApplicationWillResignActiveNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GameControlProtocol.pause), name: UIApplicationDidEnterBackgroundNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GameControlProtocol.pause), name: WantGamePauseNotification, object: nil)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -236,7 +236,7 @@ class MazeModeScene: GameScene {
     override func createReaper(){
         if !Data.sharedData.gameOver && view?.paused == false {
             if Data.sharedData.reaperNum>0 {
-                Data.sharedData.reaperNum--
+                Data.sharedData.reaperNum -= 1
                 // 释放收割机，去收获。。。
                 let reaper = Entity(type: .Reaper)
                 reaper.gridPosition = playerEntity.gridPosition

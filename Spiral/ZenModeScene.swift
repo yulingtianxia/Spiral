@@ -58,9 +58,9 @@ class ZenModeScene: GameScene {
         resume()
         
         //Observe Notification
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pause"), name: UIApplicationWillResignActiveNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pause"), name: UIApplicationDidEnterBackgroundNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pause"), name: WantGamePauseNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GameControlProtocol.pause), name: UIApplicationWillResignActiveNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GameControlProtocol.pause), name: UIApplicationDidEnterBackgroundNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GameControlProtocol.pause), name: WantGamePauseNotification, object: nil)
     }
     
     deinit{
@@ -111,7 +111,7 @@ class ZenModeScene: GameScene {
         super.createReaper()
         if !Data.sharedData.gameOver && view?.paused == false {
             if Data.sharedData.reaperNum>0 {
-                Data.sharedData.reaperNum--
+                Data.sharedData.reaperNum -= 1
                 for pathNum in 0...3 {
                     let shape = Reaper()
                     shape.lineNum = 0
@@ -200,7 +200,7 @@ class ZenModeScene: GameScene {
 
         let scale = CGFloat(shape.lineNum-1)/CGFloat(shape.lineNum)
         let newDistance = shape.calDistanceInZenMap(map)*scale
-        shape.lineNum--
+        shape.lineNum -= 1
         shape.pathOrientation = PathOrientation(rawValue: (shape.pathOrientation.rawValue + 1)%4)!
         shape.removeAllActions()
         let nextPoint = map.points[shape.pathOrientation]![shape.lineNum+1]
@@ -221,7 +221,7 @@ class ZenModeScene: GameScene {
             print("Why?", terminator: "")
         }
         if shape.lineNum == 0 {
-            shape.lineNum++
+            shape.lineNum += 1
         }
     }
     

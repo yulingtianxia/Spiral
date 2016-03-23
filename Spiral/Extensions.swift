@@ -64,8 +64,8 @@ extension SKNode {
     
     class func yxy_swizzleAddChild() {
         let cls = SKNode.self
-        let originalSelector = Selector("addChild:")
-        let swizzledSelector = Selector("yxy_addChild:")
+        let originalSelector = #selector(SKNode.addChild(_:))
+        let swizzledSelector = #selector(SKNode.yxy_addChild(_:))
         let originalMethod = class_getInstanceMethod(cls, originalSelector)
         let swizzledMethod = class_getInstanceMethod(cls, swizzledSelector)
         method_exchangeImplementations(originalMethod, swizzledMethod)
@@ -73,8 +73,8 @@ extension SKNode {
     
     class func yxy_swizzleRemoveFromParent() {
         let cls = SKNode.self
-        let originalSelector = Selector("removeFromParent")
-        let swizzledSelector = Selector("yxy_removeFromParent")
+        let originalSelector = #selector(SKNode.removeFromParent)
+        let swizzledSelector = #selector(SKNode.yxy_removeFromParent)
         let originalMethod = class_getInstanceMethod(cls, originalSelector)
         let swizzledMethod = class_getInstanceMethod(cls, swizzledSelector)
         method_exchangeImplementations(originalMethod, swizzledMethod)

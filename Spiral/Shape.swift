@@ -60,7 +60,7 @@ class Shape: SKSpriteNode {
         let move = SKAction.moveTo(map.points[lineNum+1], duration: Double(duration))
         let group = SKAction.group([rotate,move])
         self.runAction(group, completion:{
-            self.lineNum++
+            self.lineNum += 1
             if self.lineNum==map.points.count-1 {
                 if self is Player{
                     Data.sharedData.gameOver = true
@@ -100,7 +100,7 @@ class Shape: SKSpriteNode {
         let move = SKAction.moveTo(map.points[pathOrientation]![lineNum+1], duration: Double(duration))
         let group = SKAction.group([rotate,move])
         self.runAction(group, completion: {
-            self.lineNum++
+            self.lineNum += 1
             if self.lineNum==map.points[self.pathOrientation]!.count-1 {
                 if self is Player{
                     Data.sharedData.gameOver = true

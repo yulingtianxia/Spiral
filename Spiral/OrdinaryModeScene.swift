@@ -53,9 +53,9 @@ class OrdinaryModeScene: GameScene {
         resume()
         
         //Observe Notification
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pause"), name: UIApplicationWillResignActiveNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pause"), name: UIApplicationDidEnterBackgroundNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pause"), name: WantGamePauseNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GameControlProtocol.pause), name: UIApplicationWillResignActiveNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GameControlProtocol.pause), name: UIApplicationDidEnterBackgroundNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GameControlProtocol.pause), name: WantGamePauseNotification, object: nil)
         
     }
     
@@ -109,7 +109,7 @@ class OrdinaryModeScene: GameScene {
         if !Data.sharedData.gameOver && view?.paused == false {
             if Data.sharedData.reaperNum>0 {
                 let shape = Reaper()
-                Data.sharedData.reaperNum--
+                Data.sharedData.reaperNum -= 1
                 shape.lineNum = 0
                 shape.position = self.map.points[shape.lineNum]
                 shape.runInOrdinaryMap(map)

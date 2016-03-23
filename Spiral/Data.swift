@@ -39,9 +39,10 @@ public class Data{
     
     public var score:Int = 0{
         willSet{
-        if newValue>=updateScore{
-            updateScore+=5 * ++level
-        }
+            if newValue>=updateScore{
+                level += 1
+                updateScore+=5 * level
+            }
         }
         didSet{
             display?.updateData()
@@ -88,11 +89,11 @@ public class Data{
     
     var level:Int = 1{
         willSet{
-        speedScale = 1/CGFloat(newValue)
-        if newValue != 1{
-        display?.levelUp()
-        }
-        reaperNum++
+            speedScale = 1/CGFloat(newValue)
+            if newValue != 1{
+                display?.levelUp()
+            }
+            reaperNum += 1
         }
         didSet{
             display?.updateData()

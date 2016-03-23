@@ -17,7 +17,11 @@
 	<key>CFBundlePackageType</key>
 	<string>FMWK</string>
 	<key>CFBundleShortVersionString</key>
+<<<<<<< Updated upstream
 	<string>1.6.6</string>
+=======
+	<string>1.6.2</string>
+>>>>>>> Stashed changes
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleSupportedPlatforms</key>
@@ -25,7 +29,11 @@
 		<string>iPhoneOS</string>
 	</array>
 	<key>CFBundleVersion</key>
+<<<<<<< Updated upstream
 	<string>49</string>
+=======
+	<string>38</string>
+>>>>>>> Stashed changes
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>

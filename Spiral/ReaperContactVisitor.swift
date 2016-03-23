@@ -94,7 +94,7 @@ class ReaperContactVisitor: ContactVisitor {
         }
         
         scene?.player.shield = true
-        Data.sharedData.score++
+        Data.sharedData.score += 1
         scene?.soundManager.playShield()
     }
     

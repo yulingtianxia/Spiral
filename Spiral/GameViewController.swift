@@ -32,38 +32,38 @@ public class GameViewController: UIViewController, RPPreviewViewControllerDelega
         /* Sprite Kit applies additional optimizations to improve rendering performance */
         skView.ignoresSiblingOrder = true
         
-        longPress = UILongPressGestureRecognizer(target: self, action: Selector("handleLongPressGesture:"))
+        longPress = UILongPressGestureRecognizer(target: self, action: #selector(GameViewController.handleLongPressGesture(_:)))
         longPress.delegate = self
         
-        tapWithOneFinger = UITapGestureRecognizer(target: self, action: Selector("handleTapWithOneFingerGesture:"))
-        tapWithTwoFinger = UITapGestureRecognizer(target: self, action: Selector("handleTapWithTwoFingerGesture:"))
+        tapWithOneFinger = UITapGestureRecognizer(target: self, action: #selector(GameViewController.handleTapWithOneFingerGesture(_:)))
+        tapWithTwoFinger = UITapGestureRecognizer(target: self, action: #selector(GameViewController.handleTapWithTwoFingerGesture(_:)))
         tapWithTwoFinger.numberOfTouchesRequired = 2
         tapWithTwoFinger.delegate = self
         
-        pan = UIPanGestureRecognizer(target: self, action: Selector("handlePanGesture:"))
+        pan = UIPanGestureRecognizer(target: self, action: #selector(GameViewController.handlePanGesture(_:)))
         pan.maximumNumberOfTouches = 1
         pan.delegate = self
         
-        pinch = UIPinchGestureRecognizer(target: self, action: Selector("handlePinchGesture:"))
+        pinch = UIPinchGestureRecognizer(target: self, action: #selector(GameViewController.handlePinchGesture(_:)))
         pinch.delegate = self
         
-        swipeRight = UISwipeGestureRecognizer(target: self, action: Selector("swipeRight:"))
+        swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(GameViewController.swipeRight(_:)))
         swipeRight.direction = .Right
         swipeRight.delegate = self
         
-        swipeLeft = UISwipeGestureRecognizer(target: self, action: Selector("swipeLeft:"))
+        swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(GameViewController.swipeLeft(_:)))
         swipeLeft.direction = .Left
         swipeLeft.delegate = self
         
-        swipeUp = UISwipeGestureRecognizer(target: self, action: Selector("swipeUp:"))
+        swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(GameViewController.swipeUp(_:)))
         swipeUp.direction = .Up
         swipeUp.delegate = self
         
-        swipeDown = UISwipeGestureRecognizer(target: self, action: Selector("swipeDown:"))
+        swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(GameViewController.swipeDown(_:)))
         swipeDown.direction = .Down
         swipeDown.delegate = self
         
-        screenEdgePanRight = UIScreenEdgePanGestureRecognizer(target: self, action: Selector("handleEdgePanGesture:"))
+        screenEdgePanRight = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(GameViewController.handleEdgePanGesture(_:)))
         screenEdgePanRight.edges = UIRectEdge.Left
         screenEdgePanRight.delegate = self
         
