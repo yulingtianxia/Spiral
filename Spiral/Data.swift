@@ -8,9 +8,9 @@
 import UIKit
 
 enum GameMode {
-    case Ordinary
-    case Zen
-    case Maze
+    case ordinary
+    case zen
+    case maze
 }
 
 protocol DisplayData: class{
@@ -21,13 +21,11 @@ protocol DisplayData: class{
     func disableButtons()
 }
 
-public class Data{
+open class Data{
     
-    private static let instance = Data()
+    static let sharedData = Data()
     
-    class var sharedData: Data {
-        return instance
-    }
+    fileprivate init() {}
     
     weak var display: DisplayData?
     
@@ -35,13 +33,13 @@ public class Data{
     
     var autoRecord:Bool = true
     
-    var currentMode: GameMode = .Ordinary
+    var currentMode: GameMode = .ordinary
     
-    public var score:Int = 0{
+    open var score:Int = 0{
         willSet{
             if newValue>=updateScore{
                 level += 1
-                updateScore+=5 * level
+                updateScore += 5 * level
             }
         }
         didSet{
@@ -69,11 +67,11 @@ public class Data{
     var gameOver:Bool = false {
         willSet{
             if newValue {
-                let standardDefaults = NSUserDefaults.standardUserDefaults()
-                highScore = standardDefaults.integerForKey("highscore")
+                let standardDefaults = UserDefaults.standard
+                highScore = standardDefaults.integer(forKey: "highscore")
                 if highScore < score {
                     highScore = score
-                    standardDefaults.setInteger(score, forKey: "highscore")
+                    standardDefaults.set(score, forKey: "highscore")
                     standardDefaults.synchronize()
                 }
                 display?.gameOver()
@@ -117,7 +115,7 @@ public class Data{
         reaperNum = 1
     }
     
-    private func sendDataToGameCenter(){
+    fileprivate func sendDataToGameCenter(){
         GameKitHelper.sharedGameKitHelper.submitScore(Int64(score), identifier: kHighScoreLeaderboardIdentifier)
         GameKitHelper.sharedGameKitHelper.reportMultipleAchievements()
     }

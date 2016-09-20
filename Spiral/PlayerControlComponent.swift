@@ -9,46 +9,50 @@
 import GameplayKit
 
 enum PlayerDirection: Int {
-    case None
-    case Left
-    case Right
-    case Down
-    case Up
+    case none
+    case left
+    case right
+    case down
+    case up
 }
 
 class PlayerControlComponent: GKComponent {
     let map: MazeMap
     
-    private var nextNode: GKGridGraphNode!
+    fileprivate var nextNode: GKGridGraphNode!
     
-    var direction: PlayerDirection = .None
+    var direction: PlayerDirection = .none
     
-    var attemptedDirection: PlayerDirection = .None
+    var attemptedDirection: PlayerDirection = .none
     
     init(map m: MazeMap) {
         map = m
         super.init()
     }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
-    func nodeInDirection(direction: PlayerDirection, fromNode node: GKGridGraphNode) -> GKGridGraphNode? {
+    func nodeInDirection(_ direction: PlayerDirection, fromNode node: GKGridGraphNode) -> GKGridGraphNode? {
         let nextPosition: vector_int2
         switch direction {
-        case .Left:
+        case .left:
             nextPosition = node.gridPosition + vector_int2(-1, 0)
-        case .Right:
+        case .right:
             nextPosition = node.gridPosition + vector_int2(1, 0)
-        case .Down:
+        case .down:
             nextPosition = node.gridPosition + vector_int2(0, -1)
-        case .Up:
+        case .up:
             nextPosition = node.gridPosition + vector_int2(0, 1)
-        case .None:
+        case .none:
             return nil
         }
-        return map.pathfindingGraph.nodeAtGridPosition(nextPosition)
+        return map.pathfindingGraph.node(atGridPosition: nextPosition)
     }
     
     func makeNextMove() {
-        if let currentNode = map.pathfindingGraph.nodeAtGridPosition(((entity as? Entity)?.gridPosition)!) {
+        if let currentNode = map.pathfindingGraph.node(atGridPosition: ((entity as? Entity)?.gridPosition)!) {
             if let attemptedNextNode = nodeInDirection(attemptedDirection, fromNode: currentNode) {
                 //改变方向
                 direction = attemptedDirection
@@ -60,22 +64,22 @@ class PlayerControlComponent: GKComponent {
             }
             else {
                 //不能再动了
-                if direction != .None {
+                if direction != .none {
                     (map.scene as? MazeModeScene)?.soundManager.playJump()
                 }
-                direction = .None
+                direction = .none
                 
                 return
             }
             // 给负责精灵动画的组件设置下一步移动的位置
-            if let component = entity?.componentForClass(SpriteComponent) {
+            if let component = entity?.component(ofType: SpriteComponent.self) {
                 component.nextGridPosition = nextNode.gridPosition
                 component.secondNextGridPosition = nodeInDirection(direction, fromNode: nextNode)?.gridPosition
             }
         }
     }
     
-    override func updateWithDeltaTime(seconds: NSTimeInterval) {
+    override func update(deltaTime seconds: TimeInterval) {
         makeNextMove()
     }
     

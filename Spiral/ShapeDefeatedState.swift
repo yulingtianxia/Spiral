@@ -19,25 +19,25 @@ class ShapeDefeatedState: ShapeState {
     
     //    MARK: - GKState Life Cycle
     
-    override func isValidNextState(stateClass: AnyClass) -> Bool {
+    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return stateClass == ShapeRespawnState.self
     }
     
-    override func didEnterWithPreviousState(previousState: GKState?) {
+    override func didEnter(from previousState: GKState?) {
         // Change the shape sprite's appearance to indicate defeat.
-        if let component = entity.componentForClass(SpriteComponent.self) {
+        if let component = entity.component(ofType: SpriteComponent.self) {
             component.useDefeatedAppearance()
-            if entity.shapeType == .Reaper {
+            if entity.shapeType == .reaper {
                 let minseconds = 0.25 * Double(NSEC_PER_SEC)
-                let dtime = dispatch_time(DISPATCH_TIME_NOW, Int64(minseconds))
-                dispatch_after(dtime, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
-                    self.entity.componentForClass(SpriteComponent.self)?.sprite.removeFromParent()
+                let dtime = DispatchTime.now() + Double(Int64(minseconds)) / Double(NSEC_PER_SEC)
+                DispatchQueue.global(qos: DispatchQoS.QoSClass.default).asyncAfter(deadline: dtime, execute: { () -> Void in
+                    self.entity.component(ofType: SpriteComponent.self)?.sprite.removeFromParent()
                 })
             }
             // Use pathfinding to find a route back to this shape's starting position.
             if let path = pathToNode(respawnPosition) {
                 component.followPath(path, completion: { () -> Void in
-                    self.stateMachine?.enterState(ShapeRespawnState.self)
+                    self.stateMachine?.enter(ShapeRespawnState.self)
                 })
             }
         }

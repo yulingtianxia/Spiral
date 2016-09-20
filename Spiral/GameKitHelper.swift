@@ -22,7 +22,7 @@ let WantGamePauseNotification = "gamepause"
 
 
 protocol GameKitHelperProtocol: NSObjectProtocol {
-    func onScoresSubmitted(success:Bool)
+    func onScoresSubmitted(_ success:Bool)
 }
 
 class GameKitHelper: NSObject, GKGameCenterControllerDelegate {
@@ -35,11 +35,11 @@ class GameKitHelper: NSObject, GKGameCenterControllerDelegate {
         }
     }
     var achievementsDictionary: [String:GKAchievement]
-    var submitScoreWithCompletionHandler: ((success: Bool)->Void)?
+    var submitScoreWithCompletionHandler: ((_ success: Bool)->Void)?
     
-    private var gameCenterFeaturesEnabled: Bool = false
+    fileprivate var gameCenterFeaturesEnabled: Bool = false
     
-    private static let sharedInstance = GameKitHelper()
+    fileprivate static let sharedInstance = GameKitHelper()
     
     class var sharedGameKitHelper: GameKitHelper {
         return sharedInstance
@@ -56,10 +56,10 @@ class GameKitHelper: NSObject, GKGameCenterControllerDelegate {
     func authenticateLocalPlayer() {
         let localPlayer = GKLocalPlayer.localPlayer()
         localPlayer.authenticateHandler = { [unowned localPlayer] (viewController, error) in
-            self.lastError = error
-            if localPlayer.authenticated {
+            self.lastError = error as NSError?
+            if localPlayer.isAuthenticated {
                 self.gameCenterFeaturesEnabled = true
-                self.submitScoreWithCompletionHandler?(success: true)
+                self.submitScoreWithCompletionHandler?(true)
                 self.loadAchievements()
             }
             else if let vc = viewController {
@@ -68,7 +68,7 @@ class GameKitHelper: NSObject, GKGameCenterControllerDelegate {
             }
             else {
                 self.gameCenterFeaturesEnabled = false
-                self.submitScoreWithCompletionHandler?(success: false)
+                self.submitScoreWithCompletionHandler?(false)
             }
         }
     }
@@ -76,20 +76,20 @@ class GameKitHelper: NSObject, GKGameCenterControllerDelegate {
     //MARK: - UIViewController stuff
     
     func getRootViewController() -> UIViewController? {
-        return UIApplication.sharedApplication().keyWindow?.rootViewController;
+        return UIApplication.shared.keyWindow?.rootViewController;
     }
     
-    func presentViewController(vc: UIViewController) {
+    func presentViewController(_ vc: UIViewController) {
         let rootVC = self.getRootViewController()
-        rootVC?.presentViewController(vc, animated: true, completion: nil)
+        rootVC?.present(vc, animated: true, completion: nil)
     }
     
     // MARK: - GameKitHelperProtocol
     
-    func submitScore(score: Int64, identifier: String) {
+    func submitScore(_ score: Int64, identifier: String) {
         //1: Check if Game Center features are enabled
         guard gameCenterFeaturesEnabled else {
-            submitScoreWithCompletionHandler?(success: false)
+            submitScoreWithCompletionHandler?(false)
             return
         }
         //2: Create a GKScore object
@@ -97,23 +97,23 @@ class GameKitHelper: NSObject, GKGameCenterControllerDelegate {
         //3: Set the score value
         gkScore.value = score
         //4: Send the score to Game Center
-        GKScore.reportScores([gkScore]) { (error) -> Void in
-            self.lastError = error
+        GKScore.report([gkScore], withCompletionHandler: { (error) -> Void in
+            self.lastError = error as NSError?
             let success = (error == nil)
-            self.submitScoreWithCompletionHandler?(success: success)
+            self.submitScoreWithCompletionHandler?(success)
             self.delegate?.onScoresSubmitted(success)
-        }
+        }) 
     }
     
     func pause() {
-        NSNotificationCenter.defaultCenter().postNotificationName(WantGamePauseNotification, object: nil)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: WantGamePauseNotification), object: nil)
     }
     
     //MARK: - Achievements Methods
     
     func loadAchievements() {
-        GKAchievement.loadAchievementsWithCompletionHandler { (achievements, error) -> Void in
-            if let achievements = achievements where error == nil {
+        GKAchievement.loadAchievements { (achievements, error) -> Void in
+            if let achievements = achievements , error == nil {
                 for achievement in achievements {
                     self.achievementsDictionary[achievement.identifier!] = achievement
                 }
@@ -121,7 +121,7 @@ class GameKitHelper: NSObject, GKGameCenterControllerDelegate {
         }
     }
     
-    func getAchievementForIdentifier(identifier: String) -> GKAchievement {
+    func getAchievementForIdentifier(_ identifier: String) -> GKAchievement {
         guard let achievement = achievementsDictionary[identifier] else {
             let achievement = GKAchievement(identifier: identifier)
             achievementsDictionary[achievement.identifier!] = achievement
@@ -130,28 +130,28 @@ class GameKitHelper: NSObject, GKGameCenterControllerDelegate {
         return achievement;
     }
     
-    func updateAchievement(achievement: GKAchievement, identifier: String) {
+    func updateAchievement(_ achievement: GKAchievement, identifier: String) {
         achievementsDictionary[identifier] = achievement
     }
     
     func reportMultipleAchievements() {
-        GKAchievement.reportAchievements(Array(achievementsDictionary.values)) { (error) -> Void in
+        GKAchievement.report(Array(achievementsDictionary.values), withCompletionHandler: { (error) -> Void in
             if error != nil {
                 fatalError("Error in reporting achievements:\(error)")
             }
-        }
+        }) 
     }
     
     func showLeaderboard() {
         let gameCenterController = GKGameCenterViewController()
         pause()
         gameCenterController.gameCenterDelegate = self
-        gameCenterController.viewState = .Achievements
+        gameCenterController.viewState = .achievements
         presentViewController(gameCenterController)
     }
     
     //MARK: - GKGameCenterControllerDelegate
-    func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController) {
-        getRootViewController()?.dismissViewControllerAnimated(true, completion: nil)
+    func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
+        getRootViewController()?.dismiss(animated: true, completion: nil)
     }
 }

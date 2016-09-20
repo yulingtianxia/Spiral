@@ -10,7 +10,7 @@ import SpriteKit
 
 class Eye: SKSpriteNode {
     init() {
-        super.init(texture: SKTexture(imageNamed: "eye"), color: UIColor.clearColor(), size: CGSize(width: 20, height: 20))
+        super.init(texture: SKTexture(imageNamed: "eye"), color: UIColor.clear, size: CGSize(width: 20, height: 20))
         physicsBody = SKPhysicsBody(circleOfRadius: 10)
         physicsBody?.categoryBitMask = eyeCategory
         physicsBody?.collisionBitMask = 0
@@ -18,8 +18,8 @@ class Eye: SKSpriteNode {
         name = "Eye"
     }
     
-    func lookAtNode(node:SKNode){
-        constraints = [SKConstraint.orientToNode(node, offset:SKRange(constantValue:CGFloat(3*M_PI_4)))]
+    func lookAtNode(_ node:SKNode){
+        constraints = [SKConstraint.orient(to: node, offset:SKRange(constantValue:CGFloat(3*M_PI_4)))]
     }
     
     required init?(coder aDecoder: NSCoder) {

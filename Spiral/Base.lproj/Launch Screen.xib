@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -10,9 +10,8 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Copyright (c) 2014年 杨萧玉. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="8ie-xW-0ye">
-                    <rect key="frame" x="52" y="439" width="376.5" height="21"/>
-                    <animations/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Copyright (c) 2016年 杨萧玉. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="8ie-xW-0ye">
+                    <rect key="frame" x="52" y="439" width="377" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="0cE-Ra-wEv"/>
                     </constraints>
@@ -25,14 +24,12 @@
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spiral" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="kId-c2-rCX">
                     <rect key="frame" x="178" y="127" width="123.5" height="68"/>
-                    <animations/>
                     <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="48"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="ropeH" translatesAutoresizingMaskIntoConstraints="NO" id="VgM-hE-kO8">
                     <rect key="frame" x="40" y="235" width="400" height="10"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="400" id="B0g-IC-Kzi"/>
                         <constraint firstAttribute="height" constant="10" id="mJV-J4-4ra"/>
@@ -40,14 +37,12 @@
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Be Ready!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ypj-bZ-t7g">
                     <rect key="frame" x="199" y="311" width="82.5" height="20.5"/>
-                    <animations/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="reaper" translatesAutoresizingMaskIntoConstraints="NO" id="ndG-PF-RZi">
                     <rect key="frame" x="281" y="225" width="30" height="30"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="VBm-rn-G2T"/>
                         <constraint firstAttribute="width" constant="30" id="cN3-vl-U2e"/>
@@ -55,7 +50,6 @@
                 </imageView>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="shield" translatesAutoresizingMaskIntoConstraints="NO" id="Nq0-84-yDQ">
                     <rect key="frame" x="341" y="225" width="30" height="30"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="30" id="cYX-Xa-IaX"/>
                         <constraint firstAttribute="height" constant="30" id="pa2-E5-xb2"/>
@@ -63,7 +57,6 @@
                 </imageView>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="killer" translatesAutoresizingMaskIntoConstraints="NO" id="I8m-Z6-tYZ">
                     <rect key="frame" x="109" y="225" width="30" height="30"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="SVi-SM-Mxl"/>
                         <constraint firstAttribute="width" constant="30" id="skr-vu-zbs"/>
@@ -71,7 +64,6 @@
                 </imageView>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="player" translatesAutoresizingMaskIntoConstraints="NO" id="Met-zY-AeL">
                     <rect key="frame" x="225" y="225" width="30" height="30"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="30" id="a5X-LN-GgM"/>
                         <constraint firstAttribute="height" constant="30" id="th6-it-sIU"/>
@@ -79,14 +71,12 @@
                 </imageView>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="score" translatesAutoresizingMaskIntoConstraints="NO" id="75e-tr-S78">
                     <rect key="frame" x="169" y="225" width="30" height="30"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="30" id="90U-9v-TAz"/>
                         <constraint firstAttribute="height" constant="30" id="ROx-yr-tsL"/>
                     </constraints>
                 </imageView>
             </subviews>
-            <animations/>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="VgM-hE-kO8" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="13F-Rp-XgO"/>

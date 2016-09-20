@@ -17,23 +17,27 @@ class SpriteComponent: GKComponent {
     init(entity: Entity) {
         
         switch entity.shapeType {
-        case .Player:
+        case .player:
             sprite = Player()
-        case .Killer:
+        case .killer:
             sprite = Killer()
             sprite.physicsBody?.contactTestBitMask = playerCategory | reaperCategory
-        case .Score:
+        case .score:
             sprite = Score()
             sprite.physicsBody?.contactTestBitMask = playerCategory | reaperCategory
-        case .Shield:
+        case .shield:
             sprite = Shield()
             sprite.physicsBody?.contactTestBitMask = playerCategory | reaperCategory
-        case .Reaper:
+        case .reaper:
             sprite = Reaper()
             sprite.physicsBody?.contactTestBitMask = playerCategory
         }
         super.init()
         sprite.owner = self
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
 //    MARK: - Appearance
@@ -41,29 +45,29 @@ class SpriteComponent: GKComponent {
     var pulseEffectEnabled: Bool = false {
         didSet {
             if pulseEffectEnabled {
-                let grow = SKAction.scaleBy(1.5, duration: 0.5)
-                let sequence = SKAction.sequence([grow, grow.reversedAction()])
-                sprite.runAction(SKAction.repeatActionForever(sequence), withKey: "pulse")
+                let grow = SKAction.scale(by: 1.5, duration: 0.5)
+                let sequence = SKAction.sequence([grow, grow.reversed()])
+                sprite.run(SKAction.repeatForever(sequence), withKey: "pulse")
             }
             else {
-                sprite.removeActionForKey("pulse")
-                sprite.runAction(SKAction.scaleTo(1.0, duration: 0.5))
+                sprite.removeAction(forKey: "pulse")
+                sprite.run(SKAction.scale(to: 1.0, duration: 0.5))
             }
         }
     }
     
     func useNormalAppearance() {
         //TODO: 普通外观
-        sprite.color = SKColor.clearColor()
+        sprite.color = SKColor.clear
     }
     
     func useFleeAppearance() {
         //TODO: 逃逸外观
-        sprite.color = SKColor.whiteColor()
+        sprite.color = SKColor.white
     }
     
     func useDefeatedAppearance() {
-        sprite.runAction(SKAction.scaleTo(0.25, duration: 0.25))
+        sprite.run(SKAction.scale(to: 0.25, duration: 0.25))
     }
     
 //    MARK: - Movement
@@ -73,8 +77,8 @@ class SpriteComponent: GKComponent {
             if nextGridPosition != newValue,
             let map = (sprite.scene as? MazeModeScene)?.map {
 //                移动到下个节点，设置速度
-                let action = SKAction.moveTo(map.pointForGridPosition(newValue), duration: durationForDistance(mazeCellWidth))
-                let update = SKAction.runBlock({ () -> Void in
+                let action = SKAction.move(to: map.pointForGridPosition(newValue), duration: durationForDistance(mazeCellWidth))
+                let update = SKAction.run({ () -> Void in
                     (self.entity as? Entity)?.gridPosition = newValue
                     if self.secondNextGridPosition != nil {
                         self.nextGridPosition = self.secondNextGridPosition!
@@ -82,7 +86,7 @@ class SpriteComponent: GKComponent {
                     }
                 })
 
-                sprite.runAction(SKAction.sequence([action, update]), withKey: "move")
+                sprite.run(SKAction.sequence([action, update]), withKey: "move")
                 
                 return
             }
@@ -92,20 +96,20 @@ class SpriteComponent: GKComponent {
     var secondNextGridPosition: vector_int2?
     
     //通过渐变的动画变换位置
-    func warpToGridPosition(gridPosition: vector_int2) {
+    func warpToGridPosition(_ gridPosition: vector_int2) {
         if let map = (sprite.scene as? MazeModeScene)?.map {
-            let fadeOut = SKAction.fadeOutWithDuration(0.5)
-            let warp = SKAction.moveTo(map.pointForGridPosition(gridPosition), duration:0.5)
-            let fadeIn = SKAction.fadeInWithDuration(0.5)
-            let update = SKAction.runBlock({
+            let fadeOut = SKAction.fadeOut(withDuration: 0.5)
+            let warp = SKAction.move(to: map.pointForGridPosition(gridPosition), duration:0.5)
+            let fadeIn = SKAction.fadeIn(withDuration: 0.5)
+            let update = SKAction.run({
                 (self.entity as? Entity)?.gridPosition = gridPosition
             })
             
-            sprite.runAction(SKAction.sequence([fadeOut, update, warp, fadeIn]))
+            sprite.run(SKAction.sequence([fadeOut, update, warp, fadeIn]))
         }
     }
     
-    func followPath(path: [GKGridGraphNode], completion completionHandler: Void -> Void) {
+    func followPath(_ path: [GKGridGraphNode], completion completionHandler: @escaping (Void) -> Void) {
         // Ignore the first node in the path -- it's the starting position.
         let dropFirst = path[1 ..< path.count]
         
@@ -115,18 +119,18 @@ class SpriteComponent: GKComponent {
             //溃逃回复活点的动画
             if let map = (sprite.scene as? MazeModeScene)?.map {
                 let point = map.pointForGridPosition(node.gridPosition)
-                sequence.append(SKAction.moveTo(point, duration: 0.15))
-                sequence.append(SKAction.runBlock({ () -> Void in
+                sequence.append(SKAction.move(to: point, duration: 0.15))
+                sequence.append(SKAction.run({ () -> Void in
                     (self.entity as? Entity)?.gridPosition = node.gridPosition
                 }))
             }
         }
         
-        sequence.append(SKAction.runBlock(completionHandler))
-        sprite.runAction(SKAction.sequence(sequence))
+        sequence.append(SKAction.run(completionHandler))
+        sprite.run(SKAction.sequence(sequence))
     }
     
-    func durationForDistance(distance: CGFloat) -> NSTimeInterval {
-        return NSTimeInterval(distance / sprite.moveSpeed * 0.7)
+    func durationForDistance(_ distance: CGFloat) -> TimeInterval {
+        return TimeInterval(distance / sprite.moveSpeed * 0.7)
     }
 }

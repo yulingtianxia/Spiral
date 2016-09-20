@@ -19,37 +19,37 @@ class ShapeReapState: ShapeState {
     
     //    MARK: - GKState Life Cycle
     
-    override func isValidNextState(stateClass: AnyClass) -> Bool {
+    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return stateClass == ShapeDefeatedState.self
     }
     
-    override func didEnterWithPreviousState(previousState: GKState?) {
+    override func didEnter(from previousState: GKState?) {
         // Set the shape sprite to its normal appearance, undoing any changes that happened in other states.
-        if let component = entity.componentForClass(SpriteComponent.self) {
+        if let component = entity.component(ofType: SpriteComponent.self) {
             component.useNormalAppearance()
         }
         
     }
     
-    override func updateWithDeltaTime(seconds: NSTimeInterval) {
+    override func update(deltaTime seconds: TimeInterval) {
         // If the shape has reached its target, choose a new target.
         let position = entity.gridPosition
         var path = [GKGraphNode]()
         var nearest = Int.max
         for shape in scene.shapes {
-            if let aiComponent = shape.componentForClass(IntelligenceComponent.self),
+            if let aiComponent = shape.component(ofType: IntelligenceComponent.self),
                 let state = aiComponent.stateMachine.currentState
-                where state.isKindOfClass(ShapeDefeatedState.self)
-                    || state.isKindOfClass(ShapeRespawnState.self) {
+                , state.isKind(of: ShapeDefeatedState.self)
+                    || state.isKind(of: ShapeRespawnState.self) {
                         continue
             }
             let expectPath: [GKGraphNode]
             if let cachePath = scene.pathCache[line_int4(pa: position, pb: shape.gridPosition)] {
                 expectPath = cachePath
             }
-            else if let sourceNode = scene.map.pathfindingGraph.nodeAtGridPosition(position),
-                let targetNode = scene.map.pathfindingGraph.nodeAtGridPosition(shape.gridPosition) {
-                    expectPath = scene.map.pathfindingGraph.findPathFromNode(sourceNode, toNode: targetNode)
+            else if let sourceNode = scene.map.pathfindingGraph.node(atGridPosition: position),
+                let targetNode = scene.map.pathfindingGraph.node(atGridPosition: shape.gridPosition) {
+                    expectPath = scene.map.pathfindingGraph.findPath(from: sourceNode, to: targetNode)
                     scene.pathCache[line_int4(pa: position, pb: shape.gridPosition)] = (expectPath as! [GKGridGraphNode])
                     if expectPath.count < nearest {
                         path = expectPath

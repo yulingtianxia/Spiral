@@ -9,32 +9,32 @@
 import SpriteKit
 
 class ZenHelpScene: SKScene {
-    func lightWithFinger(point:CGPoint){
-        if let light = self.childNodeWithName("light") as? SKLightNode {
-            light.lightColor = SKColor.whiteColor()
-            light.position = self.convertPointFromView(point)
+    func lightWithFinger(_ point:CGPoint){
+        if let light = self.childNode(withName: "light") as? SKLightNode {
+            light.lightColor = SKColor.white
+            light.position = self.convertPoint(fromView: point)
         }
     }
     
     func turnOffLight() {
-        (self.childNodeWithName("light") as? SKLightNode)?.lightColor = SKColor.brownColor()
+        (self.childNode(withName: "light") as? SKLightNode)?.lightColor = SKColor.brown
     }
     
     func back() {
         if !Data.sharedData.gameOver {
             return
         }
-        dispatch_async(dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0)) { () -> Void in
-            Data.sharedData.currentMode = .Zen
+        DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async { () -> Void in
+            Data.sharedData.currentMode = .zen
             Data.sharedData.gameOver = false
             Data.sharedData.reset()
-            let gvc = UIApplication.sharedApplication().keyWindow?.rootViewController as! GameViewController
+            let gvc = UIApplication.shared.keyWindow?.rootViewController as! GameViewController
             gvc.startRecordWithHandler { () -> Void in
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                DispatchQueue.main.async(execute: { () -> Void in
                     if self.scene is ZenHelpScene {
                         gvc.addGestureRecognizers()
                         let scene = ZenModeScene(size: self.size)
-                        let push = SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 1)
+                        let push = SKTransition.push(with: SKTransitionDirection.right, duration: 1)
                         push.pausesIncomingScene = false
                         self.scene?.view?.presentScene(scene, transition: push)
                     }
@@ -43,8 +43,8 @@ class ZenHelpScene: SKScene {
         }
     }
     
-    override func didMoveToView(view: SKView) {
-        let bg = childNodeWithName("background") as! SKSpriteNode
+    override func didMove(to view: SKView) {
+        let bg = childNode(withName: "background") as! SKSpriteNode
         let w = bg.size.width
         let h = bg.size.height
         let scale = max(view.frame.width/w, view.frame.height/h)

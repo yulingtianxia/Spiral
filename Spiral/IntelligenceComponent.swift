@@ -21,21 +21,25 @@ class IntelligenceComponent: GKComponent {
         stateMachine = GKStateMachine(states: [chase, flee, defeated, respawn, reap])
         
         switch entity.shapeType {
-        case .Killer:
-            stateMachine.enterState(ShapeChaseState.self)
-        case .Score, .Shield:
-            stateMachine.enterState(ShapeFleeState.self)
-        case .Reaper:
-            stateMachine.enterState(ShapeReapState.self)
-        case .Player:
+        case .killer:
+            stateMachine.enter(ShapeChaseState.self)
+        case .score, .shield:
+            stateMachine.enter(ShapeFleeState.self)
+        case .reaper:
+            stateMachine.enter(ShapeReapState.self)
+        case .player:
             break
         }
         
         super.init()
         
     }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
-    override func updateWithDeltaTime(seconds: NSTimeInterval) {
-        stateMachine.updateWithDeltaTime(seconds)
+    override func update(deltaTime seconds: TimeInterval) {
+        stateMachine.update(deltaTime: seconds)
     }
 }

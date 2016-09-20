@@ -55,14 +55,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameControlProtocol{
     
     //MARK: SKPhysicsContactDelegate
     
-    func didBeginContact(contact:SKPhysicsContact){
+    func didBegin(_ contact:SKPhysicsContact){
         //A->B
         let visitorA = ContactVisitor.contactVisitorWithBody(contact.bodyA, forContact: contact)
         let visitableBodyB = VisitablePhysicsBody(body: contact.bodyB)
-        visitableBodyB.acceptVisitor(visitorA)
+        visitableBodyB.acceptVisitor(visitorA!)
         //B->A
         let visitorB = ContactVisitor.contactVisitorWithBody(contact.bodyB, forContact: contact)
         let visitableBodyA = VisitablePhysicsBody(body: contact.bodyA)
-        visitableBodyA.acceptVisitor(visitorB)
+        visitableBodyA.acceptVisitor(visitorB!)
     }
 }

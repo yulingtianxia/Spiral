@@ -8,7 +8,7 @@
 
 import UIKit
 import SpriteKit
-public class OrdinaryMap: SKNode {
+open class OrdinaryMap: SKNode {
     var spacing:CGFloat = 0.0
     var points:[CGPoint] = []
     public convenience init(origin:CGPoint,layer:Int, size:CGSize){
@@ -17,16 +17,16 @@ public class OrdinaryMap: SKNode {
         self.init()
         //计算每层路径间隔距离
         spacing = size.width / CGFloat(layer * 2-1)
-        points.append(CGPointMake(x, y))
+        points.append(CGPoint(x: x, y: y))
         for index in 1..<layer {
             y-=spacing*(2*CGFloat(index)-1)
-            points.append(CGPointMake(x, y))
+            points.append(CGPoint(x: x, y: y))
             x-=spacing*(2*CGFloat(index)-1)
-            points.append(CGPointMake(x, y))
+            points.append(CGPoint(x: x, y: y))
             y+=spacing*2*CGFloat(index)
-            points.append(CGPointMake(x, y))
+            points.append(CGPoint(x: x, y: y))
             x+=spacing*2*CGFloat(index)
-            points.append(CGPointMake(x, y))
+            points.append(CGPoint(x: x, y: y))
         }
         addRopes()
     }
@@ -37,7 +37,7 @@ public class OrdinaryMap: SKNode {
         }
     }
     //递归填充比图片长的直线
-    func addRopesFromPointA(a:CGPoint, toPointB b:CGPoint){
+    func addRopesFromPointA(_ a:CGPoint, toPointB b:CGPoint){
         let xDistance = b.x-a.x
         let yDistance = b.y-a.y
         let distance = sqrt(xDistance * xDistance + yDistance * yDistance)

@@ -10,14 +10,14 @@ import SpriteKit
 import GameplayKit
 
 class MagicRoad: SKNode {
-    init(graph: GKGridGraph, position: vector_int2){
+    init(graph: GKGridGraph<GKGridGraphNode>, position: vector_int2){
         let roadWidth: CGFloat = 2
         
         super.init()
-        let left = graph.nodeAtGridPosition(vector_int2(position.x - 1, position.y))
-        let right = graph.nodeAtGridPosition(vector_int2(position.x + 1, position.y))
-        let up = graph.nodeAtGridPosition(vector_int2(position.x, position.y + 1))
-        let down = graph.nodeAtGridPosition(vector_int2(position.x, position.y - 1))
+        let left = graph.node(atGridPosition: vector_int2(position.x - 1, position.y))
+        let right = graph.node(atGridPosition: vector_int2(position.x + 1, position.y))
+        let up = graph.node(atGridPosition: vector_int2(position.x, position.y + 1))
+        let down = graph.node(atGridPosition: vector_int2(position.x, position.y - 1))
         if left != nil && right != nil && up == nil && down == nil {
             // 一
             if let magic = SKEmitterNode(fileNamed: "magic") {

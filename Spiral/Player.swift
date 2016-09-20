@@ -13,11 +13,11 @@ class Player: Shape {
             if shield != newValue {
                 if newValue {
                     self.texture = SKTexture(imageNamed: "player0")
-                    light.enabled = true
+                    light.isEnabled = true
                 }
                 else{
                     self.texture = SKTexture(imageNamed: "player")
-                    light.enabled = false
+                    light.isEnabled = false
                 }
             }
         }

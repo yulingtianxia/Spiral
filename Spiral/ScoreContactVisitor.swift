@@ -9,36 +9,36 @@
 import Foundation
 import SpriteKit
 class ScoreContactVisitor:ContactVisitor{
-    func visitPlayer(body:SKPhysicsBody){
+    func visitPlayer(_ body:SKPhysicsBody){
         if let thisNode = self.body.node as? Score {
-            guard Data.sharedData.currentMode == .Maze else {
+            guard Data.sharedData.currentMode == .maze else {
                 thisNode.removeFromParent()
                 return
             }
         }
     }
     
-    func visitKiller(body:SKPhysicsBody){
+    func visitKiller(_ body:SKPhysicsBody){
         let thisNode = self.body.node
 //        let otherNode = body.node
         thisNode?.removeFromParent()
     }
     
-    func visitScore(body:SKPhysicsBody){
+    func visitScore(_ body:SKPhysicsBody){
         let thisNode = self.body.node
 //        let otherNode = body.node
         thisNode?.removeFromParent()
     }
     
-    func visitShield(body:SKPhysicsBody){
+    func visitShield(_ body:SKPhysicsBody){
         let thisNode = self.body.node
 //        let otherNode = body.node
         thisNode?.removeFromParent()
     }
     
-    func visitReaper(body:SKPhysicsBody){
+    func visitReaper(_ body:SKPhysicsBody){
         if let thisNode = self.body.node as? Score {
-            guard Data.sharedData.currentMode == .Maze else {
+            guard Data.sharedData.currentMode == .maze else {
                 thisNode.removeFromParent()
                 return
             }

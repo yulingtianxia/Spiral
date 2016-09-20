@@ -15,11 +15,11 @@ class Background: SKSpriteNode {
         let imageString:String
         if imageName == nil {
             switch Data.sharedData.currentMode {
-            case .Ordinary:
+            case .ordinary:
                 imageString = "bg_ordinary"
-            case .Zen:
+            case .zen:
                 imageString = "bg_zen"
-            case .Maze:
+            case .maze:
                 imageString = "bg_maze"
             }
         }
@@ -34,28 +34,28 @@ class Background: SKSpriteNode {
             let scale = max(xScale, yScale)
             let scaleSize = CGSize(width: xScale / scale, height: yScale / scale)
             let scaleOrigin = CGPoint(x: (1 - scaleSize.width) / 2, y: (1 - scaleSize.height) / 2)
-            if let cgimage = CGImageCreateWithImageInRect(bgImage.CGImage, CGRect(origin: CGPoint(x: scaleOrigin.x * bgImage.size.width, y: scaleOrigin.y * bgImage.size.height), size: CGSize(width: scaleSize.width * bgImage.size.width, height: scaleSize.height * bgImage.size.height))) {
-                resultTexture = SKTexture(CGImage: cgimage)
+            if let cgimage = bgImage.cgImage?.cropping(to: CGRect(origin: CGPoint(x: scaleOrigin.x * bgImage.size.width, y: scaleOrigin.y * bgImage.size.height), size: CGSize(width: scaleSize.width * bgImage.size.width, height: scaleSize.height * bgImage.size.height))) {
+                resultTexture = SKTexture(cgImage: cgimage)
             }
         }
         
         
-        super.init(texture: resultTexture, color:SKColor.clearColor(), size: size)
+        super.init(texture: resultTexture, color:SKColor.clear, size: size)
 
-        normalTexture = resultTexture.textureByGeneratingNormalMapWithSmoothness(0.2, contrast: 2.5)
+        normalTexture = resultTexture.generatingNormalMap(withSmoothness: 0.2, contrast: 2.5)
         zPosition = -100
         alpha = 0.5
         let light = SKLightNode()
         switch Data.sharedData.currentMode {
-        case .Ordinary:
-            light.lightColor = SKColor.blackColor()
-            light.ambientColor = SKColor.blackColor()
-        case .Zen:
-            light.lightColor = SKColor.brownColor()
-            light.ambientColor = SKColor.brownColor()
-        case .Maze:
-            light.lightColor = SKColor.blackColor()
-            light.ambientColor = SKColor.blackColor()
+        case .ordinary:
+            light.lightColor = SKColor.black
+            light.ambientColor = SKColor.black
+        case .zen:
+            light.lightColor = SKColor.brown
+            light.ambientColor = SKColor.brown
+        case .maze:
+            light.lightColor = SKColor.black
+            light.ambientColor = SKColor.black
         }
         
         light.categoryBitMask = bgLightCategory

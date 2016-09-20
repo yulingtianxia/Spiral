@@ -22,8 +22,8 @@ class ZenModeScene: GameScene {
     
     override init(size:CGSize){
         GameKitHelper.sharedGameKitHelper.authenticateLocalPlayer()
-        Data.sharedData.currentMode = .Zen
-        let center = CGPointMake(size.width/2, size.height/2)
+        Data.sharedData.currentMode = .zen
+        let center = CGPoint(x: size.width/2, y: size.height/2)
         map = ZenMap(origin:center, layer: 5, size:size)
         
         display = ZenDisplay()
@@ -38,14 +38,14 @@ class ZenModeScene: GameScene {
         nextShape.zPosition = 100
         super.init(size:size)
         player.position = map.points[player.pathOrientation]![player.lineNum]
-        physicsWorld.gravity = CGVectorMake(0, 0)
+        physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         physicsWorld.contactDelegate = self
         addChild(background)
         addChild(map)
         addChild(player)
         addChild(display)
         addChild(nextShape)
-        for (i,eye) in eyes.enumerate() {
+        for (i,eye) in eyes.enumerated() {
             eye.zPosition = 100
             eye.position = map.points[PathOrientation(rawValue: i)!]!.last!
             addChild(eye)
@@ -58,17 +58,17 @@ class ZenModeScene: GameScene {
         resume()
         
         //Observe Notification
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GameControlProtocol.pause), name: UIApplicationWillResignActiveNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GameControlProtocol.pause), name: UIApplicationDidEnterBackgroundNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GameControlProtocol.pause), name: WantGamePauseNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(GameControlProtocol.pause), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(GameControlProtocol.pause), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(GameControlProtocol.pause), name: NSNotification.Name(rawValue: WantGamePauseNotification), object: nil)
     }
     
     deinit{
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
         soundManager.stopBackGround()
     }
     
-    override func didMoveToView(view: SKView) {
+    override func didMove(to view: SKView) {
         /* Setup your scene here */
         
         
@@ -82,7 +82,7 @@ class ZenModeScene: GameScene {
         if Data.sharedData.gameOver {
             //                restartGame()
         }
-        else if view?.paused == true{
+        else if view?.isPaused == true{
             resume()
         }
         else if player.lineNum>0{
@@ -94,7 +94,7 @@ class ZenModeScene: GameScene {
     
     override func allShapesJumpIn(){
         super.allShapesJumpIn()
-        if !Data.sharedData.gameOver && view?.paused == false {
+        if !Data.sharedData.gameOver && view?.isPaused == false {
             for node in children {
                 if let shape = node as? Shape {
                     if shape.lineNum>0 {
@@ -109,7 +109,7 @@ class ZenModeScene: GameScene {
     
     override func createReaper(){
         super.createReaper()
-        if !Data.sharedData.gameOver && view?.paused == false {
+        if !Data.sharedData.gameOver && view?.isPaused == false {
             if Data.sharedData.reaperNum>0 {
                 Data.sharedData.reaperNum -= 1
                 for pathNum in 0...3 {
@@ -163,16 +163,16 @@ class ZenModeScene: GameScene {
     }
     
     func restartGame(){
-        enumerateChildNodesWithName("Killer", usingBlock: { (node, stop) -> Void in
+        enumerateChildNodes(withName: "Killer", using: { (node, stop) -> Void in
             node.removeFromParent()
         })
-        enumerateChildNodesWithName("Score", usingBlock: { (node, stop) -> Void in
+        enumerateChildNodes(withName: "Score", using: { (node, stop) -> Void in
             node.removeFromParent()
         })
-        enumerateChildNodesWithName("Shield", usingBlock: { (node, stop) -> Void in
+        enumerateChildNodes(withName: "Shield", using: { (node, stop) -> Void in
             node.removeFromParent()
         })
-        enumerateChildNodesWithName("Reaper", usingBlock: { (node, stop) -> Void in
+        enumerateChildNodes(withName: "Reaper", using: { (node, stop) -> Void in
             node.removeFromParent()
         })
         map.alpha = 1
@@ -193,7 +193,7 @@ class ZenModeScene: GameScene {
     
     //MARK: help methods
     
-    func calNewLocationOfShape(shape:Shape){
+    func calNewLocationOfShape(_ shape:Shape){
         if shape.lineNum == 0 {
             return
         }
@@ -207,16 +207,16 @@ class ZenModeScene: GameScene {
         switch (shape.lineNum + shape.pathOrientation.rawValue)%4{
         case 0:
             //go right
-            shape.position = CGPointMake(nextPoint.x-newDistance, nextPoint.y)
+            shape.position = CGPoint(x: nextPoint.x-newDistance, y: nextPoint.y)
         case 1:
             //go down
-            shape.position = CGPointMake(nextPoint.x, nextPoint.y+newDistance)
+            shape.position = CGPoint(x: nextPoint.x, y: nextPoint.y+newDistance)
         case 2:
             //go left
-            shape.position = CGPointMake(nextPoint.x+newDistance, nextPoint.y)
+            shape.position = CGPoint(x: nextPoint.x+newDistance, y: nextPoint.y)
         case 3:
             //go up
-            shape.position = CGPointMake(nextPoint.x, nextPoint.y-newDistance)
+            shape.position = CGPoint(x: nextPoint.x, y: nextPoint.y-newDistance)
         default:
             print("Why?", terminator: "")
         }
@@ -226,7 +226,7 @@ class ZenModeScene: GameScene {
     }
     
     func nodeFactory(){
-        let createNextShape = SKAction.runBlock({
+        let createNextShape = SKAction.run({
             if !Data.sharedData.gameOver {
                 
                 let type = arc4random_uniform(4)
@@ -248,8 +248,8 @@ class ZenModeScene: GameScene {
                 self.nextShape.setScale(1)
             }
         })
-        let scale = SKAction.scaleTo(0.4, duration: 5)
-        let run = SKAction.runBlock({ () -> Void in
+        let scale = SKAction.scale(to: 0.4, duration: 5)
+        let run = SKAction.run({ () -> Void in
             if !Data.sharedData.gameOver {
                 var shape:Shape
                 switch self.nextShapeName {
@@ -270,12 +270,12 @@ class ZenModeScene: GameScene {
             }
         })
         let sequenceAction = SKAction.sequence([createNextShape, scale, run])
-        let repeatAction = SKAction.repeatActionForever(sequenceAction)
-        nextShape.runAction(repeatAction)
+        let repeatAction = SKAction.repeatForever(sequenceAction)
+        nextShape.run(repeatAction)
     }
     
     //MARK: lifecycle callback
-    override func update(currentTime: CFTimeInterval) {
+    override func update(_ currentTime: TimeInterval) {
         /* Called before each frame is rendered */
         
     }
@@ -289,16 +289,16 @@ class ZenModeScene: GameScene {
     override func pause() {
         super.pause()
         if !Data.sharedData.gameOver {
-            self.runAction(SKAction.runBlock({ [unowned self]() -> Void in
+            self.run(SKAction.run({ [unowned self]() -> Void in
                 self.display.pause()
                 }), completion: { [unowned self]() -> Void in
-                    self.view?.paused = true
+                    self.view?.isPaused = true
                 })
         }
     }
     
     override func resume() {
         display.resume()
-        view?.paused = false
+        view?.isPaused = false
     }
 }

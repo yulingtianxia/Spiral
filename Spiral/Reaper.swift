@@ -16,6 +16,6 @@ class Reaper: Shape {
         self.moveSpeed = 250
         light.lightColor = SKColor(red: 78.0/255, green: 146.0/255, blue: 223.0/255, alpha: 1)
         light.categoryBitMask = reaperLightCategory
-        light.enabled = true
+        light.isEnabled = true
     }
 }

@@ -10,7 +10,7 @@ import UIKit
 import SpriteKit
 import ReplayKit
 
-public class GameViewController: UIViewController, RPPreviewViewControllerDelegate, UIGestureRecognizerDelegate {
+open class GameViewController: UIViewController, RPPreviewViewControllerDelegate, UIGestureRecognizerDelegate {
 
     var longPress:UILongPressGestureRecognizer!
     var tapWithOneFinger:UITapGestureRecognizer!
@@ -25,7 +25,7 @@ public class GameViewController: UIViewController, RPPreviewViewControllerDelega
     var previewViewController:RPPreviewViewController?
     
     
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         // Configure the view.
         let skView = self.view as! SKView
@@ -48,79 +48,79 @@ public class GameViewController: UIViewController, RPPreviewViewControllerDelega
         pinch.delegate = self
         
         swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(GameViewController.swipeRight(_:)))
-        swipeRight.direction = .Right
+        swipeRight.direction = .right
         swipeRight.delegate = self
         
         swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(GameViewController.swipeLeft(_:)))
-        swipeLeft.direction = .Left
+        swipeLeft.direction = .left
         swipeLeft.delegate = self
         
         swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(GameViewController.swipeUp(_:)))
-        swipeUp.direction = .Up
+        swipeUp.direction = .up
         swipeUp.delegate = self
         
         swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(GameViewController.swipeDown(_:)))
-        swipeDown.direction = .Down
+        swipeDown.direction = .down
         swipeDown.delegate = self
         
         screenEdgePanRight = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(GameViewController.handleEdgePanGesture(_:)))
-        screenEdgePanRight.edges = UIRectEdge.Left
+        screenEdgePanRight.edges = UIRectEdge.left
         screenEdgePanRight.delegate = self
         
         let scene = MainScene(size: skView.bounds.size)
         /* Set the scale mode to scale to fit the window */
-        scene.scaleMode = .AspectFit
+        scene.scaleMode = .aspectFit
         skView.presentScene(scene)
         
     }
 
-    override public func shouldAutorotate() -> Bool {
+    override open var shouldAutorotate : Bool {
         return true
     }
 
-    override public func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
-            return UIInterfaceOrientationMask.AllButUpsideDown
+    override open var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            return UIInterfaceOrientationMask.allButUpsideDown
         } else {
-            return UIInterfaceOrientationMask.All
+            return UIInterfaceOrientationMask.all
         }
     }
 
-    override public func didReceiveMemoryWarning() {
+    override open func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Release any cached data, images, etc that aren't in use.
     }
 
-    override public func prefersStatusBarHidden() -> Bool {
+    override open var prefersStatusBarHidden : Bool {
         return true
     }
     
     // MARK: - handle gestures
-    func handleLongPressGesture(recognizer:UILongPressGestureRecognizer) {
-        if recognizer.state == .Began {
+    func handleLongPressGesture(_ recognizer:UILongPressGestureRecognizer) {
+        if recognizer.state == .began {
             ((self.view as! SKView).scene as? GameScene)?.pause()
         }
     }
     
-    func handleTapWithOneFingerGesture(recognizer:UILongPressGestureRecognizer) {
-        if recognizer.state == .Ended {
+    func handleTapWithOneFingerGesture(_ recognizer:UILongPressGestureRecognizer) {
+        if recognizer.state == .ended {
             ((self.view as! SKView).scene as? GameScene)?.tap()
         }
     }
     
-    func handleTapWithTwoFingerGesture(recognizer:UILongPressGestureRecognizer) {
-        if recognizer.state == .Ended {
+    func handleTapWithTwoFingerGesture(_ recognizer:UILongPressGestureRecognizer) {
+        if recognizer.state == .ended {
 //            ((self.view as! SKView).scene as? OrdinaryModeScene)?.createReaper()
         }
     }
     
-    func handlePanGesture(recognizer:UIPanGestureRecognizer) {
-        if recognizer.state == .Changed {
-            ((self.view as! SKView).scene as? OrdinaryHelpScene)?.lightWithFinger(recognizer.locationInView(self.view))
-            ((self.view as! SKView).scene as? ZenHelpScene)?.lightWithFinger(recognizer.locationInView(self.view))
-            ((self.view as! SKView).scene as? MazeHelpScene)?.lightWithFinger(recognizer.locationInView(self.view))
+    func handlePanGesture(_ recognizer:UIPanGestureRecognizer) {
+        if recognizer.state == .changed {
+            ((self.view as! SKView).scene as? OrdinaryHelpScene)?.lightWithFinger(recognizer.location(in: self.view))
+            ((self.view as! SKView).scene as? ZenHelpScene)?.lightWithFinger(recognizer.location(in: self.view))
+            ((self.view as! SKView).scene as? MazeHelpScene)?.lightWithFinger(recognizer.location(in: self.view))
         }
-        else if recognizer.state == .Ended {
+        else if recognizer.state == .ended {
             ((self.view as! SKView).scene as? OrdinaryHelpScene)?.turnOffLight()
             ((self.view as! SKView).scene as? ZenHelpScene)?.turnOffLight()
             ((self.view as! SKView).scene as? MazeHelpScene)?.turnOffLight()
@@ -128,24 +128,24 @@ public class GameViewController: UIViewController, RPPreviewViewControllerDelega
     }
     
     
-    func swipeRight(sender: UISwipeGestureRecognizer) {
-        ((self.view as! SKView).scene as? MazeModeScene)?.playerDirection = .Right
+    func swipeRight(_ sender: UISwipeGestureRecognizer) {
+        ((self.view as! SKView).scene as? MazeModeScene)?.playerDirection = .right
     }
     
-    func swipeLeft(sender: UISwipeGestureRecognizer) {
-        ((self.view as! SKView).scene as? MazeModeScene)?.playerDirection = .Left
+    func swipeLeft(_ sender: UISwipeGestureRecognizer) {
+        ((self.view as! SKView).scene as? MazeModeScene)?.playerDirection = .left
     }
     
-    func swipeUp(sender: UISwipeGestureRecognizer) {
-        ((self.view as! SKView).scene as? MazeModeScene)?.playerDirection = .Up
+    func swipeUp(_ sender: UISwipeGestureRecognizer) {
+        ((self.view as! SKView).scene as? MazeModeScene)?.playerDirection = .up
     }
     
-    func swipeDown(sender: UISwipeGestureRecognizer) {
-        ((self.view as! SKView).scene as? MazeModeScene)?.playerDirection = .Down
+    func swipeDown(_ sender: UISwipeGestureRecognizer) {
+        ((self.view as! SKView).scene as? MazeModeScene)?.playerDirection = .down
     }
     
-    func handlePinchGesture(recognizer:UIPinchGestureRecognizer) {
-        if recognizer.state == .Began {
+    func handlePinchGesture(_ recognizer:UIPinchGestureRecognizer) {
+        if recognizer.state == .began {
             if recognizer.scale > 1 {
                 ((self.view as! SKView).scene as? GameScene)?.createReaper()
             }
@@ -155,8 +155,8 @@ public class GameViewController: UIViewController, RPPreviewViewControllerDelega
         }
     }
     
-    func handleEdgePanGesture(recognizer:UIPinchGestureRecognizer) {
-        if recognizer.state == .Ended {
+    func handleEdgePanGesture(_ recognizer:UIPinchGestureRecognizer) {
+        if recognizer.state == .ended {
             let scene = (self.view as! SKView).scene
             if let scene = scene as? OrdinaryHelpScene {
                 scene.back()
@@ -169,9 +169,9 @@ public class GameViewController: UIViewController, RPPreviewViewControllerDelega
             }
             else if let scene = scene as? GameScene {
                 GameKitHelper.sharedGameKitHelper.pause()
-                let alert = UIAlertController(title: NSLocalizedString("Quit Game?", comment: ""), message: "", preferredStyle: .Alert)
-                let quit = UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .Default, handler: { (action) -> Void in
-                    dispatch_async(dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0)) { () -> Void in
+                let alert = UIAlertController(title: NSLocalizedString("Quit Game?", comment: ""), message: "", preferredStyle: .alert)
+                let quit = UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default, handler: { (action) -> Void in
+                    DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async { () -> Void in
                         if Data.sharedData.gameOver {
                             return
                         }
@@ -183,18 +183,18 @@ public class GameViewController: UIViewController, RPPreviewViewControllerDelega
                         scene.soundManager.stopBackGround()
                         self.stopRecord()
                         let scene = MainScene(size: skView.bounds.size)
-                        let push = SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 1)
+                        let push = SKTransition.push(with: SKTransitionDirection.right, duration: 1)
                         push.pausesIncomingScene = false
-                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        DispatchQueue.main.async(execute: { () -> Void in
                             skView.presentScene(scene, transition: push)
                             self.removeGestureRecognizers()
                         })
                     }
                 })
-                let cancel = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .Cancel, handler: nil)
+                let cancel = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil)
                 alert.addAction(quit)
                 alert.addAction(cancel)
-                presentViewController(alert, animated: true, completion: nil)
+                present(alert, animated: true, completion: nil)
             }
         }
     }
@@ -233,20 +233,20 @@ public class GameViewController: UIViewController, RPPreviewViewControllerDelega
     
     // MARK: - record game
     
-    func startRecordWithHandler(handler:() -> Void) {
+    func startRecordWithHandler(_ handler:@escaping () -> Void) {
         previewViewController = nil
         guard Data.sharedData.autoRecord else {
             handler()
             return
         }
-        RPScreenRecorder.sharedRecorder().startRecordingWithMicrophoneEnabled(true) { (error) -> Void in
-            if let rpError = error where rpError.domain == RPRecordingErrorDomain {
-                let alert = UIAlertController(title: NSLocalizedString("Sorry", comment: ""), message: NSLocalizedString("The screen recorder is not working", comment: ""), preferredStyle: .Alert)
-                let action = UIAlertAction(title: "(⊙o⊙)", style: .Default, handler: { (action) -> Void in
+        RPScreenRecorder.shared().startRecording(withMicrophoneEnabled: true) { (error) -> Void in
+            if let rpError = error , rpError._domain == RPRecordingErrorDomain {
+                let alert = UIAlertController(title: NSLocalizedString("Sorry", comment: ""), message: NSLocalizedString("The screen recorder is not working", comment: ""), preferredStyle: .alert)
+                let action = UIAlertAction(title: "(⊙o⊙)", style: .default, handler: { (action) -> Void in
                     handler()
                 })
                 alert.addAction(action)
-                self.presentViewController(alert, animated: true, completion: nil)
+                self.present(alert, animated: true, completion: nil)
                 return
             }
             handler()
@@ -254,35 +254,35 @@ public class GameViewController: UIViewController, RPPreviewViewControllerDelega
     }
     
     func stopRecord() {
-        RPScreenRecorder.sharedRecorder().stopRecordingWithHandler({ (previewViewController, ErrorType) -> Void in
+        RPScreenRecorder.shared().stopRecording(handler: { (previewViewController, ErrorType) -> Void in
             self.previewViewController = previewViewController
             previewViewController?.previewControllerDelegate = self
         })
     }
     
-    func discardRecordWithHandler(handler:() -> Void) {
-        RPScreenRecorder.sharedRecorder().discardRecordingWithHandler(handler)
+    func discardRecordWithHandler(_ handler:@escaping () -> Void) {
+        RPScreenRecorder.shared().discardRecording(handler: handler)
     }
     
     func playRecord() {
         guard let pvController = previewViewController else {
-            let alert = UIAlertController(title: NSLocalizedString("Sorry", comment: ""), message: NSLocalizedString("The screen recorder was not started!", comment: ""), preferredStyle: .Alert)
-            let action = UIAlertAction(title: NSLocalizedString("I'm FINE", comment: ""), style: .Default, handler: nil)
+            let alert = UIAlertController(title: NSLocalizedString("Sorry", comment: ""), message: NSLocalizedString("The screen recorder was not started!", comment: ""), preferredStyle: .alert)
+            let action = UIAlertAction(title: NSLocalizedString("I'm FINE", comment: ""), style: .default, handler: nil)
             alert.addAction(action)
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
             return
         }
-        pvController.modalPresentationStyle = UIModalPresentationStyle.FullScreen
-        presentViewController(pvController, animated: true, completion:nil)
+        pvController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+        present(pvController, animated: true, completion:nil)
     }
     
     // MARK: - RPPreviewViewControllerDelegate
-    public func previewControllerDidFinish(previewController: RPPreviewViewController) {
-        previewController.dismissViewControllerAnimated(true, completion: nil)
+    open func previewControllerDidFinish(_ previewController: RPPreviewViewController) {
+        previewController.dismiss(animated: true, completion: nil)
     }
     
 //    MARK: - UIGestureRecognizerDelegate
-    public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    open func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         if gestureRecognizer == pan || otherGestureRecognizer == pan {
             return true
         }

@@ -13,7 +13,7 @@ class ContactVisitor:NSObject{
     let body:SKPhysicsBody!
     let contact:SKPhysicsContact!
     
-    class func contactVisitorWithBody(body:SKPhysicsBody,forContact contact:SKPhysicsContact)->ContactVisitor!{
+    class func contactVisitorWithBody(_ body:SKPhysicsBody,forContact contact:SKPhysicsContact)->ContactVisitor?{
         //第一次dispatch，通过node类别返回对应的实例
         if 0 != body.categoryBitMask&playerCategory {
             return PlayerContactVisitor(body: body, forContact: contact)
@@ -44,14 +44,14 @@ class ContactVisitor:NSObject{
         
     }
     
-    func visitBody(body:SKPhysicsBody){
+    func visitBody(_ body:SKPhysicsBody){
         //第二次dispatch，通过构造方法名来执行对应方法
         // 生成方法名，比如"visitPlayer"
         let contactSelectorString = "visit" + body.node!.name! + ":"
         let selector = NSSelectorFromString(contactSelectorString)
-        if self.respondsToSelector(selector){
-            dispatch_after(0, dispatch_get_main_queue(), {
-                NSThread.detachNewThreadSelector(selector, toTarget:self, withObject: body)
+        if self.responds(to: selector){
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now(), execute: {
+                Thread.detachNewThreadSelector(selector, toTarget:self, with: body)
                 })
         }
         

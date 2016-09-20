@@ -10,24 +10,24 @@ import Foundation
 import SpriteKit
 class PlayerContactVisitor:ContactVisitor{
     
-    func visitPlayer(body:SKPhysicsBody){
+    func visitPlayer(_ body:SKPhysicsBody){
 //        let thisNode = self.body.node
 //        let otherNode = body.node
 //        println(thisNode.name+"->"+otherNode.name)
     }
     
-    func visitKiller(body:SKPhysicsBody){
+    func visitKiller(_ body:SKPhysicsBody){
         let thisNode = self.body.node as! Player
         let otherNode = body.node as! Killer
 
         if thisNode.shield {
             // Maze 模式下防止 shape 死亡后被触碰到重复生效
-            if Data.sharedData.currentMode == .Maze {
+            if Data.sharedData.currentMode == .maze {
                 if let entity = otherNode.owner?.entity,
-                    let aiComponent = entity.componentForClass(IntelligenceComponent.self),
+                    let aiComponent = entity.component(ofType: IntelligenceComponent.self),
                     let state = aiComponent.stateMachine.currentState {
-                        if state.isKindOfClass(ShapeFleeState.self) {
-                            aiComponent.stateMachine.enterState(ShapeDefeatedState.self)
+                        if state.isKind(of: ShapeFleeState.self) {
+                            aiComponent.stateMachine.enter(ShapeDefeatedState.self)
                         }
                         else {
                             return
@@ -46,15 +46,15 @@ class PlayerContactVisitor:ContactVisitor{
             (thisNode.scene as? GameScene)?.soundManager.playKiller()
         }
         else {
-            if Data.sharedData.currentMode == .Maze {
+            if Data.sharedData.currentMode == .maze {
                 if let entity = otherNode.owner?.entity,
-                    let aiComponent = entity.componentForClass(IntelligenceComponent.self),
+                    let aiComponent = entity.component(ofType: IntelligenceComponent.self),
                     let state = aiComponent.stateMachine.currentState {
-                        if !state.isKindOfClass(ShapeChaseState.self) {
+                        if !state.isKind(of: ShapeChaseState.self) {
                             return
                         }
                         else {
-                            aiComponent.stateMachine.enterState(ShapeDefeatedState.self)
+                            aiComponent.stateMachine.enter(ShapeDefeatedState.self)
                         }
                 }
             }
@@ -63,19 +63,19 @@ class PlayerContactVisitor:ContactVisitor{
         }
     }
     
-    func visitScore(body:SKPhysicsBody){
+    func visitScore(_ body:SKPhysicsBody){
         let thisNode = self.body.node as! Player
         let otherNode = body.node as! Score
         // Maze 模式下防止 shape 死亡后被触碰到重复生效
-        if Data.sharedData.currentMode == .Maze {
+        if Data.sharedData.currentMode == .maze {
             if let entity = otherNode.owner?.entity,
-                let aiComponent = entity.componentForClass(IntelligenceComponent.self),
+                let aiComponent = entity.component(ofType: IntelligenceComponent.self),
                 let state = aiComponent.stateMachine.currentState {
-                    if !state.isKindOfClass(ShapeFleeState.self) {
+                    if !state.isKind(of: ShapeFleeState.self) {
                         return
                     }
                     else {
-                        aiComponent.stateMachine.enterState(ShapeDefeatedState.self)
+                        aiComponent.stateMachine.enter(ShapeDefeatedState.self)
                     }
             }
         }
@@ -89,19 +89,19 @@ class PlayerContactVisitor:ContactVisitor{
         (thisNode.scene as? GameScene)?.soundManager.playScore()
     }
     
-    func visitShield(body:SKPhysicsBody){
+    func visitShield(_ body:SKPhysicsBody){
         let thisNode = self.body.node as! Player
         let otherNode = body.node as! Shield
         // Maze 模式下防止 shape 死亡后被触碰到重复生效
-        if Data.sharedData.currentMode == .Maze {
+        if Data.sharedData.currentMode == .maze {
             if let entity = otherNode.owner?.entity,
-                let aiComponent = entity.componentForClass(IntelligenceComponent.self),
+                let aiComponent = entity.component(ofType: IntelligenceComponent.self),
                 let state = aiComponent.stateMachine.currentState {
-                    if !state.isKindOfClass(ShapeFleeState.self) {
+                    if !state.isKind(of: ShapeFleeState.self) {
                         return
                     }
                     else {
-                        aiComponent.stateMachine.enterState(ShapeDefeatedState.self)
+                        aiComponent.stateMachine.enter(ShapeDefeatedState.self)
                     }
             }
         }

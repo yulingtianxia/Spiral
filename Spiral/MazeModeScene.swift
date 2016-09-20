@@ -31,30 +31,30 @@ class MazeModeScene: GameScene {
     var playerEntity: Entity
     var playerDirection: PlayerDirection {
         get {
-            let component = playerEntity.componentForClass(PlayerControlComponent.self)
-            return component?.direction ?? .None
+            let component = playerEntity.component(ofType: PlayerControlComponent.self)
+            return (component?.direction ?? .none)!
         }
         set {
-            let component = playerEntity.componentForClass(PlayerControlComponent.self)
+            let component = playerEntity.component(ofType: PlayerControlComponent.self)
             component?.attemptedDirection = newValue
         }
     }
     var hasPowerup: Bool = false {
         willSet {
-            let powerupDuration: NSTimeInterval = 10
+            let powerupDuration: TimeInterval = 10
             if newValue != hasPowerup {
                 let nextState: AnyClass
                 if newValue {
                     nextState = ShapeFleeState.self
                 }
                 else {
-                    (playerEntity.componentForClass(SpriteComponent.self)?.sprite as? Player)?.shield = false
+                    (playerEntity.component(ofType: SpriteComponent.self)?.sprite as? Player)?.shield = false
                     nextState = ShapeChaseState.self
                 }
                 
                 for component in intelligenceSystem.components as! [IntelligenceComponent] {
-                    if (component.entity as! Entity).shapeType == .Killer {
-                        component.stateMachine.enterState(nextState)
+                    if (component.entity as! Entity).shapeType == .killer {
+                        component.stateMachine.enter(nextState)
                     }
                 }
                 powerupTimeRemaining = powerupDuration
@@ -63,10 +63,10 @@ class MazeModeScene: GameScene {
     }
     let random: GKRandomSource
     
-    var intelligenceSystem: GKComponentSystem
-    var prevUpdateTime: NSTimeInterval = 0
+    var intelligenceSystem: GKComponentSystem<GKComponent>
+    var prevUpdateTime: TimeInterval = 0
     
-    var powerupTimeRemaining: NSTimeInterval = 0 {
+    var powerupTimeRemaining: TimeInterval = 0 {
         didSet {
             if powerupTimeRemaining < 0 {
                 hasPowerup = false
@@ -79,8 +79,8 @@ class MazeModeScene: GameScene {
     override init(size: CGSize) {
         random = GKRandomSource()
         GameKitHelper.sharedGameKitHelper.authenticateLocalPlayer()
-        Data.sharedData.currentMode = .Maze
-        let center = CGPointMake(size.width/2, size.height/2)
+        Data.sharedData.currentMode = .maze
+        let center = CGPoint(x: size.width/2, y: size.height/2)
         map = MazeMap(size: size)
         display = MazeDisplay()
         Data.sharedData.display = display
@@ -88,23 +88,23 @@ class MazeModeScene: GameScene {
         background.position = center
         
         // Create player entity with display and control components.
-        playerEntity = Entity(type: .Player)
+        playerEntity = Entity(type: .player)
         playerEntity.gridPosition = map.startPosition.gridPosition
         playerEntity.addComponent(SpriteComponent(entity: playerEntity))
         playerEntity.addComponent(PlayerControlComponent(map: map))
         
         // Create shape entities with display and AI components.
-        let types: [ShapeType] = [.Killer, .Score, .Shield, .Killer]
+        let types: [ShapeType] = [.killer, .score, .shield, .killer]
         intelligenceSystem = GKComponentSystem(componentClass: IntelligenceComponent.self)
         
         super.init(size: size)
         
-        for (index, node) in map.shapeStartPositions.enumerate() {
+        for (index, node) in map.shapeStartPositions.enumerated() {
             let shape = Entity(type: types[index])
             shape.gridPosition = node.gridPosition
             shape.addComponent(SpriteComponent(entity: shape))
             shape.addComponent(IntelligenceComponent(scene: self, entity: shape, startingPosition: node))
-            intelligenceSystem.addComponentWithEntity(shape)
+            intelligenceSystem.addComponent(foundIn: shape)
             shapes.append(shape)
         }
         
@@ -112,9 +112,9 @@ class MazeModeScene: GameScene {
         physicsWorld.contactDelegate = self
         
         //Observe Notification
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GameControlProtocol.pause), name: UIApplicationWillResignActiveNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GameControlProtocol.pause), name: UIApplicationDidEnterBackgroundNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GameControlProtocol.pause), name: WantGamePauseNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(GameControlProtocol.pause), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(GameControlProtocol.pause), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(GameControlProtocol.pause), name: NSNotification.Name(rawValue: WantGamePauseNotification), object: nil)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -122,45 +122,45 @@ class MazeModeScene: GameScene {
     }
     
     deinit{
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
         soundManager.stopBackGround()
     }
     
     func resetShapes() {
         
         //clean shapes
-        if let playerComponent = playerEntity.componentForClass(SpriteComponent.self) {
+        if let playerComponent = playerEntity.component(ofType: SpriteComponent.self) {
             playerComponent.sprite.removeFromParent()
         }
         for entity in shapes {
-            if let shapeComponent = entity.componentForClass(SpriteComponent.self) {
+            if let shapeComponent = entity.component(ofType: SpriteComponent.self) {
                 shapeComponent.sprite.removeFromParent()
             }
         }
         
         // Create player entity with display and control components.
-        playerEntity = Entity(type: .Player)
+        playerEntity = Entity(type: .player)
         playerEntity.gridPosition = map.startPosition.gridPosition
         playerEntity.addComponent(SpriteComponent(entity: playerEntity))
         playerEntity.addComponent(PlayerControlComponent(map: map))
         
         
         // Create shape entities with display and AI components.
-        let types: [ShapeType] = [.Killer, .Score, .Shield, .Killer]
+        let types: [ShapeType] = [.killer, .score, .shield, .killer]
         intelligenceSystem = GKComponentSystem(componentClass: IntelligenceComponent.self)
         
         shapes.removeAll()
-        for (index, node) in map.shapeStartPositions.enumerate() {
+        for (index, node) in map.shapeStartPositions.enumerated() {
             let shape = Entity(type: types[index])
             shape.gridPosition = node.gridPosition
             shape.addComponent(SpriteComponent(entity: shape))
             shape.addComponent(IntelligenceComponent(scene: self, entity: shape, startingPosition: node))
-            intelligenceSystem.addComponentWithEntity(shape)
+            intelligenceSystem.addComponent(foundIn: shape)
             shapes.append(shape)
         }
         
         // Add player entity to scene.
-        if let playerComponent = playerEntity.componentForClass(SpriteComponent.self) {
+        if let playerComponent = playerEntity.component(ofType: SpriteComponent.self) {
             player = playerComponent.sprite as! Player
             playerComponent.sprite.position = map.pointForGridPosition(playerEntity.gridPosition)
             addChild(playerComponent.sprite)
@@ -168,14 +168,14 @@ class MazeModeScene: GameScene {
         
         // Add shape entities to scene.
         for entity in shapes {
-            if let shapeComponent = entity.componentForClass(SpriteComponent.self) {
+            if let shapeComponent = entity.component(ofType: SpriteComponent.self) {
                 shapeComponent.sprite.position = map.pointForGridPosition(entity.gridPosition)
                 addChild(shapeComponent.sprite)
             }
         }
     }
     
-    override func didMoveToView(view: SKView) {
+    override func didMove(to view: SKView) {
         
         addChild(background)
         addChild(map)
@@ -183,7 +183,7 @@ class MazeModeScene: GameScene {
         display.setPosition()
         
         // Add player entity to scene.
-        if let playerComponent = playerEntity.componentForClass(SpriteComponent.self) {
+        if let playerComponent = playerEntity.component(ofType: SpriteComponent.self) {
             player = playerComponent.sprite as! Player
             playerComponent.sprite.position = map.pointForGridPosition(playerEntity.gridPosition)
             addChild(playerComponent.sprite)
@@ -191,7 +191,7 @@ class MazeModeScene: GameScene {
         
         // Add shape entities to scene.
         for entity in shapes {
-            if let shapeComponent = entity.componentForClass(SpriteComponent.self) {
+            if let shapeComponent = entity.component(ofType: SpriteComponent.self) {
                 shapeComponent.sprite.position = map.pointForGridPosition(entity.gridPosition)
                 addChild(shapeComponent.sprite)
             }
@@ -200,7 +200,7 @@ class MazeModeScene: GameScene {
         resume()
     }
     
-    override func update(currentTime: NSTimeInterval) {
+    override func update(_ currentTime: TimeInterval) {
         if Data.sharedData.gameOver {
             return
         }
@@ -215,8 +215,8 @@ class MazeModeScene: GameScene {
         powerupTimeRemaining -= dt
         
         // Update components with the new time delta.
-        playerEntity.updateWithDeltaTime(dt)
-        intelligenceSystem.updateWithDeltaTime(dt)
+        playerEntity.update(deltaTime: dt)
+        intelligenceSystem.update(deltaTime: dt)
     }
     
     //MARK: - UI control methods
@@ -225,7 +225,7 @@ class MazeModeScene: GameScene {
         if Data.sharedData.gameOver {
             //                restartGame()
         }
-        else if view?.paused == true{
+        else if view?.isPaused == true{
             resume()
         }
         else {
@@ -234,16 +234,16 @@ class MazeModeScene: GameScene {
     }
     
     override func createReaper(){
-        if !Data.sharedData.gameOver && view?.paused == false {
+        if !Data.sharedData.gameOver && view?.isPaused == false {
             if Data.sharedData.reaperNum>0 {
                 Data.sharedData.reaperNum -= 1
                 // 释放收割机，去收获。。。
-                let reaper = Entity(type: .Reaper)
+                let reaper = Entity(type: .reaper)
                 reaper.gridPosition = playerEntity.gridPosition
                 reaper.addComponent(SpriteComponent(entity: reaper))
-                reaper.addComponent(IntelligenceComponent(scene: self, entity: reaper, startingPosition: map.pathfindingGraph.nodeAtGridPosition(reaper.gridPosition)!))
-                intelligenceSystem.addComponentWithEntity(reaper)
-                if let reaperComponent = reaper.componentForClass(SpriteComponent.self) {
+                reaper.addComponent(IntelligenceComponent(scene: self, entity: reaper, startingPosition: map.pathfindingGraph.node(atGridPosition: reaper.gridPosition)!))
+                intelligenceSystem.addComponent(foundIn: reaper)
+                if let reaperComponent = reaper.component(ofType: SpriteComponent.self) {
                     reaperComponent.sprite.position = map.pointForGridPosition(reaper.gridPosition)
                     addChild(reaperComponent.sprite)
                 }
@@ -302,17 +302,17 @@ class MazeModeScene: GameScene {
     
     override func pause() {
         if !Data.sharedData.gameOver {
-            self.runAction(SKAction.runBlock({ [unowned self]() -> Void in
+            self.run(SKAction.run({ [unowned self]() -> Void in
                 self.display.pause()
                 }), completion: { [unowned self]() -> Void in
-                    self.view?.paused = true
+                    self.view?.isPaused = true
                 })
         }
     }
     
     override func resume() {
         display.resume()
-        view?.paused = false
+        view?.isPaused = false
     }
 
 }

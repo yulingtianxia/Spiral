@@ -8,7 +8,7 @@
 
 import UIKit
 import SpriteKit
-public class ZenMap: SKNode {
+open class ZenMap: SKNode {
     var rightPath:[CGPoint] = []
     var downPath:[CGPoint] = []
     var leftPath:[CGPoint] = []
@@ -67,7 +67,7 @@ public class ZenMap: SKNode {
     }
     
     //递归填充比图片长的直线
-    func addBamboosFromPointA(a:CGPoint, toPointB b:CGPoint){
+    func addBamboosFromPointA(_ a:CGPoint, toPointB b:CGPoint){
         let xDistance = b.x-a.x
         let yDistance = b.y-a.y
         let distance = sqrt(xDistance * xDistance + yDistance * yDistance)

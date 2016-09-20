@@ -49,29 +49,29 @@ class OrdinaryDisplay: SKNode ,DisplayData{
     }
     
     func setPosition() {
-        scoreLabel.position = CGPointMake(CGRectGetMidX(scene!.frame), CGRectGetMaxY(scene!.frame)/8)
-        highScoreLabel.position = CGPointMake(CGRectGetMidX(scene!.frame), CGRectGetMinY(scene!.frame)+5)
-        levelLabel.position = CGPointMake(CGRectGetMidX(scene!.frame), 4*CGRectGetMaxY(scene!.frame)/5)
-        gameOverLabel.position = CGPointMake(CGRectGetMidX(scene!.frame), CGRectGetMidY(scene!.frame))
-        share.position = CGPointMake(CGRectGetMaxX(scene!.frame)*3/4, CGRectGetMaxY(scene!.frame)/4)
-        replay.position = CGPointMake(CGRectGetMaxX(scene!.frame)/4, CGRectGetMaxY(scene!.frame)/4)
-        playRecord.position = CGPoint(x: CGRectGetMidX(scene!.frame), y: CGRectGetMaxY(scene!.frame)/4)
+        scoreLabel.position = CGPoint(x: scene!.frame.midX, y: scene!.frame.maxY/8)
+        highScoreLabel.position = CGPoint(x: scene!.frame.midX, y: scene!.frame.minY+5)
+        levelLabel.position = CGPoint(x: scene!.frame.midX, y: 4*scene!.frame.maxY/5)
+        gameOverLabel.position = CGPoint(x: scene!.frame.midX, y: scene!.frame.midY)
+        share.position = CGPoint(x: scene!.frame.maxX*3/4, y: scene!.frame.maxY/4)
+        replay.position = CGPoint(x: scene!.frame.maxX/4, y: scene!.frame.maxY/4)
+        playRecord.position = CGPoint(x: scene!.frame.midX, y: scene!.frame.maxY/4)
         gameCenter.position = CGPoint(x: gameCenter.size.width/2, y: scene!.size.height-gameCenter.size.height/2)
-        pauseLabel.position = CGPointMake(CGRectGetMidX(scene!.frame), CGRectGetMidY(scene!.frame))
+        pauseLabel.position = CGPoint(x: scene!.frame.midX, y: scene!.frame.midY)
         reaperIcon.position = CGPoint(x: reaperIcon.size.width/2, y: reaperIcon.frame.height/2)
-        reaperNumLabel.position = CGPoint(x: CGRectGetMaxX(reaperIcon.frame) + 5 + reaperNumLabel.frame.width/2, y: reaperNumLabel.frame.height/4)
+        reaperNumLabel.position = CGPoint(x: reaperIcon.frame.maxX + 5 + reaperNumLabel.frame.width/2, y: reaperNumLabel.frame.height/4)
         help.position = CGPoint(x: scene!.size.width-help.size.width/2, y: scene!.size.height-help.size.height/2)
         tipsLabel.position = CGPoint(x: gameOverLabel.position.x, y: (gameOverLabel.position.y + share.position.y)/2)
         
     }
     
     func disableButtons() {
-        share.userInteractionEnabled = false
-        replay.userInteractionEnabled = false
-        playRecord.userInteractionEnabled = false
-        gameCenter.userInteractionEnabled = false
-        help.userInteractionEnabled = false
-        gameOverLabel.userInteractionEnabled = false
+        share.isUserInteractionEnabled = false
+        replay.isUserInteractionEnabled = false
+        playRecord.isUserInteractionEnabled = false
+        gameCenter.isUserInteractionEnabled = false
+        help.isUserInteractionEnabled = false
+        gameOverLabel.isUserInteractionEnabled = false
     }
     
     // MARK: - DisplayData
@@ -83,7 +83,7 @@ class OrdinaryDisplay: SKNode ,DisplayData{
     }
     
     func levelUp() {
-        levelLabel.runAction(SKAction.sequence([SKAction.scaleTo(1.5, duration: 0.5),SKAction.scaleTo(1, duration: 0.5)]))
+        levelLabel.run(SKAction.sequence([SKAction.scale(to: 1.5, duration: 0.5),SKAction.scale(to: 1, duration: 0.5)]))
         let scene = self.scene as! OrdinaryModeScene
         scene.speedUp()
         scene.soundManager.playLevelUp()
@@ -110,7 +110,7 @@ class OrdinaryDisplay: SKNode ,DisplayData{
         addChild(highScoreLabel)
         scene.hideGame()
         scene.soundManager.playGameOver()
-        let gvc = UIApplication.sharedApplication().keyWindow?.rootViewController as! GameViewController
+        let gvc = UIApplication.shared.keyWindow?.rootViewController as! GameViewController
         gvc.stopRecord()
         gvc.removeGestureRecognizers()
     }
@@ -127,7 +127,7 @@ class OrdinaryDisplay: SKNode ,DisplayData{
         addChild(reaperNumLabel)
         addChild(reaperIcon)
         (scene as! OrdinaryModeScene).restartGame()
-        (UIApplication.sharedApplication().keyWindow?.rootViewController as! GameViewController).addGestureRecognizers()
+        (UIApplication.shared.keyWindow?.rootViewController as! GameViewController).addGestureRecognizers()
     }
     
     //MARK: - pause&resume

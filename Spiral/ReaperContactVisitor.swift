@@ -9,59 +9,59 @@
 import SpriteKit
 
 class ReaperContactVisitor: ContactVisitor {
-    func visitPlayer(body:SKPhysicsBody) {
+    func visitPlayer(_ body:SKPhysicsBody) {
 //        let thisNode = self.body.node
 //        let otherNode = body.node
         
     }
     
-    func visitKiller(body:SKPhysicsBody) {
+    func visitKiller(_ body:SKPhysicsBody) {
         let thisNode = self.body.node as! Reaper
         let otherNode = body.node as! Killer
-        if Data.sharedData.currentMode == .Maze {
+        if Data.sharedData.currentMode == .maze {
             if let entity = thisNode.owner?.entity,
-                let aiComponent = entity.componentForClass(IntelligenceComponent.self),
+                let aiComponent = entity.component(ofType: IntelligenceComponent.self),
                 let state = aiComponent.stateMachine.currentState {
-                    if !state.isKindOfClass(ShapeReapState.self) {
+                    if !state.isKind(of: ShapeReapState.self) {
                         return
                     }
                     else {
-                        aiComponent.stateMachine.enterState(ShapeDefeatedState.self)
+                        aiComponent.stateMachine.enter(ShapeDefeatedState.self)
                     }
             }
             if let entity = otherNode.owner?.entity,
-                let aiComponent = entity.componentForClass(IntelligenceComponent.self),
+                let aiComponent = entity.component(ofType: IntelligenceComponent.self),
                 let state = aiComponent.stateMachine.currentState {
-                    if !state.isKindOfClass(ShapeChaseState.self) {
+                    if !state.isKind(of: ShapeChaseState.self) {
                         return
                     }
                     else {
-                        aiComponent.stateMachine.enterState(ShapeDefeatedState.self)
+                        aiComponent.stateMachine.enter(ShapeDefeatedState.self)
                     }
             }
         }
         (thisNode.scene as? GameScene)?.soundManager.playKiller()
     }
     
-    func visitScore(body:SKPhysicsBody) {
+    func visitScore(_ body:SKPhysicsBody) {
         let thisNode = self.body.node as! Reaper
         let otherNode = body.node as! Score
-        if Data.sharedData.currentMode == .Maze {
+        if Data.sharedData.currentMode == .maze {
             if let entity = thisNode.owner?.entity,
-                let aiComponent = entity.componentForClass(IntelligenceComponent.self),
+                let aiComponent = entity.component(ofType: IntelligenceComponent.self),
                 let state = aiComponent.stateMachine.currentState {
-                    if !state.isKindOfClass(ShapeReapState.self) {
+                    if !state.isKind(of: ShapeReapState.self) {
                         return
                     }
             }
             if let entity = otherNode.owner?.entity,
-                let aiComponent = entity.componentForClass(IntelligenceComponent.self),
+                let aiComponent = entity.component(ofType: IntelligenceComponent.self),
                 let state = aiComponent.stateMachine.currentState {
-                    if !state.isKindOfClass(ShapeFleeState.self) {
+                    if !state.isKind(of: ShapeFleeState.self) {
                         return
                     }
                     else {
-                        aiComponent.stateMachine.enterState(ShapeDefeatedState.self)
+                        aiComponent.stateMachine.enter(ShapeDefeatedState.self)
                     }
             }
         }
@@ -69,26 +69,26 @@ class ReaperContactVisitor: ContactVisitor {
         (thisNode.scene as? GameScene)?.soundManager.playScore()
     }
     
-    func visitShield(body:SKPhysicsBody) {
+    func visitShield(_ body:SKPhysicsBody) {
         let scene = self.body.node?.scene as? GameScene
         let thisNode = self.body.node as! Reaper
         let otherNode = body.node as! Shield
-        if Data.sharedData.currentMode == .Maze {
+        if Data.sharedData.currentMode == .maze {
             if let entity = thisNode.owner?.entity,
-                let aiComponent = entity.componentForClass(IntelligenceComponent.self),
+                let aiComponent = entity.component(ofType: IntelligenceComponent.self),
                 let state = aiComponent.stateMachine.currentState {
-                    if !state.isKindOfClass(ShapeReapState.self) {
+                    if !state.isKind(of: ShapeReapState.self) {
                         return
                     }
             }
             if let entity = otherNode.owner?.entity,
-                let aiComponent = entity.componentForClass(IntelligenceComponent.self),
+                let aiComponent = entity.component(ofType: IntelligenceComponent.self),
                 let state = aiComponent.stateMachine.currentState {
-                    if !state.isKindOfClass(ShapeFleeState.self) {
+                    if !state.isKind(of: ShapeFleeState.self) {
                         return
                     }
                     else {
-                        aiComponent.stateMachine.enterState(ShapeDefeatedState.self)
+                        aiComponent.stateMachine.enter(ShapeDefeatedState.self)
                     }
             }
         }

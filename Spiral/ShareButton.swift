@@ -16,23 +16,23 @@ class ShareButton: SKSpriteNode {
     
     init() {
         let texture = SKTexture(imageNamed: "sharebtn")
-        super.init(texture: texture, color: UIColor.clearColor(), size: texture.size() * 0.6)
-        userInteractionEnabled = true
+        super.init(texture: texture, color: UIColor.clear, size: texture.size() * 0.6)
+        isUserInteractionEnabled = true
     }
     
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         let image = UIImage.imageFromNode(scene!)
-        let url = NSURL(string: NSLocalizedString("https://itunes.apple.com/us/app/square-spiral/id920811081", comment: ""))
+        let url = URL(string: NSLocalizedString("https://itunes.apple.com/us/app/square-spiral/id920811081", comment: ""))
         let messageDiscription = String.localizedStringWithFormat(NSLocalizedString("I got %d points in Spiral. Come on with me!", comment: ""), Data.sharedData.score)
         
-        let wechatSessionMessage = WeChatActivity.Message(title:NSLocalizedString("Square Spiral", comment: ""), description:NSLocalizedString(messageDiscription, comment: ""), thumbnail:UIImage(named: "shareThumb"), media: WeChatActivity.Message.Media.URL(url!))
-        let wechatSessionActivity = WeChatActivity(scene: .Session, message: wechatSessionMessage)
+        let wechatSessionMessage = WeChatActivity.Message(title:NSLocalizedString("Square Spiral", comment: ""), description:NSLocalizedString(messageDiscription, comment: ""), thumbnail:UIImage(named: "shareThumb"), media: WeChatActivity.Message.Media.url(url!))
+        let wechatSessionActivity = WeChatActivity(scene: .session, message: wechatSessionMessage)
         
-        let wechatTimelineMessage = WeChatActivity.Message(title:NSLocalizedString(messageDiscription, comment: ""), description:"", thumbnail:UIImage(named: "shareThumb"), media: WeChatActivity.Message.Media.URL(url!))
-        let wechatTimelineActivity = WeChatActivity(scene: .Timeline, message: wechatTimelineMessage)
+        let wechatTimelineMessage = WeChatActivity.Message(title:NSLocalizedString(messageDiscription, comment: ""), description:"", thumbnail:UIImage(named: "shareThumb"), media: WeChatActivity.Message.Media.url(url!))
+        let wechatTimelineActivity = WeChatActivity(scene: .timeline, message: wechatTimelineMessage)
         
-        let activityItems = [image, messageDiscription, url!.absoluteString]
+        let activityItems = [image, messageDiscription, url!.absoluteString] as [Any]
         let activityController = UIActivityViewController(activityItems: activityItems, applicationActivities: [wechatSessionActivity, wechatTimelineActivity])
-        (scene!.view!.nextResponder() as! UIViewController).presentViewController(activityController, animated: true, completion: nil)
+        (scene!.view!.next as! UIViewController).present(activityController, animated: true, completion: nil)
     }
 }

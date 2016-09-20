@@ -12,26 +12,26 @@ class GameOverIcon: SKSpriteNode {
     init(size:CGSize) {
         let imageString:String
         switch Data.sharedData.currentMode {
-        case .Ordinary:
+        case .ordinary:
             imageString = "gameover_ordinary"
-        case .Zen:
+        case .zen:
             imageString = "gameover_zen"
-        case .Maze:
+        case .maze:
             imageString = "gameover_maze"
         }
-        super.init(texture: SKTexture(imageNamed: imageString), color: UIColor.clearColor(), size: size)
-        userInteractionEnabled = true
+        super.init(texture: SKTexture(imageNamed: imageString), color: UIColor.clear, size: size)
+        isUserInteractionEnabled = true
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         Data.sharedData.display = nil
         Data.sharedData.reset()
         let scene = MainScene(size: self.scene!.size)
-        let flip = SKTransition.flipHorizontalWithDuration(1)
+        let flip = SKTransition.flipHorizontal(withDuration: 1)
         flip.pausesIncomingScene = false
         self.scene?.view?.presentScene(scene, transition: flip)
     }

@@ -10,7 +10,7 @@ import CoreMotion
 
 class MotionManager {
     
-    private static let instance = CMMotionManager()
+    fileprivate static let instance = CMMotionManager()
     
     class var sharedMotionManager : CMMotionManager {
         return instance

@@ -17,8 +17,8 @@ class AutoRecordButton: SKSpriteNode {
         else {
             texture = SKTexture(imageNamed: "ButtonAutoRecordOff")
         }
-        super.init(texture: texture, color: UIColor.clearColor(), size: texture.size() * 0.7)
-        userInteractionEnabled = true
+        super.init(texture: texture, color: UIColor.clear, size: texture.size() * 0.7)
+        isUserInteractionEnabled = true
         
         //添加"AUTORECORD"文字
         let auto = SKLabelNode(text: "AUTO")
@@ -29,8 +29,8 @@ class AutoRecordButton: SKSpriteNode {
         record.fontName = "Menlo Bold"
         auto.position = CGPoint(x: size.width / 6, y: 0)
         record.position = CGPoint(x: size.width / 6, y: -size.height / 3)
-        auto.fontColor = UIColor.blackColor()
-        record.fontColor = UIColor.blackColor()
+        auto.fontColor = UIColor.black
+        record.fontColor = UIColor.black
         auto.zPosition = 100
         record.zPosition = 100
         addChild(auto)
@@ -41,7 +41,7 @@ class AutoRecordButton: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if Data.sharedData.autoRecord {
             Data.sharedData.autoRecord = false
             texture = SKTexture(imageNamed: "ButtonAutoRecordOff")

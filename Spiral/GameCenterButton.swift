@@ -10,15 +10,15 @@ import SpriteKit
 
 class GameCenterButton: SKSpriteNode {
     init(){
-        super.init(texture: SKTexture(imageNamed: "GameCenter"), color: SKColor.clearColor(), size: CGSize(width: 40, height: 40))
-        self.userInteractionEnabled = true
+        super.init(texture: SKTexture(imageNamed: "GameCenter"), color: SKColor.clear, size: CGSize(width: 40, height: 40))
+        self.isUserInteractionEnabled = true
     }
 
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         GameKitHelper.sharedGameKitHelper.showLeaderboard()
     }
     

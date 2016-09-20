@@ -35,7 +35,7 @@ class Shape: SKSpriteNode {
     }
     
     init(name aName:String,imageName:String) {
-        super.init(texture: SKTexture(imageNamed: imageName),color:SKColor.clearColor(), size: CGSizeMake(radius*2, radius*2))
+        super.init(texture: SKTexture(imageNamed: imageName),color:SKColor.clear, size: CGSize(width: radius * 2.0, height: radius * 2.0))
 //        physicsBody = SKPhysicsBody(texture: texture, size: size)
         physicsBody = SKPhysicsBody(circleOfRadius: radius)
         physicsBody!.usesPreciseCollisionDetection = true
@@ -48,18 +48,18 @@ class Shape: SKSpriteNode {
         physicsBody?.linearDamping = 0
         physicsBody?.restitution = 1
         physicsBody?.friction = 1
-        normalTexture = texture?.textureByGeneratingNormalMap()
-        light.enabled = false
+        normalTexture = texture?.generatingNormalMap()
+        light.isEnabled = false
         addChild(light)
     }
     
-    func runInOrdinaryMap(map:OrdinaryMap) {
+    func runInOrdinaryMap(_ map:OrdinaryMap) {
         let distance = calDistanceInOrdinaryMap(map)
         let duration = distance / moveSpeed
-        let rotate = SKAction.rotateByAngle(distance/10, duration: Double(duration))
-        let move = SKAction.moveTo(map.points[lineNum+1], duration: Double(duration))
+        let rotate = SKAction.rotate(byAngle: distance/10, duration: Double(duration))
+        let move = SKAction.move(to: map.points[lineNum+1], duration: Double(duration))
         let group = SKAction.group([rotate,move])
-        self.runAction(group, completion:{
+        self.run(group, completion:{
             self.lineNum += 1
             if self.lineNum==map.points.count-1 {
                 if self is Player{
@@ -75,7 +75,7 @@ class Shape: SKSpriteNode {
         })
     }
     
-    func calDistanceInOrdinaryMap(map:OrdinaryMap)->CGFloat{
+    func calDistanceInOrdinaryMap(_ map:OrdinaryMap)->CGFloat{
         if self.lineNum==map.points.count {
             return 0
         }
@@ -93,13 +93,13 @@ class Shape: SKSpriteNode {
         }
     }
     
-    func runInZenMap(map:ZenMap){
+    func runInZenMap(_ map:ZenMap){
         let distance = calDistanceInZenMap(map)
         let duration = distance/moveSpeed
-        let rotate = SKAction.rotateByAngle(distance/10, duration: Double(duration))
-        let move = SKAction.moveTo(map.points[pathOrientation]![lineNum+1], duration: Double(duration))
+        let rotate = SKAction.rotate(byAngle: distance/10, duration: Double(duration))
+        let move = SKAction.move(to: map.points[pathOrientation]![lineNum+1], duration: Double(duration))
         let group = SKAction.group([rotate,move])
-        self.runAction(group, completion: {
+        self.run(group, completion: {
             self.lineNum += 1
             if self.lineNum==map.points[self.pathOrientation]!.count-1 {
                 if self is Player{
@@ -115,7 +115,7 @@ class Shape: SKSpriteNode {
         })
     }
     
-    func calDistanceInZenMap(map:ZenMap)->CGFloat{
+    func calDistanceInZenMap(_ map:ZenMap)->CGFloat{
         if self.lineNum==map.points[pathOrientation]!.count {
             return 0
         }

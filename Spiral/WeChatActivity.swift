@@ -11,41 +11,41 @@ import UIKit
 class WeChatActivity: UIActivity {
     
     enum Scene {
-        case Session    // 聊天界面
-        case Timeline   // 朋友圈
+        case session    // 聊天界面
+        case timeline   // 朋友圈
         
         var value: Int32 {
             switch self {
-            case Session:
+            case .session:
                 return 0
-            case Timeline:
+            case .timeline:
                 return 1
             }
         }
         
         var activityType: String {
             switch self {
-            case Session:
+            case .session:
                 return "com.yulingtianxia.spiral.shareToWeChatSession"
-            case Timeline:
+            case .timeline:
                 return "com.yulingtianxia.spiral.shareToWeChatTimeline"
             }
         }
         
         var activityTitle: String {
             switch self {
-            case Session:
+            case .session:
                 return NSLocalizedString("WeChat Session", comment: "")
-            case Timeline:
+            case .timeline:
                 return NSLocalizedString("WeChat Timeline", comment: "")
             }
         }
         
         var activityImage: UIImage? {
             switch self {
-            case Session:
+            case .session:
                 return UIImage(named: "wechat_session")
-            case Timeline:
+            case .timeline:
                 return UIImage(named: "wechat_timeline")
             }
         }
@@ -57,8 +57,8 @@ class WeChatActivity: UIActivity {
         let thumbnail: UIImage?
         
         enum Media {
-            case URL(NSURL)
-            case Image(UIImage)
+            case url(Foundation.URL)
+            case image(UIImage)
         }
         
         let media: Media
@@ -74,32 +74,32 @@ class WeChatActivity: UIActivity {
         super.init()
     }
     
-    override class func activityCategory() -> UIActivityCategory {
-        return .Share
+    override class var activityCategory : UIActivityCategory {
+        return .share
     }
     
-    override func activityType() -> String? {
-        return scene.activityType
+    override var activityType : UIActivityType? {
+        return UIActivityType(scene.activityType)
     }
     
-    override func activityTitle() -> String? {
+    override var activityTitle : String? {
         return scene.activityTitle
     }
     
-    override func activityImage() -> UIImage? {
+    override var activityImage : UIImage? {
         return scene.activityImage
     }
     
-    override func canPerformWithActivityItems(activityItems: [AnyObject]) -> Bool {
+    override func canPerform(withActivityItems activityItems: [Any]) -> Bool {
         
-        if WXApi.isWXAppInstalled() && WXApi.isWXAppSupportApi() {
+        if WXApi.isWXAppInstalled() && WXApi.isWXAppSupport() {
             return true
         }
         
         return false
     }
     
-    override func performActivity() {
+    override func perform() {
         
         let request = SendMessageToWXReq()
         
@@ -113,12 +113,12 @@ class WeChatActivity: UIActivity {
         
         switch self.message.media {
             
-        case .URL(let URL):
+        case .url(let URL):
             let webObject = WXWebpageObject()
             webObject.webpageUrl = URL.absoluteString
             message.mediaObject = webObject
             
-        case .Image(let image):
+        case .image(let image):
             let imageObject = WXImageObject()
             imageObject.imageData = UIImageJPEGRepresentation(image, 1)
             message.mediaObject = imageObject
@@ -126,7 +126,7 @@ class WeChatActivity: UIActivity {
         
         request.message = message
         
-        WXApi.sendReq(request)
+        WXApi.send(request)
         
         activityDidFinish(true)
     }

@@ -14,7 +14,7 @@ class VisitablePhysicsBody{
     init(body:SKPhysicsBody){
         self.body = body
     }
-    func acceptVisitor(visitor:ContactVisitor){
+    func acceptVisitor(_ visitor:ContactVisitor){
         visitor.visitBody(body)
     }
 }

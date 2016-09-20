@@ -10,7 +10,7 @@ import SpriteKit
 import CoreMotion
 
 private let kShapeSize = CGSize(width: 50, height: 50)
-private let kUpdateInterval:NSTimeInterval = Double(1)/60
+private let kUpdateInterval:TimeInterval = Double(1)/60
 private let kAccelerateScale:Double = 100
 private let kRandomSpeed:UInt32 = 100
 
@@ -32,7 +32,7 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
     
     override init(size: CGSize) {
         super.init(size: size)
-        let center = CGPointMake(size.width/2, size.height/2)
+        let center = CGPoint(x: size.width/2, y: size.height/2)
         //添加背景
         let background = Background(size: size, imageName: "bg_main")
         background.position = center
@@ -53,20 +53,20 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
         addChild(gameCenter)
         
         //添加 AutoRecord 按钮
-        autoRecord.position = CGPoint(x: CGRectGetMaxX(frame) - autoRecord.size.width / 2, y: CGRectGetMaxY(frame) - autoRecord.size.height / 2)
+        autoRecord.position = CGPoint(x: frame.maxX - autoRecord.size.width / 2, y: frame.maxY - autoRecord.size.height / 2)
         autoRecord.zPosition = 101
         addChild(autoRecord)
         
         //添加模式选择按钮
-        ordinaryBtn.position = CGPoint(x: center.x - ordinaryBtn.size.width/2, y: CGRectGetMinY(spiralLabel.frame) - ordinaryBtn.size.height/2)
-        zenBtn.position = CGPoint(x: center.x + zenBtn.size.width/2, y: CGRectGetMinY(spiralLabel.frame) - ordinaryBtn.size.height/2)
-        mazeBtn.position = CGPoint(x: center.x - mazeBtn.size.width/2, y: CGRectGetMinY(ordinaryBtn.frame) - zenBtn.size.height/2)
+        ordinaryBtn.position = CGPoint(x: center.x - ordinaryBtn.size.width/2, y: spiralLabel.frame.minY - ordinaryBtn.size.height/2)
+        zenBtn.position = CGPoint(x: center.x + zenBtn.size.width/2, y: spiralLabel.frame.minY - ordinaryBtn.size.height/2)
+        mazeBtn.position = CGPoint(x: center.x - mazeBtn.size.width/2, y: ordinaryBtn.frame.minY - zenBtn.size.height/2)
         addChild(ordinaryBtn)
         addChild(zenBtn)
         addChild(mazeBtn)
         
         //设定物理特性
-        physicsBody = SKPhysicsBody(edgeLoopFromRect: frame)
+        physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
         physicsBody?.affectedByGravity = false
         physicsBody?.categoryBitMask = mainSceneCategory
         physicsBody?.collisionBitMask = playerCategory|killerCategory|scoreCategory|shieldCategory|reaperCategory
@@ -80,12 +80,12 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
         createShapes()
         
         //监听加速计数据
-        if mManager.deviceMotionAvailable {
+        if mManager.isDeviceMotionAvailable {
             mManager.deviceMotionUpdateInterval = kUpdateInterval
             mManager.startDeviceMotionUpdates()
-            mManager.startDeviceMotionUpdatesToQueue(NSOperationQueue.mainQueue(), withHandler: { (deviceMotion, error) -> Void in
+            mManager.startDeviceMotionUpdates(to: OperationQueue.main, withHandler: { (deviceMotion, error) -> Void in
                 if error != nil {
-                    print(error!.description, terminator: "")
+                    print(error!.localizedDescription, terminator: "")
                 }
                 else if let acceleration = deviceMotion?.userAcceleration{
                     for shape in self.shapes {
@@ -104,7 +104,7 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
     
     //产生 Shape
     func createShapes() {
-        let center = CGPoint(x: CGRectGetMidX(frame), y: CGRectGetMidY(frame))
+        let center = CGPoint(x: frame.midX, y: frame.midY)
         //创建所有 shape
         let player = Player()
         let killer = Killer()
@@ -137,11 +137,11 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
             shape.physicsBody?.linearDamping = 0
             shape.physicsBody?.restitution = 0.5
             shape.physicsBody?.friction = 1.0
-            shape.normalTexture = shape.texture?.textureByGeneratingNormalMap()
+            shape.normalTexture = shape.texture?.generatingNormalMap()
             //赋予随机初速度
             shape.physicsBody?.velocity = randomVelocity()
             //点亮照明灯
-            shape.light.enabled = false
+            shape.light.isEnabled = false
             //添加到场景
             addChild(shape)
         }

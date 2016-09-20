@@ -15,15 +15,15 @@ class ReplayButton: SKSpriteNode {
     
     init() {
         let texture = SKTexture(imageNamed: "replaybtn")
-        super.init(texture: texture, color: UIColor.clearColor(), size: texture.size() * 0.5)
-        userInteractionEnabled = true
+        super.init(texture: texture, color: UIColor.clear, size: texture.size() * 0.5)
+        isUserInteractionEnabled = true
     }
     
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        dispatch_async(dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0)) { () -> Void in
-            let gvc = UIApplication.sharedApplication().keyWindow?.rootViewController as! GameViewController
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async { () -> Void in
+            let gvc = UIApplication.shared.keyWindow?.rootViewController as! GameViewController
             gvc.startRecordWithHandler { () -> Void in
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                DispatchQueue.main.async(execute: { () -> Void in
                     Data.sharedData.gameOver = false
                 })
             }
