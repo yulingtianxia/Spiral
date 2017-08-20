@@ -68,7 +68,7 @@ extension SKNode {
         let swizzledSelector = #selector(SKNode.yxy_addChild(_:))
         let originalMethod = class_getInstanceMethod(cls, originalSelector)
         let swizzledMethod = class_getInstanceMethod(cls, swizzledSelector)
-        method_exchangeImplementations(originalMethod, swizzledMethod)
+        method_exchangeImplementations(originalMethod!, swizzledMethod!)
     }
     
     class func yxy_swizzleRemoveFromParent() {
@@ -77,26 +77,26 @@ extension SKNode {
         let swizzledSelector = #selector(SKNode.yxy_removeFromParent)
         let originalMethod = class_getInstanceMethod(cls, originalSelector)
         let swizzledMethod = class_getInstanceMethod(cls, swizzledSelector)
-        method_exchangeImplementations(originalMethod, swizzledMethod)
+        method_exchangeImplementations(originalMethod!, swizzledMethod!)
     }
     
-    func yxy_addChild(_ node: SKNode) {
+    @objc func yxy_addChild(_ node: SKNode) {
         if node.parent == nil {
             self.yxy_addChild(node)
         }
         else {
-            print("This node has already a parent!\(node.name)")
+            print("This node has already a parent!\(String(describing: node.name))")
         }
     }
     
-    func yxy_removeFromParent() {
+    @objc func yxy_removeFromParent() {
         if parent != nil {
             DispatchQueue.main.async(execute: { () -> Void in
                 self.yxy_removeFromParent()
             })
         }
         else {
-            print("This node has no parent!\(name)")
+            print("This node has no parent!\(String(describing: name))")
         }
     }
     

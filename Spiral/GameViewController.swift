@@ -96,25 +96,25 @@ open class GameViewController: UIViewController, RPPreviewViewControllerDelegate
     }
     
     // MARK: - handle gestures
-    func handleLongPressGesture(_ recognizer:UILongPressGestureRecognizer) {
+    @objc func handleLongPressGesture(_ recognizer:UILongPressGestureRecognizer) {
         if recognizer.state == .began {
             ((self.view as! SKView).scene as? GameScene)?.pause()
         }
     }
     
-    func handleTapWithOneFingerGesture(_ recognizer:UILongPressGestureRecognizer) {
+    @objc func handleTapWithOneFingerGesture(_ recognizer:UILongPressGestureRecognizer) {
         if recognizer.state == .ended {
             ((self.view as! SKView).scene as? GameScene)?.tap()
         }
     }
     
-    func handleTapWithTwoFingerGesture(_ recognizer:UILongPressGestureRecognizer) {
+    @objc func handleTapWithTwoFingerGesture(_ recognizer:UILongPressGestureRecognizer) {
         if recognizer.state == .ended {
 //            ((self.view as! SKView).scene as? OrdinaryModeScene)?.createReaper()
         }
     }
     
-    func handlePanGesture(_ recognizer:UIPanGestureRecognizer) {
+    @objc func handlePanGesture(_ recognizer:UIPanGestureRecognizer) {
         if recognizer.state == .changed {
             ((self.view as! SKView).scene as? OrdinaryHelpScene)?.lightWithFinger(recognizer.location(in: self.view))
             ((self.view as! SKView).scene as? ZenHelpScene)?.lightWithFinger(recognizer.location(in: self.view))
@@ -128,23 +128,23 @@ open class GameViewController: UIViewController, RPPreviewViewControllerDelegate
     }
     
     
-    func swipeRight(_ sender: UISwipeGestureRecognizer) {
+    @objc func swipeRight(_ sender: UISwipeGestureRecognizer) {
         ((self.view as! SKView).scene as? MazeModeScene)?.playerDirection = .right
     }
     
-    func swipeLeft(_ sender: UISwipeGestureRecognizer) {
+    @objc func swipeLeft(_ sender: UISwipeGestureRecognizer) {
         ((self.view as! SKView).scene as? MazeModeScene)?.playerDirection = .left
     }
     
-    func swipeUp(_ sender: UISwipeGestureRecognizer) {
+    @objc func swipeUp(_ sender: UISwipeGestureRecognizer) {
         ((self.view as! SKView).scene as? MazeModeScene)?.playerDirection = .up
     }
     
-    func swipeDown(_ sender: UISwipeGestureRecognizer) {
+    @objc func swipeDown(_ sender: UISwipeGestureRecognizer) {
         ((self.view as! SKView).scene as? MazeModeScene)?.playerDirection = .down
     }
     
-    func handlePinchGesture(_ recognizer:UIPinchGestureRecognizer) {
+    @objc func handlePinchGesture(_ recognizer:UIPinchGestureRecognizer) {
         if recognizer.state == .began {
             if recognizer.scale > 1 {
                 ((self.view as! SKView).scene as? GameScene)?.createReaper()
@@ -155,7 +155,7 @@ open class GameViewController: UIViewController, RPPreviewViewControllerDelegate
         }
     }
     
-    func handleEdgePanGesture(_ recognizer:UIPinchGestureRecognizer) {
+    @objc func handleEdgePanGesture(_ recognizer:UIPinchGestureRecognizer) {
         if recognizer.state == .ended {
             let scene = (self.view as! SKView).scene
             if let scene = scene as? OrdinaryHelpScene {

@@ -109,7 +109,7 @@ class SpriteComponent: GKComponent {
         }
     }
     
-    func followPath(_ path: [GKGridGraphNode], completion completionHandler: @escaping (Void) -> Void) {
+    func followPath(_ path: [GKGridGraphNode], completion completionHandler: @escaping () -> Void) {
         // Ignore the first node in the path -- it's the starting position.
         let dropFirst = path[1 ..< path.count]
         

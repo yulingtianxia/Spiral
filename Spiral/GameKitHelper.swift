@@ -137,7 +137,7 @@ class GameKitHelper: NSObject, GKGameCenterControllerDelegate {
     func reportMultipleAchievements() {
         GKAchievement.report(Array(achievementsDictionary.values), withCompletionHandler: { (error) -> Void in
             if error != nil {
-                fatalError("Error in reporting achievements:\(error)")
+                fatalError("Error in reporting achievements:\(String(describing: error))")
             }
         }) 
     }

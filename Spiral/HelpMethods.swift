@@ -24,14 +24,6 @@ func * (left:CGSize, right:CGFloat) -> CGSize {
     return CGSize(width: left.width * right, height: left.height * right)
 }
 
-func == (left: vector_int2, right: vector_int2) -> Bool {
-    return left.x == right.x && left.y == right.y
-}
-
-func != (left: vector_int2, right: vector_int2) -> Bool {
-    return !(left == right)
-}
-
 func + (left: vector_int2, right: vector_int2) -> vector_int2 {
     return vector_int2(left.x + right.x, left.y + right.y)
 }
@@ -44,7 +36,7 @@ func / (left: Int, right: CGFloat) -> CGFloat {
     return CGFloat(left) / right
 }
 
-func ==(lhs: Line, rhs: Line) -> Bool {
+func == (lhs: Line, rhs: Line) -> Bool {
     return lhs.pa == rhs.pa && lhs.pb == rhs.pb
 }
 

@@ -19,7 +19,7 @@ class Eye: SKSpriteNode {
     }
     
     func lookAtNode(_ node:SKNode){
-        constraints = [SKConstraint.orient(to: node, offset:SKRange(constantValue:CGFloat(3*M_PI_4)))]
+        constraints = [SKConstraint.orient(to: node, offset:SKRange(constantValue:CGFloat(3 * Double.pi / 4)))]
     }
     
     required init?(coder aDecoder: NSCoder) {
