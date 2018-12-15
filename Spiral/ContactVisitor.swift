@@ -48,7 +48,7 @@ class ContactVisitor:NSObject{
         //第二次dispatch，通过构造方法名来执行对应方法
         // 生成方法名，比如"visitPlayer"
         let contactSelectorString = "visit" + body.node!.name! + ":"
-        let selector = NSSelectorFromString(contactSelectorString)
+        let selector = Selector(contactSelectorString)
         if self.responds(to: selector){
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now(), execute: {
                 Thread.detachNewThreadSelector(selector, toTarget:self, with: body)

@@ -109,9 +109,12 @@ class ZenDisplay: SKNode, DisplayData {
         addChild(highScoreLabel)
         scene.hideGame()
         scene.soundManager.playGameOver()
-        let gvc = UIApplication.shared.keyWindow?.rootViewController as! GameViewController
-        gvc.stopRecord()
-        gvc.removeGestureRecognizers()
+        DispatchQueue.main.async {
+            if let gvc = UIApplication.shared.keyWindow?.rootViewController as? GameViewController {
+                gvc.stopRecord()
+                gvc.removeGestureRecognizers()
+            }
+        }
     }
     
     func restart() {

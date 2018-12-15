@@ -10,13 +10,13 @@ import Foundation
 import SpriteKit
 class PlayerContactVisitor:ContactVisitor{
     
-    func visitPlayer(_ body:SKPhysicsBody){
+    @objc func visitPlayer(_ body:SKPhysicsBody){
 //        let thisNode = self.body.node
 //        let otherNode = body.node
 //        println(thisNode.name+"->"+otherNode.name)
     }
     
-    func visitKiller(_ body:SKPhysicsBody){
+    @objc func visitKiller(_ body:SKPhysicsBody){
         let thisNode = self.body.node as! Player
         let otherNode = body.node as! Killer
 
@@ -63,7 +63,7 @@ class PlayerContactVisitor:ContactVisitor{
         }
     }
     
-    func visitScore(_ body:SKPhysicsBody){
+    @objc func visitScore(_ body:SKPhysicsBody){
         let thisNode = self.body.node as! Player
         let otherNode = body.node as! Score
         // Maze 模式下防止 shape 死亡后被触碰到重复生效
@@ -89,7 +89,7 @@ class PlayerContactVisitor:ContactVisitor{
         (thisNode.scene as? GameScene)?.soundManager.playScore()
     }
     
-    func visitShield(_ body:SKPhysicsBody){
+    @objc func visitShield(_ body:SKPhysicsBody){
         let thisNode = self.body.node as! Player
         let otherNode = body.node as! Shield
         // Maze 模式下防止 shape 死亡后被触碰到重复生效

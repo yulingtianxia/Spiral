@@ -74,12 +74,12 @@ class WeChatActivity: UIActivity {
         super.init()
     }
     
-    override class var activityCategory : UIActivityCategory {
+    override class var activityCategory : UIActivity.Category {
         return .share
     }
     
-    override var activityType : UIActivityType? {
-        return UIActivityType(scene.activityType)
+    override var activityType : UIActivity.ActivityType? {
+        return UIActivity.ActivityType(scene.activityType)
     }
     
     override var activityTitle : String? {
@@ -120,7 +120,7 @@ class WeChatActivity: UIActivity {
             
         case .image(let image):
             let imageObject = WXImageObject()
-            imageObject.imageData = UIImageJPEGRepresentation(image, 1)
+            imageObject.imageData = image.jpegData(compressionQuality: 1)
             message.mediaObject = imageObject
         }
         

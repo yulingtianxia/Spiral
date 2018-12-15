@@ -35,31 +35,31 @@ class HelpButton: SKSpriteNode {
         DispatchQueue.global(qos: DispatchQoS.QoSClass.userInteractive).async(execute: { () -> Void in
             Data.sharedData.display = nil
             (self.parent as? DisplayData)?.disableButtons()
+            var scene: SKScene?
             switch Data.sharedData.currentMode {
             case .ordinary:
-                if let scene = OrdinaryHelpScene.unarchiveFromFile("OrdinaryHelpScene") as? OrdinaryHelpScene {
-                    loading.removeFromParent()
-                    let crossFade = SKTransition.crossFade(withDuration: 2)
-                    crossFade.pausesIncomingScene = false
-                    self.scene?.view?.presentScene(scene, transition: crossFade)
-                    (UIApplication.shared.keyWindow?.rootViewController as! GameViewController).addGestureRecognizers()
+                if let node = OrdinaryHelpScene.unarchiveFromFile("OrdinaryHelpScene") as? OrdinaryHelpScene {
+                    scene = node
                 }
             case .zen:
-                if let scene = ZenHelpScene.unarchiveFromFile("ZenHelpScene") as? ZenHelpScene {
-                    loading.removeFromParent()
-                    let crossFade = SKTransition.crossFade(withDuration: 2)
-                    crossFade.pausesIncomingScene = false
-                    self.scene?.view?.presentScene(scene, transition: crossFade)
-                    (UIApplication.shared.keyWindow?.rootViewController as! GameViewController).addGestureRecognizers()
+                if let node = ZenHelpScene.unarchiveFromFile("ZenHelpScene") as? ZenHelpScene {
+                    scene = node
                 }
             case .maze:
-                if let scene = MazeHelpScene.unarchiveFromFile("MazeHelpScene") as? MazeHelpScene {
-                    loading.removeFromParent()
-                    let crossFade = SKTransition.crossFade(withDuration: 2)
-                    crossFade.pausesIncomingScene = false
-                    self.scene?.view?.presentScene(scene, transition: crossFade)
-                    (UIApplication.shared.keyWindow?.rootViewController as! GameViewController).addGestureRecognizers()
+                if let node = MazeHelpScene.unarchiveFromFile("MazeHelpScene") as? MazeHelpScene {
+                    scene = node
                 }
+            }
+            guard let result = scene else {
+                return
+            }
+            loading.removeFromParent()
+            let crossFade = SKTransition.crossFade(withDuration: 2)
+            crossFade.pausesIncomingScene = false
+            DispatchQueue.main.async {
+                result.size = (GameKitHelper.sharedGameKitHelper.getRootViewController()?.view.frame.size)!
+                self.scene?.view?.presentScene(result, transition: crossFade)
+                (UIApplication.shared.keyWindow?.rootViewController as! GameViewController).addGestureRecognizers()
             }
         })
     }

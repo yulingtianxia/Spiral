@@ -9,7 +9,7 @@
 import SpriteKit
 
 class ShieldContactVisitor: ContactVisitor {
-    func visitPlayer(_ body:SKPhysicsBody){
+    @objc func visitPlayer(_ body:SKPhysicsBody){
         if let thisNode = self.body.node as? Shield {
             guard Data.sharedData.currentMode == .maze else {
                 thisNode.removeFromParent()
@@ -18,25 +18,25 @@ class ShieldContactVisitor: ContactVisitor {
         }
     }
     
-    func visitKiller(_ body:SKPhysicsBody){
+    @objc func visitKiller(_ body:SKPhysicsBody){
         let thisNode = self.body.node
 //        let otherNode = body.node
         thisNode?.removeFromParent()
     }
     
-    func visitScore(_ body:SKPhysicsBody){
+    @objc func visitScore(_ body:SKPhysicsBody){
         let thisNode = self.body.node
 //        let otherNode = body.node
         thisNode?.removeFromParent()
     }
     
-    func visitShield(_ body:SKPhysicsBody){
+    @objc func visitShield(_ body:SKPhysicsBody){
         let thisNode = self.body.node
 //        let otherNode = body.node
         thisNode?.removeFromParent()
     }
     
-    func visitReaper(_ body:SKPhysicsBody){
+    @objc func visitReaper(_ body:SKPhysicsBody){
         if let thisNode = self.body.node as? Shield {
             guard Data.sharedData.currentMode == .maze else {
                 thisNode.removeFromParent()

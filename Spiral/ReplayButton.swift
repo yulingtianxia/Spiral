@@ -20,13 +20,13 @@ class ReplayButton: SKSpriteNode {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async { () -> Void in
-            let gvc = UIApplication.shared.keyWindow?.rootViewController as! GameViewController
-            gvc.startRecordWithHandler { () -> Void in
-                DispatchQueue.main.async(execute: { () -> Void in
-                    Data.sharedData.gameOver = false
-                })
-            }
+        guard let gvc = UIApplication.shared.keyWindow?.rootViewController as? GameViewController else {
+            return
+        }
+        gvc.startRecordWithHandler { () -> Void in
+            DispatchQueue.main.async(execute: { () -> Void in
+                Data.sharedData.gameOver = false
+            })
         }
     }
 

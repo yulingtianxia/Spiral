@@ -182,10 +182,10 @@ open class GameViewController: UIViewController, RPPreviewViewControllerDelegate
                         Data.sharedData.reset()
                         scene.soundManager.stopBackGround()
                         self.stopRecord()
-                        let scene = MainScene(size: skView.bounds.size)
                         let push = SKTransition.push(with: SKTransitionDirection.right, duration: 1)
                         push.pausesIncomingScene = false
                         DispatchQueue.main.async(execute: { () -> Void in
+                            let scene = MainScene(size: skView.bounds.size)
                             skView.presentScene(scene, transition: push)
                             self.removeGestureRecognizers()
                         })
@@ -239,7 +239,8 @@ open class GameViewController: UIViewController, RPPreviewViewControllerDelegate
             handler()
             return
         }
-        RPScreenRecorder.shared().startRecording(withMicrophoneEnabled: true) { (error) -> Void in
+        RPScreenRecorder.shared().isMicrophoneEnabled = true
+        RPScreenRecorder.shared().startRecording { (error) in
             if let rpError = error , rpError._domain == RPRecordingErrorDomain {
                 let alert = UIAlertController(title: NSLocalizedString("Sorry", comment: ""), message: NSLocalizedString("The screen recorder is not working", comment: ""), preferredStyle: .alert)
                 let action = UIAlertAction(title: "(⊙o⊙)", style: .default, handler: { (action) -> Void in

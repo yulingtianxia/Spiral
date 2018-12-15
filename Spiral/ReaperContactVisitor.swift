@@ -9,13 +9,13 @@
 import SpriteKit
 
 class ReaperContactVisitor: ContactVisitor {
-    func visitPlayer(_ body:SKPhysicsBody) {
+    @objc func visitPlayer(_ body:SKPhysicsBody) {
 //        let thisNode = self.body.node
 //        let otherNode = body.node
         
     }
     
-    func visitKiller(_ body:SKPhysicsBody) {
+    @objc func visitKiller(_ body:SKPhysicsBody) {
         let thisNode = self.body.node as! Reaper
         let otherNode = body.node as! Killer
         if Data.sharedData.currentMode == .maze {
@@ -43,7 +43,7 @@ class ReaperContactVisitor: ContactVisitor {
         (thisNode.scene as? GameScene)?.soundManager.playKiller()
     }
     
-    func visitScore(_ body:SKPhysicsBody) {
+    @objc func visitScore(_ body:SKPhysicsBody) {
         let thisNode = self.body.node as! Reaper
         let otherNode = body.node as! Score
         if Data.sharedData.currentMode == .maze {
@@ -69,7 +69,7 @@ class ReaperContactVisitor: ContactVisitor {
         (thisNode.scene as? GameScene)?.soundManager.playScore()
     }
     
-    func visitShield(_ body:SKPhysicsBody) {
+    @objc func visitShield(_ body:SKPhysicsBody) {
         let scene = self.body.node?.scene as? GameScene
         let thisNode = self.body.node as! Reaper
         let otherNode = body.node as! Shield
@@ -98,7 +98,7 @@ class ReaperContactVisitor: ContactVisitor {
         scene?.soundManager.playShield()
     }
     
-//    func visitReaper(body:SKPhysicsBody){
+//    @objc func visitReaper(body:SKPhysicsBody){
 //        let thisNode = self.body.node
 //        let otherNode = body.node
 //        thisNode?.removeFromParent()

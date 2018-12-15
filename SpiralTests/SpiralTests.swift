@@ -12,14 +12,14 @@ import SpriteKit
 import Spiral
 
 class SpiralTests: XCTestCase {
-    fileprivate var myApp:UIApplication!
-    fileprivate var gameVC:GameViewController!
+    fileprivate var myApp: UIApplication!
+    fileprivate var gameVC: GameViewController!
     
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
         myApp = UIApplication.shared
-        gameVC = myApp.keyWindow?.rootViewController as! GameViewController
+        gameVC = myApp.keyWindow?.rootViewController as? GameViewController
 //        GameKitHelper.sharedGameKitHelper.authenticateLocalPlayer()
     }
     

@@ -40,7 +40,6 @@ extension SKScene {
             
             archiver.setClass(self.classForKeyedUnarchiver(), forClassName: "SKScene")
             let scene = archiver.decodeObject(forKey: NSKeyedArchiveRootObjectKey) as! SKScene
-            scene.size = (GameKitHelper.sharedGameKitHelper.getRootViewController()?.view.frame.size)!
             archiver.finishDecoding()
             for child in scene.children {
                 if let sprite = child as? SKSpriteNode {

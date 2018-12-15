@@ -28,21 +28,19 @@ class OrdinaryButton: SKSpriteNode {
         if !Data.sharedData.gameOver {
             return
         }
-        DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async { () -> Void in
-            Data.sharedData.currentMode = .ordinary
-            Data.sharedData.gameOver = false
-            let gvc = UIApplication.shared.keyWindow?.rootViewController as! GameViewController
-            gvc.startRecordWithHandler { () -> Void in
-                DispatchQueue.main.async(execute: { () -> Void in
-                    if self.scene is MainScene {
-                        gvc.addGestureRecognizers()
-                        let scene = OrdinaryModeScene(size: self.scene!.size)
-                        let flip = SKTransition.flipHorizontal(withDuration: 1)
-                        flip.pausesIncomingScene = false
-                        self.scene?.view?.presentScene(scene, transition: flip)
-                    }
-                })
-            }
+        Data.sharedData.currentMode = .ordinary
+        Data.sharedData.gameOver = false
+        let gvc = UIApplication.shared.keyWindow?.rootViewController as! GameViewController
+        gvc.startRecordWithHandler { () -> Void in
+            DispatchQueue.main.async(execute: { () -> Void in
+                if self.scene is MainScene {
+                    gvc.addGestureRecognizers()
+                    let scene = OrdinaryModeScene(size: self.scene!.size)
+                    let flip = SKTransition.flipHorizontal(withDuration: 1)
+                    flip.pausesIncomingScene = false
+                    self.scene?.view?.presentScene(scene, transition: flip)
+                }
+            })
         }
     }
 }

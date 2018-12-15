@@ -23,7 +23,7 @@ class ShapeChaseState: ShapeState {
                     vector_int2(playerPos.x, playerPos.y + 3),
                     vector_int2(playerPos.x + 3, playerPos.y),
                     vector_int2(playerPos.x, playerPos.y - 3),
-                    vector_int2(playerPos.x - 3, playerPos.y)].flatMap({ (position) -> GKGridGraphNode? in
+                    vector_int2(playerPos.x - 3, playerPos.y)].compactMap({ (position) -> GKGridGraphNode? in
                         return scene.map.pathfindingGraph.node(atGridPosition: position)
                     })
                 

@@ -54,7 +54,7 @@ class GameKitHelper: NSObject, GKGameCenterControllerDelegate {
     //MARK: - Player Authentication
     
     func authenticateLocalPlayer() {
-        let localPlayer = GKLocalPlayer.localPlayer()
+        let localPlayer = GKLocalPlayer.local
         localPlayer.authenticateHandler = { [unowned localPlayer] (viewController, error) in
             self.lastError = error as NSError?
             if localPlayer.isAuthenticated {
@@ -115,7 +115,7 @@ class GameKitHelper: NSObject, GKGameCenterControllerDelegate {
         GKAchievement.loadAchievements { (achievements, error) -> Void in
             if let achievements = achievements , error == nil {
                 for achievement in achievements {
-                    self.achievementsDictionary[achievement.identifier!] = achievement
+                    self.achievementsDictionary[achievement.identifier] = achievement
                 }
             }
         }
@@ -124,7 +124,7 @@ class GameKitHelper: NSObject, GKGameCenterControllerDelegate {
     func getAchievementForIdentifier(_ identifier: String) -> GKAchievement {
         guard let achievement = achievementsDictionary[identifier] else {
             let achievement = GKAchievement(identifier: identifier)
-            achievementsDictionary[achievement.identifier!] = achievement
+            achievementsDictionary[achievement.identifier] = achievement
             return achievement;
         }
         return achievement;
