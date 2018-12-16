@@ -1,0 +1,8 @@
+title: Spiral
+description: A Game Developed with Swift and SpriteKit
+google_analytics: UA-49704553-1
+show_downloads: true
+theme: jekyll-theme-midnight
+
+gems:
+  - jekyll-mentions
